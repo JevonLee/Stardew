@@ -2266,6 +2266,23 @@ func _run() -> void:
 		await get_tree().process_frame
 		level = SceneManager.get_current_level()
 		player = get_tree().get_first_node_in_group("Player")
+	# ---- 宠物喂食测试 ----
+	var pet_ins: Pet = (load("res://Animals/pet.tscn") as PackedScene).instantiate() as Pet
+	level.add_child(pet_ins)
+	pet_ins.global_position = player.global_position + Vector2(60, 0)
+	# 手持鱼喂食
+	player.current_item = load("res://Bag/items/fish/太阳鱼.tres").duplicate()
+	player.bag_system.add_item(player.current_item)
+	var fed_ok: bool = pet_ins.feed(player)
+	var fed_count: int = pet_ins.fed
+	print("SMOKE: pet fed=", fed_ok, " count=", fed_count)
+	# 非鱼物品不喂食（抚摸）
+	player.current_item = load("res://Bag/items/food/蛋糕.tres").duplicate()
+	player.bag_system.add_item(player.current_item)
+	var fed_bad: bool = pet_ins.feed(player)
+	var petted_count: int = pet_ins.petted
+	print("SMOKE: pet no-fish=", fed_bad == false, " petted_after=", pet_ins.petted > petted_count)
+	pet_ins.queue_free()
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

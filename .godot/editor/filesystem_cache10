@@ -1,13 +1,13 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1786795104
+::res://::1786795319
 default_bus_layout.tres::AudioBusLayout/AudioBusLayout::2184131187234203786::1756520422::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile/TextFile::-1::1756520422::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::1804056525694353723::1756520422::1756522334::1::::<><><>0<>0<>163b15f42155cdb97f8ac97df934d6cb<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile/TextFile::-1::1756520422::0::1::::<><><>0<>0<><>::
-roadmap.md::TextFile::-1::1786795021::0::1::::<><><>0<>0<><>::
-tools_smoke.gd::GDScript::7937880759161548330::1786795104::0::1::::<>Node2D<><>0<>0<><>::
+roadmap.md::TextFile::-1::1786795279::0::1::::<><><>0<>0<><>::
+tools_smoke.gd::GDScript::7937880759161548330::1786795319::0::1::::<>Node2D<><>0<>0<><>::
 tools_smoke.tscn::PackedScene::-1::1786776087::0::1::::<><><>0<>0<><>::
-::res://Animals/::1786785947
+::res://Animals/::1786795312
 animal.gd::GDScript::1281943264472628730::1786779485::0::1::::Animal<>CharacterBody2D<><>0<>0<><>::
 animal.tscn::PackedScene::-1::1786785947::0::1::::<><><>0<>0<><>::res://Animals/animal.gd<>uid://uat2v7uyvg0y::::res://Component/click_area_component.tscn
 cat.tscn::PackedScene::-1::1786781020::0::1::::<><><>0<>0<><>::res://Animals/pet.tscn<>res://Art/StardewValley/animals/cat.png
@@ -15,7 +15,7 @@ chicken.tscn::PackedScene::-1::1786779469::0::1::::<><><>0<>0<><>::res://Animals
 cow.tscn::PackedScene::-1::1786779485::0::1::::<><><>0<>0<><>::res://Animals/animal.tscn<>res://Art/StardewValley/animals/White Cow.png<>uid://cjcb3hesikh4c::::res://Bag/items/animal/牛奶.tres
 dog.tscn::PackedScene::-1::1786781208::0::1::::<><><>0<>0<><>::res://Animals/pet.tscn<>res://Art/StardewValley/animals/dog.png
 duck.tscn::PackedScene::-1::1786780445::0::1::::<><><>0<>0<><>::res://Animals/animal.tscn<>res://Art/StardewValley/animals/Duck.png<>uid://t61j32uudc4o::::res://Bag/items/animal/鸭蛋.tres
-pet.gd::GDScript::5277685017555116007::1786782542::0::1::::Pet<>CharacterBody2D<><>0<>0<><>::
+pet.gd::GDScript::5277685017555116007::1786795312::0::1::::Pet<>CharacterBody2D<><>0<>0<><>::
 pet.tscn::PackedScene::-1::1786781020::0::1::::<><><>0<>0<><>::res://Animals/pet.gd
 sheep.tscn::PackedScene::-1::1786780445::0::1::::<><><>0<>0<><>::res://Animals/animal.tscn<>res://Art/StardewValley/animals/Sheep.png<>uid://5dysr2uudc4o::::res://Bag/items/animal/羊毛.tres
 ::res://Art/::1786774292

@@ -41,8 +41,11 @@
 [ext_resource type="Resource" uid="uid://rwnju723ec8a" path="res://Bag/items/weapon/紫水晶法杖.tres" id="22_7x5p2"]
 [ext_resource type="Script" uid="uid://bya4mm70yhdhw" path="res://Player/States/hoe.gd" id="22_hshwv"]
 [ext_resource type="Shader" uid="uid://cpy40p44f4xol" path="res://Shader/rain_bow.gdshader" id="22_m0h3t"]
+[ext_resource type="Resource" uid="uid://keyiyanqiu01" path="res://Bag/items/materials/可疑眼球.tres" id="23_dy65m"]
 [ext_resource type="Script" uid="uid://c5k5435pw00ft" path="res://Player/States/swing.gd" id="23_gpjlu"]
+[ext_resource type="Resource" uid="uid://4b04lslwbyro" path="res://Bag/items/materials/史莱姆王冠.tres" id="24_1l10g"]
 [ext_resource type="Script" uid="uid://o3dl51pfcjea" path="res://Player/States/water.gd" id="24_8mwp6"]
+[ext_resource type="Resource" uid="uid://jixieworm001" path="res://Bag/items/materials/机械蠕虫.tres" id="25_6rl0i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_luobu"]
 atlas = ExtResource("14_spring")
@@ -62,7 +65,7 @@ crop_data = ExtResource("13_luobu")
 
 [sub_resource type="Resource" id="Resource_jpqln"]
 script = ExtResource("5_dtp6i")
-items = Array[ExtResource("2_4pkqm")]([ExtResource("4_2pos1"), ExtResource("4_enduu"), ExtResource("5_glt61"), ExtResource("6_7lyx3"), ExtResource("7_sx2uy"), ExtResource("8_sm0op"), ExtResource("10_efx54"), ExtResource("11_755ss"), ExtResource("9_76lrf"), ExtResource("12_i4o1l"), SubResource("Resource_luobu"), ExtResource("15_yugan"), ExtResource("16_ie76m"), ExtResource("17_dy65m"), ExtResource("18_maysp"), ExtResource("7_6wttc"), ExtResource("20_1l10g"), ExtResource("17_dy65m"), ExtResource("21_6rl0i"), ExtResource("22_7x5p2"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+items = Array[ExtResource("2_4pkqm")]([ExtResource("4_2pos1"), ExtResource("4_enduu"), ExtResource("5_glt61"), ExtResource("6_7lyx3"), ExtResource("7_sx2uy"), ExtResource("8_sm0op"), ExtResource("10_efx54"), ExtResource("11_755ss"), ExtResource("9_76lrf"), ExtResource("12_i4o1l"), SubResource("Resource_luobu"), ExtResource("15_yugan"), ExtResource("16_ie76m"), ExtResource("17_dy65m"), ExtResource("18_maysp"), ExtResource("7_6wttc"), ExtResource("20_1l10g"), ExtResource("17_dy65m"), ExtResource("21_6rl0i"), ExtResource("22_7x5p2"), ExtResource("23_dy65m"), ExtResource("24_1l10g"), ExtResource("25_6rl0i"), null, null, null, null, null, null, null, null, null, null, null, null, null])
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_046hr"]
 atlas = ExtResource("9_1373j")

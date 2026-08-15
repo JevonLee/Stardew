@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://driqdgyepeeng"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://driqdgyepeeng"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_kodly"]
 [ext_resource type="Texture2D" uid="uid://c2eoqaqicyaux" path="res://Art/myself/烈焰激光.png" id="2_n3tmj"]
@@ -8,21 +8,9 @@ script = ExtResource("1_kodly")
 name = "烈焰激光"
 type = 6
 description = "吞噬猛焰的力量"
-quantity = 1
-max_quantity = 999
-countable = false
 texture = ExtResource("2_n3tmj")
-collision_size = Vector2(0, 0)
-use_time = 0
-use_animation = 0
-auto_use = false
 damage = 25
-crit = 0.0
-knockback = 0.0
-open_trail = false
-open_texture = false
 use_type = 2
 damage_type = 2
 projectile = "res://Bag/projectiles/烈焰激光.tscn"
-placeable_scene_path = ""
 metadata/_custom_type_script = "uid://cw5mwkqapte2e"

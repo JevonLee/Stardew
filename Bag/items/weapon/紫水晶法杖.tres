@@ -1,25 +1,19 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://rwnju723ec8a"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
-[ext_resource type="Texture2D" path="res://Art/Terraria/images/Item_181.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://is42prdcnq8o" path="res://Art/Terraria/images/Item_181.png" id="2_tex"]
 
 [resource]
 script = ExtResource("1_item")
 name = "紫水晶法杖"
 type = 6
 description = "镶嵌宝石的法杖，消耗魔力发射弹幕"
-quantity = 1
 max_quantity = 1
-countable = false
 texture = ExtResource("2_tex")
 price = 800
-collision_size = Vector2(0, 0)
 damage = 16
 crit = 0.05
 knockback = 1.0
-open_trail = false
-open_texture = false
-use_type = 0
 damage_type = 2
 projectile = "res://Combat/magic_bolt.tscn"
 mana_cost = 6

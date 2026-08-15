@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://bdxbflnhc4ell"]
+[gd_resource type="TileSet" format=3 uid="uid://bdxbflnhc4ell"]
 
 [ext_resource type="PackedScene" uid="uid://dygk8pjabfway" path="res://Terrain/Trees/trees.tscn" id="1_m4p3v"]
 [ext_resource type="Texture2D" uid="uid://bgfmjjo5oaxd2" path="res://Art/maps/spring_outdoorsTileSheet.zh-CN.png" id="2_rs4jk"]

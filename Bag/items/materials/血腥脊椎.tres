@@ -1,14 +1,13 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://cdidjrad3monq"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
-[ext_resource type="Texture2D" path="res://Art/Terraria/images/Item_1329.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://dup5dqqx2ha3h" path="res://Art/Terraria/images/Item_1329.png" id="2_tex"]
 
 [resource]
 script = ExtResource("1_item")
 name = "血腥脊椎"
 type = 14
 description = "在夜晚使用，召唤克苏鲁之脑"
-quantity = 1
 max_quantity = 99
 countable = true
 texture = ExtResource("2_tex")

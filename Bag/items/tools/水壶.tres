@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://18oguadpmg8g"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://18oguadpmg8g"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_5idqe"]
 [ext_resource type="Texture2D" uid="uid://cojbbbgtx1dey" path="res://Art/tile_sheets/tools.png" id="2_kirkx"]
@@ -12,21 +12,4 @@ script = ExtResource("1_5idqe")
 name = "水壶"
 type = 5
 description = "可以浇水，种植蔬菜"
-quantity = 1
-max_quantity = 999
-countable = false
 texture = SubResource("AtlasTexture_8ykmf")
-price = 1
-collision_size = Vector2(0, 0)
-use_time = 0
-use_animation = 0
-auto_use = false
-damage = 0
-crit = 0.0
-knockback = 0.0
-open_trail = false
-open_texture = false
-use_type = 0
-damage_type = 0
-projectile = ""
-placeable_scene_path = ""

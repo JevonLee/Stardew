@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="CropData" format=3 uid="uid://meigui_data01"]
+[gd_resource type="Resource" script_class="CropData" format=3 uid="uid://sttgnmycu1a7"]
 
-[ext_resource type="Script" path="res://Placeables/Crops/crop_data.gd" id="1_cd"]
+[ext_resource type="Script" uid="uid://c1y8rn4gv7a3q" path="res://Placeables/Crops/crop_data.gd" id="1_cd"]
 [ext_resource type="Texture2D" uid="uid://cyfd18grsc0v7" path="res://Art/tile_sheets/crops.png" id="2_tex"]
-[ext_resource type="Resource" uid="uid://meigui0000001" path="res://Bag/items/crops/玫瑰.tres" id="3_item"]
+[ext_resource type="Resource" uid="uid://sat3daacfeqq" path="res://Bag/items/crops/玫瑰.tres" id="3_item"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cd"]
 atlas = ExtResource("2_tex")
@@ -12,9 +12,5 @@ region = Rect2(128, 96, 112, 32)
 script = ExtResource("1_cd")
 crop_name = "玫瑰"
 texture = SubResource("AtlasTexture_cd")
-hframes = 7
-growth_days = 7
-regrow_days = 0
-drops_count = 1
 allowed_seasons = Array[int]([1, 2])
 harvest_item = ExtResource("3_item")

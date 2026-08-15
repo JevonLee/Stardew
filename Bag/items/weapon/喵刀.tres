@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bpjotrdl0f7gx"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bpjotrdl0f7gx"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_k47pj"]
 [ext_resource type="Texture2D" uid="uid://cgy6o3gjjhkq4" path="res://Art/tile_sheets/weapons.png" id="2_h4bgl"]
@@ -12,21 +12,7 @@ script = ExtResource("1_k47pj")
 name = "喵刀"
 type = 6
 description = "来自异世界的武器"
-quantity = 1
-max_quantity = 999
-countable = false
 texture = SubResource("AtlasTexture_wper1")
-price = 1
-collision_size = Vector2(0, 0)
-use_time = 0
-use_animation = 0
-auto_use = false
 damage = 15
-crit = 0.0
-knockback = 0.0
 open_trail = true
 open_texture = true
-use_type = 0
-damage_type = 0
-projectile = ""
-placeable_scene_path = ""

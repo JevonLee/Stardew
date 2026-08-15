@@ -12,7 +12,6 @@ script = ExtResource("1_item")
 name = "肥料"
 type = 10
 description = "撒在耕地上，让作物每天多长一阶段"
-quantity = 1
 max_quantity = 99
 countable = true
 texture = SubResource("AtlasTexture_item")

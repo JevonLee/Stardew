@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://cd3o8erabt37a"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cd3o8erabt37a"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_6ixv6"]
 [ext_resource type="Texture2D" uid="uid://cld8pf440rynj" path="res://Art/tile_sheets/Objects_2.png" id="2_5ftd3"]
@@ -10,23 +10,7 @@ region = Rect2(48, 176, 16, 16)
 [resource]
 script = ExtResource("1_6ixv6")
 name = "书"
-type = 0
 description = "这是一本可以阅读的书"
 quantity = 7
-max_quantity = 999
 countable = true
 texture = SubResource("AtlasTexture_4x8eh")
-price = 1
-collision_size = Vector2(0, 0)
-use_time = 0
-use_animation = 0
-auto_use = false
-damage = 0
-crit = 0.0
-knockback = 0.0
-open_trail = false
-open_texture = false
-use_type = 0
-damage_type = 0
-projectile = ""
-placeable_scene_path = ""

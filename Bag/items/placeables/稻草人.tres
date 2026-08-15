@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://daocaoren0001"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
-[ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_310.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://cmh7u7sio66fr" path="res://Art/Terraria/images/NPC_310.png" id="2_tex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_item"]
 atlas = ExtResource("2_tex")
@@ -12,7 +12,6 @@ script = ExtResource("1_item")
 name = "稻草人"
 type = 8
 description = "保护周围8格内的成熟作物免受乌鸦啄食"
-quantity = 1
 max_quantity = 99
 countable = true
 texture = SubResource("AtlasTexture_item")

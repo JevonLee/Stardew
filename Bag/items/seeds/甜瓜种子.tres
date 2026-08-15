@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://0b28kg4yvc15"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://0b28kg4yvc15"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_0rfj6"]
 [ext_resource type="Texture2D" uid="uid://dxf5y3rpsuxa8" path="res://Art/maps/springobjects.es-ES.png" id="2_qj55q"]
-[ext_resource type="Resource" uid="uid://tianguadata0001" path="res://Bag/items/crops/甜瓜_data.tres" id="3_cd"]
+[ext_resource type="Resource" uid="uid://bni2lmal5otho" path="res://Bag/items/crops/甜瓜_data.tres" id="3_cd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_micd4"]
 atlas = ExtResource("2_qj55q")
@@ -13,23 +13,9 @@ script = ExtResource("1_0rfj6")
 name = "甜瓜种子"
 type = 9
 description = "7天生长，可以种出粉红的甜瓜"
-quantity = 1
-max_quantity = 999
 countable = true
 texture = SubResource("AtlasTexture_micd4")
 price = 80
-collision_size = Vector2(0, 0)
-use_time = 0
-use_animation = 0
-auto_use = false
-damage = 0
-crit = 0.0
-knockback = 0.0
-open_trail = false
-open_texture = false
-use_type = 0
-damage_type = 0
-projectile = ""
 placeable_scene_path = "res://Placeables/Crops/crop.tscn"
 crop_data = ExtResource("3_cd")
 metadata/_custom_type_script = "uid://cw5mwkqapte2e"

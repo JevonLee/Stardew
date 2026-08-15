@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dovmx72x210he"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dovmx72x210he"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_cq8p7"]
 [ext_resource type="Texture2D" uid="uid://b06v5j1fglag4" path="res://Art/myself/Projectile_497.png" id="2_i74n0"]
@@ -8,22 +8,8 @@ script = ExtResource("1_cq8p7")
 name = "暗影焰刀"
 type = 6
 description = "来自哥布林的国宝武器！！！"
-quantity = 1
-max_quantity = 999
-countable = false
 texture = ExtResource("2_i74n0")
-price = 1
-collision_size = Vector2(0, 0)
-use_time = 0
-use_animation = 0
-auto_use = false
 damage = 20
-crit = 0.0
-knockback = 0.0
-open_trail = false
-open_texture = false
 use_type = 1
 damage_type = 1
-projectile = ""
-placeable_scene_path = ""
 metadata/_custom_type_script = "uid://cw5mwkqapte2e"

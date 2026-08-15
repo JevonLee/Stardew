@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://1dxl5pwmi0x"]
+[gd_resource type="Theme" format=3 uid="uid://1dxl5pwmi0x"]
 
 [ext_resource type="Texture2D" uid="uid://d3kfbquehfpkg" path="res://Art/loose_sprite/Cursors_1_6.png" id="1_t6h3g"]
 

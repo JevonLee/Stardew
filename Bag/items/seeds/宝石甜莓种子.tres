@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
 [ext_resource type="Texture2D" uid="uid://dxf5y3rpsuxa8" path="res://Art/maps/springobjects.es-ES.png" id="2_tex"]
-[ext_resource type="Resource" uid="uid://baoshitian_m1" path="res://Bag/items/crops/宝石甜莓_data.tres" id="3_cd"]
+[ext_resource type="Resource" uid="uid://cpat50ag5iqfq" path="res://Bag/items/crops/宝石甜莓_data.tres" id="3_cd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_item"]
 atlas = ExtResource("2_tex")
@@ -13,8 +13,6 @@ script = ExtResource("1_item")
 name = "宝石甜莓种子"
 type = 9
 description = "24天生长，全年可种，果实价值连城"
-quantity = 1
-max_quantity = 999
 countable = true
 texture = SubResource("AtlasTexture_item")
 price = 1000

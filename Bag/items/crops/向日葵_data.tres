@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="CropData" format=3 uid="uid://xiangrikui_d1"]
+[gd_resource type="Resource" script_class="CropData" format=3 uid="uid://bvlejfdcnm1on"]
 
-[ext_resource type="Script" path="res://Placeables/Crops/crop_data.gd" id="1_cd"]
+[ext_resource type="Script" uid="uid://c1y8rn4gv7a3q" path="res://Placeables/Crops/crop_data.gd" id="1_cd"]
 [ext_resource type="Texture2D" uid="uid://cyfd18grsc0v7" path="res://Art/tile_sheets/crops.png" id="2_tex"]
 [ext_resource type="Resource" uid="uid://xiangrikui01" path="res://Bag/items/crops/向日葵.tres" id="3_item"]
 
@@ -12,9 +12,6 @@ region = Rect2(128, 96, 112, 32)
 script = ExtResource("1_cd")
 crop_name = "向日葵"
 texture = SubResource("AtlasTexture_cd")
-hframes = 7
 growth_days = 8
-regrow_days = 0
-drops_count = 1
 allowed_seasons = Array[int]([1, 2])
 harvest_item = ExtResource("3_item")

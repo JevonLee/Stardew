@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://d3xs4io3bcdr6"]
+[gd_resource type="TileSet" format=3 uid="uid://d3xs4io3bcdr6"]
 
 [ext_resource type="Texture2D" uid="uid://dehsiprf7r35o" path="res://Art/terrain/Flooring.png" id="1_v2hx2"]
 [ext_resource type="Texture2D" uid="uid://bjj82tkjenm6" path="res://Art/terrain/hoeDirt.png" id="2_ur66f"]

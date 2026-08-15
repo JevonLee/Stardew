@@ -1,15 +1,13 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://dyuqwx3rgs5aa"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
-[ext_resource type="Texture2D" path="res://Art/Terraria/images/Item_1128.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://dkohn3j74c61v" path="res://Art/Terraria/images/Item_1128.png" id="2_tex"]
 
 [resource]
 script = ExtResource("1_item")
 name = "花蜜"
 type = 7
 description = "花田酿出的珍贵蜂蜜，价值远超普通蜂蜜"
-quantity = 1
-max_quantity = 999
 countable = true
 texture = ExtResource("2_tex")
 price = 300

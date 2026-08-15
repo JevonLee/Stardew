@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://c2lmyuwdhija3"]
+[gd_scene format=3 uid="uid://c2lmyuwdhija3"]
 
 [ext_resource type="Script" uid="uid://cm3jgv3p6vtxc" path="res://Player/player.gd" id="1_vab61"]
 [ext_resource type="Texture2D" uid="uid://bhmfogq4kdepg" path="res://Art/character/farmer/farmer_base.png" id="1_xufw1"]
@@ -14,25 +14,31 @@
 [ext_resource type="Resource" uid="uid://0up2rccig0vd" path="res://Bag/items/weapon/镰刀.tres" id="7_sx2uy"]
 [ext_resource type="Resource" uid="uid://caddip1mc5bse" path="res://Bag/items/weapon/鬼妖村正.tres" id="8_sm0op"]
 [ext_resource type="Resource" uid="uid://0b28kg4yvc15" path="res://Bag/items/seeds/甜瓜种子.tres" id="9_76lrf"]
-[ext_resource type="Resource" uid="uid://luobuseed00001" path="res://Bag/items/seeds/萝卜种子.tres" id="13_luobu"]
-[ext_resource type="Resource" uid="uid://yugan000000001" path="res://Bag/items/tools/鱼竿.tres" id="15_yugan"]
 [ext_resource type="Texture2D" uid="uid://kvjhhhusa3g3" path="res://Art/tile_sheets/animations.png" id="9_1373j"]
 [ext_resource type="Resource" uid="uid://18oguadpmg8g" path="res://Bag/items/tools/水壶.tres" id="10_efx54"]
 [ext_resource type="Texture2D" uid="uid://cojbbbgtx1dey" path="res://Art/tile_sheets/tools.png" id="10_hhrbb"]
 [ext_resource type="Resource" uid="uid://driqdgyepeeng" path="res://Bag/items/weapon/烈焰激光.tres" id="11_755ss"]
 [ext_resource type="Resource" uid="uid://dovmx72x210he" path="res://Bag/items/weapon/暗影焰刀.tres" id="12_i4o1l"]
-[ext_resource type="Texture2D" uid="uid://dxf5y3rpsuxa8" path="res://Art/maps/springobjects.es-ES.png" id="14_spring"]
+[ext_resource type="Resource" uid="uid://go3mmmofeqp1" path="res://Bag/items/seeds/萝卜种子.tres" id="13_luobu"]
 [ext_resource type="PackedScene" uid="uid://y6h28idjda41" path="res://Component/hit_component.tscn" id="14_p0v3c"]
+[ext_resource type="Texture2D" uid="uid://dxf5y3rpsuxa8" path="res://Art/maps/springobjects.es-ES.png" id="14_spring"]
 [ext_resource type="AudioStream" uid="uid://dhqr22viv48ht" path="res://AudioSystem/ExobladeSwing.ogg" id="15_j2n6q"]
+[ext_resource type="Resource" uid="uid://bl5olthl1cycu" path="res://Bag/items/tools/鱼竿.tres" id="15_yugan"]
+[ext_resource type="Resource" uid="uid://hermesboot01" path="res://Bag/items/accessories/赫尔墨斯之靴.tres" id="16_ie76m"]
 [ext_resource type="PackedScene" uid="uid://ccvunviarnauk" path="res://Weapons/jian_qi.tscn" id="16_qemgg"]
 [ext_resource type="Texture2D" uid="uid://bjo3iet0b7006" path="res://Art/myself/Projectile_250.png" id="17_8viyr"]
+[ext_resource type="Resource" uid="uid://0d65g7dnnyro" path="res://Bag/items/weapon/圣剑.tres" id="17_dy65m"]
 [ext_resource type="Texture2D" uid="uid://cgy6o3gjjhkq4" path="res://Art/tile_sheets/weapons.png" id="17_fhisr"]
 [ext_resource type="Script" uid="uid://dks2c8imequhm" path="res://Player/States/state_machine.gd" id="17_pisgm"]
 [ext_resource type="Script" uid="uid://cdp02ymf82xpr" path="res://Player/States/idle.gd" id="18_b1ygp"]
+[ext_resource type="Resource" uid="uid://rawvs3rgs5aa" path="res://Bag/items/weapon/恶魔之书.tres" id="18_maysp"]
 [ext_resource type="Script" uid="uid://badiqf06gmg4a" path="res://Player/States/move.gd" id="19_o28un"]
+[ext_resource type="Resource" uid="uid://daocaoren0001" path="res://Bag/items/placeables/稻草人.tres" id="20_1l10g"]
 [ext_resource type="PackedScene" uid="uid://5mtyswld1lw1" path="res://Placeables/place_component.tscn" id="20_bbimk"]
 [ext_resource type="Script" uid="uid://lhifiaiuwwwc" path="res://Player/States/axe.gd" id="20_n471f"]
+[ext_resource type="Resource" uid="uid://bh68f18vasrhg" path="res://Bag/items/weapon/永夜刃.tres" id="21_6rl0i"]
 [ext_resource type="Script" uid="uid://dihjjvpkro4kp" path="res://Player/States/draft.gd" id="21_7emwf"]
+[ext_resource type="Resource" uid="uid://rwnju723ec8a" path="res://Bag/items/weapon/紫水晶法杖.tres" id="22_7x5p2"]
 [ext_resource type="Script" uid="uid://bya4mm70yhdhw" path="res://Player/States/hoe.gd" id="22_hshwv"]
 [ext_resource type="Shader" uid="uid://cpy40p44f4xol" path="res://Shader/rain_bow.gdshader" id="22_m0h3t"]
 [ext_resource type="Script" uid="uid://c5k5435pw00ft" path="res://Player/States/swing.gd" id="23_gpjlu"]
@@ -48,7 +54,6 @@ name = "萝卜种子"
 type = 9
 description = "4天生长，春天的蔬菜"
 quantity = 5
-max_quantity = 999
 countable = true
 texture = SubResource("AtlasTexture_luobu")
 price = 20
@@ -57,8 +62,7 @@ crop_data = ExtResource("13_luobu")
 
 [sub_resource type="Resource" id="Resource_jpqln"]
 script = ExtResource("5_dtp6i")
-items = Array[ExtResource("2_4pkqm")]([ExtResource("4_2pos1"), ExtResource("4_enduu"), ExtResource("5_glt61"), ExtResource("6_7lyx3"), ExtResource("7_sx2uy"), ExtResource("8_sm0op"), ExtResource("10_efx54"), ExtResource("11_755ss"), ExtResource("9_76lrf"), ExtResource("12_i4o1l"), SubResource("Resource_luobu"), ExtResource("15_yugan"), null, null, null, ExtResource("7_6wttc"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
-items_size = 36
+items = Array[ExtResource("2_4pkqm")]([ExtResource("4_2pos1"), ExtResource("4_enduu"), ExtResource("5_glt61"), ExtResource("6_7lyx3"), ExtResource("7_sx2uy"), ExtResource("8_sm0op"), ExtResource("10_efx54"), ExtResource("11_755ss"), ExtResource("9_76lrf"), ExtResource("12_i4o1l"), SubResource("Resource_luobu"), ExtResource("15_yugan"), ExtResource("16_ie76m"), ExtResource("17_dy65m"), ExtResource("18_maysp"), ExtResource("7_6wttc"), ExtResource("20_1l10g"), ExtResource("17_dy65m"), ExtResource("21_6rl0i"), ExtResource("22_7x5p2"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_046hr"]
 atlas = ExtResource("9_1373j")
@@ -5316,8 +5320,8 @@ _data = {
 frequency = 0.0065
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i4o1l"]
-seamless = true
 noise = SubResource("FastNoiseLite_m0h3t")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i4o1l"]
 shader = ExtResource("22_m0h3t")
@@ -5334,32 +5338,32 @@ glow_intensity = 2.49
 atlas = ExtResource("17_fhisr")
 region = Rect2(16, 128, 16, 16)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1691297894 groups=["Player"]]
 y_sort_enabled = true
 collision_mask = 43
 script = ExtResource("1_vab61")
 bag_system = SubResource("Resource_jpqln")
 swing_sfx = ExtResource("15_j2n6q")
 
-[node name="Shadow" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="." unique_id=760047056]
 y_sort_enabled = true
 texture = ExtResource("4_g0bhm")
 
-[node name="Body" type="Sprite2D" parent="."]
+[node name="Body" type="Sprite2D" parent="." unique_id=1064776277]
 position = Vector2(0, -18)
 texture = ExtResource("1_xufw1")
 flip_h = true
 hframes = 18
 vframes = 21
 
-[node name="Clothes" type="Sprite2D" parent="."]
+[node name="Clothes" type="Sprite2D" parent="." unique_id=926512204]
 y_sort_enabled = true
 position = Vector2(0, -15)
 texture = ExtResource("2_tgrre")
 hframes = 32
 vframes = 76
 
-[node name="Hands" type="Sprite2D" parent="."]
+[node name="Hands" type="Sprite2D" parent="." unique_id=208629838]
 position = Vector2(0, -17)
 texture = ExtResource("1_xufw1")
 flip_h = true
@@ -5367,7 +5371,7 @@ hframes = 18
 vframes = 21
 frame = 6
 
-[node name="Effects" type="AnimatedSprite2D" parent="."]
+[node name="Effects" type="AnimatedSprite2D" parent="." unique_id=1086996413]
 visible = false
 z_index = 3
 position = Vector2(21.515, -14)
@@ -5377,35 +5381,33 @@ animation = &"water"
 frame = 9
 frame_progress = 1.0
 
-[node name="Tools" type="Sprite2D" parent="."]
+[node name="Tools" type="Sprite2D" parent="." unique_id=592767239]
 visible = false
 z_index = 2
 position = Vector2(-5, -33)
 rotation = -0.143117
 texture = SubResource("AtlasTexture_fq2s3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=722475628]
 visible = false
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_1dqfy")
 
-[node name="HitComponent" parent="." instance=ExtResource("14_p0v3c")]
+[node name="HitComponent" parent="." unique_id=1173650831 instance=ExtResource("14_p0v3c")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent" unique_id=2048143013]
 position = Vector2(-4.76837e-07, 2.80386)
 shape = SubResource("RectangleShape2D_e3nju")
 disabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_dmgj8")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=580370995]
+libraries/ = SubResource("AnimationLibrary_dmgj8")
 
-[node name="PlaceComponent" parent="." instance=ExtResource("20_bbimk")]
+[node name="PlaceComponent" parent="." unique_id=903096704 instance=ExtResource("20_bbimk")]
 
-[node name="Weapon" type="Node2D" parent="."]
+[node name="Weapon" type="Node2D" parent="." unique_id=1358838399]
 
-[node name="JianQi" parent="Weapon" node_paths=PackedStringArray("target") instance=ExtResource("16_qemgg")]
+[node name="JianQi" parent="Weapon" unique_id=665020926 node_paths=PackedStringArray("target") instance=ExtResource("16_qemgg")]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_i4o1l")
 position = Vector2(0.561874, 0.916906)
@@ -5417,51 +5419,51 @@ texture_mode = 2
 joint_mode = 2
 target = NodePath("../Weapon/Marker2D")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Weapon/JianQi"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Weapon/JianQi" unique_id=139814079]
 environment = SubResource("Environment_m0h3t")
 
-[node name="Weapon" type="Sprite2D" parent="Weapon"]
+[node name="Weapon" type="Sprite2D" parent="Weapon" unique_id=1436107022]
 position = Vector2(0, -12)
 rotation = 3.34231
 texture = SubResource("AtlasTexture_7v3gn")
 offset = Vector2(12, -12)
 
-[node name="Marker2D" type="Marker2D" parent="Weapon/Weapon"]
+[node name="Marker2D" type="Marker2D" parent="Weapon/Weapon" unique_id=159464194]
 position = Vector2(16, -16)
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=1845877770 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("17_pisgm")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "anim")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=2076394835 node_paths=PackedStringArray("player", "anim")]
 script = ExtResource("18_b1ygp")
 player = NodePath("../..")
 anim = NodePath("../../AnimationPlayer")
 
-[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "anim")]
+[node name="Move" type="Node" parent="StateMachine" unique_id=1780468318 node_paths=PackedStringArray("player", "anim")]
 script = ExtResource("19_o28un")
 player = NodePath("../..")
 anim = NodePath("../../AnimationPlayer")
 
-[node name="Axe" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "anim", "tool_collistion")]
+[node name="Axe" type="Node" parent="StateMachine" unique_id=1954341618 node_paths=PackedStringArray("player", "anim", "tool_collistion")]
 script = ExtResource("20_n471f")
 player = NodePath("../..")
 anim = NodePath("../../AnimationPlayer")
 tool_collistion = NodePath("../../HitComponent/CollisionShape2D")
 
-[node name="Draft" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "anim", "tool_collistion")]
+[node name="Draft" type="Node" parent="StateMachine" unique_id=1624291980 node_paths=PackedStringArray("player", "anim", "tool_collistion")]
 script = ExtResource("21_7emwf")
 player = NodePath("../..")
 anim = NodePath("../../AnimationPlayer")
 tool_collistion = NodePath("../../HitComponent/CollisionShape2D")
 
-[node name="Hoe" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "anim", "tool_collistion")]
+[node name="Hoe" type="Node" parent="StateMachine" unique_id=142726688 node_paths=PackedStringArray("player", "anim", "tool_collistion")]
 script = ExtResource("22_hshwv")
 player = NodePath("../..")
 anim = NodePath("../../AnimationPlayer")
 tool_collistion = NodePath("../../HitComponent/CollisionShape2D")
 
-[node name="Swing" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "anim", "tool_collistion", "weapon", "jian_qi", "maker_2d")]
+[node name="Swing" type="Node" parent="StateMachine" unique_id=823785145 node_paths=PackedStringArray("player", "anim", "tool_collistion", "weapon", "jian_qi", "maker_2d")]
 script = ExtResource("23_gpjlu")
 player = NodePath("../..")
 anim = NodePath("../../AnimationPlayer")
@@ -5470,10 +5472,10 @@ weapon = NodePath("../../Weapon/Weapon")
 jian_qi = NodePath("../../Weapon/JianQi")
 maker_2d = NodePath("../../Weapon/Weapon/Marker2D")
 
-[node name="Water" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "anim", "tool_collistion")]
+[node name="Water" type="Node" parent="StateMachine" unique_id=791561118 node_paths=PackedStringArray("player", "anim", "tool_collistion")]
 script = ExtResource("24_8mwp6")
 player = NodePath("../..")
 anim = NodePath("../../AnimationPlayer")
 tool_collistion = NodePath("../../HitComponent/CollisionShape2D")
 
-[node name="Hold" type="Node" parent="StateMachine"]
+[node name="Hold" type="Node" parent="StateMachine" unique_id=1132338444]

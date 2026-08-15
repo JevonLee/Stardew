@@ -1,24 +1,19 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://dl3k7oe60m77"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
-[ext_resource type="Texture2D" path="res://Art/Terraria/images/Item_44.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://w5wn7sx8f7r8" path="res://Art/Terraria/images/Item_44.png" id="2_tex"]
 
 [resource]
 script = ExtResource("1_item")
 name = "铜剑"
 type = 6
 description = "铜制的剑，矿工的防身利器"
-quantity = 1
 max_quantity = 1
-countable = false
 texture = ExtResource("2_tex")
 price = 80
 collision_size = Vector2(8, 8)
 damage = 12
 crit = 0.05
 knockback = 0.8
-open_trail = false
 open_texture = true
-use_type = 0
 damage_type = 1
-projectile = ""

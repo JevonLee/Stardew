@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Item" format=3 uid="uid://xiangrikui_sd1"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://di4w872lmppo0"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
 [ext_resource type="Texture2D" uid="uid://dxf5y3rpsuxa8" path="res://Art/maps/springobjects.es-ES.png" id="2_tex"]
-[ext_resource type="Resource" uid="uid://xiangrikui_d1" path="res://Bag/items/crops/向日葵_data.tres" id="3_cd"]
+[ext_resource type="Resource" uid="uid://bvlejfdcnm1on" path="res://Bag/items/crops/向日葵_data.tres" id="3_cd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_item"]
 atlas = ExtResource("2_tex")
@@ -13,8 +13,6 @@ script = ExtResource("1_item")
 name = "向日葵种子"
 type = 9
 description = "8天开花，夏秋可种，送人好感翻倍"
-quantity = 1
-max_quantity = 999
 countable = true
 texture = SubResource("AtlasTexture_item")
 price = 60

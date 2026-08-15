@@ -15,3 +15,4 @@ mono_crash.*.json
 
 # VS Code
 .vscode/
+.dsh-theme-work/

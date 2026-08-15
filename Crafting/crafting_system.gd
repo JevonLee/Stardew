@@ -54,6 +54,7 @@ const RECIPES = [
 	preload("res://Crafting/recipes/机械蠕虫.tres"),
 	preload("res://Crafting/recipes/木栅栏.tres"),
 	preload("res://Crafting/recipes/蜂房.tres"),
+	preload("res://Crafting/recipes/稻草人.tres"),
 ]
 
 var panel: Control

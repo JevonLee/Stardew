@@ -1188,6 +1188,47 @@ func _run() -> void:
 		if d.get("item") != null and d.get("item").name == "蜂蜜":
 			honey_dropped = true
 	print("SMOKE: beehive honey=", honey_dropped, " drops_delta=", drops_node.get_child_count() - drops_before)
+	# ---- 稻草人测试 ----
+	var bag_count: int = 0
+	for it in player.bag_system.items:
+		if it != null:
+			bag_count += 1
+	print("SMOKE: bag used=", bag_count, " of ", player.bag_system.items.size())
+	# 清理背包中的材料/消耗品，为后续合成腾出槽位（后续测试会重新添加）
+	for i in player.bag_system.items.size():
+		var bag_it: Item = player.bag_system.items[i]
+		if bag_it != null and (bag_it.type == Item.ItemType.Materials or bag_it.type == Item.ItemType.Consume):
+			player.bag_system.items[i] = null
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/wood.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/纤维.tres").duplicate())
+	for i in 3:
+		player.bag_system.add_item(load("res://Bag/items/materials/树液.tres").duplicate())
+	var sc_recipe: Recipe = load("res://Crafting/recipes/稻草人.tres")
+	crafting.panel._on_craft_pressed(sc_recipe)
+	var sc_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "稻草人":
+			sc_item = it
+			break
+	print("SMOKE: scarecrow item=", sc_item != null, " type=", sc_item.type if sc_item else -1)
+	var sc_ins: Placeable = (load("res://Placeables/scarecrow.tscn") as PackedScene).instantiate() as Placeable
+	level.find_child("Crops").add_child(sc_ins)
+	sc_ins.global_position = Vector2(600, 600)
+	var cc3 := level.get_node("CropsComponent") as CropsComponent
+	# 造两株作物：一株在稻草人范围内(100px)，一株在范围外(300px)
+	var crop_near: Crop = (load("res://Placeables/Crops/crop.tscn") as PackedScene).instantiate() as Crop
+	crop_near.crop_data = load("res://Bag/items/crops/甜瓜_data.tres")
+	level.find_child("Crops").add_child(crop_near)
+	crop_near.global_position = Vector2(600, 620)
+	var crop_far: Crop = (load("res://Placeables/Crops/crop.tscn") as PackedScene).instantiate() as Crop
+	crop_far.crop_data = load("res://Bag/items/crops/甜瓜_data.tres")
+	level.find_child("Crops").add_child(crop_far)
+	crop_far.global_position = Vector2(900, 900)
+	var protected_near: bool = cc3._is_protected(crop_near)
+	var protected_far: bool = cc3._is_protected(crop_far)
+	print("SMOKE: scarecrow protected_near=", protected_near, " protected_far=", protected_far)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

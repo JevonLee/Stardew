@@ -38,6 +38,29 @@ func _ready() -> void:
 ## 每天清晨土壤变干（作物已在信号处理中先检查过昨日的浇水状态）
 func _on_day_change(_day:int) -> void:
 	call_deferred("_dry_soil")
+	call_deferred("_crow_attack")
+
+## 乌鸦：清晨随机啄食成熟且未受稻草人保护的作物（至少3株成熟时才触发，稻草人128px内安全）
+func _crow_attack() -> void:
+	if randf() >= 0.5: return
+	var container := get_parent().find_child("Crops") as Node2D
+	if container == null: return
+	var unprotected: Array[Crop] = []
+	for c in container.get_children():
+		if c is Crop and c.is_mature() and not c.withering and not _is_protected(c):
+			unprotected.append(c)
+	if unprotected.size() < 3: return
+	var victim: Crop = unprotected.pick_random()
+	victim.withering = true
+	Global.show_message("乌鸦吃掉了一株成熟作物！快建稻草人！")
+
+func _is_protected(crop: Crop) -> bool:
+	var container := get_parent().find_child("Crops") as Node2D
+	if container == null: return false
+	for n in container.get_children():
+		if n is Scarecrow and n.global_position.distance_to(crop.global_position) <= 128.0:
+			return true
+	return false
 
 func _dry_soil() -> void:
 	if water_soil:

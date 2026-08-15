@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://daocaoren0001"]
+
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_310.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_item"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 42, 40)
+
+[resource]
+script = ExtResource("1_item")
+name = "稻草人"
+type = 8
+description = "保护周围8格内的成熟作物免受乌鸦啄食"
+quantity = 1
+max_quantity = 99
+countable = true
+texture = SubResource("AtlasTexture_item")
+price = 150
+placeable_scene_path = "res://Placeables/scarecrow.tscn"

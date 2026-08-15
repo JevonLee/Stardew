@@ -31,6 +31,10 @@ func _on_hit(_damage: int, _source: Vector2) -> void:
 func _on_broken() -> void:
 	_drop(ore_item)
 	QuestSystem.report("mine")
+	Global.add_skill_xp("mining", 1) ## 采矿技能经验
+	# 采矿技能：双倍矿石概率
+	if randf() < Global.mining_double_chance():
+		_drop(ore_item)
 	if randf() < stone_chance:
 		_drop(STONE)
 	if randf() < coal_chance:

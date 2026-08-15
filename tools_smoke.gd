@@ -2115,6 +2115,23 @@ func _run() -> void:
 		CollectionSystem.record_item("测试物品%d" % i)
 	AchievementSystem.check()
 	print("SMOKE: ach fish6=", AchievementSystem.is_unlocked("fish_6"), " collect40=", AchievementSystem.is_unlocked("collect_40"), " boss5=", AchievementSystem.is_unlocked("boss_5"))
+	# ---- 技能系统测试 ----
+	Global.add_skill_xp("fishing", 10)
+	Global.add_skill_xp("fishing", 6)
+	Global.add_skill_xp("mining", 10)
+	print("SMOKE: skills fishing=", Global.skills["fishing"], " mining=", Global.skills["mining"])
+	print("SMOKE: fishing mult=", Global.fishing_skill_multiplier(), " mining double=", Global.mining_double_chance())
+	# 钓鱼难度修正（章鱼0.8 → 1级钓鱼 ×0.98）
+	player.current_item = gold_rod
+	var fish_ui_ins2: Control = (load("res://Fishing/fishing_ui.tscn") as PackedScene).instantiate()
+	fish_ui_ins2.set("fish", load("res://Fishing/fish_data/章鱼_data.tres"))
+	level.add_child(fish_ui_ins2)
+	print("SMOKE: skill rod diff=", snappedf(fish_ui_ins2._effective_difficulty(), 0.02))
+	fish_ui_ins2.queue_free()
+	# 存档往返
+	SaveManager._save()
+	SaveManager._load()
+	print("SMOKE: skills after load=", Global.skills["fishing"], "/", Global.skills["mining"])
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

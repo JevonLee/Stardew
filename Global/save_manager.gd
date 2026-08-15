@@ -45,6 +45,8 @@ func _save() -> void:
 	save_data.achievements = AchievementSystem.unlocked
 	save_data.spouse = MarriageSystem.spouse
 	save_data.museum = MuseumSystem.donated
+	save_data.skills = Global.skills
+	save_data.skill_xp = Global.skill_xp
 	ResourceSaver.save(save_data, SAVE_PATH)
 	print("存档完成")
 
@@ -94,4 +96,8 @@ func _load() -> void:
 	MarriageSystem.spouse = save_data.spouse
 	if save_data.museum.size() > 0:
 		MuseumSystem.donated = save_data.museum
+	if save_data.skills.size() > 0:
+		Global.skills = save_data.skills
+	if save_data.skill_xp.size() > 0:
+		Global.skill_xp = save_data.skill_xp
 	print("读档完成")

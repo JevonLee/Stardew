@@ -119,6 +119,7 @@ func _on_fishing_result(success: bool) -> void:
 		if not is_junk:
 			QuestSystem.report("fish")
 			CollectionSystem.record_fish(fishing_ui.fish.fish_name)
+			Global.add_skill_xp("fishing", 2) ## 钓鱼技能经验
 		Global.show_message("钓到了 %s！" % fishing_ui.fish.fish_name if not is_junk else "钓到了垃圾…")
 	else:
 		Global.show_message("鱼跑掉了……")

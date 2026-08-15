@@ -28,7 +28,7 @@ func _ready() -> void:
 	fish_y = BAR_HEIGHT / 2.0
 	set_process(true)
 
-## 鱼竿等级修正难度（铁鱼竿-15%，金鱼竿-30%）
+## 鱼竿等级修正难度（铁鱼竿-15%，金鱼竿-30%）+ 钓鱼技能等级修正
 func _effective_difficulty() -> float:
 	var diff := (fish.difficulty if fish else 0.5)
 	var player := get_tree().get_first_node_in_group("Player") as Player
@@ -36,6 +36,7 @@ func _effective_difficulty() -> float:
 		match player.current_item.name:
 			"铁鱼竿": diff *= 0.85
 			"金鱼竿": diff *= 0.7
+	diff *= Global.fishing_skill_multiplier()
 	return diff
 
 func _process(delta: float) -> void:

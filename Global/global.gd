@@ -22,6 +22,27 @@ var gold:int = 500: ## 玩家金币
 
 var mine_floor:int = 1 ## 进入矿洞的层数（由楼梯设置，矿洞读取后重置）
 
+## 技能系统：钓鱼/采矿技能等级（10级上限，每级效果增强）
+var skills:Dictionary = {"fishing": 0, "mining": 0}
+var skill_xp:Dictionary = {"fishing": 0, "mining": 0}
+const SKILL_NAMES := {"fishing": "钓鱼", "mining": "采矿"}
+
+## 获得技能经验（每10点升1级，上限10级）
+func add_skill_xp(skill: String, amount: int) -> void:
+	skill_xp[skill] = skill_xp.get(skill, 0) + amount
+	while skill_xp[skill] >= 10:
+		skill_xp[skill] -= 10
+		skills[skill] = mini(skills.get(skill, 0) + 1, 10)
+		show_message("%s技能升级！当前%d级" % [SKILL_NAMES.get(skill, skill), skills[skill]])
+
+## 钓鱼技能：每级使钓鱼难度再降低2%（10级共-20%）
+func fishing_skill_multiplier() -> float:
+	return 1.0 - 0.02 * skills.get("fishing", 0)
+
+## 采矿技能：每级5%概率双倍矿石（10级共50%）
+func mining_double_chance() -> float:
+	return 0.05 * skills.get("mining", 0)
+
 ## 在 PopUp 上显示一条短暂提示文字
 func show_message(text:String) -> void:
 	var pop_up = get_node_or_null(root_scene["pop_up"])

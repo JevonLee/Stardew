@@ -1850,6 +1850,37 @@ func _run() -> void:
 	player.knockback_player(Vector2.RIGHT)
 	print("SMOKE: shield knockback=", player.velocity.x)
 	player.current_item = null
+	# ---- 地牢守卫Boss测试 ----
+	var bag_used4: int = 0
+	for it in player.bag_system.items:
+		if it != null:
+			bag_used4 += 1
+	print("SMOKE: bag used4=", bag_used4, " of ", player.bag_system.items.size())
+	player.bag_system.add_item(load("res://Bag/items/materials/可疑眼球.tres").duplicate())
+	for i in 30:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	var guardian_recipe: Recipe = load("res://Crafting/recipes/地牢咒书.tres")
+	crafting.panel._on_craft_pressed(guardian_recipe)
+	var guardian_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "地牢咒书":
+			guardian_item = it
+			break
+	print("SMOKE: crafted guardian book=", guardian_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if guardian_item:
+		player.current_item = guardian_item
+		player.use_summon()
+	await get_tree().process_frame
+	var guardian := level.get_node_or_null("BossGuardian") as Boss
+	print("SMOKE: guardian=", guardian != null, " hp=", guardian.max_health if guardian else -1, " dmg=", guardian.contact_damage if guardian else -1)
+	if guardian:
+		guardian.hurt.take_damage(9999, player.global_position)
+		await get_tree().create_timer(1.3).timeout
+		print("SMOKE: guardian dead=", not is_instance_valid(guardian), " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

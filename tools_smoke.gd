@@ -631,4 +631,59 @@ func _run() -> void:
 		if it != null and it.name == "鱼汤":
 			has_soup = true
 	print("SMOKE: crafted soup=", has_soup)
+	# ---- 洒水器测试 ----
+	player.bag_system.add_item(load("res://Bag/items/materials/铜锭.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/materials/铜锭.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	var sprinkler_recipe: Recipe = load("res://Crafting/recipes/洒水器.tres")
+	crafting.panel._on_craft_pressed(sprinkler_recipe)
+	var has_sprinkler: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "洒水器":
+			has_sprinkler = true
+	print("SMOKE: crafted sprinkler=", has_sprinkler)
+	if has_sprinkler:
+		var sprinkler_scene: PackedScene = load("res://Placeables/Sprinkler/sprinkler.tscn")
+		var sprinkler := sprinkler_scene.instantiate() as Sprinkler
+		sprinkler.cell = Vector2i(5, 5)
+		var crops_node := level.find_child("Crops") as Node2D
+		crops_node.add_child(sprinkler)
+		var ws2 := level.get_node("WaterSoil") as TileMapLayer
+		ws2.clear()
+		# 推进一天 → 洒水器自动浇水
+		WeatherSystem.weather = "sunny"
+		TimeSystem.set_time(TimeSystem.current_day + 1, 6, 0)
+		await get_tree().process_frame
+		await get_tree().process_frame
+		var neighbor_watered: bool = ws2.get_cell_source_id(Vector2i(5, 4)) != -1
+		print("SMOKE: sprinkler watered neighbor=", neighbor_watered)
+	# ---- 果树测试 ----
+	var tree_seed: Item = load("res://Bag/items/seeds/苹果树苗.tres")
+	var tree := crop_scene.instantiate() as Crop
+	tree.crop_data = tree_seed.crop_data
+	tree.cell = Vector2i(30, 30)
+	tree.global_position = (level.get_node("Ground") as TileMapLayer).map_to_local(tree.cell)
+	level.find_child("Crops").add_child(tree)
+	WeatherSystem.weather = "rain" # 让树生长
+	for i in 14:
+		TimeSystem.set_time(TimeSystem.current_day + 1, 6, 0)
+		await get_tree().process_frame
+		await get_tree().process_frame
+	print("SMOKE: tree mature=", tree.is_mature(), " stage=", tree.growth_stage)
+	tree._harvest()
+	await get_tree().process_frame
+	print("SMOKE: tree regrow alive=", is_instance_valid(tree))
+	# ---- 斧头升级测试 ----
+	player.bag_system.add_item(load("res://Bag/items/tools/斧头.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/materials/铜锭.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/materials/铜锭.tres").duplicate())
+	var axe_recipe: Recipe = load("res://Crafting/recipes/铜斧.tres")
+	crafting.panel._on_craft_pressed(axe_recipe)
+	var has_axe: bool = false
+	var axe_dmg: int = 0
+	for it in player.bag_system.items:
+		if it != null and it.name == "铜斧":
+			has_axe = true
+			axe_dmg = it.damage
+	print("SMOKE: crafted copper axe=", has_axe, " dmg=", axe_dmg)
 	print("SMOKE_OK")

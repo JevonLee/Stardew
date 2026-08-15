@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://sashuiaqi00001"]
+
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
+[ext_resource type="Texture2D" path="res://Art/myself/sprinkler.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1_item")
+name = "洒水器"
+type = 9
+description = "种在耕地上，每天自动浇灌周围的4格"
+quantity = 1
+max_quantity = 99
+countable = true
+texture = ExtResource("2_tex")
+price = 300
+placeable_scene_path = "res://Placeables/Sprinkler/sprinkler.tscn"

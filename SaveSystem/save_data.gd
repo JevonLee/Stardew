@@ -17,4 +17,5 @@ class_name SaveData
 @export var museum:Dictionary = {} # 博物馆捐赠
 @export var skills:Dictionary = {} # 技能等级
 @export var skill_xp:Dictionary = {} # 技能经验
+@export var shipping_pending:Array = [] # 出货箱待售物品
 #还有tilemap类存档

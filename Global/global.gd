@@ -55,6 +55,9 @@ func foraging_double_chance() -> float:
 func combat_crit_bonus() -> float:
 	return 0.02 * skills.get("combat", 0)
 
+## 出货箱待售物品（当晚结算卖出）
+var shipping_pending: Array = [] ## Array[Item]
+
 ## 在 PopUp 上显示一条短暂提示文字
 func show_message(text:String) -> void:
 	var pop_up = get_node_or_null(root_scene["pop_up"])

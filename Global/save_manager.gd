@@ -47,6 +47,7 @@ func _save() -> void:
 	save_data.museum = MuseumSystem.donated
 	save_data.skills = Global.skills
 	save_data.skill_xp = Global.skill_xp
+	save_data.shipping_pending = Global.shipping_pending
 	ResourceSaver.save(save_data, SAVE_PATH)
 	print("存档完成")
 
@@ -100,4 +101,6 @@ func _load() -> void:
 		Global.skills = save_data.skills
 	if save_data.skill_xp.size() > 0:
 		Global.skill_xp = save_data.skill_xp
+	if save_data.shipping_pending.size() > 0:
+		Global.shipping_pending = save_data.shipping_pending
 	print("读档完成")

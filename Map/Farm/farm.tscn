@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" path="res://Art/StardewValley/buildings/Coop.png" id="21_coop"]
 [ext_resource type="Texture2D" path="res://Art/StardewValley/buildings/Barn.png" id="22_barn"]
 [ext_resource type="Texture2D" path="res://Art/StardewValley/buildings/Greenhouse.png" id="23_green"]
+[ext_resource type="PackedScene" path="res://Map/Farm/shipping_bin.tscn" id="24_shipping"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_140im"]
 size = Vector2(21, 12)
@@ -144,6 +145,9 @@ target_scene = "Town"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeAreas/ToTown"]
 position = Vector2(5.5, -8.5)
 shape = SubResource("RectangleShape2D_vqcbp")
+
+[node name="ShippingBin" parent="." instance=ExtResource("24_shipping")]
+position = Vector2(2470, 340)
 
 [node name="Boxes" type="Node2D" parent="."]
 y_sort_enabled = true

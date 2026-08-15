@@ -2283,6 +2283,23 @@ func _run() -> void:
 	var petted_count: int = pet_ins.petted
 	print("SMOKE: pet no-fish=", fed_bad == false, " petted_after=", pet_ins.petted > petted_count)
 	pet_ins.queue_free()
+	# ---- 出货箱测试 ----
+	var bin_ins: ShippingBin = (load("res://Map/Farm/shipping_bin.tscn") as PackedScene).instantiate() as ShippingBin
+	level.add_child(bin_ins)
+	bin_ins.global_position = player.global_position + Vector2(60, 0)
+	player.current_item = load("res://Bag/items/materials/金锭.tres").duplicate()
+	player.bag_system.add_item(player.current_item)
+	var gold_before_ship: int = Global.gold
+	var rc := InputEventMouseButton.new()
+	rc.button_index = MOUSE_BUTTON_RIGHT
+	rc.pressed = true
+	bin_ins._unhandled_input(rc)
+	var pending_count: int = Global.shipping_pending.size()
+	var bin_day: int = TimeSystem.current_day
+	TimeSystem.set_time(bin_day + 1, 6, 0)
+	await get_tree().process_frame
+	print("SMOKE: shipping pending=", pending_count, " sold_gold=", Global.gold - gold_before_ship)
+	bin_ins.queue_free()
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

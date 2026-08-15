@@ -1465,6 +1465,31 @@ func _run() -> void:
 			desert_has_antlion = true
 	var beach_spawner: Node = (load("res://Map/Beach/beach.tscn") as PackedScene).instantiate().get_node_or_null("EnemySpawner")
 	print("SMOKE: desert antlion=", desert_has_antlion, " beach spawner=", beach_spawner != null)
+	# ---- 毕业武器测试（永夜刃/圣剑） ----
+	player.bag_system.add_item(load("res://Bag/items/weapon/暗影焰刀.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/weapon/鬼妖村正.tres").duplicate())
+	for i in 15:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 25:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	var night_edge_recipe: Recipe = load("res://Crafting/recipes/永夜刃.tres")
+	crafting.panel._on_craft_pressed(night_edge_recipe)
+	player.bag_system.add_item(load("res://Bag/items/weapon/金剑.tres").duplicate())
+	for i in 20:
+		player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/紫水晶.tres").duplicate())
+	var excalibur_recipe: Recipe = load("res://Crafting/recipes/圣剑.tres")
+	crafting.panel._on_craft_pressed(excalibur_recipe)
+	var found_edge: Item = null
+	var found_excalibur: Item = null
+	for it in player.bag_system.items:
+		if it != null:
+			if it.name == "永夜刃":
+				found_edge = it
+			if it.name == "圣剑":
+				found_excalibur = it
+	print("SMOKE: night edge=", found_edge != null, " dmg=", found_edge.damage if found_edge else -1, " excalibur=", found_excalibur != null, " crit=", found_excalibur.crit if found_excalibur else -1)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

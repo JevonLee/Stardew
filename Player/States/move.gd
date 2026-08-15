@@ -24,7 +24,7 @@ func _physics_update(delta):
 	if player.direction == Vector2.ZERO:
 		transition_to.emit("Idle")
 		
-	player.velocity = player.direction * speed 
+	player.velocity = player.direction * speed * player.move_speed_multiplier 
 	player.move_and_slide()	
 
 func _update_animation():

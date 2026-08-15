@@ -21,6 +21,10 @@ class_name Player
 		handle_selected_item(val)
 		current_item = val
 @export var swing_sfx:AudioStream
+
+## 饰品被动状态
+var move_speed_multiplier: float = 1.0 ## 移动速度倍率（赫尔墨斯之靴）
+var accessory_timer: float = 0.0 ## 饰品回血/回魔计时
 		
 signal watering
 signal get_item ##拾取物品发送的信号
@@ -238,6 +242,26 @@ func die() -> void:
 func _process(delta: float) -> void:
 	if !effects.is_playing():
 		effects.hide()
+	_apply_accessory(delta)
+	
+## 饰品被动效果（手持生效）：靴子加速 / 手环回血 / 魔力花回魔
+func _apply_accessory(delta: float) -> void:
+	move_speed_multiplier = 1.0
+	if current_item == null or current_item.type != Item.ItemType.Accessories:
+		return
+	match current_item.name:
+		"赫尔墨斯之靴":
+			move_speed_multiplier = 1.4
+		"再生手环":
+			accessory_timer += delta
+			if accessory_timer >= 2.0:
+				accessory_timer = 0.0
+				heal(2, 0, 0)
+		"魔力花":
+			accessory_timer += delta
+			if accessory_timer >= 2.0:
+				accessory_timer = 0.0
+				heal(0, 0, 3)
 	
 func _physics_process(_delta: float) -> void:
 	if can_move:

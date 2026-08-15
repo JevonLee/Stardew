@@ -1749,6 +1749,70 @@ func _run() -> void:
 			if child is WyvernSegment:
 				segs_gone = false
 		print("SMOKE: wyvern dead=", not is_instance_valid(wyvern), " segs_gone=", segs_gone, " drops=", drops_node.get_child_count())
+	# ---- 饰品系统测试 ----
+	# 清理背包材料/消耗品腾槽位（后续测试会重新添加）
+	for i in player.bag_system.items.size():
+		var bag_it3: Item = player.bag_system.items[i]
+		if bag_it3 != null and (bag_it3.type == Item.ItemType.Materials or bag_it3.type == Item.ItemType.Consume):
+			player.bag_system.items[i] = null
+	var bag_used3: int = 0
+	for it in player.bag_system.items:
+		if it != null:
+			bag_used3 += 1
+	print("SMOKE: bag used3=", bag_used3, " of ", player.bag_system.items.size())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/animal/羊毛.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/煤矿.tres").duplicate())
+	var boot_recipe: Recipe = load("res://Crafting/recipes/赫尔墨斯之靴.tres")
+	crafting.panel._on_craft_pressed(boot_recipe)
+	for i in 8:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 3:
+		player.bag_system.add_item(load("res://Bag/items/materials/蓝宝石.tres").duplicate())
+	for i in 2:
+		player.bag_system.add_item(load("res://Bag/items/materials/蛛网.tres").duplicate())
+	var band_recipe: Recipe = load("res://Crafting/recipes/再生手环.tres")
+	crafting.panel._on_craft_pressed(band_recipe)
+	for i in 6:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/紫水晶.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/凝胶.tres").duplicate())
+	var flower_recipe: Recipe = load("res://Crafting/recipes/魔力花.tres")
+	crafting.panel._on_craft_pressed(flower_recipe)
+	var found_boots: Item = null
+	var found_band: Item = null
+	var found_flower: Item = null
+	for it in player.bag_system.items:
+		if it != null:
+			match it.name:
+				"赫尔墨斯之靴": found_boots = it
+				"再生手环": found_band = it
+				"魔力花": found_flower = it
+	print("SMOKE: boots=", found_boots != null, " band=", found_band != null, " flower=", found_flower != null, " type=", found_boots.type if found_boots else -1)
+	# 再生手环：掉血后触发一次恢复（同步验证）
+	player.current_item = found_band
+	player.take_damage(30)
+	var hp_low: int = player.health
+	player.accessory_timer = 1.9
+	player._apply_accessory(0.2)
+	print("SMOKE: band regen=", player.health - hp_low)
+	# 魔力花：耗魔后触发一次回魔（同步验证）
+	player.current_item = found_flower
+	player.try_use_mana(20)
+	var mana_low: int = player.mana
+	player.accessory_timer = 1.9
+	player._apply_accessory(0.2)
+	print("SMOKE: flower mana=", player.mana - mana_low)
+	# 靴子：速度倍率（同步刷新）
+	player.current_item = found_boots
+	player._apply_accessory(0.0)
+	print("SMOKE: boots multiplier=", player.move_speed_multiplier)
+	player.current_item = null
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://bathhouse0001"]
+
+[ext_resource type="Script" path="res://Map/Bathhouse/bathhouse.gd" id="1_bath"]
+[ext_resource type="PackedScene" uid="uid://dfg8gg0uu4d2a" path="res://Map/change_scene_area.tscn" id="2_change"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pool"]
+size = Vector2(224, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
+size = Vector2(38, 47)
+
+[node name="Bathhouse" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_bath")
+
+[node name="Ground" type="TileMapLayer" parent="." groups=["TileMap"]]
+
+[node name="Pool" type="TileMapLayer" parent="."]
+
+[node name="PoolArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PoolArea"]
+position = Vector2(240, 192)
+shape = SubResource("RectangleShape2D_pool")
+
+[node name="SpawnPos" type="Node2D" parent="."]
+
+[node name="Bathhouse" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(80, 400)
+
+[node name="Town" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(40, 400)
+
+[node name="ChangeAreas" type="Node2D" parent="."]
+
+[node name="ToTown" parent="ChangeAreas" instance=ExtResource("2_change")]
+position = Vector2(32, 400)
+target_scene = "Town"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeAreas/ToTown"]
+shape = SubResource("RectangleShape2D_gate")
+
+[node name="MapSize" type="Marker2D" parent="."]
+position = Vector2(480, 384)

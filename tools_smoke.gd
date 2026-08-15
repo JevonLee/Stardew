@@ -1343,6 +1343,27 @@ func _run() -> void:
 	level.find_child("Crops").add_child(ancient_crop)
 	await get_tree().process_frame
 	print("SMOKE: ancient crop withering=", ancient_crop.withering, " stage=", ancient_crop.growth_stage)
+	# ---- 温泉测试 ----
+	SceneManager.change_level("Bathhouse", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var bath := SceneManager.get_current_level() as Bathhouse
+	print("SMOKE: bathhouse=", bath != null)
+	if bath:
+		var bath_ground: int = bath.get_node("Ground").get_used_cells().size()
+		var bath_pool: int = bath.get_node("Pool").get_used_cells().size()
+		print("SMOKE: bath ground=", bath_ground, " pool=", bath_pool)
+		player = get_tree().get_first_node_in_group("Player")
+		player.try_use_stamina(50)
+		var stam_before: int = player.stamina
+		player.global_position = Vector2(240, 192)
+		await get_tree().create_timer(1.5).timeout
+		print("SMOKE: bath regen=", player.stamina - stam_before)
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	player = get_tree().get_first_node_in_group("Player")
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

@@ -83,8 +83,21 @@ func _spawn_trees() -> void:
 		trees_container.add_child(tree)
 
 func _spawn_forage() -> void:
+	var pool := _season_forage_items()
 	for i in 8:
 		var node := FORAGE_NODE.instantiate() as ForageNode
-		node.item = FORAGE_ITEMS.pick_random()
+		node.item = pool.pick_random()
 		node.global_position = Vector2(randf_range(60.0, map_size.x * 16.0 - 60.0), randf_range(60.0, map_size.y * 16.0 - 60.0))
 		forage_container.add_child(node)
+
+## 季节采集物：春野葱/夏树莓/秋蘑菇/冬稀缺
+func _season_forage_items() -> Array:
+	match TimeSystem.get_season():
+		TimeSystem.Season.SPRING:
+			return [FORAGE_ITEMS[2], FORAGE_ITEMS[2], FORAGE_ITEMS[0], FORAGE_ITEMS[1]]
+		TimeSystem.Season.SUMMER:
+			return [FORAGE_ITEMS[0], FORAGE_ITEMS[0], FORAGE_ITEMS[0], FORAGE_ITEMS[1]]
+		TimeSystem.Season.FALL:
+			return [FORAGE_ITEMS[1], FORAGE_ITEMS[1], FORAGE_ITEMS[1], FORAGE_ITEMS[0]]
+		_:
+			return [FORAGE_ITEMS[1], FORAGE_ITEMS[0]]

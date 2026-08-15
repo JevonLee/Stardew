@@ -1,11 +1,11 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1786789265
+::res://::1786789548
 default_bus_layout.tres::AudioBusLayout/AudioBusLayout::2184131187234203786::1756520422::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile/TextFile::-1::1756520422::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::1804056525694353723::1756520422::1756522334::1::::<><><>0<>0<>163b15f42155cdb97f8ac97df934d6cb<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile/TextFile::-1::1756520422::0::1::::<><><>0<>0<><>::
-roadmap.md::TextFile::-1::1786789200::0::1::::<><><>0<>0<><>::
-tools_smoke.gd::GDScript::7937880759161548330::1786789265::0::1::::<>Node2D<><>0<>0<><>::
+roadmap.md::TextFile::-1::1786789449::0::1::::<><><>0<>0<><>::
+tools_smoke.gd::GDScript::7937880759161548330::1786789548::0::1::::<>Node2D<><>0<>0<><>::
 tools_smoke.tscn::PackedScene::-1::1786776087::0::1::::<><><>0<>0<><>::
 ::res://Animals/::1786785947
 animal.gd::GDScript::1281943264472628730::1786779485::0::1::::Animal<>CharacterBody2D<><>0<>0<><>::
@@ -13621,7 +13621,7 @@ Scott Lloyd Shelly - Terraria Soundtrack Volume 2 - 04 Alternate Day.mp3::AudioS
 树莓.tres::Resource/Item::2883685222271264776::1786778227::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 蘑菇.tres::Resource/Item::2185961040768426760::1786778227::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 野葱.tres::Resource/Item::1680169179506860040::1786778227::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
-::res://Bag/items/materials/::1786788802
+::res://Bag/items/materials/::1786789530
 stone.tres::Resource/Item::1953422076594739864::1756520422::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 wood.tres::Resource/Item::6529636953851790416::1756520422::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://bft03am2gfd42::::res://Art/myself/wood.png
 凝胶.tres::Resource/Item::4903553382643966664::1786785159::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_23.png
@@ -13645,6 +13645,7 @@ wood.tres::Resource/Item::6529636953851790416::1756520422::0::1::::<><><>0<>0<><
 花束.tres::Resource/Item::6991602847679578632::1786785159::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 花苞.tres::Resource/Item::6956072692147767816::1786785159::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 蓝宝石.tres::Resource/Item::7830781838173236088::1786785159::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_184.png
+虾松露.tres::Resource/Item::110072852501300536::1786789530::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_2673.png
 蛛网.tres::Resource/Item::8246522533683395464::1786785159::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_153.png
 蜂巢.tres::Resource/Item::1110432495293887432::1786785159::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_1128.png
 血腥脊椎.tres::Resource/Item::5000122036527385346::1786785159::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_1329.png
@@ -13736,7 +13737,7 @@ slot.tscn::PackedScene/PackedScene::3380208235692054796::1756520422::0::1::::<><
 tool_bar.gd::GDScript/GDScript::6169331853872786617::1756520422::0::1::::<>Control<><>0<>0<><>::
 tool_bar.tscn::PackedScene/PackedScene::2021907188855370012::1756520422::0::1::::<><><>0<>0<><>::uid://bofnshmt1vb4g::::res://Bag/scene/slot.tscn<>uid://ct5p82njwo7td::::res://Bag/scene/tool_bar.gd<>uid://ckodt4w002mr6::::res://Art/loose_sprite/MobileAtlas_manually_made.de-DE.png
 ui_manager.gd::GDScript/GDScript::3322505534350422836::1756520422::0::1::::<>Control<><>0<>0<><>::
-::res://Combat/::1786788116
+::res://Combat/::1786789558
 antlion.tscn::PackedScene::-1::1786788116::0::1::::<><><>0<>0<><>::res://Combat/enemy.tscn<>res://Art/Terraria/images/NPC_66.png<>uid://dl3c8fq60m761::::res://Bag/items/materials/铜币.tres<>uid://ctclqn1b5k8oy::::res://Bag/items/materials/煤矿.tres
 arrow_projectile.gd::GDScript::2672643583183625304::1786777683::0::1::::<>Projectile<><>0<>0<><>::
 arrow_projectile.tscn::PackedScene::-1::1786777095::0::1::::<><><>0<>0<><>::res://Combat/arrow_projectile.gd<>res://Art/Terraria/images/Projectile_1.png
@@ -13746,6 +13747,8 @@ boss.gd::GDScript::4581179440252048457::1786780836::0::1::::Boss<>Enemy<><>0<>0<
 boss_brain.gd::GDScript::1237324829636577628::1786779895::0::1::::<>Boss<><>0<>0<><>::
 boss_brain.tscn::PackedScene::-1::1786779895::0::1::::<><><>0<>0<><>::res://Combat/boss_brain.gd<>res://Art/Terraria/images/NPC_266.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn<>uid://bk808gkmam4m3::::res://Bag/items/materials/金币.tres<>uid://bljdh20mam4m3::::res://Bag/items/materials/金矿石.tres
 boss_eye.tscn::PackedScene::-1::1786779121::0::1::::<><><>0<>0<><>::res://Combat/boss.gd<>res://Art/Terraria/images/NPC_4.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn<>uid://bk808gkmam4m3::::res://Bag/items/materials/金币.tres<>uid://bljdh20mam4m3::::res://Bag/items/materials/金矿石.tres
+boss_fishron.gd::GDScript::2616755866215278858::1786789530::0::1::::<>Boss<><>0<>0<><>::
+boss_fishron.tscn::PackedScene::-1::1786789530::0::1::::<><><>0<>0<><>::res://Combat/boss_fishron.gd<>res://Art/Terraria/images/NPC_370.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn<>uid://bk808gkmam4m3::::res://Bag/items/materials/金币.tres<>uid://djtj3kxyemaii::::res://Bag/items/materials/蓝宝石.tres<>uid://catfwndimsrhg::::res://Bag/items/fish/章鱼.tres
 boss_golem.gd::GDScript::2313938055191826240::1786783382::0::1::::<>Boss<><>0<>0<><>::
 boss_golem.tscn::PackedScene::-1::1786783382::0::1::::<><><>0<>0<><>::res://Combat/boss_golem.gd<>res://Art/Terraria/images/NPC_245.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn<>uid://bk808gkmam4m3::::res://Bag/items/materials/金币.tres<>uid://brtmcjmivmaii::::res://Bag/items/materials/金锭.tres
 boss_moon_lord.gd::GDScript::2799075127405021554::1786786946::0::1::::<>Boss<><>0<>0<><>::
@@ -13802,13 +13805,13 @@ hurt_component.gd::GDScript::3237644195777220432::1786777524::0::1::::HurtCompon
 hurt_component.tscn::PackedScene/PackedScene::8993146685967354813::1756520422::0::1::::<><><>0<>0<><>::uid://bmelr6co806q3::::res://Component/hurt_component.gd
 tilemap_component.gd::GDScript/GDScript::3206518272620725928::1756520422::0::1::::HoeComponent<>Node<><>0<>0<><>::
 tilemap_component.tscn::PackedScene/PackedScene::6265709704059577816::1756520422::0::1::::<><><>0<>0<><>::uid://blxi5f6gvgn8s::::res://Component/tilemap_component.gd
-::res://Crafting/::1786789259
+::res://Crafting/::1786789530
 crafting_panel.gd::GDScript::3708037227703206768::1786778888::0::1::::CraftingPanel<>Control<><>0<>0<><>::
 crafting_panel.tscn::PackedScene::-1::1786778731::0::1::::<><><>0<>0<><>::res://Crafting/crafting_panel.gd
-crafting_system.gd::GDScript::2178156703114724351::1786789259::0::1::::CraftingSystem<>Node2D<><>0<>0<><>::
+crafting_system.gd::GDScript::2178156703114724351::1786789530::0::1::::CraftingSystem<>Node2D<><>0<>0<><>::
 crafting_system.tscn::PackedScene::-1::1786778731::0::1::::<><><>0<>0<><>::res://Crafting/crafting_system.gd
 recipe.gd::GDScript::3216182076100961169::1786778693::0::1::::Recipe<>Resource<><>0<>0<><>::
-::res://Crafting/recipes/::1786789252
+::res://Crafting/recipes/::1786789548
 南瓜汤.tres::Resource/Recipe::-1::1786785094::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://boft232ixueqq::::res://Bag/items/food/南瓜汤.tres<>uid://cyiyqeiuh7ihk::::res://Bag/items/crops/南瓜.tres<>uid://cjcb3hesikh4c::::res://Bag/items/animal/牛奶.tres
 可疑眼球.tres::Resource/Recipe::-1::1786779134::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://keyiyanqiu01::::res://Bag/items/materials/可疑眼球.tres<>uid://cb4k2p2sikh4c::::res://Bag/items/materials/凝胶.tres
 史莱姆王冠.tres::Resource/Recipe::-1::1786780744::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://4b04lslwbyro::::res://Bag/items/materials/史莱姆王冠.tres<>uid://cb4k2p2sikh4c::::res://Bag/items/materials/凝胶.tres
@@ -13844,6 +13847,7 @@ recipe.gd::GDScript::3216182076100961169::1786778693::0::1::::Recipe<>Resource<>
 苹果派.tres::Resource/Recipe::-1::1786785094::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://pingguopai01::::res://Bag/items/food/苹果派.tres<>uid://qrts4uacwqhk::::res://Bag/items/crops/苹果.tres<>uid://ba758gkmam4m3::::res://Bag/items/animal/鸡蛋.tres
 蔬菜沙拉.tres::Resource/Recipe::-1::1786779485::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://vb1myxpnnyro::::res://Bag/items/food/蔬菜沙拉.tres<>uid://go3uaacfeqp1::::res://Bag/items/crops/萝卜.tres<>uid://x65e15ma5hdw::::res://Bag/items/forage/野葱.tres
 蔬菜浓汤.tres::Resource/Recipe::1279067754174463724::1786781689::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://bg104mmc3g8e3::::res://Bag/items/food/蔬菜浓汤.tres<>uid://go3uaacfeqp1::::res://Bag/items/crops/萝卜.tres<>uid://bli6kbwou8hoi::::res://Bag/items/crops/土豆.tres<>uid://x65e15ma5hdw::::res://Bag/items/forage/野葱.tres
+虾松露.tres::Resource/Recipe::-1::1786789548::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://btk5bw3hsrhg::::res://Bag/items/materials/虾松露.tres<>uid://dhumf0230d0c::::res://Bag/items/fish/鲤鱼.tres<>uid://catfwndimsrhg::::res://Bag/items/fish/章鱼.tres<>uid://brtmcjmivmaii::::res://Bag/items/materials/金锭.tres<>uid://n1esqpfaa82o::::res://Bag/items/materials/骨头.tres
 蛋糕.tres::Resource/Recipe::-1::1786781488::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://b5tndj4hcrab5::::res://Bag/items/food/蛋糕.tres<>uid://ba758gkmam4m3::::res://Bag/items/animal/鸡蛋.tres<>uid://cjcb3hesikh4c::::res://Bag/items/animal/牛奶.tres<>uid://iu02d5faa82o::::res://Bag/items/food/果酱.tres
 蛋黄酱.tres::Resource/Recipe::-1::1786781001::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://b5u7w6jys0vq5::::res://Bag/items/food/蛋黄酱.tres<>uid://ba758gkmam4m3::::res://Bag/items/animal/鸡蛋.tres
 蜂巢.tres::Resource/Recipe::-1::1786784806::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://p25wqcolwmwm::::res://Bag/items/materials/蜂巢.tres<>uid://cb4k2p2sikh4c::::res://Bag/items/materials/凝胶.tres<>uid://bho5myxpnnyro::::res://Bag/items/materials/树液.tres<>uid://n1esqpfaa82o::::res://Bag/items/materials/骨头.tres
@@ -13941,15 +13945,15 @@ beach.tscn::PackedScene::7678237420824135432::1786788132::0::1::::<><><>0<>0<><>
 ::res://Map/Desert/::1786788123
 desert.gd::GDScript::2290508974634681666::1786782532::0::1::::Desert<>Node2D<><>0<>0<><>::
 desert.tscn::PackedScene::-1::1786788123::0::1::::<><><>0<>0<><>::res://Map/Desert/desert.gd<>res://Map/change_scene_area.tscn<>res://Combat/enemy_spawner.tscn<>res://Combat/skeleton.tscn<>res://Combat/demon_eye.tscn<>res://Combat/spider.tscn<>res://Combat/mummy.tscn<>res://Combat/antlion.tscn<>res://NPC/desert_merchant.tscn
-::res://Map/Farm/::1786788274
-farm.gd::GDScript::3126117599948059833::1786788274::0::1::::Farm<>Node2D<><>0<>0<><>::
+::res://Map/Farm/::1786789481
+farm.gd::GDScript::3126117599948059833::1786789481::0::1::::Farm<>Node2D<><>0<>0<><>::
 farm.tscn::PackedScene/PackedScene::4022287795534418095::1786781000::0::1::::<><><>0<>0<><>::uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>uid://bkskx2mj2y2nd::::res://Map/Farm/farm.gd<>uid://d3xs4io3bcdr6::::res://Map/tile_block.tres<>uid://d1nxclm67rbhh::::res://AudioSystem/Scott Lloyd Shelly - Terraria Soundtrack - 01 Overworld Day.mp3<>uid://bl5tehfc1sf80::::res://SaveSystem/save_component.tscn<>uid://cvjfk83xlmkjo::::res://Component/tilemap_component.tscn<>uid://cw17rk561nrot::::res://NPC/emily.tscn<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://0f820g6vrxhg::::res://Bag/scene/box.tscn<>uid://dr7ehqq10k2wk::::res://Placeables/Crops/crops_component.tscn<>uid://4emof1mv6qby::::res://Bag/scene/inventory_system.gd<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn<>uid://bpjotrdl0f7gx::::res://Bag/items/weapon/喵刀.tres<>uid://cd3o8erabt37a::::res://Bag/items/objects/book1.tres<>uid://ecsiuwf14r7f::::res://NPC/pig.tscn
 house.tscn::PackedScene/PackedScene::4025771160879213869::1756520422::0::1::::<><><>0<>0<><>::uid://n0h6c4jlig5h::::res://Art/buildings/Snipaste_2025-01-21_22-05-51.png
-::res://Map/Forest/::1786782694
-forest.gd::GDScript::4369046406423583829::1786780983::0::1::::Forest<>Node2D<><>0<>0<><>::
+::res://Map/Forest/::1786789489
+forest.gd::GDScript::4369046406423583829::1786789489::0::1::::Forest<>Node2D<><>0<>0<><>::
 forest.tscn::PackedScene::-1::1786782694::0::1::::<><><>0<>0<><>::res://Map/Forest/forest.gd<>uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>res://Map/change_scene_area.tscn<>res://Combat/enemy_spawner.tscn<>res://Combat/slime.tscn<>res://Combat/bat.tscn<>res://Combat/demon_eye.tscn<>res://Combat/spider.tscn<>res://Combat/jungle_slime.tscn<>res://Combat/giant_bat.tscn
-::res://Map/Jungle/::1786789099
-jungle.gd::GDScript::4916383928779678340::1786788924::0::1::::Jungle<>Node2D<><>0<>0<><>::
+::res://Map/Jungle/::1786789489
+jungle.gd::GDScript::4916383928779678340::1786789489::0::1::::Jungle<>Node2D<><>0<>0<><>::
 jungle.tscn::PackedScene::4462040058665152648::1786789099::0::1::::<><><>0<>0<><>::res://Map/Jungle/jungle.gd<>uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn<>res://Combat/enemy_spawner.tscn<>res://Combat/jungle_slime.tscn<>res://Combat/spider.tscn<>res://Combat/giant_bat.tscn
 ::res://Map/Mine/::1786784948
 elevator.gd::GDScript::1002418202213616422::1786784938::0::1::::MineElevator<>Area2D<><>0<>0<><>::

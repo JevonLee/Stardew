@@ -87,13 +87,26 @@ func _paint_pond() -> void:
 	barrier.add_child(shape)
 	add_child(barrier)
 
-## 每天清晨刷新野外采集物
+## 每天清晨刷新野外采集物（按季节侧重不同种类）
 func _spawn_forage() -> void:
 	for child in forage_container.get_children():
 		child.queue_free()
 	var count := randi_range(4, 7)
+	var pool := _season_forage_items()
 	for i in count:
 		var node := FORAGE_NODE.instantiate() as ForageNode
-		node.item = FORAGE_ITEMS.pick_random()
+		node.item = pool.pick_random()
 		node.global_position = Vector2(randf_range(120.0, 2650.0), randf_range(180.0, 1450.0))
 		forage_container.add_child(node)
+
+## 季节采集物：春野葱/夏树莓/秋蘑菇/冬稀缺
+func _season_forage_items() -> Array:
+	match TimeSystem.get_season():
+		TimeSystem.Season.SPRING:
+			return [FORAGE_ITEMS[2], FORAGE_ITEMS[2], FORAGE_ITEMS[0], FORAGE_ITEMS[1]]
+		TimeSystem.Season.SUMMER:
+			return [FORAGE_ITEMS[0], FORAGE_ITEMS[0], FORAGE_ITEMS[0], FORAGE_ITEMS[1]]
+		TimeSystem.Season.FALL:
+			return [FORAGE_ITEMS[1], FORAGE_ITEMS[1], FORAGE_ITEMS[1], FORAGE_ITEMS[0]]
+		_:
+			return [FORAGE_ITEMS[1], FORAGE_ITEMS[0]]

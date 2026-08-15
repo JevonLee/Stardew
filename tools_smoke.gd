@@ -1590,6 +1590,53 @@ func _run() -> void:
 	player.current_item = gold_rod
 	print("SMOKE: rod gold diff=", snappedf(fish_ui_ins._effective_difficulty(), 0.01))
 	fish_ui_ins.queue_free()
+	# ---- 季节采集测试 ----
+	TimeSystem.set_time(43, 6, 0) # 夏15天
+	await get_tree().process_frame
+	var farm2 := level as Farm
+	farm2._spawn_forage()
+	var forage_pool_ok := true
+	for child in farm2.get_node("Forage").get_children():
+		var fname: String = child.get("item").name if child.get("item") != null else ""
+		if fname != "树莓" and fname != "蘑菇":
+			forage_pool_ok = false
+	print("SMOKE: summer forage=", forage_pool_ok, " count=", farm2.get_node("Forage").get_child_count())
+	# ---- 猪鲨Boss测试 ----
+	for i in 3:
+		player.bag_system.add_item(load("res://Bag/items/fish/鲤鱼.tres").duplicate())
+	for i in 2:
+		player.bag_system.add_item(load("res://Bag/items/fish/章鱼.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 15:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	var fishron_recipe: Recipe = load("res://Crafting/recipes/虾松露.tres")
+	crafting.panel._on_craft_pressed(fishron_recipe)
+	var fishron_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "虾松露":
+			fishron_item = it
+			break
+	print("SMOKE: crafted truffle=", fishron_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if fishron_item:
+		player.current_item = fishron_item
+		player.use_summon()
+	await get_tree().process_frame
+	var fishron := level.get_node_or_null("BossFishron") as Boss
+	print("SMOKE: fishron=", fishron != null)
+	if fishron:
+		fishron.shoot_timer = 0.1
+		await get_tree().create_timer(0.5).timeout
+		var fishron_bolt := 0
+		for n in level.get_children():
+			if n is Projectile and n.name == "EnemyBolt":
+				fishron_bolt += 1
+		print("SMOKE: fishron bolt=", fishron_bolt > 0)
+		fishron.hurt.take_damage(2200, player.global_position)
+		await get_tree().create_timer(1.3).timeout
+		print("SMOKE: fishron dead=", not is_instance_valid(fishron), " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

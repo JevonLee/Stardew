@@ -1881,6 +1881,53 @@ func _run() -> void:
 		guardian.hurt.take_damage(9999, player.global_position)
 		await get_tree().create_timer(1.3).timeout
 		print("SMOKE: guardian dead=", not is_instance_valid(guardian), " drops=", drops_node.get_child_count())
+	# ---- 魔法书武器测试 ----
+	# 彻底清空背包腾槽位（后续Boss测试会重新添加所需材料）
+	for i in player.bag_system.items.size():
+		player.bag_system.items[i] = null
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/wood.tres").duplicate())
+	for i in 8:
+		player.bag_system.add_item(load("res://Bag/items/materials/蓝宝石.tres").duplicate())
+	for i in 8:
+		player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	var water_book_recipe: Recipe = load("res://Crafting/recipes/水刃书.tres")
+	var cnt_wood := 0
+	var cnt_sap := 0
+	var cnt_iron := 0
+	for it in player.bag_system.items:
+		if it != null:
+			if it.name == "wood":
+				cnt_wood += it.quantity
+			if it.name == "蓝宝石":
+				cnt_sap += it.quantity
+			if it.name == "铁锭":
+				cnt_iron += it.quantity
+	print("SMOKE: mats wood=", cnt_wood, " sapphire=", cnt_sap, " iron=", cnt_iron)
+	crafting.panel._on_craft_pressed(water_book_recipe)
+	player.bag_system.add_item(load("res://Bag/items/weapon/紫水晶法杖.tres").duplicate())
+	for i in 25:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/蛛网.tres").duplicate())
+	var demon_book_recipe: Recipe = load("res://Crafting/recipes/恶魔之书.tres")
+	crafting.panel._on_craft_pressed(demon_book_recipe)
+	var water_book: Item = null
+	var demon_book: Item = null
+	for it in player.bag_system.items:
+		if it != null:
+			if it.name == "水刃书":
+				water_book = it
+			if it.name == "恶魔之书":
+				demon_book = it
+	print("SMOKE: water book=", water_book != null, " dmg=", water_book.damage if water_book else -1, " mana=", water_book.mana_cost if water_book else -1)
+	print("SMOKE: demon book=", demon_book != null, " dmg=", demon_book.damage if demon_book else -1)
+	# 射击消耗魔力
+	player.current_item = demon_book
+	var mana_before: int = player.mana
+	player.shoot_projectile()
+	await get_tree().process_frame
+	print("SMOKE: demon mana cost=", mana_before - player.mana)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

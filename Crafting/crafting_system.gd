@@ -75,6 +75,8 @@ const RECIPES = [
 	preload("res://Crafting/recipes/云朵瓶.tres"),
 	preload("res://Crafting/recipes/钴蓝盾.tres"),
 	preload("res://Crafting/recipes/地牢咒书.tres"),
+	preload("res://Crafting/recipes/水刃书.tres"),
+	preload("res://Crafting/recipes/恶魔之书.tres"),
 ]
 
 var panel: Control

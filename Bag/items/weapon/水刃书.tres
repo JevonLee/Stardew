@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://shuirenshu01"]
+
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/Item_128.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1_item")
+name = "水刃书"
+type = 6
+description = "古老的水系魔法书，发射水刃弹幕"
+quantity = 1
+max_quantity = 1
+countable = false
+texture = ExtResource("2_tex")
+price = 900
+collision_size = Vector2(0, 0)
+damage = 18
+crit = 0.08
+knockback = 1.2
+open_trail = false
+open_texture = false
+use_type = 0
+damage_type = 2
+projectile = "res://Combat/magic_bolt.tscn"
+mana_cost = 5

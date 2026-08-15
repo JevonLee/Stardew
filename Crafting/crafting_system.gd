@@ -63,6 +63,8 @@ const RECIPES = [
 	preload("res://Crafting/recipes/永夜刃.tres"),
 	preload("res://Crafting/recipes/圣剑.tres"),
 	preload("res://Crafting/recipes/木箭.tres"),
+	preload("res://Crafting/recipes/铁鱼竿.tres"),
+	preload("res://Crafting/recipes/金鱼竿.tres"),
 ]
 
 var panel: Control

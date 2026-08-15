@@ -1556,6 +1556,40 @@ func _run() -> void:
 		await get_tree().process_frame
 		level = SceneManager.get_current_level()
 		player = get_tree().get_first_node_in_group("Player")
+	# ---- 鱼竿升级测试 ----
+	player.bag_system.add_item(load("res://Bag/items/tools/鱼竿.tres").duplicate())
+	for i in 8:
+		player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/wood.tres").duplicate())
+	var iron_rod_recipe: Recipe = load("res://Crafting/recipes/铁鱼竿.tres")
+	crafting.panel._on_craft_pressed(iron_rod_recipe)
+	player.bag_system.add_item(load("res://Bag/items/tools/铁鱼竿.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/蛛网.tres").duplicate())
+	var gold_rod_recipe: Recipe = load("res://Crafting/recipes/金鱼竿.tres")
+	crafting.panel._on_craft_pressed(gold_rod_recipe)
+	var iron_rod: Item = null
+	var gold_rod: Item = null
+	for it in player.bag_system.items:
+		if it != null:
+			if it.name == "铁鱼竿":
+				iron_rod = it
+			if it.name == "金鱼竿":
+				gold_rod = it
+	print("SMOKE: iron rod=", iron_rod != null, " gold rod=", gold_rod != null, " type=", gold_rod.type if gold_rod else -1)
+	# 难度修正：章鱼难度0.8 → 铁鱼竿0.68 / 金鱼竿0.56
+	var fish_ui_scene: PackedScene = load("res://Fishing/fishing_ui.tscn")
+	var fish_ui_ins: Control = fish_ui_scene.instantiate()
+	fish_ui_ins.set("fish", load("res://Fishing/fish_data/章鱼_data.tres"))
+	level.add_child(fish_ui_ins)
+	player.current_item = iron_rod
+	print("SMOKE: rod iron diff=", snappedf(fish_ui_ins._effective_difficulty(), 0.01))
+	player.current_item = gold_rod
+	print("SMOKE: rod gold diff=", snappedf(fish_ui_ins._effective_difficulty(), 0.01))
+	fish_ui_ins.queue_free()
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

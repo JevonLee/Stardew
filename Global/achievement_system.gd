@@ -17,6 +17,8 @@ const ACHIEVEMENTS := [
 	{"id": "fish_6", "name": "钓鱼大师", "desc": "钓到6种不同的鱼", "reward": 800},
 	{"id": "collect_40", "name": "收藏大师", "desc": "收集40种不同物品", "reward": 1000},
 	{"id": "boss_5", "name": "屠Boss猎手", "desc": "击败5个不同的Boss", "reward": 1500},
+	{"id": "boss_10", "name": "Boss终结者", "desc": "击败10个不同的Boss", "reward": 3000},
+	{"id": "skill_master", "name": "技能大师", "desc": "任意技能达到10级（满级）", "reward": 2000},
 ]
 
 var unlocked:Dictionary = {}
@@ -44,6 +46,8 @@ func check() -> void:
 		"fish_6": CollectionSystem.fish_caught.size() >= 6,
 		"collect_40": CollectionSystem.items_collected.size() >= 40,
 		"boss_5": _boss_kill_count() >= 5,
+		"boss_10": _boss_kill_count() >= 10,
+		"skill_master": _skill_master(),
 	}
 	for id in conditions:
 		if conditions[id]:
@@ -93,3 +97,10 @@ func _boss_kill_count() -> int:
 		if CollectionSystem.enemies_killed.get(name, 0) > 0:
 			n += 1
 	return n
+
+## 任意技能满级（10级）
+func _skill_master() -> bool:
+	for skill in Global.skills.values():
+		if skill >= 10:
+			return true
+	return false

@@ -2340,6 +2340,13 @@ func _run() -> void:
 	var fishing8 := get_node_or_null("/root/MainScene/FishingSystem") as FishingSystem
 	var chest_item: Item = fishing8._roll_chest_reward()
 	print("SMOKE: chest reward=", chest_item != null, " name=", chest_item.name if chest_item else "?", " qty=", chest_item.quantity if chest_item else -1)
+	# ---- Boss终结者/技能大师成就测试 ----
+	for name in ["血肉墙", "世纪之花", "石巨人", "蜂后", "骷髅王", "机械蠕虫"]:
+		CollectionSystem.record_kill(name)
+	AchievementSystem.check()
+	Global.skills["mining"] = 10
+	AchievementSystem.check()
+	print("SMOKE: ach boss10=", AchievementSystem.is_unlocked("boss_10"), " skillmaster=", AchievementSystem.is_unlocked("skill_master"))
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

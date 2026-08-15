@@ -19,6 +19,7 @@ var level_scenes:Dictionary = {
 	"Beach" : "res://Map/Beach/beach.tscn",
 	"Bathhouse" : "res://Map/Bathhouse/bathhouse.tscn",
 	"Jungle" : "res://Map/Jungle/jungle.tscn",
+	"Tundra" : "res://Map/Tundra/tundra.tscn",
 } 
 var player : Player
 

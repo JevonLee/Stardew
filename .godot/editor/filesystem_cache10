@@ -1,11 +1,11 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1786791447
+::res://::1786791870
 default_bus_layout.tres::AudioBusLayout/AudioBusLayout::2184131187234203786::1756520422::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile/TextFile::-1::1756520422::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::1804056525694353723::1756520422::1756522334::1::::<><><>0<>0<>163b15f42155cdb97f8ac97df934d6cb<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile/TextFile::-1::1756520422::0::1::::<><><>0<>0<><>::
-roadmap.md::TextFile::-1::1786791392::0::1::::<><><>0<>0<><>::
-tools_smoke.gd::GDScript::7937880759161548330::1786791447::0::1::::<>Node2D<><>0<>0<><>::
+roadmap.md::TextFile::-1::1786791814::0::1::::<><><>0<>0<><>::
+tools_smoke.gd::GDScript::7937880759161548330::1786791870::0::1::::<>Node2D<><>0<>0<><>::
 tools_smoke.tscn::PackedScene::-1::1786776087::0::1::::<><><>0<>0<><>::
 ::res://Animals/::1786785947
 animal.gd::GDScript::1281943264472628730::1786779485::0::1::::Animal<>CharacterBody2D<><>0<>0<><>::
@@ -13932,7 +13932,7 @@ fish_data.gd::GDScript::3448057668737088729::1786778352::0::1::::FishData<>Resou
 鲤鱼_data.tres::Resource/FishData::224872474628029640::1786778352::0::1::::<><><>0<>0<><>::res://Fishing/fish_data.gd<>uid://dhumf0230d0c::::res://Bag/items/fish/鲤鱼.tres
 鲶鱼_data.tres::Resource/FishData::4006481379683087480::1786780692::0::1::::<><><>0<>0<><>::res://Fishing/fish_data.gd<>uid://bxc1ghesikh4c::::res://Bag/items/fish/鲶鱼.tres
 鲷鱼_data.tres::Resource/FishData::7721666752262846528::1786787578::0::1::::<><><>0<>0<><>::res://Fishing/fish_data.gd<>uid://diaoyu0000001::::res://Bag/items/fish/鲷鱼.tres
-::res://Global/::1786789853
+::res://Global/::1786791870
 achievement_system.gd::GDScript::2599945038512231930::1786787905::0::1::::<>Node<><>0<>0<><>::
 audio_manager.gd::GDScript/GDScript::4601291018123980988::1756520422::0::1::::<>Node<><>0<>0<><>::
 collection_system.gd::GDScript::7927783015013310831::1786780474::0::1::::<>Node<><>0<>0<><>::
@@ -13947,7 +13947,7 @@ mouse_item.tscn::PackedScene/PackedScene::6641871370877006625::1756520422::0::1:
 museum_system.gd::GDScript::1545414805080604199::1786782713::0::1::::<>Node<><>0<>0<><>::
 quest_system.gd::GDScript::8917174451484295168::1786782948::0::1::::<>Node<><>0<>0<><>::
 save_manager.gd::GDScript::9148267245187861399::1786782713::0::1::::<>Node<><>0<>0<><>::
-scene_manager.gd::GDScript::2228369294178515825::1786788930::0::1::::<>Node<><>0<>0<><>::
+scene_manager.gd::GDScript::2228369294178515825::1786791870::0::1::::<>Node<><>0<>0<><>::
 scene_manager.tscn::PackedScene/PackedScene::3445967232325774420::1756520422::0::1::::<><><>0<>0<><>::uid://60o6fyhvbyn6::::res://Global/scene_manager.gd
 weather_system.gd::GDScript::7177937348620617254::1786789853::0::1::::<>Node<><>0<>0<><>::
 ::res://img/::1756522334
@@ -13962,8 +13962,8 @@ Snipaste_2025-05-26_18-14-02.png::CompressedTexture2D/CompressedTexture2D::15683
 Snipaste_2025-05-26_18-19-12.png::CompressedTexture2D/CompressedTexture2D::877024372679582436::1756520422::1756522334::1::::<><><>0<>0<>4111a91864acac4a99f147001c1de91b<>res://.godot/imported/Snipaste_2025-05-26_18-19-12.png-b3ed80646e1eb5a82da100d39b2ecdde.ctex::
 ::res://Main/::1786781249
 MainScene.tscn::PackedScene/PackedScene::8571954716798696780::1786781249::0::1::::<><><>0<>0<><>::uid://dahtlqg66ho34::::res://TimeSystem/time_color.tscn<>uid://bxkoq0eq1cdwh::::res://Map/Farm/farm.tscn<>uid://cebn8gdce1lys::::res://UI/ui_manager.tscn<>uid://c2lmyuwdhija3::::res://Player/player.tscn<>uid://dra6nxj18tsen::::res://Player/player_camera.tscn
-::res://Map/::1786788930
-change_scene_area.gd::GDScript::333669427388338515::1786788930::0::1::::<>Area2D<><>0<>0<><>::
+::res://Map/::1786791870
+change_scene_area.gd::GDScript::333669427388338515::1786791870::0::1::::<>Area2D<><>0<>0<><>::
 change_scene_area.tscn::PackedScene/PackedScene::7524607266015337098::1756520422::0::1::::<><><>0<>0<><>::uid://e0vqswavb8hj::::res://Map/change_scene_area.gd
 tile_block.tres::TileSet/TileSet::9173175498268296973::1756520422::0::1::::<><><>0<>0<><>::uid://dehsiprf7r35o::::res://Art/terrain/Flooring.png<>uid://bjj82tkjenm6::::res://Art/terrain/hoeDirt.png
 tile_set_indoor.tres::TileSet/TileSet::5873262371970391188::1756520422::0::1::::<><><>0<>0<><>::uid://tl7op7kmjc2i::::res://Art/maps/bathhouse_tiles.zh-CN.png<>uid://w4k20do7hbgn::::res://Art/maps/Snipaste_2025-01-22_10-49-46.jpg<>uid://karoi3usbyh7::::res://Art/maps/walls_and_floors.png<>uid://o0704qxykhb4::::res://Art/maps/townInterior.zh-CN.png
@@ -14011,6 +14011,9 @@ museum_box.gd::GDScript::7342866691290549747::1786782713::0::1::::MuseumBox<>Are
 museum_box.tscn::PackedScene::-1::1786782713::0::1::::<><><>0<>0<><>::
 town.gd::GDScript::2647914920390359378::1786784587::0::1::::Town<>Node2D<><>0<>0<><>::
 town.tscn::PackedScene::2973897707447994239::1786787751::0::1::::<><><>0<>0<><>::uid://bdyw1ijyrdi7k::::res://Map/Town/town.gd<>uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>uid://b6inx015nddef::::res://AudioSystem/Scott Lloyd Shelly - Terraria Soundtrack - 07 Jungle.mp3<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn<>uid://dqfjpljnxpqbl::::res://Map/Town/light.tres<>uid://ikpod1of2y4b::::res://AudioSystem/Scott Lloyd Shelly - Terraria Soundtrack - 03 Overworld Night.mp3<>res://NPC/pierre.tscn<>res://NPC/abigail.tscn<>res://NPC/lewis.tscn<>res://NPC/guide.tscn<>res://Map/Town/museum_box.tscn
+::res://Map/Tundra/::1786791883
+tundra.gd::GDScript::1746130990774024585::1786791860::0::1::::Tundra<>Node2D<><>0<>0<><>::
+tundra.tscn::PackedScene::655959138723565192::1786791860::0::1::::<><><>0<>0<><>::res://Map/Tundra/tundra.gd<>uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn<>res://Combat/enemy_spawner.tscn<>res://Combat/zombie.tscn<>res://Combat/skeleton.tscn<>res://Combat/giant_bat.tscn
 ::res://NPC/::1786787772
 abigail.gd::GDScript::3144278853524896746::1786781456::0::1::::<>NPC<><>0<>0<><>::
 abigail.tscn::PackedScene::-1::1786781456::0::1::::<><><>0<>0<><>::
@@ -14122,7 +14125,7 @@ time_color.tscn::PackedScene/PackedScene::7174886813045883925::1756520422::0::1:
 time_system.gd::GDScript::4204564769159701835::1786784652::0::1::::<>Node<><>0<>0<><>::
 time_system_ui.gd::GDScript/GDScript::4813203920609166923::1756520422::0::1::::<>Control<><>0<>0<><>::
 time_system_ui.tscn::PackedScene/PackedScene::8334331997077840526::1756520422::0::1::::<><><>0<>0<><>::uid://cats1a0q3ajmp::::res://TimeSystem/time_system_ui.gd<>uid://cxbecxir8p1ss::::res://Art/loose_sprite/Cursors.zh-CN.png
-::res://UI/::1786788930
+::res://UI/::1786791870
 collection_panel.gd::GDScript::1952061329177330810::1786782756::0::1::::CollectionPanel<>Control<><>0<>0<><>::
 collection_panel.tscn::PackedScene::-1::1786782757::0::1::::<><><>0<>0<><>::
 collection_system.gd::GDScript::8951386226503382797::1786780489::0::1::::CollectionSystemUI<>Node2D<><>0<>0<><>::
@@ -14145,7 +14148,7 @@ status_bar.gd::GDScript::8732930030530449511::1786781488::0::1::::<>Control<><>0
 status_bar.tscn::PackedScene::-1::1786779744::0::1::::<><><>0<>0<><>::
 tool_tip.gd::GDScript/GDScript::7025370430106442949::1756520422::0::1::::ToolTip<>Control<><>0<>0<><>::
 tool_tip.tscn::PackedScene/PackedScene::7878434148281389284::1756520422::0::1::::<><><>0<>0<><>::uid://c7de3bgxctj5n::::res://UI/tool_tip.gd<>uid://cxbecxir8p1ss::::res://Art/loose_sprite/Cursors.zh-CN.png
-travel_panel.gd::GDScript::2736989078307929204::1786788930::0::1::::TravelPanel<>Control<><>0<>0<><>::
+travel_panel.gd::GDScript::2736989078307929204::1786791870::0::1::::TravelPanel<>Control<><>0<>0<><>::
 travel_panel.tscn::PackedScene::-1::1786781224::0::1::::<><><>0<>0<><>::
 travel_system.gd::GDScript::2475000761415906387::1786781320::0::1::::TravelSystem<>Node2D<><>0<>0<><>::
 travel_system.tscn::PackedScene::-1::1786781224::0::1::::<><><>0<>0<><>::

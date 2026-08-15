@@ -1928,6 +1928,29 @@ func _run() -> void:
 	player.shoot_projectile()
 	await get_tree().process_frame
 	print("SMOKE: demon mana cost=", mana_before - player.mana)
+	# ---- 雪山地图测试 ----
+	SceneManager.change_level("Tundra", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var tundra := SceneManager.get_current_level() as Tundra
+	print("SMOKE: tundra=", tundra != null)
+	if tundra:
+		var tg: int = tundra.get_node("Ground").get_used_cells().size()
+		var tw: int = tundra.get_node("Water").get_used_cells().size()
+		var td: int = tundra.get_node("Decor").get_used_cells().size()
+		var tt: int = tundra.get_node("Trees").get_child_count()
+		var tint: Color = tundra.get_node("CanvasModulate").color
+		var tspawner: Array = tundra.get_node("EnemySpawner").enemy_scenes
+		var has_zombie := false
+		for es in tspawner:
+			if es != null and es.resource_path.contains("zombie"):
+				has_zombie = true
+		print("SMOKE: tundra ground=", tg, " water=", tw, " decor=", td, " trees=", tt, " tint=", snappedf(tint.r, 0.01), " zombie=", has_zombie)
+		SceneManager.change_level("Farm", "SpawnPosition")
+		await get_tree().process_frame
+		await get_tree().process_frame
+		level = SceneManager.get_current_level()
+		player = get_tree().get_first_node_in_group("Player")
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

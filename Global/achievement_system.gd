@@ -11,6 +11,8 @@ const ACHIEVEMENTS := [
 	{"id": "level_5", "name": "老练冒险者", "desc": "达到5级", "reward": 500},
 	{"id": "collect_20", "name": "收藏家", "desc": "收集20种不同物品", "reward": 500},
 	{"id": "gold_5000", "name": "小富翁", "desc": "拥有5000金币", "reward": 1000},
+	{"id": "bath_regular", "name": "温泉常客", "desc": "第一次泡温泉", "reward": 100},
+	{"id": "deep_fisher", "name": "深海猎人", "desc": "钓到冬季限定的鱿鱼", "reward": 300},
 ]
 
 var unlocked:Dictionary = {}
@@ -33,10 +35,15 @@ func check() -> void:
 		"boss_slayer": _boss_killed(),
 		"collect_20": CollectionSystem.items_collected.size() >= 20,
 		"gold_5000": Global.gold >= 5000,
+		"deep_fisher": CollectionSystem.fish_caught.has("鱿鱼"),
 	}
 	for id in conditions:
 		if conditions[id]:
 			_unlock(id)
+
+## 由其他系统直接解锁（如泡温泉）
+func unlock(id:String) -> void:
+	_unlock(id)
 
 ## 由玩家升级时调用
 func check_level(level:int) -> void:

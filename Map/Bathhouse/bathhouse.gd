@@ -91,6 +91,7 @@ func _generate() -> void:
 func _on_pool_entered(body: Node2D) -> void:
 	if body is Player:
 		in_pool = true
+		AchievementSystem.unlock("bath_regular")
 		Global.show_message("温泉好舒服！体力正在恢复……")
 
 func _on_pool_exited(body: Node2D) -> void:

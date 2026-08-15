@@ -1396,6 +1396,34 @@ func _run() -> void:
 	await get_tree().process_frame
 	level = SceneManager.get_current_level()
 	player = get_tree().get_first_node_in_group("Player")
+	# ---- 新食谱测试（烤太阳鱼/烤鱿鱼/蜜汁烤鱼） ----
+	player.bag_system.add_item(load("res://Bag/items/fish/太阳鱼.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/materials/树液.tres").duplicate())
+	var roastsun_recipe: Recipe = load("res://Crafting/recipes/烤太阳鱼.tres")
+	crafting.panel._on_craft_pressed(roastsun_recipe)
+	player.bag_system.add_item(load("res://Bag/items/fish/鱿鱼.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/materials/树液.tres").duplicate())
+	var roastsquid_recipe: Recipe = load("res://Crafting/recipes/烤鱿鱼.tres")
+	crafting.panel._on_craft_pressed(roastsquid_recipe)
+	player.bag_system.add_item(load("res://Bag/items/food/蜂蜜.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/food/烤鱼.tres").duplicate())
+	var honeyfish_recipe: Recipe = load("res://Crafting/recipes/蜜汁烤鱼.tres")
+	crafting.panel._on_craft_pressed(honeyfish_recipe)
+	var found_roast_sun := false
+	var found_roast_squid := false
+	var found_honey_fish := false
+	for it in player.bag_system.items:
+		if it != null:
+			match it.name:
+				"烤太阳鱼": found_roast_sun = true
+				"烤鱿鱼": found_roast_squid = true
+				"蜜汁烤鱼": found_honey_fish = true
+	print("SMOKE: roast sun=", found_roast_sun, " squid=", found_roast_squid, " honey fish=", found_honey_fish)
+	# ---- 成就测试（温泉常客/深海猎人） ----
+	AchievementSystem.unlock("bath_regular")
+	CollectionSystem.record_fish("鱿鱼")
+	AchievementSystem.check()
+	print("SMOKE: ach bath=", AchievementSystem.is_unlocked("bath_regular"), " deep=", AchievementSystem.is_unlocked("deep_fisher"))
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

@@ -68,6 +68,8 @@ func _on_death() -> void:
 	hurt.monitorable = false
 	contact_area.monitoring = false
 	contact_area.monitorable = false
+	# 图鉴记录（Boss击杀）
+	CollectionSystem.record_kill(enemy_name)
 	# 掉落：金币 x20 + 特殊掉落 x5 + 红心 x3
 	for i in 20:
 		if coin_drop:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FishData" load_steps=4 format=3 uid="uid://hetundata00001"]
+
+[ext_resource type="Script" path="res://Fishing/fish_data.gd" id="1_fd"]
+[ext_resource type="Resource" uid="uid://hetun000000001" path="res://Bag/items/fish/河豚.tres" id="2_item"]
+
+[resource]
+script = ExtResource("1_fd")
+fish_name = "河豚"
+item = ExtResource("2_item")
+difficulty = 0.65
+seasons = Array[int]([1])

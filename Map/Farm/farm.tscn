@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" path="res://Animals/sheep.tscn" id="19_sheep"]
 [ext_resource type="PackedScene" path="res://Animals/duck.tscn" id="20_duck"]
 [ext_resource type="Texture2D" path="res://Art/StardewValley/buildings/Coop.png" id="21_coop"]
+[ext_resource type="Texture2D" path="res://Art/StardewValley/buildings/Barn.png" id="22_barn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_140im"]
 size = Vector2(21, 12)
@@ -176,6 +177,10 @@ y_sort_enabled = true
 [node name="Coop" type="Sprite2D" parent="Animals"]
 position = Vector2(2080, 320)
 texture = ExtResource("21_coop")
+
+[node name="Barn" type="Sprite2D" parent="Animals"]
+position = Vector2(2500, 300)
+texture = ExtResource("22_barn")
 
 [node name="Chicken" parent="Animals" instance=ExtResource("15_chicken")]
 position = Vector2(2150, 420)

@@ -11,6 +11,7 @@ const ALL_FISH = [
 @onready var fish_list: VBoxContainer = $Panel/FishScroll/FishList
 @onready var enemy_list: VBoxContainer = $Panel/EnemyScroll/EnemyList
 @onready var item_count_label: Label = $Panel/ItemCount
+@onready var ach_list: VBoxContainer = $Panel/AchScroll/AchList
 
 func _ready() -> void:
 	CollectionSystem.collection_changed.connect(refresh)
@@ -34,3 +35,12 @@ func refresh() -> void:
 		enemy_list.add_child(label)
 	# 物品统计
 	item_count_label.text = "已收集 %d 种物品" % CollectionSystem.items_collected.size()
+	# 成就
+	for c in ach_list.get_children():
+		c.queue_free()
+	for a in AchievementSystem.ACHIEVEMENTS:
+		var label := Label.new()
+		var got: bool = AchievementSystem.is_unlocked(a["id"])
+		label.text = ("✓ " if got else "✗ ") + a["name"] + "：" + a["desc"]
+		label.modulate = Color.WHITE if got else Color(0.45, 0.45, 0.45)
+		ach_list.add_child(label)

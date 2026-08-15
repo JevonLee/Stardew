@@ -8,7 +8,16 @@ const FISH_TABLE = [ ## Array[FishData]
 	preload("res://Fishing/fish_data/沙丁鱼_data.tres"),
 	preload("res://Fishing/fish_data/鲤鱼_data.tres"),
 	preload("res://Fishing/fish_data/大嘴鲈鱼_data.tres"),
+	preload("res://Fishing/fish_data/鲶鱼_data.tres"),
+	preload("res://Fishing/fish_data/河豚_data.tres"),
+	preload("res://Fishing/fish_data/章鱼_data.tres"),
+	preload("res://Fishing/fish_data/冰鱼_data.tres"),
 ]
+const JUNK_TABLE = [ ## 垃圾（低难度占位鱼）
+	preload("res://Fishing/fish_data/垃圾_data.tres"),
+	preload("res://Fishing/fish_data/垃圾2_data.tres"),
+]
+const JUNK_CHANCE: float = 0.15
 
 var player: Player
 var bobber: Bobber
@@ -67,10 +76,12 @@ func _on_bite(_b: Bobber) -> void:
 
 func _on_fishing_result(success: bool) -> void:
 	if success and fishing_ui and fishing_ui.fish:
+		var is_junk: bool = fishing_ui.fish.item != null and fishing_ui.fish.item.price <= 5
 		player.bag_system.add_item(fishing_ui.fish.item.duplicate())
-		QuestSystem.report("fish")
-		CollectionSystem.record_fish(fishing_ui.fish.fish_name)
-		Global.show_message("钓到了 %s！" % fishing_ui.fish.fish_name)
+		if not is_junk:
+			QuestSystem.report("fish")
+			CollectionSystem.record_fish(fishing_ui.fish.fish_name)
+		Global.show_message("钓到了 %s！" % fishing_ui.fish.fish_name if not is_junk else "钓到了垃圾…")
 	else:
 		Global.show_message("鱼跑掉了……")
 	if fishing_ui:
@@ -83,8 +94,10 @@ func _on_fishing_result(success: bool) -> void:
 		else:
 			bobber.reset_after_escape()
 
-## 按季节与权重随机选鱼
+## 按季节与权重随机选鱼（15%概率钓到垃圾）
 func _pick_fish() -> FishData:
+	if randf() < JUNK_CHANCE:
+		return JUNK_TABLE.pick_random()
 	var season := TimeSystem.get_season()
 	var candidates: Array[FishData] = []
 	for fish in FISH_TABLE:

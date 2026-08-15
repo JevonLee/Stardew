@@ -42,6 +42,7 @@ func _save() -> void:
 		"kills": CollectionSystem.enemies_killed,
 		"items": CollectionSystem.items_collected,
 	}
+	save_data.achievements = AchievementSystem.unlocked
 	ResourceSaver.save(save_data, SAVE_PATH)
 	print("存档完成")
 
@@ -86,4 +87,6 @@ func _load() -> void:
 		CollectionSystem.fish_caught = save_data.collection.get("fish", [])
 		CollectionSystem.enemies_killed = save_data.collection.get("kills", {})
 		CollectionSystem.items_collected = save_data.collection.get("items", {})
+	if save_data.achievements.size() > 0:
+		AchievementSystem.unlocked = save_data.achievements
 	print("读档完成")

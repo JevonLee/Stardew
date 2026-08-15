@@ -448,5 +448,40 @@ func _run() -> void:
 	print("SMOKE: collection fish=", CollectionSystem.fish_caught.has("沙丁鱼"), " kills=", CollectionSystem.enemies_killed.get("史莱姆", 0), " items=", CollectionSystem.items_collected.size())
 	var sheep := level.get_node_or_null("Animals/Sheep") as Animal
 	var duck := level.get_node_or_null("Animals/Duck") as Animal
-	print("SMOKE: sheep=", sheep != null, " duck=", duck != null, " coop=", level.get_node_or_null("Animals/Coop") != null)
+	print("SMOKE: sheep=", sheep != null, " duck=", duck != null, " coop=", level.get_node_or_null("Animals/Coop") != null, " barn=", level.get_node_or_null("Animals/Barn") != null)
+	# ---- 新鱼与垃圾测试 ----
+	var fishing2 := get_node_or_null("/root/MainScene/FishingSystem") as FishingSystem
+	print("SMOKE: fish table=", fishing2.FISH_TABLE.size(), " junk table=", fishing2.JUNK_TABLE.size())
+	# ---- 成就测试 ----
+	CollectionSystem.record_fish("鲤鱼")
+	CollectionSystem.record_fish("章鱼")
+	CollectionSystem.record_fish("鲶鱼")
+	CollectionSystem.enemies_killed["史莱姆"] = 10
+	CollectionSystem.record_item("石头")
+	Global.gold = 5000
+	AchievementSystem.check()
+	print("SMOKE: achievements fish3=", AchievementSystem.is_unlocked("fish_3"), " kill10=", AchievementSystem.is_unlocked("kill_10"), " gold5k=", AchievementSystem.is_unlocked("gold_5000"))
+	# ---- 史莱姆王Boss测试 ----
+	for i in 30:
+		player.bag_system.add_item(load("res://Bag/items/materials/凝胶.tres").duplicate())
+	var crown_recipe: Recipe = load("res://Crafting/recipes/史莱姆王冠.tres")
+	crafting.panel._on_craft_pressed(crown_recipe)
+	var crown: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "史莱姆王冠":
+			crown = it
+			break
+	print("SMOKE: crafted crown=", crown != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	player.current_item = crown
+	player.use_summon()
+	await get_tree().process_frame
+	var king := level.get_node_or_null("BossSlimeKing") as Boss
+	print("SMOKE: king spawned=", king != null)
+	if king:
+		king.hurt.take_damage(800, player.global_position)
+		await get_tree().create_timer(1.2).timeout
+		print("SMOKE: king dead=", not is_instance_valid(king), " drops=", drops_node.get_child_count())
+	print("SMOKE: boss slayer ach=", AchievementSystem.is_unlocked("boss_slayer"))
 	print("SMOKE_OK")

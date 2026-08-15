@@ -32,6 +32,7 @@ WeatherSystem="*res://Global/weather_system.gd"
 FriendshipSystem="*res://Global/friendship_system.gd"
 QuestSystem="*res://Global/quest_system.gd"
 CollectionSystem="*res://Global/collection_system.gd"
+AchievementSystem="*res://Global/achievement_system.gd"
 SaveManager="*res://Global/save_manager.gd"
 
 [display]

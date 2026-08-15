@@ -23,6 +23,7 @@ const RECIPES = [
 	preload("res://Crafting/recipes/铁锭.tres"),
 	preload("res://Crafting/recipes/银锭.tres"),
 	preload("res://Crafting/recipes/金锭.tres"),
+	preload("res://Crafting/recipes/史莱姆王冠.tres"),
 ]
 
 var panel: Control

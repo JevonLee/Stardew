@@ -12,4 +12,5 @@ class_name SaveData
 @export var quest:Dictionary = {} # 当前任务
 @export var quest_day:int = -1
 @export var collection:Dictionary = {} # 图鉴数据
+@export var achievements:Dictionary = {} # 已解锁成就
 #还有tilemap类存档

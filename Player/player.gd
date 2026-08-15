@@ -63,6 +63,7 @@ func gain_xp(amount:int) -> void:
 		health = max_health
 		stamina = max_stamina
 		level_changed.emit(level)
+		AchievementSystem.check_level(level)
 		Global.show_message("升级了！等级 %d，生命/体力上限+10" % level)
 	stats_changed.emit(health, max_health, stamina, max_stamina, mana, max_mana)
 

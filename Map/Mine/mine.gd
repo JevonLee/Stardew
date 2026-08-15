@@ -76,6 +76,10 @@ func _generate_walls() -> void:
 		wall.add_child(shape)
 
 func _spawn_ores() -> void:
+	# 每5层为宝箱层：中央一个装满战利品的宝箱
+	if floor_index % 5 == 0:
+		_spawn_treasure_floor()
+		return
 	var pool := _ore_pool()
 	var count := 24 + floor_index * 4
 	for i in count:
@@ -88,6 +92,26 @@ func _spawn_ores() -> void:
 			node.gem_chance = 0.15
 		node.position = ground.map_to_local(cell)
 		ores_container.add_child(node)
+
+## 宝箱层：中央一个宝箱（金锭/宝石/金币）
+func _spawn_treasure_floor() -> void:
+	var box_scene: PackedScene = load("res://Bag/scene/box.tscn")
+	var box := box_scene.instantiate() as Box
+	var chest_inv := InventorySystem.new()
+	chest_inv.items_size = 9
+	chest_inv.items.resize(9)
+	var loot: Array = []
+	loot.append(load("res://Bag/items/materials/金锭.tres").duplicate())
+	loot.append(load("res://Bag/items/materials/金锭.tres").duplicate())
+	loot.append(GEMS.pick_random().duplicate())
+	for i in 3:
+		loot.append(load("res://Bag/items/materials/金币.tres").duplicate())
+	for i in mini(loot.size(), chest_inv.items_size):
+		chest_inv.items[i] = loot[i]
+	box.box_system = chest_inv
+	box.position = ground.map_to_local(Vector2i(map_size.x / 2, map_size.y / 2))
+	add_child(box)
+	Global.show_message("发现宝箱层！")
 
 ## 每层敌人配置：深度越深越强
 func _setup_enemies() -> void:

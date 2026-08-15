@@ -49,6 +49,7 @@ func _give_gift(player:Player) -> void:
 	player.bag_system.remove_num_item(player.item_index, 1)
 	var gain := clampi(int(item.price / 20.0) + 3, 1, 12)
 	FriendshipSystem.add_hearts(npc_display_name, gain)
+	QuestSystem.report("gift")
 	Global.show_message("送给%s %s，好感度+%d！" % [npc_display_name, item.name, gain])
 
 func _talk(player:Player) -> void:

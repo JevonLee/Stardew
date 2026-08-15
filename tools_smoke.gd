@@ -813,4 +813,33 @@ func _run() -> void:
 	SceneManager.change_level("Farm", "SpawnPosition")
 	await get_tree().process_frame
 	await get_tree().process_frame
+	# ---- 宝箱层测试 ----
+	Global.mine_floor = 5
+	SceneManager.change_level("Mine", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var mine5 := SceneManager.get_current_level() as Mine
+	var treasure_box: Box = null
+	if mine5:
+		for child in mine5.get_children():
+			if child is Box:
+				treasure_box = child
+				break
+	print("SMOKE: treasure floor box=", treasure_box != null, " loot=", treasure_box.box_system.items[0].name if treasure_box and treasure_box.box_system.items[0] else "?")
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	# ---- 沙漠鱼与任务类型测试 ----
+	var fishing4 := get_node_or_null("/root/MainScene/FishingSystem") as FishingSystem
+	var desert_fish: Array = fishing4.DESERT_FISH
+	print("SMOKE: desert fish table=", desert_fish.size())
+	QuestSystem.quest = {"type": "mine", "target": 8, "progress": 0, "reward": 120, "name": "挖掘矿石", "done": false}
+	QuestSystem.report("mine")
+	QuestSystem.report("mine")
+	QuestSystem.report("mine")
+	print("SMOKE: mine quest progress=", QuestSystem.quest["progress"])
+	QuestSystem.quest = {"type": "gift", "target": 3, "progress": 0, "reward": 150, "name": "送礼物给村民", "done": false}
+	QuestSystem.report("gift")
+	print("SMOKE: gift quest progress=", QuestSystem.quest["progress"])
 	print("SMOKE_OK")

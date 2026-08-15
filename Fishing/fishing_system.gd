@@ -22,13 +22,21 @@ const OCEAN_FISH = [ ## 海水鱼（小镇海边）
 	preload("res://Fishing/fish_data/河豚_data.tres"),
 	preload("res://Fishing/fish_data/章鱼_data.tres"),
 ]
+const DESERT_FISH = [ ## 沙漠绿洲鱼
+	preload("res://Fishing/fish_data/鲶鱼_data.tres"),
+	preload("res://Fishing/fish_data/章鱼_data.tres"),
+]
 const JUNK_CHANCE: float = 0.15
 
-## 当前水域鱼表（按所在场景区分海水/淡水）
+## 当前水域鱼表（按所在场景区分海水/淡水/绿洲）
 func _current_fish_table() -> Array:
 	var level := SceneManager.get_current_level()
-	if level != null and level.name == "Town":
-		return OCEAN_FISH
+	if level == null: return FISH_TABLE
+	match level.name:
+		"Town":
+			return OCEAN_FISH
+		"Desert":
+			return DESERT_FISH
 	return FISH_TABLE
 
 ## 按季节与权重随机选鱼（15%概率钓到垃圾）

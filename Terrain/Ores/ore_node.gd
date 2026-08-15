@@ -30,6 +30,7 @@ func _on_hit(_damage: int, _source: Vector2) -> void:
 
 func _on_broken() -> void:
 	_drop(ore_item)
+	QuestSystem.report("mine")
 	if randf() < stone_chance:
 		_drop(STONE)
 	if randf() < coal_chance:

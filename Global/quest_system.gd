@@ -3,10 +3,10 @@ extends Node
 
 signal quest_updated(quest:Dictionary)
 
-const QUEST_TYPES:Array[String] = ["forage", "kill", "fish", "harvest"]
-const QUEST_TARGETS := {"forage": 5, "kill": 5, "fish": 2, "harvest": 3}
-const QUEST_NAMES := {"forage": "采集野外物品", "kill": "击败敌人", "fish": "钓到鱼", "harvest": "收获作物"}
-const QUEST_REWARDS := {"forage": 100, "kill": 150, "fish": 120, "harvest": 120}
+const QUEST_TYPES:Array[String] = ["forage", "kill", "fish", "harvest", "mine", "gift"]
+const QUEST_TARGETS := {"forage": 5, "kill": 5, "fish": 2, "harvest": 3, "mine": 8, "gift": 3}
+const QUEST_NAMES := {"forage": "采集野外物品", "kill": "击败敌人", "fish": "钓到鱼", "harvest": "收获作物", "mine": "挖掘矿石", "gift": "送礼物给村民"}
+const QUEST_REWARDS := {"forage": 100, "kill": 150, "fish": 120, "harvest": 120, "mine": 120, "gift": 150}
 
 var quest:Dictionary = {} ## {type,target,progress,reward,name,done}
 var day_rolled:int = -1

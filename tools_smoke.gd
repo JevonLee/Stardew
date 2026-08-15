@@ -2405,6 +2405,22 @@ func _run() -> void:
 		if d.get("item") != null and d.get("item").name == "花蜜":
 			flower_honey = true
 	print("SMOKE: flower honey=", flower_honey)
+	# ---- 腐化之地地图测试 ----
+	SceneManager.change_level("Corruption", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var corruption := SceneManager.get_current_level() as Corruption
+	print("SMOKE: corruption=", corruption != null)
+	if corruption:
+		var cg: int = corruption.get_node("Ground").get_used_cells().size()
+		var cw: int = corruption.get_node("Water").get_used_cells().size()
+		var cd: int = corruption.get_node("Decor").get_used_cells().size()
+		print("SMOKE: corruption ground=", cg, " water=", cw, " decor=", cd)
+		SceneManager.change_level("Farm", "SpawnPosition")
+		await get_tree().process_frame
+		await get_tree().process_frame
+		level = SceneManager.get_current_level()
+		player = get_tree().get_first_node_in_group("Player")
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

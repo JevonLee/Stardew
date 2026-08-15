@@ -2202,6 +2202,46 @@ func _run() -> void:
 		empress.hurt.take_damage(3000, player.global_position)
 		await get_tree().create_timer(1.3).timeout
 		print("SMOKE: empress dead=", not is_instance_valid(empress), " drops=", drops_node.get_child_count())
+	# ---- 邪教徒Boss测试 ----
+	for i in 15:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/紫水晶.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/蓝宝石.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/绿宝石.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/黄玉.tres").duplicate())
+	for i in 30:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	var cultist_recipe: Recipe = load("res://Crafting/recipes/远古符印.tres")
+	crafting.panel._on_craft_pressed(cultist_recipe)
+	var cultist_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "远古符印":
+			cultist_item = it
+			break
+	print("SMOKE: crafted sigil2=", cultist_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if cultist_item:
+		player.current_item = cultist_item
+		player.use_summon()
+	await get_tree().process_frame
+	var cultist := level.get_node_or_null("BossCultist") as Boss
+	print("SMOKE: cultist=", cultist != null)
+	if cultist:
+		cultist.shoot_timer = 0.1
+		await get_tree().create_timer(0.5).timeout
+		var cult_bolt := 0
+		for n in level.get_children():
+			if n is Projectile and n.name == "EnemyBolt":
+				cult_bolt += 1
+		print("SMOKE: cultist volley=", cult_bolt > 0)
+		cultist.hurt.take_damage(3200, player.global_position)
+		await get_tree().create_timer(1.3).timeout
+		print("SMOKE: cultist dead=", not is_instance_valid(cultist), " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

@@ -81,6 +81,7 @@ const RECIPES = [
 	preload("res://Crafting/recipes/冰霜核心.tres"),
 	preload("res://Crafting/recipes/圣诞挂饰.tres"),
 	preload("res://Crafting/recipes/光棱晶.tres"),
+	preload("res://Crafting/recipes/远古符印.tres"),
 ]
 
 var panel: Control

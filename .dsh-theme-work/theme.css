@@ -1,0 +1,237 @@
+/* ============================================================
+   DSH Web GUI 主题覆盖层 v1
+   由 apply-theme.ps1 注入到 dist，配合 theme.js 动态换背景使用。
+   原则：只覆盖 CSS 变量与背景，不动任何布局。
+   ============================================================ */
+
+/* ---------- 强调色（theme.js 可动态改写 --dshx-accent） ---------- */
+body {
+  --dshx-accent: #7c8cf8;        /* 主强调色：星空蓝紫 */
+  --dshx-accent-strong: #5b8cff; /* 更亮的强调色（链接/按钮） */
+  --dshx-accent-soft: rgba(124, 140, 248, 0.16);
+}
+
+/* 把强调色接进 dsh 的语义变量（亮色主题） */
+body {
+  --dsw-alias-state-business-primary: var(--dshx-accent-strong);
+  --dsw-alias-button-info-fill: var(--dshx-accent-strong);
+  --dsw-alias-button-info-hover: var(--dshx-accent);
+  --dsw-alias-brand-primary-new-colorprimary-new-color: var(--dshx-accent);
+  --dsw-alias-state-business-tertiary: var(--dshx-accent-soft);
+  --dsw-specific-sidebar-nav-item-active-accent: var(--dshx-accent-soft);
+}
+
+/* 深色主题 */
+body[data-ds-dark-theme] {
+  --dsw-alias-state-business-primary: var(--dshx-accent);
+  --dsw-alias-button-info-fill: var(--dshx-accent);
+  --dsw-alias-button-info-hover: var(--dshx-accent-strong);
+  --dsw-alias-brand-primary-new-colorprimary-new-color: var(--dshx-accent-strong);
+  --dsw-alias-state-business-tertiary: var(--dshx-accent-soft);
+  --dsw-specific-sidebar-nav-item-active-accent: var(--dshx-accent-soft);
+}
+
+/* ---------- 默认深空背景（未上传自定义图片时生效；theme.js 会覆盖） ---------- */
+body {
+  --dshx-bg-light: radial-gradient(1200px 800px at 15% -10%, rgba(91, 140, 255, 0.20), transparent 60%),
+                   radial-gradient(1000px 700px at 110% 20%, rgba(155, 108, 255, 0.18), transparent 55%),
+                   linear-gradient(160deg, #eef1fb 0%, #e4e9fb 50%, #f0e8fb 100%);
+  --dshx-bg-dark: radial-gradient(1200px 800px at 15% -10%, rgba(91, 140, 255, 0.24), transparent 60%),
+                  radial-gradient(1000px 700px at 110% 20%, rgba(155, 108, 255, 0.22), transparent 55%),
+                  linear-gradient(160deg, #0c1024 0%, #10143a 50%, #170f36 100%);
+  background-image: var(--dshx-bg-light);
+  background-attachment: fixed;
+  background-size: cover;
+}
+body[data-ds-dark-theme] {
+  background-image: var(--dshx-bg-dark);
+}
+
+/* ---------- 半透明面板模式（theme.js 开关，data-dshx-translucent="1"） ---------- */
+body[data-dshx-translucent="1"][data-ds-dark-theme] {
+  --dsw-alias-bg-base: transparent;
+  --dsw-alias-bg-layer-1: color-mix(in srgb, var(--dsw-static-neutral-bluish-875) 82%, transparent);
+  --dsw-alias-bg-layer-2: color-mix(in srgb, var(--dsw-static-neutral-bluish-850) 80%, transparent);
+  --dsw-alias-bg-layer-3: color-mix(in srgb, var(--dsw-static-neutral-bluish-800) 78%, transparent);
+  --dsw-specific-sidebar-fill: color-mix(in srgb, var(--dsw-static-neutral-bluish-900) 80%, transparent);
+  --dsw-specific-bubble: color-mix(in srgb, var(--dsw-static-neutral-bluish-850) 82%, transparent);
+  --dsw-specific-input-major: color-mix(in srgb, var(--dsw-static-neutral-bluish-850) 84%, transparent);
+  --dsw-alias-markdown-code-block: color-mix(in srgb, var(--dsw-static-neutral-bluish-900) 82%, transparent);
+  --dsw-alias-markdown-code-block-banner: color-mix(in srgb, var(--dsw-static-neutral-bluish-875) 82%, transparent);
+  --dsw-alias-bg-overlay: color-mix(in srgb, var(--dsw-static-neutral-bluish-750) 70%, transparent);
+}
+body[data-dshx-translucent="1"]:not([data-ds-dark-theme]) {
+  --dsw-alias-bg-base: transparent;
+  --dsw-alias-bg-layer-1: color-mix(in srgb, var(--dsw-static-neutral-bluish-00) 84%, transparent);
+  --dsw-alias-bg-layer-2: color-mix(in srgb, var(--dsw-static-neutral-bluish-00) 82%, transparent);
+  --dsw-alias-bg-layer-3: color-mix(in srgb, var(--dsw-static-neutral-bluish-00) 80%, transparent);
+  --dsw-specific-sidebar-fill: color-mix(in srgb, var(--dsw-static-neutral-bluish-50) 84%, transparent);
+  --dsw-specific-bubble: color-mix(in srgb, var(--dsw-static-neutral-bluish-00) 84%, transparent);
+  --dsw-specific-input-major: color-mix(in srgb, var(--dsw-static-neutral-bluish-00) 86%, transparent);
+  --dsw-alias-markdown-code-block: color-mix(in srgb, var(--dsw-static-neutral-bluish-50) 84%, transparent);
+  --dsw-alias-markdown-code-block-banner: color-mix(in srgb, var(--dsw-static-neutral-bluish-100) 84%, transparent);
+  --dsw-alias-bg-overlay: color-mix(in srgb, var(--dsw-static-neutral-bluish-150) 72%, transparent);
+}
+
+/* ---------- theme.js 注入的悬浮面板 UI（.dshx-* 前缀避免冲突） ---------- */
+.dshx-fab {
+  position: fixed !important;
+  right: 18px !important;
+  bottom: 18px !important;
+  z-index: 2147483000 !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  background: linear-gradient(135deg, #5b8cff, #9b6cff) !important;
+  box-shadow: 0 4px 16px rgba(60, 80, 200, 0.45) !important;
+  color: #fff !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  user-select: none !important;
+  transition: transform 0.15s ease !important;
+}
+.dshx-fab:hover { transform: scale(1.08) !important; }
+
+.dshx-panel {
+  position: fixed !important;
+  right: 18px !important;
+  bottom: 74px !important;
+  z-index: 2147483001 !important;
+  width: 320px !important;
+  max-height: min(640px, calc(100vh - 100px)) !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+  padding: 14px !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background: rgba(24, 24, 32, 0.92) !important;
+  color: #e8e8f0 !important;
+  font: 13px/1.6 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+}
+.dshx-panel[hidden] { display: none !important; }
+
+.dshx-panel h3 {
+  margin: 0 0 4px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+}
+.dshx-panel .dshx-sub {
+  margin: 0 0 10px !important;
+  font-size: 12px !important;
+  color: #9a9ab0 !important;
+}
+.dshx-sec {
+  padding: 10px 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.09) !important;
+}
+.dshx-sec > .dshx-label {
+  display: block !important;
+  margin-bottom: 6px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #c8c8e0 !important;
+}
+.dshx-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 6px 0 !important;
+}
+.dshx-row .dshx-name {
+  flex: 1 !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  font-size: 12px !important;
+  color: #b8b8d0 !important;
+}
+.dshx-row img.dshx-thumb {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 6px !important;
+  object-fit: cover !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+.dshx-btn {
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 7px !important;
+  padding: 3px 9px !important;
+  font-size: 12px !important;
+  color: #d8d8ec !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+}
+.dshx-btn:hover { background: rgba(255, 255, 255, 0.16) !important; }
+.dshx-btn.dshx-danger { color: #ff9a9a !important; border-color: rgba(255, 120, 120, 0.35) !important; }
+.dshx-btn.dshx-primary {
+  color: #fff !important;
+  background: linear-gradient(135deg, #5b8cff, #9b6cff) !important;
+  border-color: transparent !important;
+}
+.dshx-slider-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 4px 0 !important;
+  font-size: 12px !important;
+  color: #9a9ab0 !important;
+}
+.dshx-slider-row input[type="range"] {
+  flex: 1 !important;
+  accent-color: #7c8cf8 !important;
+}
+.dshx-slider-row .dshx-val { width: 34px !important; text-align: right !important; color: #c8c8e0 !important; }
+.dshx-panel input[type="color"] {
+  width: 40px !important;
+  height: 26px !important;
+  padding: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  cursor: pointer !important;
+}
+.dshx-check-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 6px 0 !important;
+  font-size: 12px !important;
+  color: #b8b8d0 !important;
+  cursor: pointer !important;
+}
+.dshx-check-row input { accent-color: #7c8cf8 !important; }
+.dshx-pick-hint {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483002 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  padding-top: 40px !important;
+  pointer-events: none !important;
+}
+.dshx-pick-hint > div {
+  pointer-events: auto !important;
+  padding: 10px 18px !important;
+  border-radius: 10px !important;
+  background: rgba(20, 20, 30, 0.92) !important;
+  color: #fff !important;
+  font: 13px/1.5 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5) !important;
+}
+.dshx-pick-target {
+  outline: 2px dashed #7c8cf8 !important;
+  outline-offset: -2px !important;
+}
+.dshx-tip { font-size: 11px !important; color: #7d7d94 !important; margin: 4px 0 0 !important; }

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=10 format=3 uid="uid://yuangufuyin_r"]
+
+[ext_resource type="Script" path="res://Crafting/recipe.gd" id="1_rc"]
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="5_item"]
+[ext_resource type="Resource" uid="uid://yuangufuyin01" path="res://Bag/items/materials/远古符印.tres" id="2_res"]
+[ext_resource type="Resource" uid="uid://jinding000001" path="res://Bag/items/materials/金锭.tres" id="3_i1"]
+[ext_resource type="Resource" uid="uid://zishuijing001" path="res://Bag/items/materials/紫水晶.tres" id="4_i2"]
+[ext_resource type="Resource" uid="uid://lanbaoshi0001" path="res://Bag/items/materials/蓝宝石.tres" id="5_i3"]
+[ext_resource type="Resource" uid="uid://lvbaoshi00001" path="res://Bag/items/materials/绿宝石.tres" id="6_i4"]
+[ext_resource type="Resource" uid="uid://huangyu000001" path="res://Bag/items/materials/黄玉.tres" id="7_i5"]
+[ext_resource type="Resource" uid="uid://gutou000000001" path="res://Bag/items/materials/骨头.tres" id="8_i6"]
+
+[resource]
+script = ExtResource("1_rc")
+recipe_name = "远古符印"
+result = ExtResource("2_res")
+result_count = 1
+ingredients = Array[ExtResource("5_item")]([ExtResource("3_i1"), ExtResource("4_i2"), ExtResource("5_i3"), ExtResource("6_i4"), ExtResource("7_i5"), ExtResource("8_i6")])
+ingredient_counts = Array[int]([15, 5, 5, 5, 5, 30])

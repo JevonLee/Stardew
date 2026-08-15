@@ -14,6 +14,7 @@ const DESTINATIONS := [
 	{"name": "温泉", "level": "Bathhouse", "spawn": "SpawnPosition"},
 	{"name": "丛林", "level": "Jungle", "spawn": "SpawnPosition"},
 	{"name": "雪山", "level": "Tundra", "spawn": "SpawnPosition"},
+	{"name": "地牢", "level": "Dungeon", "spawn": "SpawnPosition"},
 ]
 
 func build() -> void:

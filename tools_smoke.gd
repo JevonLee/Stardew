@@ -2242,6 +2242,30 @@ func _run() -> void:
 		cultist.hurt.take_damage(3200, player.global_position)
 		await get_tree().create_timer(1.3).timeout
 		print("SMOKE: cultist dead=", not is_instance_valid(cultist), " drops=", drops_node.get_child_count())
+	# ---- 地牢地图测试 ----
+	SceneManager.change_level("Dungeon", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var dungeon := SceneManager.get_current_level() as Dungeon
+	print("SMOKE: dungeon=", dungeon != null)
+	if dungeon:
+		var dg: int = dungeon.get_node("Ground").get_used_cells().size()
+		var chest: Box = null
+		for child in dungeon.get_children():
+			if child is Box:
+				chest = child
+				break
+		var dspawner: Array = dungeon.get_node("EnemySpawner").enemy_scenes
+		var has_skel := false
+		for es in dspawner:
+			if es != null and es.resource_path.contains("skeleton"):
+				has_skel = true
+		print("SMOKE: dungeon ground=", dg, " chest=", chest != null, " skel=", has_skel)
+		SceneManager.change_level("Farm", "SpawnPosition")
+		await get_tree().process_frame
+		await get_tree().process_frame
+		level = SceneManager.get_current_level()
+		player = get_tree().get_first_node_in_group("Player")
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://dungeon000001"]
+
+[ext_resource type="Script" path="res://Map/Dungeon/dungeon.gd" id="1_dun"]
+[ext_resource type="PackedScene" uid="uid://dfg8gg0uu4d2a" path="res://Map/change_scene_area.tscn" id="2_change"]
+[ext_resource type="PackedScene" path="res://Combat/enemy_spawner.tscn" id="3_spawner"]
+[ext_resource type="PackedScene" path="res://Combat/skeleton.tscn" id="4_skel"]
+[ext_resource type="PackedScene" path="res://Combat/mummy.tscn" id="5_mummy"]
+[ext_resource type="PackedScene" path="res://Combat/spider.tscn" id="6_spider"]
+[ext_resource type="PackedScene" path="res://Combat/demon_eye.tscn" id="7_deye"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
+size = Vector2(38, 47)
+
+[node name="Dungeon" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_dun")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.72, 0.72, 0.78, 1)
+
+[node name="Ground" type="TileMapLayer" parent="." groups=["TileMap"]]
+
+[node name="SpawnPos" type="Node2D" parent="."]
+
+[node name="Dungeon" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(100, 400)
+
+[node name="Farm" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(48, 400)
+
+[node name="ChangeAreas" type="Node2D" parent="."]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_spawner")]
+night_only = false
+spawn_interval = 5.0
+max_enemies = 6
+enemy_scenes = Array[PackedScene]([ExtResource("4_skel"), ExtResource("4_skel"), ExtResource("5_mummy"), ExtResource("6_spider"), ExtResource("7_deye")])
+
+[node name="ToFarm" parent="ChangeAreas" instance=ExtResource("2_change")]
+position = Vector2(24, 400)
+target_scene = "Farm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeAreas/ToFarm"]
+shape = SubResource("RectangleShape2D_gate")
+
+[node name="MapSize" type="Marker2D" parent="."]
+position = Vector2(640, 480)

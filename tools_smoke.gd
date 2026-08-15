@@ -2336,6 +2336,10 @@ func _run() -> void:
 		if it != null and it.name == "黄玉":
 			has_topaz = true
 	print("SMOKE: merchant excalibur=", has_excalibur, " topaz=", has_topaz, " total=", merchant_items.size())
+	# ---- 钓鱼宝箱测试 ----
+	var fishing8 := get_node_or_null("/root/MainScene/FishingSystem") as FishingSystem
+	var chest_item: Item = fishing8._roll_chest_reward()
+	print("SMOKE: chest reward=", chest_item != null, " name=", chest_item.name if chest_item else "?", " qty=", chest_item.quantity if chest_item else -1)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

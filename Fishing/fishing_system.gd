@@ -30,6 +30,23 @@ const DESERT_FISH = [ ## 沙漠绿洲鱼
 	preload("res://Fishing/fish_data/章鱼_data.tres"),
 ]
 const JUNK_CHANCE: float = 0.15
+const CHEST_CHANCE: float = 0.15 ## 钓鱼宝箱概率
+const CHEST_POOL := [ ## 宝箱奖励池
+	preload("res://Bag/items/materials/金币.tres"),
+	preload("res://Bag/items/materials/金锭.tres"),
+	preload("res://Bag/items/materials/蓝宝石.tres"),
+	preload("res://Bag/items/materials/紫水晶.tres"),
+	preload("res://Bag/items/materials/黄玉.tres"),
+	preload("res://Bag/items/materials/煤矿.tres"),
+]
+
+## 钓鱼宝箱奖励（星露谷经典）
+func _roll_chest_reward() -> Item:
+	var item: Item = CHEST_POOL.pick_random().duplicate()
+	match item.name:
+		"金币": item.quantity = 10
+		"煤矿": item.quantity = 5
+	return item
 
 ## 当前水域鱼表（按所在场景区分海水/淡水/绿洲）
 func _current_fish_table() -> Array:
@@ -120,6 +137,11 @@ func _on_fishing_result(success: bool) -> void:
 			QuestSystem.report("fish")
 			CollectionSystem.record_fish(fishing_ui.fish.fish_name)
 			Global.add_skill_xp("fishing", 2) ## 钓鱼技能经验
+			# 钓鱼宝箱（15%概率）
+			if randf() < CHEST_CHANCE:
+				var chest_item: Item = _roll_chest_reward()
+				player.bag_system.add_item(chest_item)
+				Global.show_message("钓到了宝箱！获得 %s ×%d！" % [chest_item.name, chest_item.quantity])
 		Global.show_message("钓到了 %s！" % fishing_ui.fish.fish_name if not is_junk else "钓到了垃圾…")
 	else:
 		Global.show_message("鱼跑掉了……")

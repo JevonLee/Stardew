@@ -1277,6 +1277,44 @@ func _run() -> void:
 			if child is PrimeArm:
 				arms_gone = false
 		print("SMOKE: prime dead=", not is_instance_valid(prime), " arms_gone=", arms_gone, " drops=", drops_node.get_child_count())
+	# ---- 月亮领主Boss测试 ----
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 8:
+		player.bag_system.add_item(load("res://Bag/items/materials/紫水晶.tres").duplicate())
+	for i in 8:
+		player.bag_system.add_item(load("res://Bag/items/materials/蓝宝石.tres").duplicate())
+	for i in 8:
+		player.bag_system.add_item(load("res://Bag/items/materials/绿宝石.tres").duplicate())
+	for i in 8:
+		player.bag_system.add_item(load("res://Bag/items/materials/黄玉.tres").duplicate())
+	var ml_recipe: Recipe = load("res://Crafting/recipes/天界符.tres")
+	crafting.panel._on_craft_pressed(ml_recipe)
+	var ml_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "天界符":
+			ml_item = it
+			break
+	print("SMOKE: crafted sigil=", ml_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if ml_item:
+		player.current_item = ml_item
+		player.use_summon()
+	await get_tree().process_frame
+	var moon_lord := level.get_node_or_null("BossMoonLord") as Boss
+	print("SMOKE: moon lord=", moon_lord != null)
+	if moon_lord:
+		moon_lord.shoot_timer = 0.1
+		await get_tree().create_timer(0.5).timeout
+		var ml_bolt := 0
+		for n in level.get_children():
+			if n is Projectile and n.name == "EnemyBolt":
+				ml_bolt += 1
+		print("SMOKE: moon lord volley=", ml_bolt)
+		moon_lord.hurt.take_damage(3000, player.global_position)
+		await get_tree().create_timer(1.3).timeout
+		print("SMOKE: moon lord dead=", not is_instance_valid(moon_lord), " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

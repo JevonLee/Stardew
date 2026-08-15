@@ -247,4 +247,27 @@ func _run() -> void:
 		print("SMOKE: hearts after load=", FriendshipSystem.get_hearts("艾米丽"))
 	else:
 		print("SMOKE: emily not found")
+	# ---- Boss战测试 ----
+	for i in 10:
+		var gel: Item = load("res://Bag/items/materials/凝胶.tres").duplicate()
+		player.bag_system.add_item(gel)
+	var eye_recipe: Recipe = load("res://Crafting/recipes/可疑眼球.tres")
+	crafting.panel._on_craft_pressed(eye_recipe)
+	var has_eye: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "可疑眼球":
+			has_eye = true
+			player.current_item = it
+			break
+	print("SMOKE: crafted eye=", has_eye)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	player.use_summon()
+	await get_tree().process_frame
+	var boss := level.get_node_or_null("BossEye") as Boss
+	print("SMOKE: boss spawned=", boss != null)
+	if boss:
+		boss.hurt.take_damage(400, player.global_position)
+		await get_tree().create_timer(1.2).timeout
+		print("SMOKE: boss dead=", not is_instance_valid(boss), " drops=", drops_node.get_child_count())
 	print("SMOKE_OK")

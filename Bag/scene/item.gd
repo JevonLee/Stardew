@@ -16,6 +16,7 @@ enum ItemType{
 	Accessories,##饰品
 	Floors,##地板类
 	Fishing,##钓鱼
+	Summon,##召唤物（Boss等）
 }
 enum UseType{
 	None,

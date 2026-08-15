@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Combat/boss.gd" id="1_boss"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_4.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://d1el2uw7pk51r" path="res://Component/hurt_component.tscn" id="3_hurt"]
+[ext_resource type="Resource" uid="uid://jinbi000000001" path="res://Bag/items/materials/金币.tres" id="4_coin"]
+[ext_resource type="Resource" uid="uid://jinkuang000001" path="res://Bag/items/materials/金矿石.tres" id="5_gold"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 30.0
+
+[node name="BossEye" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 65
+script = ExtResource("1_boss")
+enemy_name = "克苏鲁之眼"
+max_health = 400
+contact_damage = 20
+speed = 90.0
+knockback_resist = 0.5
+aggro_range = 800.0
+despawn_range = 1200.0
+xp_reward = 100
+coin_drop = ExtResource("4_coin")
+coin_count = 20
+item_drop = ExtResource("5_gold")
+item_drop_chance = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = ExtResource("2_tex")
+vframes = 9
+scale = Vector2(0.6, 0.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="HurtComponent" parent="." instance=ExtResource("3_hurt")]
+tool = 6
+max_health = 400
+
+[node name="HurtCollision" type="CollisionShape2D" parent="HurtComponent"]
+shape = SubResource("CircleShape2D_body")
+
+[node name="ContactArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 1
+
+[node name="ContactCollision" type="CollisionShape2D" parent="ContactArea"]
+shape = SubResource("CircleShape2D_body")

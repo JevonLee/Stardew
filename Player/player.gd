@@ -140,6 +140,26 @@ func heal(h:int, s:int, m:int) -> void:
 	mana = clampi(mana + m, 0, max_mana)
 	stats_changed.emit(health, max_health, stamina, max_stamina, mana, max_mana)
 
+## 使用召唤物（Boss等）：夜晚生效
+func use_summon() -> void:
+	if current_item == null or current_item.type != Item.ItemType.Summon: return
+	if TimeSystem.current_hour >= 6 and TimeSystem.current_hour < 19:
+		Global.show_message("召唤物只在夜晚生效！")
+		return
+	var bosses := get_tree().get_nodes_in_group("Boss")
+	if bosses.size() > 0:
+		Global.show_message("Boss已经出现了！")
+		return
+	var boss_scene: PackedScene = load("res://Combat/boss_eye.tscn")
+	var boss := boss_scene.instantiate() as Boss
+	boss.add_to_group("Boss")
+	var level: Node2D = SceneManager.get_current_level()
+	if level:
+		level.add_child(boss)
+		boss.global_position = global_position + Vector2(0, -140)
+	bag_system.remove_num_item(item_index, 1)
+	Global.show_message("克苏鲁之眼苏醒了！")
+
 ## 右键食用当前选中的消耗品
 func eat_current_item() -> bool:
 	if current_item == null or current_item.type != Item.ItemType.Consume:
@@ -248,8 +268,11 @@ func get_cell_under_mouse() -> void:
 	local_cell_position = ground.map_to_local(cell_position) #返回位于坐标 coords 的单元格的图块源 ID。如果单元格不存在则返回 -1。
 	distance = self.global_position.distance_to(local_cell_position) #玩家到单元格中心的距离
 func _unhandled_input(event: InputEvent) -> void: #这个函数可以忽略UI的事件操作
-	#右键食用消耗品
+	#右键食用消耗品 / 使用召唤物
 	if event.is_action_pressed("mouse_right"):
+		if current_item != null and current_item.type == Item.ItemType.Summon:
+			use_summon()
+			return
 		eat_current_item()
 		return
 	if current_item == null : return

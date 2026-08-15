@@ -11,6 +11,7 @@ const RECIPES = [
 	preload("res://Crafting/recipes/铁剑.tres"),
 	preload("res://Crafting/recipes/金剑.tres"),
 	preload("res://Crafting/recipes/金币.tres"),
+	preload("res://Crafting/recipes/可疑眼球.tres"),
 ]
 
 var panel: Control

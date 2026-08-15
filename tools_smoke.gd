@@ -2132,6 +2132,19 @@ func _run() -> void:
 	SaveManager._save()
 	SaveManager._load()
 	print("SMOKE: skills after load=", Global.skills["fishing"], "/", Global.skills["mining"])
+	# ---- 农业/采集技能测试 ----
+	Global.add_skill_xp("farming", 10)
+	Global.add_skill_xp("foraging", 10)
+	print("SMOKE: skills farming=", Global.skills["farming"], " foraging=", Global.skills["foraging"])
+	print("SMOKE: farm bonus=", Global.farming_bonus_chance(), " forage double=", Global.foraging_double_chance())
+	# 收获作物获得农业经验（甜瓜成熟收获）
+	var harvest_crop: Crop = (load("res://Placeables/Crops/crop.tscn") as PackedScene).instantiate() as Crop
+	harvest_crop.crop_data = load("res://Bag/items/crops/甜瓜_data.tres")
+	harvest_crop.growth_stage = 7
+	level.find_child("Crops").add_child(harvest_crop)
+	var farm_xp_before: int = Global.skill_xp["farming"]
+	harvest_crop._on_body_droped()
+	print("SMOKE: farm xp gain=", Global.skill_xp["farming"] - farm_xp_before)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

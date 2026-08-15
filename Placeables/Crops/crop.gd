@@ -80,6 +80,10 @@ func _harvest() -> void:
 	for i in crop_data.drops_count:
 		_drop_item(crop_data.harvest_item)
 	QuestSystem.report("harvest")
+	Global.add_skill_xp("farming", 1) ## 农业技能经验
+	# 农业技能：额外收获概率
+	if randf() < Global.farming_bonus_chance():
+		_drop_item(crop_data.harvest_item)
 	if crop_data.regrow_days > 0:
 		growth_stage = maxi(crop_data.growth_days - crop_data.regrow_days, 0)
 		update_sprite()

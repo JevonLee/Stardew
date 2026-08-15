@@ -35,6 +35,10 @@ func _pick() -> void:
 	player.get_item.emit(item)
 	QuestSystem.report("forage")
 	CollectionSystem.record_item(item.name)
+	Global.add_skill_xp("foraging", 1) ## 采集技能经验
+	# 采集技能：双倍采集概率
+	if randf() < Global.foraging_double_chance():
+		player.bag_system.add_item(item)
 	Global.show_message("拾取了 %s" % item.name)
 	var tween := create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.3)

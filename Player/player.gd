@@ -198,6 +198,11 @@ func shoot_projectile() -> void:
 	if current_item == null or current_item.projectile == "": return
 	if current_item.mana_cost > 0 and not try_use_mana(current_item.mana_cost):
 		return
+	# 弓类武器消耗箭矢
+	if current_item.name == "木弓":
+		if not _consume_ammo("木箭"):
+			Global.show_message("没有箭矢了！合成木箭或去商店购买")
+			return
 	var proj_scene = load(current_item.projectile)
 	var proj = proj_scene.instantiate()
 	var dir := global_position.direction_to(get_global_mouse_position())
@@ -205,6 +210,17 @@ func shoot_projectile() -> void:
 	proj.global_position = global_position + dir * 18.0
 	if proj.has_method("setup"):
 		proj.setup(dir, current_item.damage)
+
+## 消耗弹药（按名称找背包中的物品）
+func _consume_ammo(ammo_name: String) -> bool:
+	for i in bag_system.items.size():
+		var it: Item = bag_system.items[i]
+		if it != null and it.name == ammo_name and it.quantity > 0:
+			it.quantity -= 1
+			if it.quantity <= 0:
+				bag_system.items[i] = null
+			return true
+	return false
 
 ## 晕倒：回家、恢复部分体力、损失10%金币
 func die() -> void:

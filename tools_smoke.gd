@@ -1490,6 +1490,49 @@ func _run() -> void:
 			if it.name == "圣剑":
 				found_excalibur = it
 	print("SMOKE: night edge=", found_edge != null, " dmg=", found_edge.damage if found_edge else -1, " excalibur=", found_excalibur != null, " crit=", found_excalibur.crit if found_excalibur else -1)
+	# ---- 箭矢弹药测试 ----
+	var bag_used2: int = 0
+	for it in player.bag_system.items:
+		if it != null:
+			bag_used2 += 1
+	print("SMOKE: bag used2=", bag_used2, " of ", player.bag_system.items.size())
+	for i in 2:
+		player.bag_system.add_item(load("res://Bag/items/materials/wood.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/materials/stone.tres").duplicate())
+	var arrow_recipe: Recipe = load("res://Crafting/recipes/木箭.tres")
+	crafting.panel._on_craft_pressed(arrow_recipe)
+	var arrow_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "木箭":
+			arrow_item = it
+			break
+	print("SMOKE: arrows crafted=", arrow_item != null, " qty=", arrow_item.quantity if arrow_item else -1)
+	player.current_item = load("res://Bag/items/weapon/木弓.tres").duplicate()
+	if arrow_item:
+		var qty_before: int = arrow_item.quantity
+		player.shoot_projectile()
+		await get_tree().process_frame
+		var qty_after: int = 0
+		for it in player.bag_system.items:
+			if it != null and it.name == "木箭":
+				qty_after = it.quantity
+		print("SMOKE: arrow consumed=", qty_before - qty_after)
+	# 无箭时射击不发射
+	for i in player.bag_system.items.size():
+		var it2: Item = player.bag_system.items[i]
+		if it2 != null and it2.name == "木箭":
+			player.bag_system.items[i] = null
+	var proj_before: int = 0
+	for n in get_tree().root.get_children():
+		if n is Projectile:
+			proj_before += 1
+	player.shoot_projectile()
+	await get_tree().process_frame
+	var proj_after: int = 0
+	for n in get_tree().root.get_children():
+		if n is Projectile:
+			proj_after += 1
+	print("SMOKE: no ammo blocks=", proj_after == proj_before)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

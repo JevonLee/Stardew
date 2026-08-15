@@ -19,9 +19,10 @@ func get_save_data() -> Array[PackedScene]:
 	
 func set_save_data(nodes:Array[PackedScene]) -> void:
 	var parent = get_parent()
-	#先清理旧子节点，避免重复加载
+	#先清理旧子节点，避免重复加载（先remove再queue_free，防止同名节点在instantiate时被自动改名）
 	for child in parent.get_children():
 		if child.name != "SaveComponent":
+			parent.remove_child(child)
 			child.queue_free()
 	for child in nodes:
 		var pack_node = child.instantiate()

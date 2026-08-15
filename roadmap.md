@@ -6,7 +6,7 @@
 
 ```powershell
 # 深度冒烟测试（加载主场景 + 存档读档往返）
-& 'D:\GoDot\Godot_v4.6.3-stable_win64.exe' --headless --path 'D:\GoDot\Program\4\Stardew' 'res://tools_smoke.tscn' --quit-after 1800
+& 'D:\GoDot\Godot_v4.6.3-stable_win64.exe' --headless --path 'D:\GoDot\Program\4\Stardew' 'res://tools_smoke.tscn' --quit-after 3400
 ```
 
 ## 里程碑
@@ -132,7 +132,11 @@
 - [x] 新村民：阿比盖尔（冒险少女）/刘易斯（镇长），小镇可对话送礼
 - [x] 新食谱：蛋糕/布丁
 - [x] 雷暴天气：夏天下雨30%升级雷暴，闪电闪烁特效，自动浇水
-- [ ] 待办：更多Boss、海滩地图、更多食谱、温室内作物、闪电音效
+- [x] 第六Boss：石巨人（NPC_245素材，2000血，沉重跳跃近战），石巨人之心（金锭×10+蓝宝石×5+骨头×20）夜晚召唤，掉落金币×60+金锭×12+魔力星/红心
+- [x] 可放置光源：火把改为放置类物品（placeable_scene_path），放置后挂入Crops容器随存档保存，带PointLight2D夜间照明
+- [x] 放置系统修复：Placeable.set_collision_enabled 未ready时容错（预览实例化即调用）；SaveComponent读档先remove_child再queue_free（防止同名节点instantiate自动改名）
+- [x] 村民日程扩展：艾米丽中午（10-16点）走向北门赶集、夜晚回家跳舞
+- [ ] 待办：更多Boss、海滩地图、更多食谱、温室内作物、闪电音效、更多村民跨地图日程
 
 ## 已发现并修复的历史问题
 

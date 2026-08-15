@@ -6,10 +6,11 @@
 [resource]
 script = ExtResource("1_item")
 name = "火把"
-type = 10
-description = "照亮矿洞的好伙伴"
+type = 8
+description = "可放置的光源，照亮夜晚与矿洞"
 quantity = 1
 max_quantity = 999
 countable = true
 texture = ExtResource("2_tex")
 price = 5
+placeable_scene_path = "res://Placeables/torch.tscn"

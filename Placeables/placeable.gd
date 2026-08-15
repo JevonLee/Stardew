@@ -16,10 +16,13 @@ var can_place:bool = true:
 	set(val):
 		can_place = val
 		_update_shader()
+var collision_enabled:bool = true
 
 func _ready() -> void:
 	_update_shader()
 	_populate_loot_table()
+	# 预览刚实例化时 set_collision_enabled 可能先于 ready 调用，这里统一应用
+	collision_shape_2d.set_deferred("disabled", !collision_enabled)
 
 func _update_shader() -> void:
 	if sprite_2d2.material == null:
@@ -37,4 +40,6 @@ func breakdown() -> void:
 	#存档
 
 func set_collision_enabled(enabled:bool) -> void:
-	collision_shape_2d.set_deferred("disabled",!enabled)
+	collision_enabled = enabled
+	if collision_shape_2d != null:
+		collision_shape_2d.set_deferred("disabled",!enabled)

@@ -52,7 +52,15 @@ func _place_item() -> void:
 	
 	preview_ins.set_collision_enabled(true)
 	preview_ins.previewing = false
+	var placed: Placeable = preview_ins
 	preview_ins = null
 	item_to_place = null
 	
-	#添加到存档
+	# 挂到当前关卡的Crops容器下，随存档一起保存
+	var level: Node2D = SceneManager.get_current_level()
+	if level:
+		var crops_container: Node2D = level.find_child("Crops") as Node2D
+		if crops_container:
+			if placed.get_parent():
+				placed.get_parent().remove_child(placed)
+			crops_container.add_child(placed)

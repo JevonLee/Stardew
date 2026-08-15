@@ -884,4 +884,78 @@ func _run() -> void:
 		plantera.hurt.take_damage(1500, player.global_position)
 		await get_tree().create_timer(1.2).timeout
 		print("SMOKE: plantera dead=", not is_instance_valid(plantera), " drops=", drops_node.get_child_count())
+	# ---- 石巨人Boss测试 ----
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/蓝宝石.tres").duplicate())
+	for i in 20:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	var golem_recipe: Recipe = load("res://Crafting/recipes/石巨人之心.tres")
+	crafting.panel._on_craft_pressed(golem_recipe)
+	var golem_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "石巨人之心":
+			golem_item = it
+			break
+	print("SMOKE: crafted golem heart=", golem_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if golem_item:
+		player.current_item = golem_item
+		player.use_summon()
+	await get_tree().process_frame
+	var golem := level.get_node_or_null("BossGolem") as Boss
+	print("SMOKE: golem spawned=", golem != null)
+	if golem:
+		print("SMOKE: golem before take_damage drops=", drops_node.get_child_count())
+		golem.hurt.take_damage(2000, player.global_position)
+		print("SMOKE: golem after take_damage")
+		await get_tree().create_timer(1.2).timeout
+		print("SMOKE: golem after timer")
+		print("SMOKE: golem dead=", not is_instance_valid(golem), " drops=", drops_node.get_child_count())
+	# ---- 火把（可放置光源）测试 ----
+	for i in 3:
+		player.bag_system.add_item(load("res://Bag/items/materials/wood.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/materials/凝胶.tres").duplicate())
+	var torch_recipe: Recipe = load("res://Crafting/recipes/火把.tres")
+	crafting.panel._on_craft_pressed(torch_recipe)
+	var torch_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "火把":
+			torch_item = it
+			break
+	print("SMOKE: torch type=", torch_item.type if torch_item else -1, " path=", torch_item.placeable_scene_path if torch_item else "?")
+	var torch_scene: PackedScene = load("res://Placeables/torch.tscn")
+	var torch_ins: Placeable = torch_scene.instantiate() as Placeable
+	var has_light: bool = torch_ins.get_node_or_null("PointLight2D") != null
+	level.find_child("Crops").add_child(torch_ins)
+	torch_ins.global_position = Vector2(400, 400)
+	SaveManager._save()
+	SaveManager._load()
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var torch_found: bool = false
+	for child in level.find_child("Crops").get_children():
+		if child is Placeable:
+			torch_found = true
+			break
+	print("SMOKE: torch light=", has_light, " saved=", torch_found)
+	# ---- 艾米丽中午/夜晚日程测试 ----
+	var emily4 := level.find_child("Emily") as NPC
+	print("SMOKE: emily=", emily4 != null)
+	if emily4:
+		var emily_x0: float = emily4.global_position.x
+		TimeSystem.set_time(TimeSystem.current_day, 12, 0)
+		await get_tree().create_timer(1.0).timeout
+		var mid_dir: Vector2 = emily4.get("direction")
+		var to_gate := (Vector2(268, 160) - emily4.global_position).normalized()
+		var heading_gate: bool = mid_dir.dot(to_gate) > 0.5
+		print("SMOKE: emily midday heading_gate=", heading_gate, " pos=", emily4.global_position)
+		TimeSystem.set_time(TimeSystem.current_day, 20, 0)
+		await get_tree().create_timer(1.0).timeout
+		var night_dir: Vector2 = emily4.get("direction")
+		var heading_home := (Vector2(emily_x0, emily4.global_position.y) - emily4.global_position).normalized()
+		var going_home: bool = night_dir.dot(heading_home) > 0.3 or night_dir == Vector2.ZERO
+		print("SMOKE: emily night going_home=", going_home, " pos=", emily4.global_position)
 	print("SMOKE_OK")

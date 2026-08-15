@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://torch000000001"]
+
+[ext_resource type="Script" uid="uid://dupkrto24l5lc" path="res://Placeables/placeable.gd" id="1_pl"]
+[ext_resource type="PackedScene" uid="uid://dao3kk2e08sjp" path="res://Placeables/placeable_footprint.tscn" id="2_fp"]
+[ext_resource type="Shader" uid="uid://og8861olisdx" path="res://Shader/placeable.gdshader" id="3_sh"]
+[ext_resource type="PackedScene" uid="uid://8qd0ndqf6qko" path="res://FallObjects/loot_table.tscn" id="4_lt"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/Item_3.png" id="5_tex"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_torch"]
+resource_local_to_scene = true
+shader = ExtResource("3_sh")
+shader_parameter/PREVIEW = false
+shader_parameter/PLACEABLE = true
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_torch"]
+radius = 6.0
+height = 20.0
+
+[node name="Torch" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_pl")
+
+[node name="PlaceableFootprint" parent="." instance=ExtResource("2_fp")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_torch")
+scale = Vector2(2, 2)
+texture = ExtResource("5_tex")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.62, 0.25, 1)
+energy = 1.1
+texture_scale = 2.5
+shadow_enabled = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_torch")
+
+[node name="LootTable" parent="." instance=ExtResource("4_lt")]

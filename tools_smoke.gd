@@ -1159,6 +1159,35 @@ func _run() -> void:
 			break
 	var animal_mask: int = (load("res://Animals/animal.tscn") as PackedScene).instantiate().collision_mask
 	print("SMOKE: fence sprite=", has_sprite, " saved=", fence_found, " animal_mask=", animal_mask)
+	# ---- 蜂房测试 ----
+	for i in 20:
+		player.bag_system.add_item(load("res://Bag/items/materials/wood.tres").duplicate())
+	for i in 2:
+		player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	for i in 4:
+		player.bag_system.add_item(load("res://Bag/items/materials/煤矿.tres").duplicate())
+	var bee_recipe: Recipe = load("res://Crafting/recipes/蜂房.tres")
+	crafting.panel._on_craft_pressed(bee_recipe)
+	var bee_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "蜂房":
+			bee_item = it
+			break
+	print("SMOKE: beehive item=", bee_item != null)
+	var bee_ins: Placeable = (load("res://Placeables/bee_house.tscn") as PackedScene).instantiate() as Placeable
+	level.find_child("Crops").add_child(bee_ins)
+	bee_ins.global_position = Vector2(540, 540)
+	var day_now: int = TimeSystem.current_day
+	var drops_before: int = drops_node.get_child_count()
+	TimeSystem.set_time(day_now + 4, 6, 0)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var honey_dropped := false
+	for d in drops_node.get_children():
+		if d.get("item") != null and d.get("item").name == "蜂蜜":
+			honey_dropped = true
+	print("SMOKE: beehive honey=", honey_dropped, " drops_delta=", drops_node.get_child_count() - drops_before)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

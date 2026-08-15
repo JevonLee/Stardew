@@ -63,3 +63,10 @@ offset_left = 10.0
 offset_top = 132.0
 offset_right = 300.0
 offset_bottom = 152.0
+
+[node name="LevelLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 220.0
+offset_top = 66.0
+offset_right = 300.0
+offset_bottom = 86.0

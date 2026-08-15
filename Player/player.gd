@@ -41,6 +41,31 @@ const SWING_STAMINA_COST:int = 5 ## 挥剑的体力消耗
 const INVINCIBLE_TIME:float = 0.6
 var invincible_time:float = 0.0
 
+## ---------- 等级与经验 ----------
+signal level_changed(level:int)
+
+@export var level:int = 1
+var xp:int = 0
+var xp_to_next:int = 10
+
+## 获得经验，升级时提升生命/体力上限
+func gain_xp(amount:int) -> void:
+	xp += amount
+	var leveled := false
+	while xp >= xp_to_next:
+		xp -= xp_to_next
+		level += 1
+		max_health += 10
+		max_stamina += 10
+		xp_to_next = int(xp_to_next * 1.5)
+		leveled = true
+	if leveled:
+		health = max_health
+		stamina = max_stamina
+		level_changed.emit(level)
+		Global.show_message("升级了！等级 %d，生命/体力上限+10" % level)
+	stats_changed.emit(health, max_health, stamina, max_stamina, mana, max_mana)
+
 var items = null
 var item_index:int = 0: ##current_item对应的下标
 	set(val):

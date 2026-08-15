@@ -8,6 +8,7 @@ extends Control
 @onready var time_label: Label = %TimeLabel
 @onready var season_label: Label = %SeasonLabel
 @onready var weather_label: Label = %WeatherLabel
+@onready var level_label: Label = %LevelLabel
 
 var player: Player
 
@@ -27,6 +28,12 @@ func _find_player() -> void:
 	if player and not player.stats_changed.is_connected(_on_stats_changed):
 		player.stats_changed.connect(_on_stats_changed)
 		_on_stats_changed(player.health, player.max_health, player.stamina, player.max_stamina, player.mana, player.max_mana)
+	if player and not player.level_changed.is_connected(_on_level_changed):
+		player.level_changed.connect(_on_level_changed)
+		_on_level_changed(player.level)
+
+func _on_level_changed(level:int) -> void:
+	level_label.text = "等级: %d" % level
 
 func _on_stats_changed(health:int, max_health:int, stamina:int, max_stamina:int, mana:int, max_mana:int) -> void:
 	health_bar.max_value = max_health

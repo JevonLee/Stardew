@@ -26,6 +26,9 @@ func _save() -> void:
 			"health": player.health,
 			"stamina": player.stamina,
 			"mana": player.mana,
+			"level": player.level,
+			"xp": player.xp,
+			"xp_to_next": player.xp_to_next,
 		}
 	#全局
 	save_data.gold = Global.gold
@@ -57,6 +60,9 @@ func _load() -> void:
 		player.health = int(stats.get("health", player.max_health))
 		player.stamina = int(stats.get("stamina", player.max_stamina))
 		player.mana = int(stats.get("mana", player.max_mana))
+		player.level = int(stats.get("level", 1))
+		player.xp = int(stats.get("xp", 0))
+		player.xp_to_next = int(stats.get("xp_to_next", 10))
 		player.stats_changed.emit(player.health, player.max_health, player.stamina, player.max_stamina, player.mana, player.max_mana)
 	#全局
 	Global.gold = save_data.gold

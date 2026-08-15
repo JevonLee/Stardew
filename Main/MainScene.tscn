@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://UI/status_bar.tscn" id="4_statusbar"]
 [ext_resource type="PackedScene" path="res://UI/rain_overlay.tscn" id="5_rain"]
 [ext_resource type="PackedScene" path="res://Fishing/fishing_system.tscn" id="6_fishing"]
+[ext_resource type="PackedScene" path="res://Crafting/crafting_system.tscn" id="7_crafting"]
 
 [node name="MainScene" type="Node2D"]
 y_sort_enabled = true
@@ -36,6 +37,8 @@ metadata/_edit_group_ = true
 [node name="RainOverlay" parent="MainCanvasLayer" instance=ExtResource("5_rain")]
 
 [node name="FishingSystem" parent="." instance=ExtResource("6_fishing")]
+
+[node name="CraftingSystem" parent="." instance=ExtResource("7_crafting")]
 
 [node name="PopUp" type="Control" parent="MainCanvasLayer"]
 layout_mode = 3

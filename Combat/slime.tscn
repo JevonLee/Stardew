@@ -17,6 +17,7 @@ coin_drop = ExtResource("3_coin")
 coin_count = 2
 item_drop = ExtResource("4_gel")
 item_drop_chance = 0.8
+xp_reward = 5
 sprite_texture = ExtResource("2_tex")
 sprite_vframes = 2
 sprite_scale = Vector2(0.5, 0.5)

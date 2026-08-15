@@ -14,6 +14,7 @@ knockback_resist = 0.15
 aggro_range = 240.0
 coin_drop = ExtResource("3_coin")
 coin_count = 3
+xp_reward = 10
 sprite_texture = ExtResource("2_tex")
 sprite_vframes = 4
 sprite_scale = Vector2(0.4, 0.4)

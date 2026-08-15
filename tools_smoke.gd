@@ -204,4 +204,24 @@ func _run() -> void:
 		if it != null and it.type == Item.ItemType.Consume and it.name in ["沙丁鱼", "鲤鱼", "大嘴鲈鱼"]:
 			caught_fish = true
 	print("SMOKE: caught fish=", caught_fish)
+	# ---- 经验等级与合成测试 ----
+	var xp_before: int = player.xp
+	player.gain_xp(30) # 10 + 15 → 升级两次
+	print("SMOKE: level=", player.level, " xp=", player.xp, " maxhp=", player.max_health, " (xp_before=", xp_before, ")")
+	# 合成：给8个木头 → 合成木剑
+	for i in 8:
+		var wood: Item = load("res://Bag/items/materials/wood.tres").duplicate()
+		player.bag_system.add_item(wood)
+	var crafting := get_node_or_null("/root/MainScene/CraftingSystem") as CraftingSystem
+	var wood_sword_recipe: Recipe = load("res://Crafting/recipes/木剑.tres")
+	crafting.panel._on_craft_pressed(wood_sword_recipe)
+	var has_sword: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "木剑":
+			has_sword = true
+	var wood_left: int = 0
+	for it in player.bag_system.items:
+		if it != null and it.name == "木头":
+			wood_left += it.quantity
+	print("SMOKE: crafted sword=", has_sword, " wood_left=", wood_left)
 	print("SMOKE_OK")

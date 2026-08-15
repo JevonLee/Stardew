@@ -16,6 +16,7 @@ enum AI { SLIME, ZOMBIE, BAT }
 @export var coin_count:int = 1
 @export var item_drop:Item ## 特殊掉落（凝胶等）
 @export var item_drop_chance:float = 0.8
+@export var xp_reward:int = 5 ## 击杀经验
 @export var sprite_texture:Texture2D ## 精灵图（垂直帧动画）
 @export var sprite_vframes:int = 1
 @export var sprite_scale:Vector2 = Vector2.ONE
@@ -141,6 +142,9 @@ func _on_death() -> void:
 	hurt.monitorable = false # 死亡淡出期间不再可被击中
 	contact_area.monitoring = false
 	contact_area.monitorable = false
+	# 击杀经验
+	if player and xp_reward > 0:
+		player.gain_xp(xp_reward)
 	# 掉落
 	for i in coin_count:
 		if coin_drop:

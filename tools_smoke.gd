@@ -1011,6 +1011,46 @@ func _run() -> void:
 		queen.hurt.take_damage(1400, player.global_position)
 		await get_tree().create_timer(1.2).timeout
 		print("SMOKE: queen dead=", not is_instance_valid(queen), " drops=", drops_node.get_child_count())
+	# ---- 双子魔眼Boss测试 ----
+	for i in 6:
+		player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	for i in 4:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 15:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	var twins_recipe: Recipe = load("res://Crafting/recipes/机械魔眼.tres")
+	crafting.panel._on_craft_pressed(twins_recipe)
+	var twins_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "机械魔眼":
+			twins_item = it
+			break
+	print("SMOKE: crafted twins eye=", twins_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if twins_item:
+		player.current_item = twins_item
+		player.use_summon()
+	await get_tree().process_frame
+	var spaz := level.get_node_or_null("BossTwinsSpaz") as Boss
+	var ret := level.get_node_or_null("BossTwinsRet") as Boss
+	print("SMOKE: twins spaz=", spaz != null, " ret=", ret != null)
+	if spaz and ret:
+		# 激光眼发射弹幕
+		ret.shoot_timer = 0.1
+		await get_tree().create_timer(0.4).timeout
+		var bolt_count := 0
+		for n in level.get_children():
+			if n is Projectile and n.name == "EnemyBolt":
+				bolt_count += 1
+		print("SMOKE: twins bolt=", bolt_count > 0)
+		spaz.hurt.take_damage(1200, player.global_position)
+		await get_tree().create_timer(1.2).timeout
+		print("SMOKE: spaz dead=", not is_instance_valid(spaz), " ret alive=", is_instance_valid(ret), " ret enraged=", ret.get("enraged") if is_instance_valid(ret) else false)
+		if is_instance_valid(ret):
+			ret.hurt.take_damage(1000, player.global_position)
+			await get_tree().create_timer(1.2).timeout
+			print("SMOKE: ret dead=", not is_instance_valid(ret), " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

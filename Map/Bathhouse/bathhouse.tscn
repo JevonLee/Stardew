@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bathhouse0001"]
+[gd_scene load_steps=6 format=3 uid="uid://bathhouse0001"]
 
 [ext_resource type="Script" path="res://Map/Bathhouse/bathhouse.gd" id="1_bath"]
 [ext_resource type="PackedScene" uid="uid://dfg8gg0uu4d2a" path="res://Map/change_scene_area.tscn" id="2_change"]
+[ext_resource type="PackedScene" path="res://NPC/bath_merchant.tscn" id="3_bm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pool"]
 size = Vector2(224, 160)
@@ -34,6 +35,9 @@ position = Vector2(80, 400)
 position = Vector2(40, 400)
 
 [node name="ChangeAreas" type="Node2D" parent="."]
+
+[node name="BathMerchant" parent="." instance=ExtResource("3_bm")]
+position = Vector2(96, 96)
 
 [node name="ToTown" parent="ChangeAreas" instance=ExtResource("2_change")]
 position = Vector2(32, 400)

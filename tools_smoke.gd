@@ -1372,6 +1372,30 @@ func _run() -> void:
 	print("SMOKE: bream seas=", bream.seasons if bream else [], " squid seas=", squid.seasons if squid else [])
 	var fishing6 := get_node_or_null("/root/MainScene/FishingSystem") as FishingSystem
 	print("SMOKE: fish table=", fishing6.FISH_TABLE.size(), " ocean=", fishing6.OCEAN_FISH.size())
+	# ---- 新NPC测试（向导/温泉老板） ----
+	SceneManager.change_level("Town", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var town_npc := SceneManager.get_current_level() as Town
+	var guide_npc := town_npc.get_node_or_null("Guide") as NPC
+	print("SMOKE: guide=", guide_npc != null, " name=", guide_npc.npc_display_name if guide_npc else "?")
+	if guide_npc:
+		player = get_tree().get_first_node_in_group("Player")
+		var g_hearts: float = FriendshipSystem.get_hearts("向导")
+		player.current_item = load("res://Bag/items/forage/蘑菇.tres").duplicate()
+		guide_npc._give_gift(player)
+		print("SMOKE: guide hearts=", g_hearts, "->", FriendshipSystem.get_hearts("向导"))
+	SceneManager.change_level("Bathhouse", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var bath_npc := SceneManager.get_current_level() as Bathhouse
+	var merchant_npc := bath_npc.get_node_or_null("BathMerchant") as NPC
+	print("SMOKE: bath merchant=", merchant_npc != null, " name=", merchant_npc.npc_display_name if merchant_npc else "?")
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	player = get_tree().get_first_node_in_group("Player")
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

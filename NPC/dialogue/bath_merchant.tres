@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=5 format=3 uid="uid://bathdlg000001"]
+
+[ext_resource type="Script" uid="uid://c1m7jt0aixupj" path="res://NPC/dialogue/dialogue.gd" id="1_nmk6c"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_17.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i87um"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 40, 56)
+
+[resource]
+script = ExtResource("1_nmk6c")
+npc_name = "温泉老板"
+protaits = SubResource("AtlasTexture_i87um")
+texts = Array[String](["欢迎来到温泉！泡一泡，疲劳全消。", "矿洞挖累了？下水池里泡会儿，体力恢复得飞快。", "本店的温泉是祖传秘方，泡完还能回血！"])

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=5 format=3 uid="uid://guide_dlg00001"]
+
+[ext_resource type="Script" uid="uid://c1m7jt0aixupj" path="res://NPC/dialogue/dialogue.gd" id="1_nmk6c"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_22.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i87um"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 40, 56)
+
+[resource]
+script = ExtResource("1_nmk6c")
+npc_name = "向导"
+protaits = SubResource("AtlasTexture_i87um")
+texts = Array[String](["你好！我是向导，有什么不懂的都可以问我。", "农作：种下种子后记得每天浇水，成熟后收获，别让乌鸦偷走收成。", "矿洞：越深矿石越稀有，每5层还有宝箱，记得用电梯直达深层。", "钓鱼：按住左键收线、松开下坠，让鱼停在绿色区域内。", "合成：按C打开合成面板，工具升级、食物、Boss召唤物都在这里。", "Boss：夜晚使用召唤物即可挑战，击败它们能获得大量金币与经验！", "累了就去温泉泡个澡，体力会快速恢复。"])

@@ -894,6 +894,36 @@ func _run() -> void:
 		await get_tree().process_frame
 		var mine15 := SceneManager.get_current_level() as Mine
 		print("SMOKE: elevator floor=", mine15.floor_index if mine15 else -1)
+		# ---- 深层矿洞测试（40层） ----
+		elevator = SceneManager.get_current_level().get_node_or_null("Elevator") as MineElevator
+		if elevator:
+			elevator._travel_to(40)
+			await get_tree().process_frame
+			await get_tree().process_frame
+			var mine40 := SceneManager.get_current_level() as Mine
+			if mine40:
+				var tint: Color = mine40.get_node("Ground").self_modulate
+				var spawner_cfg: Array = mine40.get_node("EnemySpawner").enemy_scenes
+				var has_giant := false
+				for es in spawner_cfg:
+					if es != null and es.resource_path.contains("giant_bat"):
+						has_giant = true
+				var ore_count: int = mine40.get_node("Ores").get_child_count()
+				print("SMOKE: deep mine floor=", mine40.floor_index, " tint_r=", snappedf(tint.r, 0.01), " giant=", has_giant, " ores=", ore_count)
+			# 宝箱层35（电梯直达）
+			elevator = SceneManager.get_current_level().get_node_or_null("Elevator") as MineElevator
+			if elevator:
+				elevator._travel_to(35)
+				await get_tree().process_frame
+				await get_tree().process_frame
+				var mine35 := SceneManager.get_current_level() as Mine
+				var deep_box: Box = null
+				if mine35:
+					for child in mine35.get_children():
+						if child is Box:
+							deep_box = child
+							break
+				print("SMOKE: deep treasure box=", deep_box != null)
 	SceneManager.change_level("Farm", "SpawnPosition")
 	await get_tree().process_frame
 	await get_tree().process_frame

@@ -1,11 +1,11 @@
 extends Area2D
 class_name MineElevator
-## 矿洞电梯：按F打开楼层选择，直达目标层（5/10/15/20/25/30）
+## 矿洞电梯：按F打开楼层选择，直达目标层（5/10/15/20/25/30/35/40/45/50）
 
 var player_near: bool = false
 var panel: Control
 
-const FLOORS: Array[int] = [5, 10, 15, 20, 25, 30]
+const FLOORS: Array[int] = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -39,8 +39,8 @@ func _build_panel() -> void:
 	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
 	panel.add_child(dim)
 	var box := Panel.new()
-	box.position = Vector2(440, 200)
-	box.size = Vector2(400, 320)
+	box.position = Vector2(440, 140)
+	box.size = Vector2(400, 480)
 	panel.add_child(box)
 	var title := Label.new()
 	title.text = "矿洞电梯（选择层数）"

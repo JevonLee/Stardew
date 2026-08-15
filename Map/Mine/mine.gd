@@ -21,7 +21,9 @@ const GEMS = [
 	preload("res://Bag/items/materials/紫水晶.tres"),
 	preload("res://Bag/items/materials/绿宝石.tres"),
 	preload("res://Bag/items/materials/蓝宝石.tres"),
+	preload("res://Bag/items/materials/黄玉.tres"),
 ]
+const GIANT_BAT = preload("res://Combat/giant_bat.tscn")
 
 @onready var ground: TileMapLayer = $Ground
 @onready var ores_container: Node2D = $Ores
@@ -39,8 +41,8 @@ func _ready() -> void:
 	_spawn_ores()
 	_setup_enemies()
 	_setup_ladders()
-	# 深度色调变暗
-	var depth_tint := 1.0 - 0.05 * (floor_index - 1)
+	# 深度色调变暗（深到50层也不会全黑）
+	var depth_tint := clampf(1.0 - 0.035 * (floor_index - 1), 0.3, 1.0)
 	ground.self_modulate = Color(depth_tint, depth_tint, depth_tint)
 
 ## 当前层矿石池（越深越稀有）
@@ -87,25 +89,30 @@ func _spawn_ores() -> void:
 		var cell := Vector2i(randi_range(3, map_size.x - 4), randi_range(3, map_size.y - 4))
 		var node := ORE_NODE.instantiate() as OreNode
 		node.ore_item = pool.pick_random()
-		# 深层矿洞附带宝石
+		# 深层矿洞附带宝石（6层起概率翻倍）
 		if floor_index >= 3:
 			node.gem_item = GEMS.pick_random()
-			node.gem_chance = 0.15
+			node.gem_chance = 0.3 if floor_index >= 6 else 0.15
 		node.position = ground.map_to_local(cell)
 		ores_container.add_child(node)
 
-## 宝箱层：中央一个宝箱（金锭/宝石/金币）
+## 宝箱层：中央一个宝箱（金锭/宝石/金币），深层更丰厚
 func _spawn_treasure_floor() -> void:
 	var box_scene: PackedScene = load("res://Bag/scene/box.tscn")
 	var box := box_scene.instantiate() as Box
 	var chest_inv := InventorySystem.new()
 	chest_inv.items_size = 9
 	chest_inv.items.resize(9)
+	var deep: bool = floor_index >= 35
 	var loot: Array = []
-	loot.append(load("res://Bag/items/materials/金锭.tres").duplicate())
-	loot.append(load("res://Bag/items/materials/金锭.tres").duplicate())
+	var bar_count: int = 2 if not deep else 4
+	var coin_count: int = 3 if not deep else 6
+	for i in bar_count:
+		loot.append(load("res://Bag/items/materials/金锭.tres").duplicate())
 	loot.append(GEMS.pick_random().duplicate())
-	for i in 3:
+	if deep:
+		loot.append(GEMS.pick_random().duplicate())
+	for i in coin_count:
 		loot.append(load("res://Bag/items/materials/金币.tres").duplicate())
 	for i in mini(loot.size(), chest_inv.items_size):
 		chest_inv.items[i] = loot[i]
@@ -122,7 +129,10 @@ func _setup_enemies() -> void:
 		2:
 			spawner.enemy_scenes = [SKELETON, SLIME, BAT]
 		_:
-			spawner.enemy_scenes = [SKELETON, DEMON_EYE, BAT, BAT]
+			if floor_index >= 12:
+				spawner.enemy_scenes = [SKELETON, DEMON_EYE, GIANT_BAT, GIANT_BAT]
+			else:
+				spawner.enemy_scenes = [SKELETON, DEMON_EYE, BAT, BAT]
 
 ## 楼梯：底部深入，顶部返回（第一层没有返回梯）
 func _setup_ladders() -> void:

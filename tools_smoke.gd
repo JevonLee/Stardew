@@ -1229,6 +1229,54 @@ func _run() -> void:
 	var protected_near: bool = cc3._is_protected(crop_near)
 	var protected_far: bool = cc3._is_protected(crop_far)
 	print("SMOKE: scarecrow protected_near=", protected_near, " protected_far=", protected_far)
+	# ---- 铁骷髅王Boss测试 ----
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	for i in 6:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 25:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/蛛网.tres").duplicate())
+	var prime_recipe: Recipe = load("res://Crafting/recipes/机械骷髅头.tres")
+	crafting.panel._on_craft_pressed(prime_recipe)
+	var prime_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "机械骷髅头":
+			prime_item = it
+			break
+	print("SMOKE: crafted prime skull=", prime_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if prime_item:
+		player.current_item = prime_item
+		player.use_summon()
+	await get_tree().process_frame
+	var prime := level.get_node_or_null("BossPrime") as Boss
+	print("SMOKE: prime=", prime != null)
+	if prime:
+		var arm_count := 0
+		for child in level.get_children():
+			if child is PrimeArm:
+				arm_count += 1
+		print("SMOKE: prime arms=", arm_count)
+		# 手臂发射激光弹幕
+		for child in level.get_children():
+			if child is PrimeArm:
+				child.shoot_timer = 0.1
+		await get_tree().create_timer(0.4).timeout
+		var prime_bolt := 0
+		for n in level.get_children():
+			if n is Projectile and n.name == "EnemyBolt":
+				prime_bolt += 1
+		print("SMOKE: prime bolt=", prime_bolt > 0)
+		prime.hurt.take_damage(1900, player.global_position)
+		await get_tree().create_timer(1.2).timeout
+		var arms_gone := true
+		for child in level.get_children():
+			if child is PrimeArm:
+				arms_gone = false
+		print("SMOKE: prime dead=", not is_instance_valid(prime), " arms_gone=", arms_gone, " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

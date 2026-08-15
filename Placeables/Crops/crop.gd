@@ -10,6 +10,7 @@ class_name Crop
 @export var cell:Vector2i = Vector2i.ZERO ## 所在格子（存档）
 @export var planted_day:int = -1 ## 种植时的天数（存档）
 @export var growth_stage:int = 0 ## 当前生长阶段（存档）
+@export var in_greenhouse:bool = false ## 温室种植（无视季节）
 
 var water_soil:TileMapLayer
 var farm:Node2D
@@ -40,9 +41,9 @@ func update_sprite() -> void:
 ## 每天清晨结算：季节约束 → 浇水/雨水 → 生长
 func _on_day_change(day:int) -> void:
 	if crop_data == null: return
-	# 季节约束：不在允许季节 → 枯萎
+	# 季节约束：不在允许季节 → 枯萎（温室豁免）
 	var season:int = TimeSystem.get_season()
-	if not crop_data.allowed_seasons.has(season):
+	if not in_greenhouse and not crop_data.allowed_seasons.has(season):
 		if not withering:
 			withering = true
 			modulate = Color(0.45, 0.4, 0.25)

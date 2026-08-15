@@ -101,6 +101,10 @@ func add_crop() -> void:
 			crop_ins.crop_data = player.current_item.crop_data
 			crop_ins.cell = cell_position
 			crop_ins.planted_day = TimeSystem.current_day
+			# 温室区域检测
+			var farm := get_parent() as Farm
+			if farm:
+				crop_ins.in_greenhouse = farm.greenhouse_rect.has_point(cell_position)
 			crop_ins.global_position = local_cell_position
 			get_parent().find_child("Crops").add_child(crop_ins)
 			player.bag_system.remove_num_item(player.item_index,1)

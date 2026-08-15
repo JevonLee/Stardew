@@ -484,4 +484,48 @@ func _run() -> void:
 		await get_tree().create_timer(1.2).timeout
 		print("SMOKE: king dead=", not is_instance_valid(king), " drops=", drops_node.get_child_count())
 	print("SMOKE: boss slayer ach=", AchievementSystem.is_unlocked("boss_slayer"))
+	# ---- 温室测试 ----
+	var greenhouse_crop := crop_scene.instantiate() as Crop
+	greenhouse_crop.crop_data = load("res://Bag/items/seeds/南瓜种子.tres").crop_data # 秋季作物
+	greenhouse_crop.in_greenhouse = true
+	greenhouse_crop.cell = Vector2i(145, 17)
+	greenhouse_crop.global_position = (level.get_node("Ground") as TileMapLayer).map_to_local(greenhouse_crop.cell)
+	level.find_child("Crops").add_child(greenhouse_crop)
+	TimeSystem.set_time(TimeSystem.current_day + 1, 6, 0) # 春季推进一天
+	await get_tree().process_frame
+	print("SMOKE: greenhouse crop withering=", greenhouse_crop.withering)
+	# ---- 森林地图测试 ----
+	SceneManager.change_level("Forest", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var forest := SceneManager.get_current_level() as Forest
+	if forest:
+		print("SMOKE: forest ground=", (forest.get_node("Ground") as TileMapLayer).get_used_cells().size(), " water=", (forest.get_node("Water") as TileMapLayer).get_used_cells().size(), " trees=", (forest.get_node("Trees") as Node2D).get_child_count(), " forage=", (forest.get_node("Forage") as Node2D).get_child_count())
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	player = get_tree().get_first_node_in_group("Player")
+	# ---- 新食谱与法杖测试 ----
+	player.bag_system.add_item(load("res://Bag/items/animal/牛奶.tres").duplicate())
+	var cheese_recipe: Recipe = load("res://Crafting/recipes/奶酪.tres")
+	crafting.panel._on_craft_pressed(cheese_recipe)
+	var has_cheese: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "奶酪":
+			has_cheese = true
+	print("SMOKE: crafted cheese=", has_cheese)
+	for i in 8:
+		player.bag_system.add_item(load("res://Bag/items/materials/紫水晶.tres").duplicate())
+		player.bag_system.add_item(load("res://Bag/items/materials/wood.tres").duplicate())
+	var staff_recipe: Recipe = load("res://Crafting/recipes/紫水晶法杖.tres")
+	crafting.panel._on_craft_pressed(staff_recipe)
+	var has_staff: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "紫水晶法杖":
+			has_staff = true
+	print("SMOKE: crafted staff=", has_staff)
+	# ---- 宠物猫测试 ----
+	var pet := get_node_or_null("/root/MainScene/Pet") as Pet
+	print("SMOKE: pet=", pet != null, " follows=", pet != null and pet.get_tree() != null)
 	print("SMOKE_OK")

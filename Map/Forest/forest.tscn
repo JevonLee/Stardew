@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://Map/Forest/forest.gd" id="1_forest"]
+[ext_resource type="TileSet" uid="uid://bdxbflnhc4ell" path="res://Map/tile_set_outdoor.tres" id="2_ts"]
+[ext_resource type="PackedScene" path="res://Map/change_scene_area.tscn" id="3_change"]
+[ext_resource type="PackedScene" path="res://Combat/enemy_spawner.tscn" id="4_spawner"]
+[ext_resource type="PackedScene" path="res://Combat/slime.tscn" id="5_slime"]
+[ext_resource type="PackedScene" path="res://Combat/bat.tscn" id="6_bat"]
+[ext_resource type="PackedScene" path="res://Combat/demon_eye.tscn" id="7_deye"]
+
+[node name="Forest" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_forest")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_ts")
+
+[node name="Water" type="TileMapLayer" parent="." groups=["Water"]]
+tile_set = ExtResource("2_ts")
+
+[node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Forage" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPos" type="Node2D" parent="."]
+
+[node name="Entrance" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(96, 96)
+
+[node name="ChangeAreas" type="Node2D" parent="."]
+
+[node name="ToFarm" parent="ChangeAreas" instance=ExtResource("3_change")]
+position = Vector2(96, 64)
+target_scene = "Farm"
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_spawner")]
+night_only = false
+spawn_interval = 7.0
+max_enemies = 5
+enemy_scenes = Array[PackedScene]([ExtResource("5_slime"), ExtResource("5_slime"), ExtResource("6_bat"), ExtResource("7_deye")])

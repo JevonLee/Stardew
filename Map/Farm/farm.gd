@@ -11,6 +11,7 @@ const FORAGE_ITEMS = [ ## Array[Item]
 const WATER_SOURCE_ID: int = 1
 const WATER_TILES: Array[Vector2i] = [Vector2i(8,13), Vector2i(9,13), Vector2i(10,13), Vector2i(11,13)]
 const POND_RECT: Rect2i = Rect2i(8, 38, 8, 6) ## 池塘区域（格）
+const GREENHOUSE_RECT: Rect2i = Rect2i(143, 15, 10, 8) ## 温室种植区域（格，无视季节）
 
 const FESTIVAL_GIFTS := {
 	"蛋节": "res://Bag/items/food/煎蛋.tres",

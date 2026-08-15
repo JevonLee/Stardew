@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://Fishing/fishing_system.tscn" id="6_fishing"]
 [ext_resource type="PackedScene" path="res://Crafting/crafting_system.tscn" id="7_crafting"]
 [ext_resource type="PackedScene" path="res://UI/collection_system.tscn" id="8_collection"]
+[ext_resource type="PackedScene" path="res://Animals/cat.tscn" id="9_cat"]
 
 [node name="MainScene" type="Node2D"]
 y_sort_enabled = true
@@ -42,6 +43,9 @@ metadata/_edit_group_ = true
 [node name="CraftingSystem" parent="." instance=ExtResource("7_crafting")]
 
 [node name="CollectionSystem" parent="." instance=ExtResource("8_collection")]
+
+[node name="Pet" parent="." instance=ExtResource("9_cat")]
+position = Vector2(2460, 330)
 
 [node name="PopUp" type="Control" parent="MainCanvasLayer"]
 layout_mode = 3

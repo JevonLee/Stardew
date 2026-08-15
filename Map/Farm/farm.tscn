@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" path="res://Animals/duck.tscn" id="20_duck"]
 [ext_resource type="Texture2D" path="res://Art/StardewValley/buildings/Coop.png" id="21_coop"]
 [ext_resource type="Texture2D" path="res://Art/StardewValley/buildings/Barn.png" id="22_barn"]
+[ext_resource type="Texture2D" path="res://Art/StardewValley/buildings/Greenhouse.png" id="23_green"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_140im"]
 size = Vector2(21, 12)
@@ -129,6 +130,13 @@ target_scene = "Mine"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeAreas/ToMine"]
 shape = SubResource("RectangleShape2D_140im")
 
+[node name="ToForest" parent="ChangeAreas" instance=ExtResource("6_g0fpc")]
+position = Vector2(-54, 1248)
+target_scene = "Forest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeAreas/ToForest"]
+shape = SubResource("RectangleShape2D_140im")
+
 [node name="ToTown" parent="ChangeAreas" instance=ExtResource("6_g0fpc")]
 position = Vector2(268, -21)
 target_scene = "Town"
@@ -181,6 +189,10 @@ texture = ExtResource("21_coop")
 [node name="Barn" type="Sprite2D" parent="Animals"]
 position = Vector2(2500, 300)
 texture = ExtResource("22_barn")
+
+[node name="Greenhouse" type="Sprite2D" parent="Animals"]
+position = Vector2(2330, 250)
+texture = ExtResource("23_green")
 
 [node name="Chicken" parent="Animals" instance=ExtResource("15_chicken")]
 position = Vector2(2150, 420)

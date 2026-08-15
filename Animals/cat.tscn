@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://Animals/pet.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://Art/StardewValley/animals/cat.png" id="2_tex"]
+
+[node name="Cat" instance=ExtResource("1_base")]
+sprite_texture = ExtResource("2_tex")

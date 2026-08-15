@@ -745,4 +745,26 @@ func _run() -> void:
 		wall.hurt.take_damage(1200, player.global_position)
 		await get_tree().create_timer(1.2).timeout
 		print("SMOKE: wall dead=", not is_instance_valid(wall), " drops=", drops_node.get_child_count())
+	# ---- 沙漠地图测试 ----
+	SceneManager.change_level("Desert", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var desert := SceneManager.get_current_level() as Desert
+	if desert:
+		print("SMOKE: desert ground=", (desert.get_node("Ground") as TileMapLayer).get_used_cells().size(), " oasis=", (desert.get_node("Oasis") as TileMapLayer).get_used_cells().size(), " decor=", (desert.get_node("Decor") as TileMapLayer).get_used_cells().size())
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	# ---- 季节色调测试 ----
+	var time_color := get_node_or_null("/root/MainScene/TimeColor") as TimeColor
+	TimeSystem.set_time(70, 6, 0) # 夏天（第70天）
+	await get_tree().process_frame
+	print("SMOKE: season tint=", time_color.season_tint)
+	# ---- 宠物互动测试 ----
+	var pet2 := get_node_or_null("/root/MainScene/Pet") as Pet
+	if pet2:
+		pet2.pet()
+		pet2.pet()
+		print("SMOKE: pet petted=", pet2.petted)
 	print("SMOKE_OK")

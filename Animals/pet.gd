@@ -11,12 +11,27 @@ class_name Pet
 var player: Player
 var idle_timer: float = 2.0
 var sitting: bool = false
+var petted: int = 0 ## 被撸次数
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	SceneManager.level_changed.connect(_find_player)
 	if sprite_texture:
 		sprite.texture = sprite_texture
+
+## 右键撸宠物
+func pet() -> void:
+	petted += 1
+	Global.show_message("撸%s！心情+1（已撸 %d 次）" % [name, petted])
+	# 开心反应：原地转圈
+	var tween := create_tween()
+	tween.tween_property(sprite, "scale", Vector2(1.15, 1.15), 0.15)
+	tween.tween_property(sprite, "scale", Vector2.ONE, 0.15)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("mouse_right"):
+		if global_position.distance_to(get_global_mouse_position()) < 50.0:
+			pet()
 
 func _find_player() -> void:
 	player = get_tree().get_first_node_in_group("Player")

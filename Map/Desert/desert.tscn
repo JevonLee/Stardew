@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Map/Desert/desert.gd" id="1_desert"]
+[ext_resource type="PackedScene" path="res://Map/change_scene_area.tscn" id="2_change"]
+[ext_resource type="PackedScene" path="res://Combat/enemy_spawner.tscn" id="3_spawner"]
+[ext_resource type="PackedScene" path="res://Combat/skeleton.tscn" id="4_skel"]
+[ext_resource type="PackedScene" path="res://Combat/demon_eye.tscn" id="5_deye"]
+[ext_resource type="PackedScene" path="res://Combat/spider.tscn" id="6_spider"]
+
+[node name="Desert" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_desert")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+
+[node name="Oasis" type="TileMapLayer" parent="." groups=["Water"]]
+
+[node name="Decor" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPos" type="Node2D" parent="."]
+
+[node name="Entrance" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(96, 96)
+
+[node name="ChangeAreas" type="Node2D" parent="."]
+
+[node name="ToFarm" parent="ChangeAreas" instance=ExtResource("2_change")]
+position = Vector2(96, 64)
+target_scene = "Farm"
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_spawner")]
+night_only = false
+spawn_interval = 6.0
+max_enemies = 6
+enemy_scenes = Array[PackedScene]([ExtResource("4_skel"), ExtResource("4_skel"), ExtResource("5_deye"), ExtResource("6_spider")])

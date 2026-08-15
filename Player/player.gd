@@ -289,6 +289,7 @@ func handle_selected_item(item:Item) -> void:
 		coll.shape.extents = Vector2(8,8)
 	#设置伤害（工具保持至少1点）
 	hit_component.damage = maxi(item.damage, 1)
+	hit_component.crit = item.crit
 	#水壶浇水半径
 	if item.type == Item.ItemType.Water:
 		water_radius = maxi(item.water_radius, 1)

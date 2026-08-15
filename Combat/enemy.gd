@@ -41,6 +41,7 @@ func _ready() -> void:
 	hurt.max_health = max_health
 	hurt.damage_taken.connect(_on_damage_taken)
 	hurt.body_droped.connect(_on_death)
+	hurt.body_droped.connect(_on_combat_skill)
 	contact_area.body_entered.connect(_on_contact)
 	anim_time = randf() * 10.0
 	hop_timer = randf_range(0.3, 1.0)
@@ -125,6 +126,10 @@ func _on_damage_taken(damage:int, source_position:Vector2) -> void:
 	# 闪白
 	hit_flash = 0.12
 	sprite.modulate = Color(3.0, 3.0, 3.0)
+
+## 战斗技能经验（普通敌人与Boss统一在死亡时获得）
+func _on_combat_skill() -> void:
+	Global.add_skill_xp("combat", 1)
 
 func _on_contact(body:Node2D) -> void:
 	if dead: return

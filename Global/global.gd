@@ -22,10 +22,10 @@ var gold:int = 500: ## 玩家金币
 
 var mine_floor:int = 1 ## 进入矿洞的层数（由楼梯设置，矿洞读取后重置）
 
-## 技能系统：钓鱼/采矿/农业/采集技能等级（10级上限，每级效果增强）
-var skills:Dictionary = {"fishing": 0, "mining": 0, "farming": 0, "foraging": 0}
-var skill_xp:Dictionary = {"fishing": 0, "mining": 0, "farming": 0, "foraging": 0}
-const SKILL_NAMES := {"fishing": "钓鱼", "mining": "采矿", "farming": "农业", "foraging": "采集"}
+## 技能系统：钓鱼/采矿/农业/采集/战斗技能等级（10级上限，每级效果增强）
+var skills:Dictionary = {"fishing": 0, "mining": 0, "farming": 0, "foraging": 0, "combat": 0}
+var skill_xp:Dictionary = {"fishing": 0, "mining": 0, "farming": 0, "foraging": 0, "combat": 0}
+const SKILL_NAMES := {"fishing": "钓鱼", "mining": "采矿", "farming": "农业", "foraging": "采集", "combat": "战斗"}
 
 ## 获得技能经验（每10点升1级，上限10级）
 func add_skill_xp(skill: String, amount: int) -> void:
@@ -50,6 +50,10 @@ func farming_bonus_chance() -> float:
 ## 采集技能：每级5%概率双倍采集（10级共50%）
 func foraging_double_chance() -> float:
 	return 0.05 * skills.get("foraging", 0)
+
+## 战斗技能：每级2%暴击率加成（10级共20%）
+func combat_crit_bonus() -> float:
+	return 0.02 * skills.get("combat", 0)
 
 ## 在 PopUp 上显示一条短暂提示文字
 func show_message(text:String) -> void:

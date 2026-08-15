@@ -23,9 +23,13 @@ func on_area_entered(area:Area2D) ->void:
 	var hit = area as HitComponent
 	if hit == null: return # 非工具命中区域（如箭矢检测区）忽略
 	if hit.current_item_type == tool:
-		current_health += hit.damage
+		var dmg: int = hit.damage
+		# 暴击：武器暴击率 + 战斗技能加成（伤害翻倍）
+		if randf() < hit.crit + Global.combat_crit_bonus():
+			dmg *= 2
+		current_health += dmg
 		hit_entered.emit()
-		damage_taken.emit(hit.damage, hit.global_position)
+		damage_taken.emit(dmg, hit.global_position)
 		if current_health >= max_health:
 			body_droped.emit()
 			root_droped.emit()

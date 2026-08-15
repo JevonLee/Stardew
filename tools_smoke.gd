@@ -2145,6 +2145,29 @@ func _run() -> void:
 	var farm_xp_before: int = Global.skill_xp["farming"]
 	harvest_crop._on_body_droped()
 	print("SMOKE: farm xp gain=", Global.skill_xp["farming"] - farm_xp_before)
+	# ---- 暴击/战斗技能测试 ----
+	Global.add_skill_xp("combat", 10)
+	print("SMOKE: combat skill=", Global.skills["combat"], " crit bonus=", Global.combat_crit_bonus())
+	# 击杀史莱姆获得战斗技能经验
+	var crit_slime: Enemy = (load("res://Combat/slime.tscn") as PackedScene).instantiate() as Enemy
+	level.add_child(crit_slime)
+	crit_slime.global_position = player.global_position + Vector2(80, 0)
+	var combat_xp_before: int = Global.skill_xp["combat"]
+	crit_slime.hurt.take_damage(50, player.global_position)
+	await get_tree().create_timer(0.6).timeout
+	print("SMOKE: combat xp gain=", Global.skill_xp["combat"] - combat_xp_before)
+	# 暴击必中测试：hit_component.crit=1.0 → 伤害翻倍
+	var crit_target: Enemy = (load("res://Combat/slime.tscn") as PackedScene).instantiate() as Enemy
+	level.add_child(crit_target)
+	crit_target.global_position = player.global_position + Vector2(90, 0)
+	player.hit_component.crit = 1.0
+	player.hit_component.damage = 5
+	player.hit_component.current_item_type = Item.ItemType.Weapon
+	var target_hp: int = crit_target.hurt.current_health
+	crit_target.hurt.on_area_entered(player.hit_component)
+	print("SMOKE: crit damage=", crit_target.hurt.current_health - target_hp)
+	player.hit_component.crit = 0.0
+	crit_target.queue_free()
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

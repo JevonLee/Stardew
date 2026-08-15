@@ -414,4 +414,26 @@ func _run() -> void:
 	# ---- 新作物数据检查 ----
 	var tomato_seed: Item = load("res://Bag/items/seeds/番茄种子.tres")
 	print("SMOKE: tomato seed crop_data=", tomato_seed.crop_data != null, " seasons=", tomato_seed.crop_data.allowed_seasons if tomato_seed.crop_data else "?")
+	# ---- 宝石掉落测试 ----
+	var ore3 := ore_scene.instantiate() as OreNode
+	ore3.ore_item = load("res://Bag/items/materials/金矿石.tres")
+	ore3.gem_item = load("res://Bag/items/materials/紫水晶.tres")
+	ore3.gem_chance = 1.0
+	ore3.global_position = player.global_position + Vector2(100, 0)
+	level.add_child(ore3)
+	ore3.hurt.take_damage(3, player.global_position)
+	await get_tree().create_timer(0.5).timeout
+	var gem_dropped: bool = false
+	for child in drops_node.get_children():
+		if child is FallObjectComponent and child.item != null and child.item.name == "紫水晶":
+			gem_dropped = true
+	print("SMOKE: gem drop=", gem_dropped)
+	# ---- 村民日程测试 ----
+	var emily2 := level.get_node_or_null("NPC/Emily") as NPC
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	var emily_anim: String = ""
+	if emily2 and emily2.get_node("AnimatedSprite2D"):
+		emily_anim = (emily2.get_node("AnimatedSprite2D") as AnimatedSprite2D).animation
+	print("SMOKE: emily night anim=", emily_anim)
 	print("SMOKE_OK")

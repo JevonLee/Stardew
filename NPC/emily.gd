@@ -12,6 +12,16 @@ func _ready() -> void:
 	is_dialogue = false
 
 func _physics_process(delta: float) -> void:
+	# 日程：夜间在农场跳舞
+	var is_night: bool = TimeSystem.current_hour >= 19 or TimeSystem.current_hour < 6
+	if is_night and !is_dialogue:
+		direction = Vector2.ZERO
+		animated_sprite_2d.play("dance1")
+		velocity = Vector2.ZERO
+		var pop_up = get_node(Global.root_scene["pop_up"])
+		if !pop_up.find_child("DialogueUi"):
+			is_dialogue = false
+		return
 	if !is_dialogue:
 		if global_position.distance_to(initial_pos) < 2.0:
 			direction = Vector2.RIGHT

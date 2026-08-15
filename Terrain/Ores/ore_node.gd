@@ -11,6 +11,8 @@ const STONE = preload("res://Bag/items/materials/stone.tres")
 @export var ore_item: Item ## 掉落的矿石
 @export var stone_chance: float = 0.5
 @export var coal_chance: float = 0.15
+@export var gem_item: Item ## 稀有宝石掉落（深层矿洞）
+@export var gem_chance: float = 0.0
 
 func _ready() -> void:
 	hurt.tool = Item.ItemType.Draft
@@ -32,6 +34,8 @@ func _on_broken() -> void:
 		_drop(STONE)
 	if randf() < coal_chance:
 		_drop(COAL)
+	if gem_item and randf() < gem_chance:
+		_drop(gem_item)
 	# 碎裂动画：缩小淡出
 	var tween := create_tween()
 	tween.tween_property(self, "scale", Vector2(0.1, 0.1), 0.25)

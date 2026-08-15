@@ -16,6 +16,11 @@ const BAT = preload("res://Combat/bat.tscn")
 const SKELETON = preload("res://Combat/skeleton.tscn")
 const DEMON_EYE = preload("res://Combat/demon_eye.tscn")
 const LADDER = preload("res://Map/Mine/ladder.tscn")
+const GEMS = [
+	preload("res://Bag/items/materials/紫水晶.tres"),
+	preload("res://Bag/items/materials/绿宝石.tres"),
+	preload("res://Bag/items/materials/蓝宝石.tres"),
+]
 
 @onready var ground: TileMapLayer = $Ground
 @onready var ores_container: Node2D = $Ores
@@ -77,6 +82,10 @@ func _spawn_ores() -> void:
 		var cell := Vector2i(randi_range(3, map_size.x - 4), randi_range(3, map_size.y - 4))
 		var node := ORE_NODE.instantiate() as OreNode
 		node.ore_item = pool.pick_random()
+		# 深层矿洞附带宝石
+		if floor_index >= 3:
+			node.gem_item = GEMS.pick_random()
+			node.gem_chance = 0.15
 		node.position = ground.map_to_local(cell)
 		ores_container.add_child(node)
 

@@ -77,3 +77,22 @@ offset_left = 310.0
 offset_top = 66.0
 offset_right = 900.0
 offset_bottom = 86.0
+
+[node name="BossName" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 540.0
+offset_top = 120.0
+offset_right = 740.0
+offset_bottom = 140.0
+horizontal_alignment = 1
+
+[node name="BossBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 440.0
+offset_top = 142.0
+offset_right = 840.0
+offset_bottom = 158.0
+show_percentage = false
+self_modulate = Color(1, 0.25, 0.25, 1)

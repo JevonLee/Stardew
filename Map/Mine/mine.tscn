@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://Combat/enemy_spawner.tscn" id="4_spawner"]
 [ext_resource type="PackedScene" path="res://Combat/bat.tscn" id="5_bat"]
 [ext_resource type="PackedScene" path="res://Combat/slime.tscn" id="6_slime"]
+[ext_resource type="PackedScene" path="res://Combat/skeleton.tscn" id="7_skel"]
 
 [node name="Mine" type="Node2D"]
 y_sort_enabled = true
@@ -32,4 +33,4 @@ target_scene = "Farm"
 night_only = false
 spawn_interval = 5.0
 max_enemies = 6
-enemy_scenes = Array[PackedScene]([ExtResource("5_bat"), ExtResource("5_bat"), ExtResource("6_slime")])
+enemy_scenes = Array[PackedScene]([ExtResource("5_bat"), ExtResource("5_bat"), ExtResource("6_slime"), ExtResource("7_skel")])

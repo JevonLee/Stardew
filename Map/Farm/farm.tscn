@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" path="res://Combat/enemy_spawner.tscn" id="14_spawner"]
 [ext_resource type="PackedScene" path="res://Animals/chicken.tscn" id="15_chicken"]
 [ext_resource type="PackedScene" path="res://Animals/cow.tscn" id="16_cow"]
+[ext_resource type="PackedScene" path="res://Combat/skeleton.tscn" id="17_skel"]
+[ext_resource type="PackedScene" path="res://Combat/demon_eye.tscn" id="18_deye"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_140im"]
 size = Vector2(21, 12)
@@ -163,6 +165,7 @@ position = Vector2(2269, 253)
 position = Vector2(1788, 326)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("14_spawner")]
+enemy_scenes = Array[PackedScene]([ExtResource("17_skel"), ExtResource("18_deye")])
 
 [node name="Animals" type="Node2D" parent="."]
 y_sort_enabled = true

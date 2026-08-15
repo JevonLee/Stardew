@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://Combat/enemy.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_7.png" id="2_tex"]
+[ext_resource type="Resource" uid="uid://tongbi00000001" path="res://Bag/items/materials/铜币.tres" id="3_coin"]
+
+[node name="DemonEye" instance=ExtResource("1_base")]
+enemy_name = "恶魔之眼"
+ai = 2
+max_health = 25
+contact_damage = 8
+speed = 80.0
+knockback_resist = 0.7
+aggro_range = 320.0
+coin_drop = ExtResource("3_coin")
+coin_count = 1
+xp_reward = 8
+sprite_texture = ExtResource("2_tex")
+sprite_vframes = 3
+sprite_scale = Vector2(0.7, 0.7)

@@ -10,6 +10,22 @@ extends Control
 @onready var weather_label: Label = %WeatherLabel
 @onready var level_label: Label = %LevelLabel
 @onready var quest_label: Label = %QuestLabel
+@onready var boss_bar: ProgressBar = %BossBar
+@onready var boss_name: Label = %BossName
+
+func _process(_delta: float) -> void:
+	# Boss血条
+	var bosses := get_tree().get_nodes_in_group("Boss")
+	if bosses.is_empty():
+		boss_bar.visible = false
+		boss_name.visible = false
+		return
+	var b := bosses[0] as Boss
+	boss_bar.visible = true
+	boss_name.visible = true
+	boss_bar.max_value = b.hurt.max_health
+	boss_bar.value = maxf(b.hurt.max_health - b.hurt.current_health, 0)
+	boss_name.text = "BOSS：%s" % b.enemy_name
 
 var player: Player
 

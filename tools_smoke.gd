@@ -330,4 +330,25 @@ func _run() -> void:
 		if it != null and it.name == "煎蛋":
 			has_festival_gift = true
 	print("SMOKE: festival day=", TimeSystem.get_day_of_season(), " gift=", has_festival_gift, " forage=", forage_container.get_child_count())
+	# ---- 新敌人测试 ----
+	var skel_scene: PackedScene = load("res://Combat/skeleton.tscn")
+	var skel := skel_scene.instantiate() as Enemy
+	skel.global_position = player.global_position + Vector2(60, 0)
+	skel.aggro_range = 0.0
+	level.add_child(skel)
+	await get_tree().process_frame
+	print("SMOKE: skeleton=", skel.enemy_name, " vframes=", skel.sprite.vframes)
+	skel.hurt.take_damage(35, player.global_position)
+	await get_tree().process_frame
+	print("SMOKE: skeleton dead=", skel.dead)
+	var deye_scene: PackedScene = load("res://Combat/demon_eye.tscn")
+	var deye := deye_scene.instantiate() as Enemy
+	deye.global_position = player.global_position + Vector2(-60, 0)
+	deye.aggro_range = 0.0
+	level.add_child(deye)
+	await get_tree().process_frame
+	print("SMOKE: demon eye=", deye.enemy_name)
+	# Boss血条存在性
+	var boss_bar := get_node_or_null("/root/MainScene/MainCanvasLayer/StatusBar") as Control
+	print("SMOKE: boss bar node=", boss_bar != null)
 	print("SMOKE_OK")

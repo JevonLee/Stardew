@@ -1,13 +1,12 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1786779588
+::res://::1786779758
 default_bus_layout.tres::AudioBusLayout/AudioBusLayout::2184131187234203786::1756520422::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile/TextFile::-1::1756520422::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::1804056525694353723::1756520422::1756522334::1::::<><><>0<>0<>163b15f42155cdb97f8ac97df934d6cb<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-import_full2.log::TextFile::-1::1786779588::0::1::::<><><>0<>0<><>::
-import_full.log::TextFile::-1::1786779571::0::1::::<><><>0<>0<><>::
+import_full.log::TextFile::-1::1786779758::0::1::::<><><>0<>0<><>::
 README.md::TextFile/TextFile::-1::1756520422::0::1::::<><><>0<>0<><>::
 roadmap.md::TextFile::-1::1786779321::0::1::::<><><>0<>0<><>::
-tools_smoke.gd::GDScript::7937880759161548330::1786779562::0::1::::<>Node2D<><>0<>0<><>::
+tools_smoke.gd::GDScript::7937880759161548330::1786779750::0::1::::<>Node2D<><>0<>0<><>::
 tools_smoke.tscn::PackedScene::-1::1786776087::0::1::::<><><>0<>0<><>::res://tools_smoke.gd
 ::res://Animals/::1786779580
 animal.gd::GDScript::1281943264472628730::1786779485::0::1::::Animal<>CharacterBody2D<><>0<>0<><>::
@@ -13577,7 +13576,7 @@ Scott Lloyd Shelly - Terraria Soundtrack Volume 2 - 04 Alternate Day.mp3::AudioS
 树莓.tres::Resource/Item::2883685222271264776::1786778227::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 蘑菇.tres::Resource/Item::2185961040768426760::1786778227::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 野葱.tres::Resource/Item::1680169179506860040::1786778227::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
-::res://Bag/items/materials/::1786779102
+::res://Bag/items/materials/::1786779730
 stone.tres::Resource/Item::1953422076594739864::1756520422::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 wood.tres::Resource/Item::6529636953851790416::1756520422::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://bft03am2gfd42::::res://Art/myself/wood.png
 凝胶.tres::Resource/Item::4903553382643966664::1786776847::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_23.png
@@ -13592,6 +13591,7 @@ wood.tres::Resource/Item::6529636953851790416::1756520422::0::1::::<><><>0<>0<><
 铜币.tres::Resource/Item::7989322562171765256::1786776847::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Coin_1.png
 铜矿石.tres::Resource/Item::7989889112148842536::1786778240::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_8.png
 银矿石.tres::Resource/Item::2766713290981055816::1786778240::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_21.png
+骨头.tres::Resource/Item::966404664934213896::1786779730::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_154.png
 ::res://Bag/items/objects/::1756520422
 book1.tres::Resource/Item::5042119680868757272::1756520422::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://cld8pf440rynj::::res://Art/tile_sheets/Objects_2.png
 floor1.tres::Resource/Item::3534404142257643160::1756520422::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
@@ -13646,12 +13646,13 @@ slot.tscn::PackedScene/PackedScene::3380208235692054796::1756520422::0::1::::<><
 tool_bar.gd::GDScript/GDScript::6169331853872786617::1756520422::0::1::::<>Control<><>0<>0<><>::
 tool_bar.tscn::PackedScene/PackedScene::2021907188855370012::1756520422::0::1::::<><><>0<>0<><>::uid://bofnshmt1vb4g::::res://Bag/scene/slot.tscn<>uid://ct5p82njwo7td::::res://Bag/scene/tool_bar.gd<>uid://ckodt4w002mr6::::res://Art/loose_sprite/MobileAtlas_manually_made.de-DE.png
 ui_manager.gd::GDScript/GDScript::3322505534350422836::1756520422::0::1::::<>Control<><>0<>0<><>::
-::res://Combat/::1786779522
+::res://Combat/::1786779730
 arrow_projectile.gd::GDScript::2672643583183625304::1786777683::0::1::::<>Projectile<><>0<>0<><>::
 arrow_projectile.tscn::PackedScene::-1::1786777095::0::1::::<><><>0<>0<><>::res://Combat/arrow_projectile.gd<>res://Art/Terraria/images/Projectile_1.png
 bat.tscn::PackedScene::-1::1786778770::0::1::::<><><>0<>0<><>::res://Combat/enemy.tscn<>res://Art/Terraria/images/NPC_49.png<>uid://dl3c8fq60m761::::res://Bag/items/materials/铜币.tres
 boss.gd::GDScript::4581179440252048457::1786779102::0::1::::Boss<>Enemy<><>0<>0<><>::
 boss_eye.tscn::PackedScene::-1::1786779121::0::1::::<><><>0<>0<><>::res://Combat/boss.gd<>res://Art/Terraria/images/NPC_4.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn<>uid://bk808gkmam4m3::::res://Bag/items/materials/金币.tres<>uid://bljdh20mam4m3::::res://Bag/items/materials/金矿石.tres
+demon_eye.tscn::PackedScene::-1::1786779730::0::1::::<><><>0<>0<><>::res://Combat/enemy.tscn<>res://Art/Terraria/images/NPC_7.png<>uid://dl3c8fq60m761::::res://Bag/items/materials/铜币.tres
 enemy.gd::GDScript::5270131769598753987::1786779522::0::1::::Enemy<>CharacterBody2D<><>0<>0<><>::
 enemy.tscn::PackedScene::-1::1786776810::0::1::::<><><>0<>0<><>::res://Combat/enemy.gd<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn
 enemy_spawner.gd::GDScript::6128063275678843433::1786777413::0::1::::EnemySpawner<>Node2D<><>0<>0<><>::
@@ -13660,6 +13661,7 @@ magic_bolt.gd::GDScript::1857523982297038451::1786777578::0::1::::<>Projectile<>
 magic_bolt.tscn::PackedScene::-1::1786777095::0::1::::<><><>0<>0<><>::res://Combat/magic_bolt.gd<>res://Art/myself/magic_orb.png
 pickup.gd::GDScript::3899523167193539454::1786776776::0::1::::Pickup<>Area2D<><>0<>0<><>::
 pickup.tscn::PackedScene::-1::1786776810::0::1::::<><><>0<>0<><>::res://Combat/pickup.gd
+skeleton.tscn::PackedScene::-1::1786779730::0::1::::<><><>0<>0<><>::res://Combat/enemy.tscn<>res://Art/Terraria/images/NPC_21.png<>uid://dl3c8fq60m761::::res://Bag/items/materials/铜币.tres<>uid://n1esqpfaa82o::::res://Bag/items/materials/骨头.tres
 slime.tscn::PackedScene::-1::1786778760::0::1::::<><><>0<>0<><>::res://Combat/enemy.tscn<>res://Art/Terraria/images/NPC_1.png<>uid://dl3c8fq60m761::::res://Bag/items/materials/铜币.tres<>uid://cb4k2p2sikh4c::::res://Bag/items/materials/凝胶.tres
 zombie.tscn::PackedScene::-1::1786778770::0::1::::<><><>0<>0<><>::res://Combat/enemy.tscn<>res://Art/Terraria/images/NPC_6.png<>uid://dl3c8fq60m761::::res://Bag/items/materials/铜币.tres
 ::res://Component/::1786777524
@@ -13740,13 +13742,13 @@ change_scene_area.tscn::PackedScene/PackedScene::7524607266015337098::1756520422
 tile_block.tres::TileSet/TileSet::9173175498268296973::1756520422::0::1::::<><><>0<>0<><>::uid://dehsiprf7r35o::::res://Art/terrain/Flooring.png<>uid://bjj82tkjenm6::::res://Art/terrain/hoeDirt.png
 tile_set_indoor.tres::TileSet/TileSet::5873262371970391188::1756520422::0::1::::<><><>0<>0<><>::uid://tl7op7kmjc2i::::res://Art/maps/bathhouse_tiles.zh-CN.png<>uid://w4k20do7hbgn::::res://Art/maps/Snipaste_2025-01-22_10-49-46.jpg<>uid://karoi3usbyh7::::res://Art/maps/walls_and_floors.png<>uid://o0704qxykhb4::::res://Art/maps/townInterior.zh-CN.png
 tile_set_outdoor.tres::TileSet/TileSet::2644538147074038457::1756520422::0::1::::<><><>0<>0<><>::uid://dygk8pjabfway::::res://Terrain/Trees/trees.tscn<>uid://bgfmjjo5oaxd2::::res://Art/maps/spring_outdoorsTileSheet.zh-CN.png<>uid://bxmd4lplyinij::::res://Map/Farm/house.tscn<>uid://b4gw6br4o6p2g::::res://Terrain/Rocks/rock.tscn<>uid://csjs1cydmsgje::::res://Terrain/Grass/grass.tscn<>uid://br81wso4uept0::::res://Terrain/Grass/grass3.tscn<>uid://dtkx2801amx5q::::res://Terrain/Grass/grass2.tscn<>uid://bdxkugoiest8g::::res://Art/maps/spring_town.zh-CN.png<>uid://b5ayjpmeylu8l::::res://Art/maps/spring_outdoorsTileSheet2.png
-::res://Map/Farm/::1786779554
+::res://Map/Farm/::1786779744
 farm.gd::GDScript::3126117599948059833::1786779554::0::1::::Farm<>Node2D<><>0<>0<><>::
-farm.tscn::PackedScene::4022287795534418095::1786779499::0::1::::<><><>0<>0<><>::uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>uid://bkskx2mj2y2nd::::res://Map/Farm/farm.gd<>uid://d3xs4io3bcdr6::::res://Map/tile_block.tres<>uid://d1nxclm67rbhh::::res://AudioSystem/Scott Lloyd Shelly - Terraria Soundtrack - 01 Overworld Day.mp3<>uid://bl5tehfc1sf80::::res://SaveSystem/save_component.tscn<>uid://cvjfk83xlmkjo::::res://Component/tilemap_component.tscn<>uid://cw17rk561nrot::::res://NPC/emily.tscn<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://0f820g6vrxhg::::res://Bag/scene/box.tscn<>uid://dr7ehqq10k2wk::::res://Placeables/Crops/crops_component.tscn<>uid://4emof1mv6qby::::res://Bag/scene/inventory_system.gd<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn<>uid://bpjotrdl0f7gx::::res://Bag/items/weapon/喵刀.tres<>uid://cd3o8erabt37a::::res://Bag/items/objects/book1.tres<>uid://ecsiuwf14r7f::::res://NPC/pig.tscn<>res://Combat/enemy_spawner.tscn<>res://Animals/chicken.tscn<>res://Animals/cow.tscn
+farm.tscn::PackedScene::4022287795534418095::1786779744::0::1::::<><><>0<>0<><>::uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>uid://bkskx2mj2y2nd::::res://Map/Farm/farm.gd<>uid://d3xs4io3bcdr6::::res://Map/tile_block.tres<>uid://d1nxclm67rbhh::::res://AudioSystem/Scott Lloyd Shelly - Terraria Soundtrack - 01 Overworld Day.mp3<>uid://bl5tehfc1sf80::::res://SaveSystem/save_component.tscn<>uid://cvjfk83xlmkjo::::res://Component/tilemap_component.tscn<>uid://cw17rk561nrot::::res://NPC/emily.tscn<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://0f820g6vrxhg::::res://Bag/scene/box.tscn<>uid://dr7ehqq10k2wk::::res://Placeables/Crops/crops_component.tscn<>uid://4emof1mv6qby::::res://Bag/scene/inventory_system.gd<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn<>uid://bpjotrdl0f7gx::::res://Bag/items/weapon/喵刀.tres<>uid://cd3o8erabt37a::::res://Bag/items/objects/book1.tres<>uid://ecsiuwf14r7f::::res://NPC/pig.tscn<>res://Combat/enemy_spawner.tscn<>res://Animals/chicken.tscn<>res://Animals/cow.tscn<>res://Combat/skeleton.tscn<>res://Combat/demon_eye.tscn
 house.tscn::PackedScene/PackedScene::4025771160879213869::1756520422::0::1::::<><><>0<>0<><>::uid://n0h6c4jlig5h::::res://Art/buildings/Snipaste_2025-01-21_22-05-51.png
-::res://Map/Mine/::1786778427
+::res://Map/Mine/::1786779744
 mine.gd::GDScript::9207593122965063862::1786778306::0::1::::Mine<>Node2D<><>0<>0<><>::
-mine.tscn::PackedScene::-1::1786778306::0::1::::<><><>0<>0<><>::res://Map/Mine/mine.gd<>uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>res://Map/change_scene_area.tscn<>res://Combat/enemy_spawner.tscn<>res://Combat/bat.tscn<>res://Combat/slime.tscn
+mine.tscn::PackedScene::-1::1786779744::0::1::::<><><>0<>0<><>::res://Map/Mine/mine.gd<>uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>res://Map/change_scene_area.tscn<>res://Combat/enemy_spawner.tscn<>res://Combat/bat.tscn<>res://Combat/slime.tscn<>res://Combat/skeleton.tscn
 ::res://Map/MyHouse/::1786775990
 bed.gd::GDScript::6459542337599738561::1786775990::0::1::::<>Area2D<><>0<>0<><>::
 my_house.tscn::PackedScene/PackedScene::7374069995302091875::1756520422::0::1::::<><><>0<>0<><>::uid://bt4rbmc7ifxr5::::res://Art/myself/Snipaste_2025-01-22_10-49-46.jpg<>uid://ccddbjk7xn725::::res://Art/tile_sheets/furniture.zh-CN.png<>uid://cybbyov4lcndh::::res://Map/MyHouse/bed.gd<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn
@@ -13842,7 +13844,7 @@ time_color.tscn::PackedScene/PackedScene::7174886813045883925::1756520422::0::1:
 time_system.gd::GDScript::4204564769159701835::1786777524::0::1::::<>Node<><>0<>0<><>::
 time_system_ui.gd::GDScript/GDScript::4813203920609166923::1756520422::0::1::::<>Control<><>0<>0<><>::
 time_system_ui.tscn::PackedScene/PackedScene::8334331997077840526::1756520422::0::1::::<><><>0<>0<><>::uid://cats1a0q3ajmp::::res://TimeSystem/time_system_ui.gd<>uid://cxbecxir8p1ss::::res://Art/loose_sprite/Cursors.zh-CN.png
-::res://UI/::1786779534
+::res://UI/::1786779744
 game_start_menu.gd::GDScript::3906418229401311589::1786775990::0::1::::<>CanvasLayer<><>0<>0<><>::
 game_start_menu.tscn::PackedScene/PackedScene::2013027253967713849::1756520422::0::1::::<><><>0<>0<><>::uid://d5pvy0mjih63::::res://Art/loose_sprite/stardewPanorama.png<>uid://bvwkew7oy8s0d::::res://UI/game_start_menu.gd<>uid://bmotfwvxsfpch::::res://Art/mini_games/Clouds.png<>uid://cgjwsixnercxa::::res://Shader/cloud.gdshader<>uid://c6jux1yxhkkrq::::res://AudioSystem/Scott Lloyd Shelly - Terraria Soundtrack Volume 2 - 04 Alternate Day.mp3<>uid://c7f0buu2ookp1::::res://Art/mini_games/TitleButtons.zh-CN.png
 get_item_tip.gd::GDScript/GDScript::8038688954199021535::1756520422::0::1::::<>Control<><>0<>0<><>::
@@ -13851,8 +13853,8 @@ rain_overlay.gd::GDScript::2208104648440623796::1786775978::0::1::::<>CPUParticl
 rain_overlay.tscn::PackedScene::-1::1786776118::0::1::::<><><>0<>0<><>::res://UI/rain_overlay.gd<>res://Art/myself/rain_drop.png
 save_tool_tip.gd::GDScript/GDScript::1649398698324050823::1756520422::0::1::::<>Control<><>0<>0<><>::
 save_tool_tip.tscn::PackedScene/PackedScene::260660919836193021::1756520422::0::1::::<><><>0<>0<><>::uid://1ywr5tb1tcv2::::res://Art/loose_sprite/textBox.png<>uid://1dxl5pwmi0x::::res://UI/UI_theme.tres<>uid://xq8mdb1aasyp::::res://UI/save_tool_tip.gd
-status_bar.gd::GDScript::8732930030530449511::1786779534::0::1::::<>Control<><>0<>0<><>::
-status_bar.tscn::PackedScene::-1::1786779534::0::1::::<><><>0<>0<><>::res://UI/status_bar.gd
+status_bar.gd::GDScript::8732930030530449511::1786779744::0::1::::<>Control<><>0<>0<><>::
+status_bar.tscn::PackedScene::-1::1786779744::0::1::::<><><>0<>0<><>::res://UI/status_bar.gd
 tool_tip.gd::GDScript/GDScript::7025370430106442949::1756520422::0::1::::ToolTip<>Control<><>0<>0<><>::
 tool_tip.tscn::PackedScene/PackedScene::7878434148281389284::1756520422::0::1::::<><><>0<>0<><>::uid://c7de3bgxctj5n::::res://UI/tool_tip.gd<>uid://cxbecxir8p1ss::::res://Art/loose_sprite/Cursors.zh-CN.png
 ui_manager.tscn::PackedScene/PackedScene::5056509691668982782::1756520422::0::1::::<><><>0<>0<><>::uid://bnlpge6jqrjua::::res://Bag/scene/ui_manager.gd<>uid://32orsqygcno3::::res://Bag/scene/tool_bar.tscn<>uid://chtmy8x1ppmp7::::res://Bag/scene/bag_ui.tscn<>uid://dlsp2a2hceqel::::res://Bag/scene/box_ui.tscn<>uid://c1vmwewnnl80d::::res://Global/mouse_item.tscn<>uid://dq0hh3i6ikdrq::::res://TimeSystem/time_system_ui.tscn<>uid://dhpso66ln5byl::::res://UI/get_item_tip.tscn<>uid://dkimwoh27dhtk::::res://UI/tool_tip.tscn<>uid://l3pn0c05lfjq::::res://Map/Store/store_panel.tscn

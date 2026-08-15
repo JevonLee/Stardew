@@ -3,6 +3,13 @@ class_name Keg
 ## 酿酒桶：手持水果右键放入，7天后酿成一瓶果酒（随存档保存）
 
 const WINE = preload("res://Bag/items/food/果酒.tres")
+## 按放入的水果产出对应果酒（未知水果产通用果酒）
+const WINE_MAP := {
+	"蓝莓": preload("res://Bag/items/food/蓝莓酒.tres"),
+	"苹果": preload("res://Bag/items/food/苹果酒.tres"),
+	"南瓜": preload("res://Bag/items/food/南瓜酒.tres"),
+	"蔓越莓": preload("res://Bag/items/food/蔓越莓酒.tres"),
+}
 
 var stored_name: String = "" ## 放入的水果名（提示用）
 var placed_day: int = 0
@@ -51,5 +58,6 @@ func _spawn_wine() -> void:
 		drops = get_parent()
 	fall.position = global_position + Vector2(0, -24)
 	drops.add_child(fall)
-	fall.generate(WINE)
-	Global.show_message("果酒酿好了！")
+	var wine: Item = WINE_MAP.get(stored_name, WINE)
+	fall.generate(wine)
+	Global.show_message("%s酿好了！" % wine.name)

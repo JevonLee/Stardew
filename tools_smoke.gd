@@ -1971,6 +1971,23 @@ func _run() -> void:
 		if es != null and es.resource_path.contains("eskimo"):
 			has_eskimo = true
 	print("SMOKE: tundra eskimo=", has_eskimo)
+	# ---- 果酒品类测试 ----
+	var keg2: Placeable = (load("res://Placeables/keg.tscn") as PackedScene).instantiate() as Placeable
+	level.find_child("Crops").add_child(keg2)
+	keg2.global_position = Vector2(700, 700)
+	player.current_item = load("res://Bag/items/crops/蓝莓.tres").duplicate()
+	player.bag_system.add_item(player.current_item)
+	(keg2 as Keg).try_insert(player)
+	var keg2_day: int = TimeSystem.current_day
+	TimeSystem.set_time(keg2_day + 7, 6, 0)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var blue_wine := false
+	for d in drops_node.get_children():
+		if d.get("item") != null and d.get("item").name == "蓝莓酒":
+			blue_wine = true
+	print("SMOKE: blueberry wine=", blue_wine)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

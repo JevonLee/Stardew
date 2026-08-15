@@ -54,6 +54,8 @@ enum DamageType{
 #放置类物品的属性
 @export_category("放置类物品属性")
 @export var placeable_scene_path:String
+#种子作物数据（Crops类型种子携带）
+@export var crop_data:CropData
 #消耗品属性（食物/药水：右键食用恢复）
 @export_category("消耗品属性")
 @export var health_restore:int = 0

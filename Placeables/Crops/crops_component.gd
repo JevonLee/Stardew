@@ -32,6 +32,15 @@ func _ready() -> void:
 	can_crop = true
 	in_soil = false
 	player.watering.connect(on_watering)
+	TimeSystem.time_tick_day.connect(_on_day_change)
+
+## 每天清晨土壤变干（作物已在信号处理中先检查过昨日的浇水状态）
+func _on_day_change(_day:int) -> void:
+	call_deferred("_dry_soil")
+
+func _dry_soil() -> void:
+	if water_soil:
+		water_soil.clear()
 
 func initial():
 	player = get_tree().get_first_node_in_group("Player")
@@ -87,10 +96,13 @@ func add_crop() -> void:
 	if player.current_item == null: return
 	if distance <= 32:
 		if player.current_item_type == Item.ItemType.Crops:
-			var corn = load(player.current_item.placeable_scene_path)
-			var corn_ins = corn.instantiate() as Node2D
-			corn_ins.global_position = local_cell_position
-			get_parent().find_child("Crops").add_child(corn_ins)
+			var crop_scene = load(player.current_item.placeable_scene_path)
+			var crop_ins = crop_scene.instantiate() as Crop
+			crop_ins.crop_data = player.current_item.crop_data
+			crop_ins.cell = cell_position
+			crop_ins.planted_day = TimeSystem.current_day
+			crop_ins.global_position = local_cell_position
+			get_parent().find_child("Crops").add_child(crop_ins)
 			player.bag_system.remove_num_item(player.item_index,1)
 				
 	

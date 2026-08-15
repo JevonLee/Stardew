@@ -14,11 +14,13 @@
 [ext_resource type="Resource" uid="uid://0up2rccig0vd" path="res://Bag/items/weapon/镰刀.tres" id="7_sx2uy"]
 [ext_resource type="Resource" uid="uid://caddip1mc5bse" path="res://Bag/items/weapon/鬼妖村正.tres" id="8_sm0op"]
 [ext_resource type="Resource" uid="uid://0b28kg4yvc15" path="res://Bag/items/seeds/甜瓜种子.tres" id="9_76lrf"]
+[ext_resource type="Resource" uid="uid://luobuseed00001" path="res://Bag/items/seeds/萝卜种子.tres" id="13_luobu"]
 [ext_resource type="Texture2D" uid="uid://kvjhhhusa3g3" path="res://Art/tile_sheets/animations.png" id="9_1373j"]
 [ext_resource type="Resource" uid="uid://18oguadpmg8g" path="res://Bag/items/tools/水壶.tres" id="10_efx54"]
 [ext_resource type="Texture2D" uid="uid://cojbbbgtx1dey" path="res://Art/tile_sheets/tools.png" id="10_hhrbb"]
 [ext_resource type="Resource" uid="uid://driqdgyepeeng" path="res://Bag/items/weapon/烈焰激光.tres" id="11_755ss"]
 [ext_resource type="Resource" uid="uid://dovmx72x210he" path="res://Bag/items/weapon/暗影焰刀.tres" id="12_i4o1l"]
+[ext_resource type="Texture2D" uid="uid://dxf5y3rpsuxa8" path="res://Art/maps/springobjects.es-ES.png" id="14_spring"]
 [ext_resource type="PackedScene" uid="uid://y6h28idjda41" path="res://Component/hit_component.tscn" id="14_p0v3c"]
 [ext_resource type="AudioStream" uid="uid://dhqr22viv48ht" path="res://AudioSystem/ExobladeSwing.ogg" id="15_j2n6q"]
 [ext_resource type="PackedScene" uid="uid://ccvunviarnauk" path="res://Weapons/jian_qi.tscn" id="16_qemgg"]
@@ -35,9 +37,26 @@
 [ext_resource type="Script" uid="uid://c5k5435pw00ft" path="res://Player/States/swing.gd" id="23_gpjlu"]
 [ext_resource type="Script" uid="uid://o3dl51pfcjea" path="res://Player/States/water.gd" id="24_8mwp6"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_luobu"]
+atlas = ExtResource("14_spring")
+region = Rect2(368, 304, 16, 16)
+
+[sub_resource type="Resource" id="Resource_luobu"]
+script = ExtResource("2_4pkqm")
+name = "萝卜种子"
+type = 9
+description = "4天生长，春天的蔬菜"
+quantity = 5
+max_quantity = 999
+countable = true
+texture = SubResource("AtlasTexture_luobu")
+price = 20
+placeable_scene_path = "res://Placeables/Crops/crop.tscn"
+crop_data = ExtResource("13_luobu")
+
 [sub_resource type="Resource" id="Resource_jpqln"]
 script = ExtResource("5_dtp6i")
-items = Array[ExtResource("2_4pkqm")]([ExtResource("4_2pos1"), ExtResource("4_enduu"), ExtResource("5_glt61"), ExtResource("6_7lyx3"), ExtResource("7_sx2uy"), ExtResource("8_sm0op"), ExtResource("10_efx54"), ExtResource("11_755ss"), ExtResource("9_76lrf"), ExtResource("12_i4o1l"), null, null, null, null, null, ExtResource("7_6wttc"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+items = Array[ExtResource("2_4pkqm")]([ExtResource("4_2pos1"), ExtResource("4_enduu"), ExtResource("5_glt61"), ExtResource("6_7lyx3"), ExtResource("7_sx2uy"), ExtResource("8_sm0op"), ExtResource("10_efx54"), ExtResource("11_755ss"), ExtResource("9_76lrf"), ExtResource("12_i4o1l"), SubResource("Resource_luobu"), null, null, null, null, ExtResource("7_6wttc"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 items_size = 36
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_046hr"]

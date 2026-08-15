@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_0rfj6"]
 [ext_resource type="Texture2D" uid="uid://dxf5y3rpsuxa8" path="res://Art/maps/springobjects.es-ES.png" id="2_qj55q"]
+[ext_resource type="Resource" uid="uid://tianguadata0001" path="res://Bag/items/crops/甜瓜_data.tres" id="3_cd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_micd4"]
 atlas = ExtResource("2_qj55q")
@@ -29,5 +30,6 @@ open_texture = false
 use_type = 0
 damage_type = 0
 projectile = ""
-placeable_scene_path = "res://Placeables/Crops/甜瓜.tscn"
+placeable_scene_path = "res://Placeables/Crops/crop.tscn"
+crop_data = ExtResource("3_cd")
 metadata/_custom_type_script = "uid://cw5mwkqapte2e"

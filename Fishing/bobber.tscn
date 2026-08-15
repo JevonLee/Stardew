@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Fishing/bobber.gd" id="1_bobber"]
+[ext_resource type="Texture2D" path="res://Art/myself/bobber.png" id="2_tex"]
+
+[node name="Bobber" type="Node2D"]
+script = ExtResource("1_bobber")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")

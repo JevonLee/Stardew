@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://yugan000000001"]
+
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
+[ext_resource type="Texture2D" uid="uid://bft03am2gfd42" path="res://Art/myself/wood.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1_item")
+name = "鱼竿"
+type = 13
+description = "去水边试试运气吧"
+quantity = 1
+max_quantity = 1
+countable = false
+texture = ExtResource("2_tex")
+price = 250
+collision_size = Vector2(0, 0)
+damage = 0
+projectile = ""

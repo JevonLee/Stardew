@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Fishing/fishing_ui.gd" id="1_fui"]
+
+[node name="FishingUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("1_fui")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.35)
+
+[node name="Bar" type="Control" parent="."]
+layout_mode = 0
+offset_left = 627.0
+offset_top = 200.0
+offset_right = 653.0
+offset_bottom = 460.0
+
+[node name="Background" type="ColorRect" parent="Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.12, 0.9)
+
+[node name="Fish" type="ColorRect" parent="Bar"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 23.0
+offset_bottom = 14.0
+color = Color(1, 0.3, 0.3, 1)
+
+[node name="Zone" type="ColorRect" parent="Bar"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 23.0
+offset_bottom = 46.0
+color = Color(0.2, 1, 0.3, 0.35)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 480.0
+offset_right = 720.0
+offset_bottom = 502.0
+show_percentage = false
+
+[node name="FishLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 510.0
+offset_right = 720.0
+offset_bottom = 532.0
+
+[node name="Hint" type="Label" parent="."]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 540.0
+offset_right = 760.0
+offset_bottom = 560.0
+text = "按住左键收线，松开下坠，让鱼保持在线区内"

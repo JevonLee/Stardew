@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Terrain/Ores/ore_node.gd" id="1_ore"]
+[ext_resource type="PackedScene" uid="uid://d1el2uw7pk51r" path="res://Component/hurt_component.tscn" id="2_hurt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 10.0
+
+[node name="OreNode" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_ore")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="HurtComponent" parent="." instance=ExtResource("2_hurt")]
+tool = 4
+max_health = 3
+
+[node name="HurtCollision" type="CollisionShape2D" parent="HurtComponent"]
+shape = SubResource("CircleShape2D_body")

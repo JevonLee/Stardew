@@ -13,6 +13,7 @@ var level_scenes:Dictionary = {
 	"MyHouse" : "res://Map/MyHouse/my_house.tscn",
 	"Town" : "res://Map/Town/town.tscn",
 	"Store" : "res://Map/Store/store.tscn",
+	"Mine" : "res://Map/Mine/mine.tscn",
 } 
 var player : Player
 

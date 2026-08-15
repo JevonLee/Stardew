@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://mujian00000001" path="res://Bag/items/weapon/木剑.tres" id="8_wp1"]
 [ext_resource type="Resource" uid="uid://gong0000000001" path="res://Bag/items/weapon/木弓.tres" id="9_wp2"]
 [ext_resource type="Resource" uid="uid://mofadandan0001" path="res://Bag/items/weapon/魔法飞弹.tres" id="10_wp3"]
+[ext_resource type="Resource" uid="uid://yugan000000001" path="res://Bag/items/tools/鱼竿.tres" id="11_rod"]
 [ext_resource type="PackedScene" uid="uid://3if1vaoappws" path="res://Map/Store/commodity.tscn" id="6_h70i1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_juftk"]
@@ -32,7 +33,7 @@ offset_bottom = -288.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_juftk")
-inventorys = Array[ExtResource("2_h70i1")]([ExtResource("3_17pkl"), ExtResource("4_seed1"), ExtResource("5_seed2"), ExtResource("6_seed3"), ExtResource("7_seed4"), ExtResource("8_wp1"), ExtResource("9_wp2"), ExtResource("10_wp3")])
+inventorys = Array[ExtResource("2_h70i1")]([ExtResource("3_17pkl"), ExtResource("4_seed1"), ExtResource("5_seed2"), ExtResource("6_seed3"), ExtResource("7_seed4"), ExtResource("8_wp1"), ExtResource("9_wp2"), ExtResource("10_wp3"), ExtResource("11_rod")])
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0

@@ -1,6 +1,8 @@
 extends StaticBody2D
 class_name Trees
 
+const SAP = preload("res://Bag/items/materials/树液.tres")
+
 @onready var root_hurt_box: Area2D = $TreeRoot/HurtComponent
 @onready var body_hurt_box: Area2D = $TreeBody/HurtComponent
 @onready var body_enterd: Area2D = $TreeBody/BodyEnterd
@@ -64,6 +66,8 @@ func on_body_droped() ->void: #树身体被砍
 		animation_player.play("tree_drop_left")
 	await get_tree().create_timer(1.0).timeout #这个时间是树倒下的动画时间
 	add_fall_objects(14,tree_body,fall_objects[0])
+	if randf() < 0.25: #额外掉落树液
+		add_fall_objects(1,tree_body,SAP)
 	gpu_particles_2d = null
 	tree_body.queue_free()
 	
@@ -77,7 +81,7 @@ func add_fall_objects(num:int,body:Node2D,item:Item) -> void: #bug原因：吸�
 	for i in range(num):
 		var fall_ins = Global.FALL_OBJECT_COMPONENT.instantiate()
 		fall_ins.position = body.global_position
-		var drops = get_tree().root.get_node_or_null("Drops") as Node2D
+		var drops = get_node_or_null(Global.root_scene["drops"]) as Node2D
 		if !drops:
 			drops = get_parent()
 		fall_ins.is_bezier = false

@@ -53,6 +53,12 @@ tile_set = ExtResource("2_bqtta")
 [node name="WaterSoil" type="TileMapLayer" parent="."]
 tile_set = ExtResource("2_bqtta")
 
+[node name="Water" type="TileMapLayer" parent="." groups=["Water"]]
+tile_set = ExtResource("1_332kk")
+
+[node name="Forage" type="Node2D" parent="."]
+y_sort_enabled = true
+
 [node name="Floor" type="TileMapLayer" parent="."]
 tile_set = ExtResource("2_bqtta")
 
@@ -106,6 +112,13 @@ target_scene = "MyHouse"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeAreas/ToHouse"]
 position = Vector2(-2.5, -32)
+shape = SubResource("RectangleShape2D_140im")
+
+[node name="ToMine" parent="ChangeAreas" instance=ExtResource("6_g0fpc")]
+position = Vector2(176, 142)
+target_scene = "Mine"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeAreas/ToMine"]
 shape = SubResource("RectangleShape2D_140im")
 
 [node name="ToTown" parent="ChangeAreas" instance=ExtResource("6_g0fpc")]

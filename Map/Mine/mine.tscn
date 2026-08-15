@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Map/Mine/mine.gd" id="1_mine"]
+[ext_resource type="TileSet" uid="uid://bdxbflnhc4ell" path="res://Map/tile_set_outdoor.tres" id="2_ts"]
+[ext_resource type="PackedScene" path="res://Map/change_scene_area.tscn" id="3_change"]
+[ext_resource type="PackedScene" path="res://Combat/enemy_spawner.tscn" id="4_spawner"]
+[ext_resource type="PackedScene" path="res://Combat/bat.tscn" id="5_bat"]
+[ext_resource type="PackedScene" path="res://Combat/slime.tscn" id="6_slime"]
+
+[node name="Mine" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_mine")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_ts")
+
+[node name="Ores" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPos" type="Node2D" parent="."]
+
+[node name="Entrance" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(96, 96)
+
+[node name="ChangeAreas" type="Node2D" parent="."]
+
+[node name="ToFarm" parent="ChangeAreas" instance=ExtResource("3_change")]
+position = Vector2(96, 64)
+target_scene = "Farm"
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_spawner")]
+night_only = false
+spawn_interval = 5.0
+max_enemies = 6
+enemy_scenes = Array[PackedScene]([ExtResource("5_bat"), ExtResource("5_bat"), ExtResource("6_slime")])

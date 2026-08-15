@@ -148,4 +148,60 @@ func _run() -> void:
 	TimeSystem.set_time(TimeSystem.current_day, 12, 0)
 	await get_tree().create_timer(0.8).timeout
 	print("SMOKE: spawner day enemies=", get_tree().get_nodes_in_group("Enemies").size())
+	# ---- M3 采集与资源测试 ----
+	var farm_water := level.get_node("Water") as TileMapLayer
+	print("SMOKE: farm water cells=", farm_water.get_used_cells().size())
+	var forage_container: Node2D = level.get_node("Forage")
+	print("SMOKE: forage count=", forage_container.get_child_count())
+	# 矿石节点：稿子敲3下碎掉并掉落
+	var ore_scene: PackedScene = load("res://Terrain/Ores/ore_node.tscn")
+	var ore := ore_scene.instantiate() as OreNode
+	ore.ore_item = load("res://Bag/items/materials/铜矿石.tres")
+	ore.global_position = player.global_position + Vector2(80, 0)
+	level.add_child(ore)
+	ore.hurt.take_damage(1, player.global_position)
+	ore.hurt.take_damage(1, player.global_position)
+	ore.hurt.take_damage(1, player.global_position)
+	await get_tree().create_timer(0.5).timeout # 等待碎裂动画结束
+	await get_tree().process_frame
+	print("SMOKE: ore broken=", not is_instance_valid(ore), " drops=", drops_node.get_child_count())
+	# ---- M4 矿洞测试 ----
+	SceneManager.change_level("Mine", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var mine := SceneManager.get_current_level() as Mine
+	if mine:
+		print("SMOKE: mine ground=", (mine.get_node("Ground") as TileMapLayer).get_used_cells().size(), " ores=", (mine.get_node("Ores") as Node2D).get_child_count())
+	else:
+		print("SMOKE: mine FAILED")
+	# 回农场
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	print("SMOKE: back to farm=", level.name)
+	# ---- M6 钓鱼测试 ----
+	var fishing := get_node_or_null("/root/MainScene/FishingSystem") as FishingSystem
+	player.global_position = Vector2(60, 660) # 池塘西侧
+	player.current_item = load("res://Bag/items/tools/鱼竿.tres")
+	await get_tree().process_frame
+	fishing._cast(player.global_position.direction_to(Vector2(192, 656)))
+	await get_tree().create_timer(1.0).timeout
+	print("SMOKE: bobber=", fishing.bobber != null, " flying=", fishing.bobber.flying if fishing.bobber else -1)
+	if fishing.bobber:
+		fishing.bobber._hook()
+	await get_tree().process_frame
+	print("SMOKE: fishing ui=", fishing.fishing_ui != null)
+	var bag_before: int = 0
+	for it in player.bag_system.items:
+		if it != null:
+			bag_before += 1
+	if fishing.fishing_ui:
+		fishing.fishing_ui._finish(true)
+		await get_tree().process_frame
+	var caught_fish: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.type == Item.ItemType.Consume and it.name in ["沙丁鱼", "鲤鱼", "大嘴鲈鱼"]:
+			caught_fish = true
+	print("SMOKE: caught fish=", caught_fish)
 	print("SMOKE_OK")

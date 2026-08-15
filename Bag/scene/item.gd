@@ -15,6 +15,7 @@ enum ItemType{
 	Materials,##可合成的材料类物品 
 	Accessories,##饰品
 	Floors,##地板类
+	Fishing,##钓鱼
 }
 enum UseType{
 	None,

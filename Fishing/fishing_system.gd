@@ -12,6 +12,8 @@ const FISH_TABLE = [ ## Array[FishData]
 	preload("res://Fishing/fish_data/河豚_data.tres"),
 	preload("res://Fishing/fish_data/章鱼_data.tres"),
 	preload("res://Fishing/fish_data/冰鱼_data.tres"),
+	preload("res://Fishing/fish_data/太阳鱼_data.tres"),
+	preload("res://Fishing/fish_data/鲷鱼_data.tres"),
 ]
 const JUNK_TABLE = [ ## 垃圾（低难度占位鱼）
 	preload("res://Fishing/fish_data/垃圾_data.tres"),
@@ -21,6 +23,7 @@ const OCEAN_FISH = [ ## 海水鱼（小镇海边）
 	preload("res://Fishing/fish_data/沙丁鱼_data.tres"),
 	preload("res://Fishing/fish_data/河豚_data.tres"),
 	preload("res://Fishing/fish_data/章鱼_data.tres"),
+	preload("res://Fishing/fish_data/鱿鱼_data.tres"),
 ]
 const DESERT_FISH = [ ## 沙漠绿洲鱼
 	preload("res://Fishing/fish_data/鲶鱼_data.tres"),

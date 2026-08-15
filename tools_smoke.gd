@@ -1364,6 +1364,14 @@ func _run() -> void:
 	await get_tree().process_frame
 	level = SceneManager.get_current_level()
 	player = get_tree().get_first_node_in_group("Player")
+	# ---- 新鱼测试 ----
+	var sunfish: FishData = load("res://Fishing/fish_data/太阳鱼_data.tres")
+	var bream: FishData = load("res://Fishing/fish_data/鲷鱼_data.tres")
+	var squid: FishData = load("res://Fishing/fish_data/鱿鱼_data.tres")
+	print("SMOKE: sunfish=", sunfish != null, " seas=", sunfish.seasons if sunfish else [], " diff=", sunfish.difficulty if sunfish else -1)
+	print("SMOKE: bream seas=", bream.seasons if bream else [], " squid seas=", squid.seasons if squid else [])
+	var fishing6 := get_node_or_null("/root/MainScene/FishingSystem") as FishingSystem
+	print("SMOKE: fish table=", fishing6.FISH_TABLE.size(), " ocean=", fishing6.OCEAN_FISH.size())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

@@ -48,8 +48,8 @@ func _give_gift(player:Player) -> void:
 		return
 	player.bag_system.remove_num_item(player.item_index, 1)
 	var gain := clampi(int(item.price / 20.0) + 3, 1, 12)
-	# 花（郁金香/蓝爵）送礼好感翻倍（星露谷经典）
-	if item.name == "郁金香" or item.name == "蓝爵":
+	# 花（郁金香/蓝爵/玫瑰/向日葵）送礼好感翻倍（星露谷经典）
+	if item.name == "郁金香" or item.name == "蓝爵" or item.name == "玫瑰" or item.name == "向日葵":
 		gain *= 2
 	FriendshipSystem.add_hearts(npc_display_name, gain)
 	QuestSystem.report("gift")

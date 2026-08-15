@@ -3,6 +3,7 @@ class_name BeeHouse
 ## 蜂房：每4天产出一罐蜂蜜（附近3格内有作物则加速为2天），放置后随存档保存
 
 const HONEY = preload("res://Bag/items/food/蜂蜜.tres")
+const FLOWER_HONEY = preload("res://Bag/items/food/花蜜.tres") ## 花田产花蜜
 
 var placed_day: int = 0 ## 上次产蜜日（绝对天数）
 
@@ -35,5 +36,7 @@ func _spawn_honey() -> void:
 		drops = get_parent()
 	fall.position = global_position + Vector2(randf_range(-12, 12), randf_range(-12, 12))
 	drops.add_child(fall)
-	fall.generate(HONEY)
-	Global.show_message("蜂房产出了一罐蜂蜜！")
+	# 有花产出花蜜（更珍贵），否则普通蜂蜜
+	var has_flower := _has_flower_nearby()
+	fall.generate(FLOWER_HONEY if has_flower else HONEY)
+	Global.show_message("蜂房产出了%s！" % ("花蜜" if has_flower else "蜂蜜"))

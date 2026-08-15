@@ -2382,6 +2382,29 @@ func _run() -> void:
 	await get_tree().process_frame
 	level = SceneManager.get_current_level()
 	player = get_tree().get_first_node_in_group("Player")
+	# ---- 玫瑰/向日葵/花蜜测试 ----
+	var rose_seed: Item = load("res://Bag/items/seeds/玫瑰种子.tres")
+	var sun_seed: Item = load("res://Bag/items/seeds/向日葵种子.tres")
+	print("SMOKE: rose seas=", rose_seed.crop_data.allowed_seasons if rose_seed.crop_data else [], " sun days=", sun_seed.crop_data.growth_days if sun_seed.crop_data else -1)
+	# 花田蜂房产花蜜（蜂房旁种玫瑰）
+	var honey_bee: Placeable = (load("res://Placeables/bee_house.tscn") as PackedScene).instantiate() as Placeable
+	level.find_child("Crops").add_child(honey_bee)
+	honey_bee.global_position = Vector2(760, 760)
+	var rose_crop2: Crop = (load("res://Placeables/Crops/crop.tscn") as PackedScene).instantiate() as Crop
+	rose_crop2.crop_data = rose_seed.crop_data
+	level.find_child("Crops").add_child(rose_crop2)
+	rose_crop2.global_position = Vector2(780, 760)
+	(honey_bee as BeeHouse).placed_day = 0
+	var bee_day2: int = TimeSystem.current_day
+	TimeSystem.set_time(bee_day2 + 2, 6, 0)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var flower_honey := false
+	for d in drops_node.get_children():
+		if d.get("item") != null and d.get("item").name == "花蜜":
+			flower_honey = true
+	print("SMOKE: flower honey=", flower_honey)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

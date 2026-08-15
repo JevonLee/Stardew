@@ -333,6 +333,22 @@ func _run() -> void:
 		if it != null and it.name == "煎蛋":
 			has_festival_gift = true
 	print("SMOKE: festival day=", TimeSystem.get_day_of_season(), " gift=", has_festival_gift, " forage=", forage_container.get_child_count())
+	# 秋16星露谷博览会
+	TimeSystem.set_time(72, 6, 0)
+	await get_tree().process_frame
+	var has_fair_cake: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "蛋糕":
+			has_fair_cake = true
+	print("SMOKE: fair day=", TimeSystem.get_day_of_season(), " cake=", has_fair_cake)
+	# 冬25冬星节
+	TimeSystem.set_time(109, 6, 0)
+	await get_tree().process_frame
+	var has_winter_fish: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "蜜汁烤鱼":
+			has_winter_fish = true
+	print("SMOKE: winter star day=", TimeSystem.get_day_of_season(), " gift=", has_winter_fish)
 	# ---- 新敌人测试 ----
 	var skel_scene: PackedScene = load("res://Combat/skeleton.tscn")
 	var skel := skel_scene.instantiate() as Enemy

@@ -17,6 +17,8 @@ const FESTIVAL_GIFTS := {
 	"蛋节": "res://Bag/items/food/煎蛋.tres",
 	"月光水母节": "res://Bag/items/food/烤鱼.tres",
 	"冰雪节": "res://Bag/items/food/蔬菜沙拉.tres",
+	"星露谷博览会": "res://Bag/items/food/蛋糕.tres",
+	"冬星节": "res://Bag/items/food/蜜汁烤鱼.tres",
 }
 
 @export var bg_music1:AudioStream
@@ -34,7 +36,7 @@ func _on_new_day(_day:int) -> void:
 	_spawn_forage()
 	_check_festival()
 
-## 节日：春13蛋节 / 春28月光水母节 / 秋25冰雪节（额外采集物+礼物）
+## 节日：春13蛋节 / 春28月光水母节 / 秋16星露谷博览会 / 秋25冰雪节 / 冬25冬星节（额外采集物+礼物）
 func _check_festival() -> void:
 	var season := TimeSystem.get_season()
 	var day := TimeSystem.get_day_of_season()
@@ -43,8 +45,12 @@ func _check_festival() -> void:
 		festival = "蛋节"
 	elif season == TimeSystem.Season.SPRING and day == 28:
 		festival = "月光水母节"
+	elif season == TimeSystem.Season.FALL and day == 16:
+		festival = "星露谷博览会"
 	elif season == TimeSystem.Season.FALL and day == 25:
 		festival = "冰雪节"
+	elif season == TimeSystem.Season.WINTER and day == 25:
+		festival = "冬星节"
 	if festival == "": return
 	Global.show_message("今天是%s！节日快乐！" % festival)
 	# 额外采集物

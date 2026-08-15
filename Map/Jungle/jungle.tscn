@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://jungle0000001"]
+
+[ext_resource type="Script" path="res://Map/Jungle/jungle.gd" id="1_jungle"]
+[ext_resource type="TileSet" uid="uid://bdxbflnhc4ell" path="res://Map/tile_set_outdoor.tres" id="7_ts"]
+[ext_resource type="PackedScene" uid="uid://dfg8gg0uu4d2a" path="res://Map/change_scene_area.tscn" id="2_change"]
+[ext_resource type="PackedScene" path="res://Combat/enemy_spawner.tscn" id="3_spawner"]
+[ext_resource type="PackedScene" path="res://Combat/jungle_slime.tscn" id="4_jslime"]
+[ext_resource type="PackedScene" path="res://Combat/spider.tscn" id="5_spider"]
+[ext_resource type="PackedScene" path="res://Combat/giant_bat.tscn" id="6_gbat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
+size = Vector2(38, 47)
+
+[node name="Jungle" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_jungle")
+
+[node name="Ground" type="TileMapLayer" parent="." groups=["TileMap"]]
+tile_set = ExtResource("7_ts")
+
+[node name="Water" type="TileMapLayer" parent="." groups=["Water"]]
+tile_set = ExtResource("7_ts")
+
+[node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Forage" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPos" type="Node2D" parent="."]
+
+[node name="Jungle" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(160, 400)
+
+[node name="Farm" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(64, 400)
+
+[node name="ChangeAreas" type="Node2D" parent="."]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_spawner")]
+night_only = false
+spawn_interval = 6.0
+max_enemies = 5
+enemy_scenes = Array[PackedScene]([ExtResource("4_jslime"), ExtResource("4_jslime"), ExtResource("5_spider"), ExtResource("6_gbat")])
+
+[node name="ToFarm" parent="ChangeAreas" instance=ExtResource("2_change")]
+position = Vector2(32, 400)
+target_scene = "Farm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeAreas/ToFarm"]
+shape = SubResource("RectangleShape2D_gate")
+
+[node name="MapSize" type="Marker2D" parent="."]
+position = Vector2(1280, 960)

@@ -1533,6 +1533,29 @@ func _run() -> void:
 		if n is Projectile:
 			proj_after += 1
 	print("SMOKE: no ammo blocks=", proj_after == proj_before)
+	# ---- 丛林地图测试 ----
+	SceneManager.change_level("Jungle", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var jungle2 := SceneManager.get_current_level() as Jungle
+	print("SMOKE: jungle=", jungle2 != null)
+	if jungle2:
+		var jg: int = jungle2.get_node("Ground").get_used_cells().size()
+		var jw: int = jungle2.get_node("Water").get_used_cells().size()
+		var jt: int = jungle2.get_node("Trees").get_child_count()
+		var jf: int = jungle2.get_node("Forage").get_child_count()
+		var jspawner: Array = jungle2.get_node("EnemySpawner").enemy_scenes
+		var has_jslime := false
+		for es in jspawner:
+			if es != null and es.resource_path.contains("jungle_slime"):
+				has_jslime = true
+		var fishing7 := get_node_or_null("/root/MainScene/FishingSystem") as FishingSystem
+		print("SMOKE: jungle ground=", jg, " water=", jw, " trees=", jt, " forage=", jf, " jslime=", has_jslime, " fish=", fishing7._current_fish_table().size())
+		SceneManager.change_level("Farm", "SpawnPosition")
+		await get_tree().process_frame
+		await get_tree().process_frame
+		level = SceneManager.get_current_level()
+		player = get_tree().get_first_node_in_group("Player")
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

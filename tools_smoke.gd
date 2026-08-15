@@ -1988,6 +1988,57 @@ func _run() -> void:
 		if d.get("item") != null and d.get("item").name == "蓝莓酒":
 			blue_wine = true
 	print("SMOKE: blueberry wine=", blue_wine)
+	# ---- 罐头品类测试 ----
+	var jar2: Placeable = (load("res://Placeables/preserves_jar.tscn") as PackedScene).instantiate() as Placeable
+	level.find_child("Crops").add_child(jar2)
+	jar2.global_position = Vector2(720, 720)
+	player.current_item = load("res://Bag/items/crops/南瓜.tres").duplicate()
+	player.bag_system.add_item(player.current_item)
+	(jar2 as PreservesJar).try_insert(player)
+	var jar2_day: int = TimeSystem.current_day
+	TimeSystem.set_time(jar2_day + 3, 6, 0)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var pumpkin_canned := false
+	for d in drops_node.get_children():
+		if d.get("item") != null and d.get("item").name == "南瓜罐头":
+			pumpkin_canned = true
+	print("SMOKE: pumpkin canned=", pumpkin_canned)
+	# ---- 南瓜王Boss测试 ----
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/crops/南瓜.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 20:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	var pumpking_recipe: Recipe = load("res://Crafting/recipes/万圣南瓜灯.tres")
+	crafting.panel._on_craft_pressed(pumpking_recipe)
+	var pumpking_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "万圣南瓜灯":
+			pumpking_item = it
+			break
+	print("SMOKE: crafted lantern=", pumpking_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if pumpking_item:
+		player.current_item = pumpking_item
+		player.use_summon()
+	await get_tree().process_frame
+	var pumpking := level.get_node_or_null("BossPumpking") as Boss
+	print("SMOKE: pumpking=", pumpking != null)
+	if pumpking:
+		pumpking.shoot_timer = 0.1
+		await get_tree().create_timer(0.5).timeout
+		var pk_bolt := 0
+		for n in level.get_children():
+			if n is Projectile and n.name == "EnemyBolt":
+				pk_bolt += 1
+		print("SMOKE: pumpking bolt=", pk_bolt > 0)
+		pumpking.hurt.take_damage(2400, player.global_position)
+		await get_tree().create_timer(1.3).timeout
+		print("SMOKE: pumpking dead=", not is_instance_valid(pumpking), " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

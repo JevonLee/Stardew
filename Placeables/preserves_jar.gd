@@ -3,6 +3,13 @@ class_name PreservesJar
 ## 罐头瓶：手持蔬菜/水果右键放入，3天后制成罐头（随存档保存）
 
 const CANNED = preload("res://Bag/items/food/罐头.tres")
+## 按放入的食材产出对应罐头（未知食材产通用罐头）
+const JAR_MAP := {
+	"南瓜": preload("res://Bag/items/food/南瓜罐头.tres"),
+	"蓝莓": preload("res://Bag/items/food/蓝莓罐头.tres"),
+	"玉米": preload("res://Bag/items/food/玉米罐头.tres"),
+	"番茄": preload("res://Bag/items/food/番茄罐头.tres"),
+}
 
 var stored_name: String = ""
 var placed_day: int = 0
@@ -50,5 +57,6 @@ func _spawn_canned() -> void:
 		drops = get_parent()
 	fall.position = global_position + Vector2(0, -24)
 	drops.add_child(fall)
-	fall.generate(CANNED)
-	Global.show_message("罐头做好了！")
+	var canned: Item = JAR_MAP.get(stored_name, CANNED)
+	fall.generate(canned)
+	Global.show_message("%s做好了！" % canned.name)

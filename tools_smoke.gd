@@ -1087,6 +1087,52 @@ func _run() -> void:
 			if child is SkeletronHand:
 				hands_gone = false
 		print("SMOKE: skeletron dead=", not is_instance_valid(skel_boss), " hands_gone=", hands_gone, " drops=", drops_node.get_child_count())
+	# ---- 机械蠕虫Boss测试 ----
+	for i in 8:
+		player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	for i in 20:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/蛛网.tres").duplicate())
+	var worm_recipe: Recipe = load("res://Crafting/recipes/机械蠕虫.tres")
+	crafting.panel._on_craft_pressed(worm_recipe)
+	var worm_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "机械蠕虫":
+			worm_item = it
+			break
+	print("SMOKE: crafted worm=", worm_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if worm_item:
+		player.current_item = worm_item
+		player.use_summon()
+	await get_tree().process_frame
+	var worm := level.get_node_or_null("DestroyerHead") as Boss
+	print("SMOKE: worm=", worm != null)
+	if worm:
+		var seg_count := 0
+		for child in level.get_children():
+			if child is DestroyerSegment:
+				seg_count += 1
+		print("SMOKE: worm segments=", seg_count)
+		# 攻击身体 → 伤害转嫁头部
+		var seg: DestroyerSegment = null
+		for child in level.get_children():
+			if child is DestroyerSegment:
+				seg = child
+				break
+		if seg:
+			var worm_hp_before: int = worm.hurt.current_health
+			seg.hurt.take_damage(100, player.global_position)
+			print("SMOKE: worm damage transfer=", worm.hurt.current_health - worm_hp_before)
+		worm.hurt.take_damage(1800, player.global_position)
+		await get_tree().create_timer(1.2).timeout
+		var segs_gone := true
+		for child in level.get_children():
+			if child is DestroyerSegment:
+				segs_gone = false
+		print("SMOKE: worm dead=", not is_instance_valid(worm), " segs_gone=", segs_gone, " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

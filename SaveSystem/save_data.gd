@@ -14,4 +14,5 @@ class_name SaveData
 @export var collection:Dictionary = {} # 图鉴数据
 @export var achievements:Dictionary = {} # 已解锁成就
 @export var spouse:String = "" # 配偶
+@export var museum:Dictionary = {} # 博物馆捐赠
 #还有tilemap类存档

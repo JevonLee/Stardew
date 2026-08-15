@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" path="res://Combat/skeleton.tscn" id="4_skel"]
 [ext_resource type="PackedScene" path="res://Combat/demon_eye.tscn" id="5_deye"]
 [ext_resource type="PackedScene" path="res://Combat/spider.tscn" id="6_spider"]
+[ext_resource type="PackedScene" path="res://Combat/mummy.tscn" id="7_mummy"]
+[ext_resource type="PackedScene" path="res://NPC/desert_merchant.tscn" id="8_merchant"]
 
 [node name="Desert" type="Node2D"]
 y_sort_enabled = true
@@ -29,8 +31,11 @@ position = Vector2(96, 96)
 position = Vector2(96, 64)
 target_scene = "Farm"
 
+[node name="Merchant" parent="." instance=ExtResource("8_merchant")]
+position = Vector2(500, 300)
+
 [node name="EnemySpawner" parent="." instance=ExtResource("3_spawner")]
 night_only = false
 spawn_interval = 6.0
 max_enemies = 6
-enemy_scenes = Array[PackedScene]([ExtResource("4_skel"), ExtResource("4_skel"), ExtResource("5_deye"), ExtResource("6_spider")])
+enemy_scenes = Array[PackedScene]([ExtResource("4_skel"), ExtResource("7_mummy"), ExtResource("5_deye"), ExtResource("6_spider")])

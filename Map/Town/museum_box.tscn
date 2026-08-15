@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Map/Town/museum_box.gd" id="1_museum"]
+[ext_resource type="Texture2D" path="res://Art/loose_sprite/Cursors.zh-CN.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_area"]
+radius = 24.0
+
+[node name="MuseumBox" type="Area2D"]
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("1_museum")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+region_enabled = true
+region_rect = Rect2(384, 373, 18, 18)
+scale = Vector2(2, 2)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -60.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 60.0
+text = "博物馆捐赠箱"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_area")

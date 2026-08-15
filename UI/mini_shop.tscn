@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://UI/mini_shop.gd" id="1_ms"]
+
+[node name="MiniShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("1_ms")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 150.0
+offset_right = 880.0
+offset_bottom = 560.0
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 12.0
+offset_right = 400.0
+offset_bottom = 40.0
+text = "沙漠商人"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 460.0
+offset_bottom = 360.0
+
+[node name="SellButton" type="Button" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 20.0
+offset_top = 370.0
+offset_right = 240.0
+offset_bottom = 406.0
+text = "出售鼠标物品(半价)"
+
+[node name="CloseButton" type="Button" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 260.0
+offset_top = 370.0
+offset_right = 440.0
+offset_bottom = 406.0
+text = "关闭"

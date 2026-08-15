@@ -44,6 +44,7 @@ func _save() -> void:
 	}
 	save_data.achievements = AchievementSystem.unlocked
 	save_data.spouse = MarriageSystem.spouse
+	save_data.museum = MuseumSystem.donated
 	ResourceSaver.save(save_data, SAVE_PATH)
 	print("存档完成")
 
@@ -91,4 +92,6 @@ func _load() -> void:
 	if save_data.achievements.size() > 0:
 		AchievementSystem.unlocked = save_data.achievements
 	MarriageSystem.spouse = save_data.spouse
+	if save_data.museum.size() > 0:
+		MuseumSystem.donated = save_data.museum
 	print("读档完成")

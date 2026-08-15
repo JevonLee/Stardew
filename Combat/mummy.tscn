@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://Combat/enemy.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_31.png" id="2_tex"]
+[ext_resource type="Resource" uid="uid://jinbi000000001" path="res://Bag/items/materials/金币.tres" id="3_coin"]
+[ext_resource type="Resource" uid="uid://gutou000000001" path="res://Bag/items/materials/骨头.tres" id="4_bone"]
+
+[node name="Mummy" instance=ExtResource("1_base")]
+enemy_name = "木乃伊"
+ai = 1
+max_health = 60
+contact_damage = 12
+speed = 30.0
+knockback_resist = 0.3
+aggro_range = 260.0
+coin_drop = ExtResource("3_coin")
+coin_count = 2
+item_drop = ExtResource("4_bone")
+item_drop_chance = 0.5
+xp_reward = 15
+sprite_texture = ExtResource("2_tex")
+sprite_vframes = 21
+sprite_scale = Vector2(0.45, 0.45)

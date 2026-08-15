@@ -12,6 +12,8 @@ const ALL_FISH = [
 @onready var enemy_list: VBoxContainer = $Panel/EnemyScroll/EnemyList
 @onready var item_count_label: Label = $Panel/ItemCount
 @onready var ach_list: VBoxContainer = $Panel/AchScroll/AchList
+@onready var museum_label: Label = $Panel/MuseumLabel
+@onready var museum_list: Label = $Panel/MuseumList
 
 func _ready() -> void:
 	CollectionSystem.collection_changed.connect(refresh)
@@ -44,3 +46,9 @@ func refresh() -> void:
 		label.text = ("✓ " if got else "✗ ") + a["name"] + "：" + a["desc"]
 		label.modulate = Color.WHITE if got else Color(0.45, 0.45, 0.45)
 		ach_list.add_child(label)
+	# 博物馆
+	museum_label.text = "博物馆捐赠：%d 件" % MuseumSystem.total_donated()
+	var museum_text: String = ""
+	for name in MuseumSystem.donated:
+		museum_text += "%s × %d\n" % [name, MuseumSystem.donated[name]]
+	museum_list.text = museum_text if museum_text != "" else "（还没有捐赠）"

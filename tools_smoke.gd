@@ -767,4 +767,50 @@ func _run() -> void:
 		pet2.pet()
 		pet2.pet()
 		print("SMOKE: pet petted=", pet2.petted)
+	# ---- 新敌人测试 ----
+	var mummy_scene: PackedScene = load("res://Combat/mummy.tscn")
+	var mummy := mummy_scene.instantiate() as Enemy
+	mummy.global_position = player.global_position + Vector2(60, 0)
+	mummy.aggro_range = 0.0
+	level.add_child(mummy)
+	await get_tree().process_frame
+	mummy.hurt.take_damage(60, player.global_position)
+	await get_tree().process_frame
+	print("SMOKE: mummy=", mummy.enemy_name, " dead=", mummy.dead)
+	var gbat_scene: PackedScene = load("res://Combat/giant_bat.tscn")
+	var gbat := gbat_scene.instantiate() as Enemy
+	gbat.global_position = player.global_position + Vector2(-60, 0)
+	gbat.aggro_range = 0.0
+	level.add_child(gbat)
+	await get_tree().process_frame
+	print("SMOKE: giant bat=", gbat.enemy_name)
+	# ---- 博物馆捐赠测试 ----
+	player.bag_system.add_item(load("res://Bag/items/materials/紫水晶.tres").duplicate())
+	var museum_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "紫水晶":
+			museum_item = it
+			break
+	var gold_before_donate: int = Global.gold
+	if museum_item:
+		MuseumSystem.donate(museum_item)
+		print("SMOKE: museum donated=", MuseumSystem.total_donated(), " gold_gain=", Global.gold - gold_before_donate)
+	SaveManager._save()
+	SaveManager._load()
+	print("SMOKE: museum after load=", MuseumSystem.total_donated())
+	# ---- 沙漠商人测试 ----
+	SceneManager.change_level("Desert", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var desert2 := SceneManager.get_current_level() as Desert
+	var merchant := desert2.get_node_or_null("Merchant") as NPC
+	print("SMOKE: desert merchant=", merchant != null)
+	if merchant:
+		player = get_tree().get_first_node_in_group("Player")
+		player.global_position = merchant.global_position + Vector2(20, 0)
+		merchant._open_shop()
+		print("SMOKE: merchant shop=", merchant.shop != null and merchant.shop.visible)
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
 	print("SMOKE_OK")

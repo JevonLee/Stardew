@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://Combat/enemy.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_94.png" id="2_tex"]
+[ext_resource type="Resource" uid="uid://jinbi000000001" path="res://Bag/items/materials/金币.tres" id="3_coin"]
+
+[node name="GiantBat" instance=ExtResource("1_base")]
+enemy_name = "巨型蝙蝠"
+ai = 2
+max_health = 40
+contact_damage = 10
+speed = 95.0
+knockback_resist = 0.8
+aggro_range = 320.0
+coin_drop = ExtResource("3_coin")
+coin_count = 2
+xp_reward = 12
+sprite_texture = ExtResource("2_tex")
+sprite_vframes = 4
+sprite_scale = Vector2(0.5, 0.5)

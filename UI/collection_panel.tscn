@@ -96,3 +96,18 @@ offset_bottom = 460.0
 
 [node name="AchList" type="VBoxContainer" parent="Panel/AchScroll"]
 layout_mode = 2
+
+[node name="MuseumLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 505.0
+offset_right = 400.0
+offset_bottom = 528.0
+text = "博物馆捐赠：0 件"
+
+[node name="MuseumList" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 530.0
+offset_right = 400.0
+offset_bottom = 600.0

@@ -35,6 +35,7 @@ CollectionSystem="*res://Global/collection_system.gd"
 AchievementSystem="*res://Global/achievement_system.gd"
 MailSystem="*res://Global/mail_system.gd"
 MarriageSystem="*res://Global/marriage_system.gd"
+MuseumSystem="*res://Global/museum_system.gd"
 SaveManager="*res://Global/save_manager.gd"
 
 [display]

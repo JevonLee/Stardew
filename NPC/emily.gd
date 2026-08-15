@@ -2,6 +2,8 @@ extends NPC
 
 const GATE_POS := Vector2(268, 160) ## 农场北门（去往小镇的方向）
 
+@export var visitor_mode: bool = false ## 访客模式：在小镇内闲逛（跨地图日程），而非走向北门
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var speed:int = 30 
@@ -31,12 +33,16 @@ func _physics_process(delta: float) -> void:
 			direction = Vector2.ZERO
 			animated_sprite_2d.play("dance1")
 	elif is_midday:
-		# 走向北门等待，模拟去镇里
-		if global_position.distance_to(GATE_POS) > 8.0:
-			direction = global_position.direction_to(GATE_POS)
+		if visitor_mode:
+			# 在小镇内闲逛
+			_patrol()
 		else:
-			direction = Vector2.ZERO
-			animated_sprite_2d.play("idle")
+			# 走向北门等待，模拟去镇里
+			if global_position.distance_to(GATE_POS) > 8.0:
+				direction = global_position.direction_to(GATE_POS)
+			else:
+				direction = Vector2.ZERO
+				animated_sprite_2d.play("idle")
 	else:
 		_patrol()
 	

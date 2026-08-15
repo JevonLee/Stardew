@@ -55,6 +55,8 @@ func set_initial_time() -> void: #
 func set_time(day:int, hour:int, minute:int) -> void:
 	time = (day * MINUTES_PER_DAY + hour * MINUTES_PER_HOUR + minute) * GAME_MINUTE_DURATION
 	recalculate_time()
+	# 时间跳变（整点跳转时分钟可能不变）也要通知监听者（灯光/村民日程等）
+	time_tick.emit(day, hour, minute, weeks[day % 7 - 1])
 
 ## 当前季节（0春 1夏 2秋 3冬），第1~28天为春天
 func get_season() -> int:

@@ -863,6 +863,23 @@ func _run() -> void:
 		await get_tree().process_frame
 		level = SceneManager.get_current_level()
 		player = get_tree().get_first_node_in_group("Player")
+	# ---- 跨地图村民日程测试（艾米丽中午在小镇） ----
+	TimeSystem.set_time(TimeSystem.current_day, 12, 0)
+	SceneManager.change_level("Town", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var town_visit := SceneManager.get_current_level() as Town
+	var town_emily: NPC = town_visit.get_node_or_null("EmilyTown") as NPC if town_visit else null
+	print("SMOKE: town emily midday=", town_emily != null, " visitor=", town_emily.get("visitor_mode") if town_emily else false)
+	TimeSystem.set_time(TimeSystem.current_day, 17, 0)
+	await get_tree().create_timer(0.3).timeout
+	var emily_gone: bool = town_visit == null or town_visit.get_node_or_null("EmilyTown") == null
+	print("SMOKE: town emily evening gone=", emily_gone)
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	player = get_tree().get_first_node_in_group("Player")
 	# ---- 电梯测试 ----
 	Global.mine_floor = 1
 	SceneManager.change_level("Mine", "SpawnPosition")

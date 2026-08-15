@@ -5,8 +5,13 @@ const WATER_SOURCE_ID: int = 4 ## spring_town.zh-CN.png
 const OCEAN_TILES: Array[Vector2i] = [Vector2i(12,36), Vector2i(13,36), Vector2i(12,37), Vector2i(13,37)]
 const OCEAN_RECT: Rect2i = Rect2i(12, 36, 8, 6) ## 海边海洋区域（格）
 
+const EMILY_SCENE = preload("res://NPC/emily.tscn")
+const EMILY_VISIT_POS := Vector2(520, 430) ## 艾米丽中午在小镇闲逛的位置（皮埃尔商店旁）
+
 @onready var lights: Node2D = $Light
 @onready var water_layer: TileMapLayer = $Water
+
+var town_emily: NPC = null ## 跨地图日程：中午在小镇出现的艾米丽
 
 @export var bg_music1:AudioStream
 @export var bg_music2:AudioStream #夜晚
@@ -18,8 +23,27 @@ func _ready() -> void:
 			lights.show()
 			AudioManager.play_music(bg_music2)
 		)
+	TimeSystem.time_tick.connect(_on_time_tick)
 	AudioManager.play_music(bg_music1)
 	_paint_ocean()
+	_update_emily_visit()
+
+func _on_time_tick(_day:int, _hour:int, _minute:int, _week) -> void:
+	_update_emily_visit()
+
+## 跨地图村民日程：中午（10-16点）艾米丽在小镇闲逛，其余时间回到农场
+func _update_emily_visit() -> void:
+	var visiting: bool = TimeSystem.current_hour >= 10 and TimeSystem.current_hour < 16
+	if visiting and town_emily == null:
+		var emily = EMILY_SCENE.instantiate()
+		emily.visitor_mode = true
+		emily.name = "EmilyTown"
+		emily.position = EMILY_VISIT_POS
+		add_child(emily)
+		town_emily = emily as NPC
+	elif not visiting and town_emily != null:
+		town_emily.queue_free()
+		town_emily = null
 
 ## 海边海洋（可钓鱼）
 func _paint_ocean() -> void:

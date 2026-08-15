@@ -1637,6 +1637,16 @@ func _run() -> void:
 		fishron.hurt.take_damage(2200, player.global_position)
 		await get_tree().create_timer(1.3).timeout
 		print("SMOKE: fishron dead=", not is_instance_valid(fishron), " drops=", drops_node.get_child_count())
+	# ---- 雷暴音效测试 ----
+	WeatherSystem.weather = "storm"
+	WeatherSystem.thunder_timer = 0.1
+	await get_tree().create_timer(0.3).timeout
+	var sfx_busy: bool = false
+	for sp in AudioManager.sfx_players:
+		if sp != null and sp.stream != null:
+			sfx_busy = true
+	print("SMOKE: thunder sfx=", sfx_busy, " timer=", WeatherSystem.thunder_timer > 0.0)
+	WeatherSystem.weather = "sunny"
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

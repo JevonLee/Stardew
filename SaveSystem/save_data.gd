@@ -13,4 +13,5 @@ class_name SaveData
 @export var quest_day:int = -1
 @export var collection:Dictionary = {} # 图鉴数据
 @export var achievements:Dictionary = {} # 已解锁成就
+@export var spouse:String = "" # 配偶
 #还有tilemap类存档

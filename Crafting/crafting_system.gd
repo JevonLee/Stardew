@@ -29,6 +29,9 @@ const RECIPES = [
 	preload("res://Crafting/recipes/紫水晶法杖.tres"),
 	preload("res://Crafting/recipes/果酱.tres"),
 	preload("res://Crafting/recipes/烤蘑菇.tres"),
+	preload("res://Crafting/recipes/花束.tres"),
+	preload("res://Crafting/recipes/蛋糕.tres"),
+	preload("res://Crafting/recipes/布丁.tres"),
 ]
 
 var panel: Control

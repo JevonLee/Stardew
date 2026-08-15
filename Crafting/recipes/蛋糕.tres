@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3 uid="uid://dangao_rec001"]
+
+[ext_resource type="Script" path="res://Crafting/recipe.gd" id="1_rc"]
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="5_item"]
+[ext_resource type="Resource" uid="uid://dangao00000001" path="res://Bag/items/food/蛋糕.tres" id="2_res"]
+[ext_resource type="Resource" uid="uid://jidan000000001" path="res://Bag/items/animal/鸡蛋.tres" id="3_i"]
+[ext_resource type="Resource" uid="uid://niunai00000001" path="res://Bag/items/animal/牛奶.tres" id="4_i"]
+[ext_resource type="Resource" uid="uid://guojiang000001" path="res://Bag/items/food/果酱.tres" id="5_i"]
+[resource]
+script = ExtResource("1_rc")
+recipe_name = "蛋糕"
+result = ExtResource("2_res")
+result_count = 1
+ingredients = Array[ExtResource("5_item")]([ExtResource("3_i"), ExtResource("4_i"), ExtResource("5_i")])
+ingredient_counts = Array[int]([2, 1, 1])

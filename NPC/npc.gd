@@ -35,6 +35,14 @@ func _is_giftable(item:Item) -> bool:
 func _give_gift(player:Player) -> void:
 	var item := player.current_item
 	if item == null: return
+	# 求婚：好感满10心 + 手持花束
+	if item.name == "花束" and FriendshipSystem.get_hearts(npc_display_name) >= 10.0:
+		if MarriageSystem.is_married():
+			Global.show_message("你已经结婚了！")
+			return
+		player.bag_system.remove_num_item(player.item_index, 1)
+		MarriageSystem.marry(npc_display_name)
+		return
 	if not FriendshipSystem.can_gift(npc_display_name):
 		Global.show_message("%s今天已经收过礼物了" % npc_display_name)
 		return

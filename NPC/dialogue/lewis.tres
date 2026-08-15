@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=3 format=3 uid="uid://lewis_dlg00001"]
+
+[ext_resource type="Script" uid="uid://c1m7jt0aixupj" path="res://NPC/dialogue/dialogue.gd" id="1_dlg"]
+[ext_resource type="Texture2D" path="res://Art/StardewValley/portraits/Lewis.png" id="2_port"]
+
+[resource]
+script = ExtResource("1_dlg")
+npc_name = "lewis"
+protaits = ExtResource("2_port")
+texts = Array[String](["镇长的工作可不容易，不过我很享受。", "鹈鹕镇有你这样的新居民真是太好了。", "记得参加镇上的节日活动！"])

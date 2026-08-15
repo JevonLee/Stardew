@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=3 format=3 uid="uid://abigail_dlg01"]
+
+[ext_resource type="Script" uid="uid://c1m7jt0aixupj" path="res://NPC/dialogue/dialogue.gd" id="1_dlg"]
+[ext_resource type="Texture2D" path="res://Art/StardewValley/portraits/Abigail.png" id="2_port"]
+
+[resource]
+script = ExtResource("1_dlg")
+npc_name = "abigail"
+protaits = ExtResource("2_port")
+texts = Array[String](["你见过森林里的紫色史莱姆吗？我想去看看。", "妈妈说不要总是呆在家里，可我更喜欢冒险。", "送你礼物的话，我会很开心的！"])

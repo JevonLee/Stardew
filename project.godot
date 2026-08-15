@@ -34,6 +34,7 @@ QuestSystem="*res://Global/quest_system.gd"
 CollectionSystem="*res://Global/collection_system.gd"
 AchievementSystem="*res://Global/achievement_system.gd"
 MailSystem="*res://Global/mail_system.gd"
+MarriageSystem="*res://Global/marriage_system.gd"
 SaveManager="*res://Global/save_manager.gd"
 
 [display]

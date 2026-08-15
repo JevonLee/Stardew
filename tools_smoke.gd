@@ -568,4 +568,41 @@ func _run() -> void:
 		if it != null and it.name == "蘑菇" and it.quantity >= 2:
 			got_mushroom = true
 	print("SMOKE: mail gift=", got_mushroom)
+	# ---- 结婚系统测试 ----
+	FriendshipSystem.add_hearts("艾米丽", 10.0)
+	var bouquet: Item = load("res://Bag/items/materials/花束.tres").duplicate()
+	player.bag_system.add_item(bouquet)
+	player.current_item = bouquet
+	var emily3 := level.get_node_or_null("NPC/Emily") as NPC
+	emily3._give_gift(player)
+	print("SMOKE: married=", MarriageSystem.is_married(), " spouse=", MarriageSystem.spouse)
+	SaveManager._save()
+	SaveManager._load()
+	print("SMOKE: spouse after load=", MarriageSystem.spouse)
+	# ---- 新村民测试 ----
+	SceneManager.change_level("Town", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var town2 := SceneManager.get_current_level() as Town
+	var abigail := town2.get_node_or_null("Abigail") as NPC
+	var lewis := town2.get_node_or_null("Lewis") as NPC
+	print("SMOKE: abigail=", abigail != null, " lewis=", lewis != null)
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	player = get_tree().get_first_node_in_group("Player")
+	# ---- 蛋糕与雷暴测试 ----
+	player.bag_system.add_item(load("res://Bag/items/animal/鸡蛋.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/animal/鸡蛋.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/animal/牛奶.tres").duplicate())
+	var cake_recipe: Recipe = load("res://Crafting/recipes/蛋糕.tres")
+	crafting.panel._on_craft_pressed(cake_recipe)
+	var has_cake: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "蛋糕":
+			has_cake = true
+	print("SMOKE: crafted cake=", has_cake)
+	WeatherSystem.weather = "storm"
+	print("SMOKE: storm raining=", WeatherSystem.is_raining())
 	print("SMOKE_OK")

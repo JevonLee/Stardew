@@ -5,6 +5,7 @@ signal weather_changed(weather:String)
 
 const RAIN_CHANCE_BY_SEASON:Array[float] = [0.45, 0.25, 0.35, 0.0] # 春/夏/秋/冬
 const SNOW_CHANCE_WINTER:float = 0.55
+const STORM_CHANCE_SUMMER:float = 0.3 ## 夏天降雨升级为雷暴的概率
 
 var weather:String = "sunny": ## sunny / rain / snow
 	set(val):
@@ -16,7 +17,7 @@ func _ready() -> void:
 	_roll_weather()
 
 func is_raining() -> bool:
-	return weather == "rain"
+	return weather == "rain" or weather == "storm"
 
 func is_snowing() -> bool:
 	return weather == "snow"
@@ -31,5 +32,12 @@ func _roll_weather() -> void:
 		weather = "snow" if r < SNOW_CHANCE_WINTER else "sunny"
 	else:
 		var chance:float = RAIN_CHANCE_BY_SEASON[season]
-		weather = "rain" if r < chance else "sunny"
+		if r < chance:
+			# 夏天降雨有概率升级为雷暴
+			if season == TimeSystem.Season.SUMMER and randf() < STORM_CHANCE_SUMMER:
+				weather = "storm"
+			else:
+				weather = "rain"
+		else:
+			weather = "sunny"
 	print("天气: ", weather)

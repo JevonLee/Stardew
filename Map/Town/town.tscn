@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dqfjpljnxpqbl" path="res://Map/Town/light.tres" id="3_4jukr"]
 [ext_resource type="AudioStream" uid="uid://ikpod1of2y4b" path="res://AudioSystem/Scott Lloyd Shelly - Terraria Soundtrack - 03 Overworld Night.mp3" id="3_fhrtb"]
 [ext_resource type="PackedScene" path="res://NPC/pierre.tscn" id="4_pierre"]
+[ext_resource type="PackedScene" path="res://NPC/abigail.tscn" id="5_abigail"]
+[ext_resource type="PackedScene" path="res://NPC/lewis.tscn" id="6_lewis"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jukr"]
 size = Vector2(38, 47)
@@ -96,6 +98,12 @@ position = Vector2(2064.21, 2352.13)
 
 [node name="Pierre" parent="." instance=ExtResource("4_pierre")]
 position = Vector2(400, 420)
+
+[node name="Abigail" parent="." instance=ExtResource("5_abigail")]
+position = Vector2(500, 380)
+
+[node name="Lewis" parent="." instance=ExtResource("6_lewis")]
+position = Vector2(600, 420)
 
 [node name="Light" type="Node2D" parent="."]
 visible = false

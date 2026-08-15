@@ -79,5 +79,5 @@ func _on_season_changed(season:int) -> void:
 	season_label.text = "季节: " + TimeSystem.SEASON_NAMES[season]
 
 func _on_weather_changed(weather:String) -> void:
-	var names := {"sunny": "晴天", "rain": "雨天", "snow": "下雪"}
+	var names := {"sunny": "晴天", "rain": "雨天", "snow": "下雪", "storm": "雷暴"}
 	weather_label.text = "天气: " + names.get(weather, weather)

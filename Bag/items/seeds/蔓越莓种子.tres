@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://manyuesseed01"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://ogd2711orqqq"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
 [ext_resource type="Texture2D" uid="uid://dxf5y3rpsuxa8" path="res://Art/maps/springobjects.es-ES.png" id="2_tex"]

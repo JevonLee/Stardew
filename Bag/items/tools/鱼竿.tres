@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://yugan000000001"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bl5olthl1cycu"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
 [ext_resource type="Texture2D" uid="uid://bft03am2gfd42" path="res://Art/myself/wood.png" id="2_tex"]

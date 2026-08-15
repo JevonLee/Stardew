@@ -515,6 +515,30 @@ func _run() -> void:
 		if it != null and it.name == "奶酪":
 			has_cheese = true
 	print("SMOKE: crafted cheese=", has_cheese)
+	# ---- 新食谱测试（南瓜汤/苹果派/烤玉米） ----
+	player.bag_system.add_item(load("res://Bag/items/crops/南瓜.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/animal/牛奶.tres").duplicate())
+	var pumpkin_recipe: Recipe = load("res://Crafting/recipes/南瓜汤.tres")
+	crafting.panel._on_craft_pressed(pumpkin_recipe)
+	for i in 2:
+		player.bag_system.add_item(load("res://Bag/items/crops/苹果.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/animal/鸡蛋.tres").duplicate())
+	var applepie_recipe: Recipe = load("res://Crafting/recipes/苹果派.tres")
+	crafting.panel._on_craft_pressed(applepie_recipe)
+	for i in 2:
+		player.bag_system.add_item(load("res://Bag/items/crops/玉米.tres").duplicate())
+	var roastcorn_recipe: Recipe = load("res://Crafting/recipes/烤玉米.tres")
+	crafting.panel._on_craft_pressed(roastcorn_recipe)
+	var found_soup: Item = null
+	var found_pie: Item = null
+	var found_corn: Item = null
+	for it in player.bag_system.items:
+		if it != null:
+			match it.name:
+				"南瓜汤": found_soup = it
+				"苹果派": found_pie = it
+				"烤玉米": found_corn = it
+	print("SMOKE: soup=", found_soup != null, " hp=", found_soup.health_restore if found_soup else -1, " pie=", found_pie != null, " corn=", found_corn != null)
 	for i in 8:
 		player.bag_system.add_item(load("res://Bag/items/materials/紫水晶.tres").duplicate())
 		player.bag_system.add_item(load("res://Bag/items/materials/wood.tres").duplicate())

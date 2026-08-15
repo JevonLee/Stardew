@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://torch000000001"]
+[gd_scene format=3 uid="uid://dpyjqfq60m761"]
 
 [ext_resource type="Script" uid="uid://dupkrto24l5lc" path="res://Placeables/placeable.gd" id="1_pl"]
 [ext_resource type="PackedScene" uid="uid://dao3kk2e08sjp" path="res://Placeables/placeable_footprint.tscn" id="2_fp"]

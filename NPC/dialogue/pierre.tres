@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Dialogue" load_steps=3 format=3 uid="uid://pierredialg001"]
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://h35csciwdqhk"]
 
 [ext_resource type="Script" uid="uid://c1m7jt0aixupj" path="res://NPC/dialogue/dialogue.gd" id="1_dlg"]
 [ext_resource type="Texture2D" path="res://Art/portraits/Pierre_Beach.png" id="2_port"]

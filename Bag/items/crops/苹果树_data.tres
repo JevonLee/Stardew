@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CropData" load_steps=5 format=3 uid="uid://pingguoshudata1"]
+[gd_resource type="Resource" script_class="CropData" format=3 uid="uid://bb7cre15y6rry"]
 
 [ext_resource type="Script" path="res://Placeables/Crops/crop_data.gd" id="1_cd"]
 [ext_resource type="Texture2D" uid="uid://cyfd18grsc0v7" path="res://Art/tile_sheets/crops.png" id="2_tex"]

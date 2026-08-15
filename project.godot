@@ -33,6 +33,7 @@ FriendshipSystem="*res://Global/friendship_system.gd"
 QuestSystem="*res://Global/quest_system.gd"
 CollectionSystem="*res://Global/collection_system.gd"
 AchievementSystem="*res://Global/achievement_system.gd"
+MailSystem="*res://Global/mail_system.gd"
 SaveManager="*res://Global/save_manager.gd"
 
 [display]
@@ -143,6 +144,11 @@ crafting={
 collection={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":71,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+travel={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

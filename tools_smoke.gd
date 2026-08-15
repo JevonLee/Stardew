@@ -528,4 +528,44 @@ func _run() -> void:
 	# ---- 宠物猫测试 ----
 	var pet := get_node_or_null("/root/MainScene/Pet") as Pet
 	print("SMOKE: pet=", pet != null, " follows=", pet != null and pet.get_tree() != null)
+	# ---- 新敌人测试 ----
+	var spider_scene: PackedScene = load("res://Combat/spider.tscn")
+	var spider := spider_scene.instantiate() as Enemy
+	spider.global_position = player.global_position + Vector2(60, 0)
+	spider.aggro_range = 0.0
+	level.add_child(spider)
+	await get_tree().process_frame
+	print("SMOKE: spider=", spider.enemy_name, " speed=", spider.speed)
+	var jungle_scene: PackedScene = load("res://Combat/jungle_slime.tscn")
+	var jungle := jungle_scene.instantiate() as Enemy
+	jungle.global_position = player.global_position + Vector2(-60, 0)
+	jungle.aggro_range = 0.0
+	level.add_child(jungle)
+	await get_tree().process_frame
+	print("SMOKE: jungle slime=", jungle.enemy_name)
+	# ---- 果酱/烤蘑菇 ----
+	for i in 3:
+		player.bag_system.add_item(load("res://Bag/items/forage/树莓.tres").duplicate())
+	var jam_recipe: Recipe = load("res://Crafting/recipes/果酱.tres")
+	crafting.panel._on_craft_pressed(jam_recipe)
+	var has_jam: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "果酱":
+			has_jam = true
+	print("SMOKE: crafted jam=", has_jam)
+	# ---- 传送面板 ----
+	var travel_sys := get_node_or_null("/root/MainScene/TravelSystem") as TravelSystem
+	print("SMOKE: travel panel=", travel_sys != null and travel_sys.panel != null)
+	# ---- 信件系统 ----
+	MailSystem.pending_mail = {"text": "测试信件", "gift": "res://Bag/items/forage/蘑菇.tres", "gift_count": 2}
+	var bag_before_mail: int = 0
+	for it in player.bag_system.items:
+		if it != null:
+			bag_before_mail += 1
+	MailSystem.claim()
+	var got_mushroom: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "蘑菇" and it.quantity >= 2:
+			got_mushroom = true
+	print("SMOKE: mail gift=", got_mushroom)
 	print("SMOKE_OK")

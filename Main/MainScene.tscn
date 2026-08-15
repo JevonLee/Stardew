@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" path="res://Crafting/crafting_system.tscn" id="7_crafting"]
 [ext_resource type="PackedScene" path="res://UI/collection_system.tscn" id="8_collection"]
 [ext_resource type="PackedScene" path="res://Animals/cat.tscn" id="9_cat"]
+[ext_resource type="PackedScene" path="res://Animals/dog.tscn" id="10_dog"]
+[ext_resource type="PackedScene" path="res://UI/travel_system.tscn" id="11_travel"]
+[ext_resource type="PackedScene" path="res://UI/mail_system.tscn" id="12_mail"]
 
 [node name="MainScene" type="Node2D"]
 y_sort_enabled = true
@@ -46,6 +49,13 @@ metadata/_edit_group_ = true
 
 [node name="Pet" parent="." instance=ExtResource("9_cat")]
 position = Vector2(2460, 330)
+
+[node name="Pet2" parent="." instance=ExtResource("10_dog")]
+position = Vector2(2530, 330)
+
+[node name="TravelSystem" parent="." instance=ExtResource("11_travel")]
+
+[node name="MailSystem" parent="." instance=ExtResource("12_mail")]
 
 [node name="PopUp" type="Control" parent="MainCanvasLayer"]
 layout_mode = 3

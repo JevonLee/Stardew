@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://Combat/enemy.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_16.png" id="2_tex"]
+[ext_resource type="Resource" uid="uid://ningjiao000001" path="res://Bag/items/materials/凝胶.tres" id="3_gel"]
+
+[node name="JungleSlime" instance=ExtResource("1_base")]
+enemy_name = "丛林史莱姆"
+ai = 0
+max_health = 25
+contact_damage = 7
+speed = 55.0
+knockback_resist = 0.3
+aggro_range = 280.0
+coin_drop = ExtResource("3_gel")
+coin_count = 2
+item_drop = ExtResource("3_gel")
+item_drop_chance = 0.9
+xp_reward = 7
+sprite_texture = ExtResource("2_tex")
+sprite_vframes = 2
+sprite_scale = Vector2(0.6, 0.6)

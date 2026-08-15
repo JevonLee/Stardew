@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" path="res://Combat/slime.tscn" id="5_slime"]
 [ext_resource type="PackedScene" path="res://Combat/bat.tscn" id="6_bat"]
 [ext_resource type="PackedScene" path="res://Combat/demon_eye.tscn" id="7_deye"]
+[ext_resource type="PackedScene" path="res://Combat/spider.tscn" id="8_spider"]
+[ext_resource type="PackedScene" path="res://Combat/jungle_slime.tscn" id="9_jungle"]
 
 [node name="Forest" type="Node2D"]
 y_sort_enabled = true
@@ -39,4 +41,4 @@ target_scene = "Farm"
 night_only = false
 spawn_interval = 7.0
 max_enemies = 5
-enemy_scenes = Array[PackedScene]([ExtResource("5_slime"), ExtResource("5_slime"), ExtResource("6_bat"), ExtResource("7_deye")])
+enemy_scenes = Array[PackedScene]([ExtResource("5_slime"), ExtResource("9_jungle"), ExtResource("6_bat"), ExtResource("7_deye"), ExtResource("8_spider")])

@@ -2073,6 +2073,40 @@ func _run() -> void:
 		ice_queen.hurt.take_damage(2600, player.global_position)
 		await get_tree().create_timer(1.3).timeout
 		print("SMOKE: ice queen dead=", not is_instance_valid(ice_queen), " drops=", drops_node.get_child_count())
+	# ---- 圣诞坦克Boss测试 ----
+	for i in 12:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/煤矿.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/animal/羊毛.tres").duplicate())
+	var santa_recipe: Recipe = load("res://Crafting/recipes/圣诞挂饰.tres")
+	crafting.panel._on_craft_pressed(santa_recipe)
+	var santa_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "圣诞挂饰":
+			santa_item = it
+			break
+	print("SMOKE: crafted ornament=", santa_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if santa_item:
+		player.current_item = santa_item
+		player.use_summon()
+	await get_tree().process_frame
+	var santa := level.get_node_or_null("BossSantaNK") as Boss
+	print("SMOKE: santa tank=", santa != null)
+	if santa:
+		santa.shoot_timer = 0.1
+		await get_tree().create_timer(0.5).timeout
+		var santa_bolt := 0
+		for n in level.get_children():
+			if n is Projectile and n.name == "EnemyBolt":
+				santa_bolt += 1
+		print("SMOKE: santa volley=", santa_bolt > 0)
+		santa.hurt.take_damage(2800, player.global_position)
+		await get_tree().create_timer(1.3).timeout
+		print("SMOKE: santa dead=", not is_instance_valid(santa), " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

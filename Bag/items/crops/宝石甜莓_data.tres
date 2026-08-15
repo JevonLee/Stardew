@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CropData" format=3 uid="uid://baoshitian_m1"]
+
+[ext_resource type="Script" path="res://Placeables/Crops/crop_data.gd" id="1_cd"]
+[ext_resource type="Texture2D" uid="uid://cyfd18grsc0v7" path="res://Art/tile_sheets/crops.png" id="2_tex"]
+[ext_resource type="Resource" uid="uid://baoshitianmei1" path="res://Bag/items/crops/宝石甜莓.tres" id="3_item"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd"]
+atlas = ExtResource("2_tex")
+region = Rect2(128, 96, 112, 32)
+
+[resource]
+script = ExtResource("1_cd")
+crop_name = "宝石甜莓"
+texture = SubResource("AtlasTexture_cd")
+hframes = 7
+growth_days = 24
+regrow_days = 0
+drops_count = 1
+allowed_seasons = Array[int]([0, 1, 2, 3])
+harvest_item = ExtResource("3_item")

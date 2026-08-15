@@ -1315,6 +1315,34 @@ func _run() -> void:
 		moon_lord.hurt.take_damage(3000, player.global_position)
 		await get_tree().create_timer(1.3).timeout
 		print("SMOKE: moon lord dead=", not is_instance_valid(moon_lord), " drops=", drops_node.get_child_count())
+	# ---- 新作物测试（宝石甜莓/上古水果） ----
+	var sweet_seed: Item = load("res://Bag/items/seeds/宝石甜莓种子.tres")
+	var ancient_seed: Item = load("res://Bag/items/seeds/上古水果种子.tres")
+	var sweet_data: CropData = sweet_seed.crop_data
+	var ancient_data: CropData = ancient_seed.crop_data
+	print("SMOKE: sweet data=", sweet_data != null, " days=", sweet_data.growth_days if sweet_data else -1, " price=", sweet_seed.price)
+	print("SMOKE: ancient data=", ancient_data != null, " days=", ancient_data.growth_days if ancient_data else -1, " regrow=", ancient_data.regrow_days if ancient_data else -1, " seasons=", ancient_data.allowed_seasons if ancient_data else [])
+	# 商店含新种子
+	var store_panel_scene: PackedScene = load("res://Map/Store/store_panel.tscn")
+	var sp_ins: Node = store_panel_scene.instantiate()
+	var sp_items: Array = sp_ins.get("inventorys")
+	var store_has_sweet := false
+	var store_has_ancient := false
+	for it in sp_items:
+		if it != null and it.name == "宝石甜莓种子":
+			store_has_sweet = true
+		if it != null and it.name == "上古水果种子":
+			store_has_ancient = true
+	sp_ins.queue_free()
+	print("SMOKE: store sweet=", store_has_sweet, " ancient=", store_has_ancient)
+	# 种植验证：春天种上古水果不枯萎（全年可种）
+	var ancient_crop: Crop = (load("res://Placeables/Crops/crop.tscn") as PackedScene).instantiate() as Crop
+	ancient_crop.crop_data = ancient_data
+	ancient_crop.cell = Vector2i(60, 40)
+	ancient_crop.planted_day = TimeSystem.current_day
+	level.find_child("Crops").add_child(ancient_crop)
+	await get_tree().process_frame
+	print("SMOKE: ancient crop withering=", ancient_crop.withering, " stage=", ancient_crop.growth_stage)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

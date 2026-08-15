@@ -21,6 +21,7 @@ y_sort_enabled = true
 [node name="TimeColor" parent="." instance=ExtResource("1_1whlm")]
 
 [node name="Drops" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Levels" type="Node2D" parent="."]
 y_sort_enabled = true

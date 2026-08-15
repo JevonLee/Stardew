@@ -2421,6 +2421,46 @@ func _run() -> void:
 		await get_tree().process_frame
 		level = SceneManager.get_current_level()
 		player = get_tree().get_first_node_in_group("Player")
+	# ---- 修复验证：掉落物兜底 ----
+	var tree_ins: Trees = (load("res://Terrain/Trees/trees.tscn") as PackedScene).instantiate() as Trees
+	level.add_child(tree_ins)
+	tree_ins.global_position = player.global_position + Vector2(140, 0)
+	await get_tree().process_frame
+	print("SMOKE: tree fallback=", tree_ins.fall_objects.size() > 0 and tree_ins.fall_objects[0] != null)
+	tree_ins.queue_free()
+	var rock_ins: Rock = (load("res://Terrain/Rocks/rock.tscn") as PackedScene).instantiate() as Rock
+	level.add_child(rock_ins)
+	rock_ins.global_position = player.global_position + Vector2(160, 0)
+	await get_tree().process_frame
+	print("SMOKE: rock fallback=", rock_ins.fall_objects.size() > 0 and rock_ins.fall_objects[0] != null)
+	rock_ins.queue_free()
+	# ---- 修复验证：无敌模式 ----
+	Global.god_mode = true
+	player.take_damage(50)
+	var hp_after_god: int = player.health
+	Global.god_mode = false
+	print("SMOKE: god mode=", hp_after_god >= 100)
+	# ---- 修复验证：物品生成器 ----
+	var all_items: Array = Global._scan_all_items()
+	print("SMOKE: item count=", all_items.size())
+	var bag_before_gen: int = 0
+	for it in player.bag_system.items:
+		if it != null:
+			bag_before_gen += 1
+	Global._give_item(all_items[0])
+	var bag_after_gen: int = 0
+	for it in player.bag_system.items:
+		if it != null:
+			bag_after_gen += 1
+	print("SMOKE: give item=", bag_after_gen > bag_before_gen)
+	# ---- 修复验证：帮助面板与合成滚动 ----
+	print("SMOKE: help text=", Global._help_text().length() > 200)
+	var cp2: Control = (load("res://Crafting/crafting_panel.tscn") as PackedScene).instantiate()
+	level.add_child(cp2)
+	cp2.build(crafting.RECIPES)
+	await get_tree().process_frame
+	print("SMOKE: crafting scroll=", cp2.get_node("Panel/MarginContainer/ScrollContainer/VBoxContainer") != null)
+	cp2.queue_free()
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

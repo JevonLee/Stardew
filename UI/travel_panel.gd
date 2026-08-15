@@ -2,7 +2,7 @@ extends Control
 class_name TravelPanel
 ## 传送面板：M键打开，快速前往已探索区域
 
-@onready var v_box: VBoxContainer = $Panel/VBoxContainer
+@onready var v_box: VBoxContainer = $Panel/ScrollContainer/VBoxContainer
 
 const DESTINATIONS := [
 	{"name": "农场", "level": "Farm", "spawn": "SpawnPosition"},

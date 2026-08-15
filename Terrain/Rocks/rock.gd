@@ -2,6 +2,7 @@ extends StaticBody2D
 class_name Rock
 
 const COAL = preload("res://Bag/items/materials/煤矿.tres")
+const STONE = preload("res://Bag/items/materials/stone.tres")
 
 @onready var body: Sprite2D = $body
 @onready var body_hurt_box: HurtComponent = $body/HurtComponent
@@ -16,6 +17,9 @@ func _ready() -> void:
 	body_hurt_box.body_droped.connect(on_body_droped)
 	body_hurt_box.hit_entered.connect(func():AudioManager.play_sfx(sfx1))
 	player = get_tree().get_first_node_in_group("Player")
+	# 掉落物兜底：未配置时默认掉石头（修复无掉落bug）
+	if fall_objects.is_empty() or fall_objects[0] == null:
+		fall_objects = [STONE]
 
 func on_body_droped() ->void: #树身体被砍
 	call_deferred("add_fall_objects",1,fall_objects[0])

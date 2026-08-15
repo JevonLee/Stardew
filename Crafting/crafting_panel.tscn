@@ -23,25 +23,28 @@ color = Color(0, 0, 0, 0.3)
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 390.0
-offset_top = 120.0
-offset_right = 890.0
-offset_bottom = 600.0
+offset_left = 240.0
+offset_top = 40.0
+offset_right = 1040.0
+offset_bottom = 680.0
 
 [node name="Title" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 12.0
-offset_right = 300.0
+offset_right = 400.0
 offset_bottom = 40.0
-text = "合成（按C关闭）"
+text = "合成（按C关闭，滚轮滚动）"
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 50.0
-offset_right = 480.0
-offset_bottom = 470.0
+offset_right = 780.0
+offset_bottom = 620.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/ScrollContainer"]
 layout_mode = 2

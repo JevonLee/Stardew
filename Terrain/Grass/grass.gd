@@ -5,12 +5,17 @@ extends Area2D
 
 @export var fall_objects:Array[Item] 
 
+const FIBER = preload("res://Bag/items/materials/纤维.tres")
+
 var player:Player = null
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_hurt_box.body_droped.connect(on_body_droped)
 	player = get_tree().get_first_node_in_group("Player")
+	# 掉落物兜底：未配置时默认掉纤维（修复无掉落bug）
+	if fall_objects.is_empty() or fall_objects[0] == null:
+		fall_objects = [FIBER]
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:

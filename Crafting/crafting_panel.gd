@@ -6,7 +6,7 @@ signal closed
 
 const RECIPES: Array[Recipe] = []
 
-@onready var v_box: VBoxContainer = $Panel/MarginContainer/VBoxContainer
+@onready var v_box: VBoxContainer = $Panel/MarginContainer/ScrollContainer/VBoxContainer
 
 var recipe_rows: Array = []
 

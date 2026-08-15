@@ -186,6 +186,7 @@ func eat_current_item() -> bool:
 
 ## 受伤（敌人攻击、掉落伤害等），带无敌帧
 func take_damage(amount:int) -> void:
+	if Global.god_mode: return ## 开发者无敌模式
 	if health <= 0 or invincible_time > 0.0: return
 	health = maxi(health - amount, 0)
 	invincible_time = INVINCIBLE_TIME

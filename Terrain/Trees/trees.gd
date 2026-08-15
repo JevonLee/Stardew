@@ -2,6 +2,7 @@ extends StaticBody2D
 class_name Trees
 
 const SAP = preload("res://Bag/items/materials/树液.tres")
+const WOOD = preload("res://Bag/items/materials/wood.tres")
 
 @onready var root_hurt_box: Area2D = $TreeRoot/HurtComponent
 @onready var body_hurt_box: Area2D = $TreeBody/HurtComponent
@@ -30,6 +31,9 @@ func _ready() -> void:
 	#下面是初始状态赋值
 	root_hurt_box.get_child(0).disabled = true
 	player = get_tree().get_first_node_in_group("Player")
+	# 掉落物兜底：未配置时默认掉木头（修复代码生成树无掉落bug）
+	if fall_objects.is_empty() or fall_objects[0] == null:
+		fall_objects = [WOOD]
 	
 func on_body_enterd(body:Node2D) -> void:
 	if body is Player:

@@ -58,6 +58,145 @@ func combat_crit_bonus() -> float:
 ## 出货箱待售物品（当晚结算卖出）
 var shipping_pending: Array = [] ## Array[Item]
 
+## ---------- 开发者功能 ----------
+var god_mode: bool = false ## 无敌模式（F2切换）
+var item_panel: Control = null ## 物品生成器面板（F3）
+var help_panel: Control = null ## 帮助指南面板（H）
+var _item_cache: Array = [] ## 扫描到的全部物品
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("god_mode"):
+		god_mode = !god_mode
+		show_message("无敌模式：" + ("开启！" if god_mode else "关闭"))
+	elif event.is_action_pressed("dev_items"):
+		_toggle_item_panel()
+	elif event.is_action_pressed("help_panel"):
+		_toggle_help_panel()
+
+## 扫描 Bag/items 下所有物品资源
+func _scan_all_items() -> Array:
+	if not _item_cache.is_empty():
+		return _item_cache
+	var items: Array = []
+	_scan_item_dir("res://Bag/items", items)
+	_item_cache = items
+	return items
+
+func _scan_item_dir(path: String, items: Array) -> void:
+	var dir := DirAccess.open(path)
+	if dir == null: return
+	dir.list_dir_begin()
+	var f := dir.get_next()
+	while f != "":
+		if dir.current_is_dir() and f != "." and f != "..":
+			_scan_item_dir(path + "/" + f, items)
+		elif f.ends_with(".tres"):
+			var res = load(path + "/" + f)
+			if res is Item and res.name != "":
+				items.append(res)
+		f = dir.get_next()
+	dir.list_dir_end()
+
+## 物品生成器面板（F3）：列出全部物品，点击获得
+func _toggle_item_panel() -> void:
+	var canvas := get_node_or_null(root_scene["main_canvas_layer"]) as CanvasLayer
+	if canvas == null: return
+	if item_panel == null:
+		item_panel = Control.new()
+		item_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+		item_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+		var dim := ColorRect.new()
+		dim.color = Color(0, 0, 0, 0.4)
+		dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+		item_panel.add_child(dim)
+		var box := Panel.new()
+		box.position = Vector2(280, 60)
+		box.size = Vector2(720, 600)
+		item_panel.add_child(box)
+		var title := Label.new()
+		title.text = "物品生成器（F3关闭）— 点击获取"
+		title.position = Vector2(16, 10)
+		box.add_child(title)
+		var scroll := ScrollContainer.new()
+		scroll.position = Vector2(16, 44)
+		scroll.size = Vector2(688, 540)
+		box.add_child(scroll)
+		var vbox := VBoxContainer.new()
+		vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		scroll.add_child(vbox)
+		for item in _scan_all_items():
+			var btn := Button.new()
+			btn.text = "%s  （%d金）" % [item.name, item.price]
+			btn.custom_minimum_size = Vector2(0, 34)
+			btn.pressed.connect(_give_item.bind(item))
+			vbox.add_child(btn)
+		canvas.add_child(item_panel)
+	item_panel.visible = !item_panel.visible
+
+func _give_item(item: Item) -> void:
+	var player := get_tree().get_first_node_in_group("Player") as Player
+	if player == null: return
+	var ins: Item = item.duplicate()
+	ins.quantity = 1
+	player.bag_system.add_item(ins)
+	show_message("获得 %s ×1" % item.name)
+
+## 帮助指南面板（H）：键位与玩法说明
+func _toggle_help_panel() -> void:
+	var canvas := get_node_or_null(root_scene["main_canvas_layer"]) as CanvasLayer
+	if canvas == null: return
+	if help_panel == null:
+		help_panel = Control.new()
+		help_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+		help_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+		var dim := ColorRect.new()
+		dim.color = Color(0, 0, 0, 0.5)
+		dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+		help_panel.add_child(dim)
+		var box := Panel.new()
+		box.position = Vector2(200, 40)
+		box.size = Vector2(880, 640)
+		help_panel.add_child(box)
+		var title := Label.new()
+		title.text = "游戏指南（H关闭）"
+		title.position = Vector2(16, 10)
+		box.add_child(title)
+		var scroll := ScrollContainer.new()
+		scroll.position = Vector2(16, 44)
+		scroll.size = Vector2(848, 580)
+		box.add_child(scroll)
+		var label := RichTextLabel.new()
+		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		label.fit_content = true
+		label.bbcode_enabled = true
+		label.text = _help_text()
+		scroll.add_child(label)
+		canvas.add_child(help_panel)
+	help_panel.visible = !help_panel.visible
+
+func _help_text() -> String:
+	return "[b]【基础操作】[/b]
+移动：WASD　　背包：E　　丢弃：Q　　交互/睡觉：F
+合成面板：C　　图鉴：G　　旅行传送：M　　帮助：H
+左键：攻击/使用工具/放置　　右键：食用/召唤/送礼/喂食
+[b]【开发者功能】[/b]
+F2：无敌模式开关　　F3：物品生成器（获取任意物品）
+屏幕右上角：存档/加载/时间按钮
+[b]【合成与材料】[/b]
+按C打开合成面板（80+配方，可滚动）。材料：木头/石头砍树敲石；
+矿石在矿洞与采石场（M键传送）；金属锭由矿石×5合成；
+骨头/蛛网/凝胶打怪掉落（骷髅/蜘蛛/史莱姆）。
+[b]【Boss战】[/b]
+合成召唤物 → 夜晚（19点后）手持右键使用 → 顶部出现Boss血条。
+克苏鲁之眼（可疑眼球=凝胶×10）；史莱姆王（王冠=凝胶×30）；
+血肉墙（向导娃娃=骨头×15）；双子魔眼（机械魔眼=铁锭6+金锭4+骨头15）；
+骷髅王（巫毒娃娃=骨头25+蛛网10+金锭5）；月亮领主（天界符=金锭10+四色宝石×8）；
+猪鲨（虾松露=鲤鱼3+章鱼2+金锭10+骨头15）……共20个Boss，合成面板全部可见。
+等夜晚：现实1秒=游戏1分钟；或去温泉泡澡、准备战斗物资。
+[b]【快速成长】[/b]
+农作物成熟后挥武器收获 → 出货箱（小屋旁）晚上自动卖钱；
+钓鱼得宝箱；采石场安全挖矿练采矿技能；花卉送村民好感翻倍可求婚（10心+花束）。"
+
 ## 在 PopUp 上显示一条短暂提示文字
 func show_message(text:String) -> void:
 	var pop_up = get_node_or_null(root_scene["pop_up"])

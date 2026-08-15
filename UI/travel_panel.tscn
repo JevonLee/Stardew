@@ -24,9 +24,9 @@ color = Color(0, 0, 0, 0.3)
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 490.0
-offset_top = 200.0
+offset_top = 100.0
 offset_right = 790.0
-offset_bottom = 460.0
+offset_bottom = 660.0
 
 [node name="Title" type="Label" parent="Panel"]
 layout_mode = 0
@@ -36,9 +36,12 @@ offset_right = 280.0
 offset_bottom = 40.0
 text = "快速传送（按M关闭）"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 50.0
 offset_right = 280.0
-offset_bottom = 240.0
+offset_bottom = 540.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2

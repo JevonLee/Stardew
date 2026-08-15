@@ -13,3 +13,4 @@ max_quantity = 99
 countable = true
 texture = ExtResource("2_tex")
 price = 100
+boss_scene_path = "res://Combat/boss_eye.tscn"

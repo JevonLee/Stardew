@@ -20,6 +20,8 @@ var gold:int = 500: ## 玩家金币
 		gold = maxi(val, 0)
 		gold_changed.emit(gold)
 
+var mine_floor:int = 1 ## 进入矿洞的层数（由楼梯设置，矿洞读取后重置）
+
 ## 在 PopUp 上显示一条短暂提示文字
 func show_message(text:String) -> void:
 	var pop_up = get_node_or_null(root_scene["pop_up"])

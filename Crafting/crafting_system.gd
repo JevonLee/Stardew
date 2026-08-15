@@ -18,6 +18,7 @@ const RECIPES = [
 	preload("res://Crafting/recipes/煎蛋.tres"),
 	preload("res://Crafting/recipes/烤鱼.tres"),
 	preload("res://Crafting/recipes/蔬菜沙拉.tres"),
+	preload("res://Crafting/recipes/血腥脊椎.tres"),
 ]
 
 var panel: Control

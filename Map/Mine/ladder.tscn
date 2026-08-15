@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Map/Mine/ladder.gd" id="1_ladder"]
+[ext_resource type="Texture2D" path="res://Art/myself/ladder.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_area"]
+size = Vector2(24, 48)
+
+[node name="Ladder" type="Area2D"]
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("1_ladder")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_area")

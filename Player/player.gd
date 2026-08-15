@@ -150,7 +150,7 @@ func use_summon() -> void:
 	if bosses.size() > 0:
 		Global.show_message("Boss已经出现了！")
 		return
-	var boss_scene: PackedScene = load("res://Combat/boss_eye.tscn")
+	var boss_scene: PackedScene = load(current_item.boss_scene_path) if current_item.boss_scene_path != "" else load("res://Combat/boss_eye.tscn")
 	var boss := boss_scene.instantiate() as Boss
 	boss.add_to_group("Boss")
 	var level: Node2D = SceneManager.get_current_level()

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://NPC/pierre.gd" id="1_pierre"]
+[ext_resource type="Texture2D" path="res://Art/StardewValley/characters/Pierre.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://uat2v7uyvg0y" path="res://Component/click_area_component.tscn" id="3_click"]
+[ext_resource type="Resource" uid="uid://pierredialg001" path="res://NPC/dialogue/pierre.tres" id="4_dlg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(12, 12)
+
+[node name="Pierre" type="CharacterBody2D" node_paths=PackedStringArray("click_area")]
+y_sort_enabled = true
+collision_mask = 59
+script = ExtResource("1_pierre")
+click_area = NodePath("ClickAreaComponent")
+dialogue = ExtResource("4_dlg")
+npc_display_name = "皮埃尔"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_tex")
+hframes = 4
+vframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="ClickAreaComponent" parent="." instance=ExtResource("3_click")]

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfg8gg0uu4d2a" path="res://Map/change_scene_area.tscn" id="2_pa5vd"]
 [ext_resource type="Texture2D" uid="uid://dqfjpljnxpqbl" path="res://Map/Town/light.tres" id="3_4jukr"]
 [ext_resource type="AudioStream" uid="uid://ikpod1of2y4b" path="res://AudioSystem/Scott Lloyd Shelly - Terraria Soundtrack - 03 Overworld Night.mp3" id="3_fhrtb"]
+[ext_resource type="PackedScene" path="res://NPC/pierre.tscn" id="4_pierre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jukr"]
 size = Vector2(38, 47)
@@ -92,6 +93,9 @@ position = Vector2(1000, 1397)
 
 [node name="MapSize" type="Marker2D" parent="."]
 position = Vector2(2064.21, 2352.13)
+
+[node name="Pierre" parent="." instance=ExtResource("4_pierre")]
+position = Vector2(400, 420)
 
 [node name="Light" type="Node2D" parent="."]
 visible = false

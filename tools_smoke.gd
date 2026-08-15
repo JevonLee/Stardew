@@ -351,4 +351,67 @@ func _run() -> void:
 	# Boss血条存在性
 	var boss_bar := get_node_or_null("/root/MainScene/MainCanvasLayer/StatusBar") as Control
 	print("SMOKE: boss bar node=", boss_bar != null)
+	# ---- 矿洞多层测试 ----
+	Global.mine_floor = 3
+	SceneManager.change_level("Mine", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var mine3 := SceneManager.get_current_level() as Mine
+	if mine3:
+		var pool := mine3._ore_pool()
+		var has_gold: bool = pool.has(load("res://Bag/items/materials/金矿石.tres"))
+		print("SMOKE: mine floor=", mine3.floor_index, " ladders=", mine3.find_children("*", "Ladder", true, false).size(), " gold_pool=", has_gold)
+	# 回农场
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	player = get_tree().get_first_node_in_group("Player")
+	# ---- 克苏鲁之脑Boss测试 ----
+	for i in 15:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	var spine_recipe: Recipe = load("res://Crafting/recipes/血腥脊椎.tres")
+	crafting.panel._on_craft_pressed(spine_recipe)
+	var has_spine: bool = false
+	var spine_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "血腥脊椎":
+			has_spine = true
+			spine_item = it
+			break
+	print("SMOKE: crafted spine=", has_spine)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	# 工具栏每帧会覆盖current_item，赋值后必须立即调用
+	player.current_item = spine_item
+	player.use_summon()
+	await get_tree().process_frame
+	var brain := level.get_node_or_null("BossBrain") as Boss
+	print("SMOKE: brain spawned=", brain != null)
+	if brain:
+		brain.hurt.take_damage(600, player.global_position)
+		await get_tree().create_timer(1.2).timeout
+		print("SMOKE: brain dead=", not is_instance_valid(brain), " drops=", drops_node.get_child_count())
+	# ---- 皮埃尔小镇NPC测试 ----
+	SceneManager.change_level("Town", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var town := SceneManager.get_current_level() as Town
+	var pierre := town.get_node_or_null("Pierre") as NPC
+	print("SMOKE: pierre=", pierre != null, " name=", pierre.npc_display_name if pierre else "?")
+	if pierre:
+		var p_hearts: float = FriendshipSystem.get_hearts("皮埃尔")
+		player = get_tree().get_first_node_in_group("Player")
+		player.current_item = load("res://Bag/items/forage/蘑菇.tres").duplicate()
+		pierre._give_gift(player)
+		print("SMOKE: pierre hearts=", p_hearts, "->", FriendshipSystem.get_hearts("皮埃尔"))
+	# 回农场
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	player = get_tree().get_first_node_in_group("Player")
+	# ---- 新作物数据检查 ----
+	var tomato_seed: Item = load("res://Bag/items/seeds/番茄种子.tres")
+	print("SMOKE: tomato seed crop_data=", tomato_seed.crop_data != null, " seasons=", tomato_seed.crop_data.allowed_seasons if tomato_seed.crop_data else "?")
 	print("SMOKE_OK")

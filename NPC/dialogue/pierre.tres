@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=3 format=3 uid="uid://pierredialg001"]
+
+[ext_resource type="Script" uid="uid://c1m7jt0aixupj" path="res://NPC/dialogue/dialogue.gd" id="1_dlg"]
+[ext_resource type="Texture2D" path="res://Art/portraits/Pierre_Beach.png" id="2_port"]
+
+[resource]
+script = ExtResource("1_dlg")
+npc_name = "皮埃尔"
+protaits = ExtResource("2_port")
+texts = Array[String](["欢迎来到皮埃尔商店！今天想要点什么？", "听说矿洞里有好东西，不过小心那些怪物。", "我的种子是整个鹈鹕镇最好的！"])

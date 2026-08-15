@@ -81,6 +81,9 @@ whenToUse: 在本项目中新增或修改功能、新建脚本或场景、需要
 # 2) 冒烟测试：运行主场景若干帧（捕捉 _ready/_process 运行时错误）
 & 'D:\GoDot\Godot_v4.6.3-stable_win64.exe' --headless --path 'D:\GoDot\Program\4\Stardew' --quit-after 10 *> smoke_test.log
 
+# 2b) 深度冒烟测试（全功能回归，61+项断言，约20秒）
+& 'D:\GoDot\Godot_v4.6.3-stable_win64.exe' --headless --path 'D:\GoDot\Program\4\Stardew' 'res://tools_smoke.tscn' --quit-after 1500
+
 # 3) 单脚本语法检查
 & 'D:\GoDot\Godot_v4.6.3-stable_win64.exe' --headless --check-only --script 'res://路径/脚本.gd'
 ```

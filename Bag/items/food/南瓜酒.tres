@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://nanguajiu001"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://nanguajiu001"]
 
 [ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
 [ext_resource type="Texture2D" path="res://Art/Terraria/images/Item_3532.png" id="2_tex"]

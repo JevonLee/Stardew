@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Dialogue" load_steps=5 format=3 uid="uid://bathdlg000001"]
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://bathdlg000001"]
 
 [ext_resource type="Script" uid="uid://c1m7jt0aixupj" path="res://NPC/dialogue/dialogue.gd" id="1_nmk6c"]
 [ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_17.png" id="2_tex"]

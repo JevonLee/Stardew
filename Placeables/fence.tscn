@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://fence000000001"]
+[gd_scene format=3 uid="uid://px8hhnolwmwm"]
 
 [ext_resource type="Script" path="res://Placeables/fence.gd" id="1_fence"]
 [ext_resource type="PackedScene" uid="uid://dao3kk2e08sjp" path="res://Placeables/placeable_footprint.tscn" id="2_fp"]

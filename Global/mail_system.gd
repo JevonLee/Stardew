@@ -14,10 +14,23 @@ const MAILS := [
 
 var pending_mail:Dictionary = {}
 
+## 每周日清晨的季节提示信
+const SEASON_TIPS := {
+	0: {"text": "春天到了！萝卜甜瓜正当时，13日是蛋节，别忘了参加。—— 小镇广播", "gift": "", "gift_count": 0},
+	1: {"text": "盛夏！蓝莓番茄大丰收，小心雷暴天气，矿洞里凉快。—— 小镇广播", "gift": "", "gift_count": 0},
+	2: {"text": "秋天！南瓜蔓越莓成熟了，16日星露谷博览会见！—— 小镇广播", "gift": "", "gift_count": 0},
+	3: {"text": "寒冬！去雪山冰湖钓鱼吧，冰鱼只有冬天才有。—— 小镇广播", "gift": "", "gift_count": 0},
+}
+
 func _ready() -> void:
 	TimeSystem.time_tick_day.connect(_on_new_day)
 
-func _on_new_day(_day:int) -> void:
+func _on_new_day(day:int) -> void:
+	# 每周日（第7天）季节提示信
+	if day % 7 == 0:
+		pending_mail = SEASON_TIPS[TimeSystem.get_season()]
+		mail_received.emit(pending_mail)
+		return
 	if randf() < 0.3:
 		pending_mail = MAILS.pick_random()
 		mail_received.emit(pending_mail)

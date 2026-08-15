@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bathmerchant01"]
+[gd_scene format=3 uid="uid://dv7nobygq1txw"]
 
 [ext_resource type="Script" path="res://NPC/bath_merchant.gd" id="1_bm"]
 [ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_17.png" id="2_tex"]

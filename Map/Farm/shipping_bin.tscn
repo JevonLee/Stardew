@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://shippingbin01"]
+[gd_scene format=3 uid="uid://c0u8dayf1o5yy"]
 
 [ext_resource type="Script" path="res://Map/Farm/shipping_bin.gd" id="1_sb"]
 [ext_resource type="Texture2D" path="res://Art/Terraria/images/Item_40.png" id="2_tex"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://beehouse000001"]
+[gd_scene format=3 uid="uid://dlsuka4qw6465"]
 
 [ext_resource type="Script" path="res://Placeables/bee_house.gd" id="1_bh"]
 [ext_resource type="PackedScene" uid="uid://dao3kk2e08sjp" path="res://Placeables/placeable_footprint.tscn" id="2_fp"]

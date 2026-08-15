@@ -2300,6 +2300,25 @@ func _run() -> void:
 	await get_tree().process_frame
 	print("SMOKE: shipping pending=", pending_count, " sold_gold=", Global.gold - gold_before_ship)
 	bin_ins.queue_free()
+	# ---- 雪原狼/每周信件测试 ----
+	var wolf_ins: Enemy = (load("res://Combat/wolf.tscn") as PackedScene).instantiate() as Enemy
+	level.add_child(wolf_ins)
+	wolf_ins.global_position = player.global_position + Vector2(80, 0)
+	print("SMOKE: wolf=", wolf_ins.enemy_name, " hp=", wolf_ins.max_health, " vf=", wolf_ins.sprite_vframes)
+	wolf_ins.hurt.take_damage(25, player.global_position)
+	await get_tree().create_timer(0.6).timeout
+	print("SMOKE: wolf dead=", not is_instance_valid(wolf_ins))
+	var tundra_cfg2: Array = (load("res://Map/Tundra/tundra.tscn") as PackedScene).instantiate().get_node("EnemySpawner").enemy_scenes
+	var has_wolf := false
+	for es in tundra_cfg2:
+		if es != null and es.resource_path.contains("wolf"):
+			has_wolf = true
+	print("SMOKE: tundra wolf=", has_wolf)
+	# 每周日季节信（第7天）
+	var mail_day: int = TimeSystem.current_day
+	TimeSystem.set_time(7, 6, 0)
+	await get_tree().process_frame
+	print("SMOKE: weekly mail=", MailSystem.pending_mail.get("text", "") != "")
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

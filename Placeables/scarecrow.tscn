@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://scarecrow0001"]
+[gd_scene format=3 uid="uid://cuna033on7iyy"]
 
 [ext_resource type="Script" path="res://Placeables/scarecrow.gd" id="1_sc"]
 [ext_resource type="PackedScene" uid="uid://dao3kk2e08sjp" path="res://Placeables/placeable_footprint.tscn" id="2_fp"]

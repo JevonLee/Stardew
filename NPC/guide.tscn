@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://guide00000001"]
+[gd_scene format=3 uid="uid://cy3hsx3rgs5aa"]
 
 [ext_resource type="Script" path="res://NPC/guide.gd" id="1_guide"]
 [ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_22.png" id="2_tex"]

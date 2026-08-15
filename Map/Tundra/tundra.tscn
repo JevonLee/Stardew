@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tundra0000001"]
+[gd_scene load_steps=10 format=3 uid="uid://tundra0000001"]
 
 [ext_resource type="Script" path="res://Map/Tundra/tundra.gd" id="1_tundra"]
 [ext_resource type="TileSet" uid="uid://bdxbflnhc4ell" path="res://Map/tile_set_outdoor.tres" id="7_ts"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://Combat/skeleton.tscn" id="5_skel"]
 [ext_resource type="PackedScene" path="res://Combat/giant_bat.tscn" id="6_gbat"]
 [ext_resource type="PackedScene" path="res://Combat/zombie_eskimo.tscn" id="8_eskimo"]
+[ext_resource type="PackedScene" path="res://Combat/wolf.tscn" id="9_wolf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
 size = Vector2(38, 47)
@@ -48,7 +49,7 @@ position = Vector2(64, 400)
 night_only = false
 spawn_interval = 6.0
 max_enemies = 5
-enemy_scenes = Array[PackedScene]([ExtResource("8_eskimo"), ExtResource("4_zombie"), ExtResource("5_skel"), ExtResource("6_gbat")])
+enemy_scenes = Array[PackedScene]([ExtResource("8_eskimo"), ExtResource("9_wolf"), ExtResource("4_zombie"), ExtResource("5_skel"), ExtResource("6_gbat")])
 
 [node name="ToFarm" parent="ChangeAreas" instance=ExtResource("2_change")]
 position = Vector2(32, 400)

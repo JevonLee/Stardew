@@ -1424,6 +1424,31 @@ func _run() -> void:
 	CollectionSystem.record_fish("鱿鱼")
 	AchievementSystem.check()
 	print("SMOKE: ach bath=", AchievementSystem.is_unlocked("bath_regular"), " deep=", AchievementSystem.is_unlocked("deep_fisher"))
+	# ---- 新敌人测试（蚁狮/螃蟹） ----
+	var antlion_scene: PackedScene = load("res://Combat/antlion.tscn")
+	var antlion_ins: Enemy = antlion_scene.instantiate() as Enemy
+	level.add_child(antlion_ins)
+	antlion_ins.global_position = player.global_position + Vector2(100, 0)
+	print("SMOKE: antlion=", antlion_ins.enemy_name, " hp=", antlion_ins.max_health, " vf=", antlion_ins.sprite_vframes)
+	antlion_ins.hurt.take_damage(40, player.global_position)
+	await get_tree().create_timer(0.6).timeout
+	print("SMOKE: antlion dead=", not is_instance_valid(antlion_ins))
+	var crab_scene: PackedScene = load("res://Combat/crab.tscn")
+	var crab_ins: Enemy = crab_scene.instantiate() as Enemy
+	level.add_child(crab_ins)
+	crab_ins.global_position = player.global_position + Vector2(120, 0)
+	print("SMOKE: crab=", crab_ins.enemy_name, " hp=", crab_ins.max_health, " vf=", crab_ins.sprite_vframes)
+	crab_ins.hurt.take_damage(30, player.global_position)
+	await get_tree().create_timer(0.6).timeout
+	print("SMOKE: crab dead=", not is_instance_valid(crab_ins))
+	# 沙漠刷怪池含蚁狮、海滩刷怪器存在
+	var desert_cfg: Array = (load("res://Map/Desert/desert.tscn") as PackedScene).instantiate().get_node("EnemySpawner").enemy_scenes
+	var desert_has_antlion := false
+	for es in desert_cfg:
+		if es != null and es.resource_path.contains("antlion"):
+			desert_has_antlion = true
+	var beach_spawner: Node = (load("res://Map/Beach/beach.tscn") as PackedScene).instantiate().get_node_or_null("EnemySpawner")
+	print("SMOKE: desert antlion=", desert_has_antlion, " beach spawner=", beach_spawner != null)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

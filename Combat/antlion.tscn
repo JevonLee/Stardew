@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://Combat/enemy.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_66.png" id="2_tex"]
+[ext_resource type="Resource" uid="uid://tongbi00000001" path="res://Bag/items/materials/铜币.tres" id="3_coin"]
+[ext_resource type="Resource" uid="uid://ctclqn1b5k8oy" path="res://Bag/items/materials/煤矿.tres" id="4_coal"]
+
+[node name="Antlion" instance=ExtResource("1_base")]
+enemy_name = "蚁狮"
+ai = 1
+max_health = 40
+contact_damage = 10
+speed = 70.0
+knockback_resist = 0.2
+aggro_range = 300.0
+coin_drop = ExtResource("3_coin")
+coin_count = 3
+item_drop = ExtResource("4_coal")
+item_drop_chance = 0.3
+xp_reward = 8
+sprite_texture = ExtResource("2_tex")
+sprite_vframes = 4
+sprite_scale = Vector2(0.9, 0.9)

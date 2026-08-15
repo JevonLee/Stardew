@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://beach000000001"]
+[gd_scene load_steps=6 format=3 uid="uid://beach000000001"]
 
 [ext_resource type="Script" path="res://Map/Beach/beach.gd" id="1_beach"]
 [ext_resource type="PackedScene" uid="uid://dfg8gg0uu4d2a" path="res://Map/change_scene_area.tscn" id="2_change"]
+[ext_resource type="PackedScene" path="res://Combat/enemy_spawner.tscn" id="3_spawner"]
+[ext_resource type="PackedScene" path="res://Combat/crab.tscn" id="4_crab"]
+[ext_resource type="PackedScene" path="res://Combat/giant_bat.tscn" id="5_gbat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
 size = Vector2(38, 47)
@@ -28,6 +31,12 @@ position = Vector2(160, 400)
 position = Vector2(64, 400)
 
 [node name="ChangeAreas" type="Node2D" parent="."]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_spawner")]
+night_only = true
+spawn_interval = 7.0
+max_enemies = 4
+enemy_scenes = Array[PackedScene]([ExtResource("4_crab"), ExtResource("4_crab"), ExtResource("5_gbat")])
 
 [node name="ToFarm" parent="ChangeAreas" instance=ExtResource("2_change")]
 position = Vector2(32, 400)

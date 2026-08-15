@@ -1,11 +1,11 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1786787913
+::res://::1786788140
 default_bus_layout.tres::AudioBusLayout/AudioBusLayout::2184131187234203786::1756520422::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile/TextFile::-1::1756520422::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::1804056525694353723::1756520422::1756522334::1::::<><><>0<>0<>163b15f42155cdb97f8ac97df934d6cb<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile/TextFile::-1::1756520422::0::1::::<><><>0<>0<><>::
-roadmap.md::TextFile::-1::1786787850::0::1::::<><><>0<>0<><>::
-tools_smoke.gd::GDScript::7937880759161548330::1786787913::0::1::::<>Node2D<><>0<>0<><>::
+roadmap.md::TextFile::-1::1786788069::0::1::::<><><>0<>0<><>::
+tools_smoke.gd::GDScript::7937880759161548330::1786788140::0::1::::<>Node2D<><>0<>0<><>::
 tools_smoke.tscn::PackedScene::-1::1786776087::0::1::::<><><>0<>0<><>::
 ::res://Animals/::1786785947
 animal.gd::GDScript::1281943264472628730::1786779485::0::1::::Animal<>CharacterBody2D<><>0<>0<><>::
@@ -13731,7 +13731,8 @@ slot.tscn::PackedScene/PackedScene::3380208235692054796::1756520422::0::1::::<><
 tool_bar.gd::GDScript/GDScript::6169331853872786617::1756520422::0::1::::<>Control<><>0<>0<><>::
 tool_bar.tscn::PackedScene/PackedScene::2021907188855370012::1756520422::0::1::::<><><>0<>0<><>::uid://bofnshmt1vb4g::::res://Bag/scene/slot.tscn<>uid://ct5p82njwo7td::::res://Bag/scene/tool_bar.gd<>uid://ckodt4w002mr6::::res://Art/loose_sprite/MobileAtlas_manually_made.de-DE.png
 ui_manager.gd::GDScript/GDScript::3322505534350422836::1756520422::0::1::::<>Control<><>0<>0<><>::
-::res://Combat/::1786786946
+::res://Combat/::1786788116
+antlion.tscn::PackedScene::-1::1786788116::0::1::::<><><>0<>0<><>::res://Combat/enemy.tscn<>res://Art/Terraria/images/NPC_66.png<>uid://dl3c8fq60m761::::res://Bag/items/materials/铜币.tres<>uid://ctclqn1b5k8oy::::res://Bag/items/materials/煤矿.tres
 arrow_projectile.gd::GDScript::2672643583183625304::1786777683::0::1::::<>Projectile<><>0<>0<><>::
 arrow_projectile.tscn::PackedScene::-1::1786777095::0::1::::<><><>0<>0<><>::res://Combat/arrow_projectile.gd<>res://Art/Terraria/images/Projectile_1.png
 bat.tscn::PackedScene::-1::1786778770::0::1::::<><><>0<>0<><>::res://Combat/enemy.tscn<>res://Art/Terraria/images/NPC_49.png<>uid://dl3c8fq60m761::::res://Bag/items/materials/铜币.tres
@@ -13760,6 +13761,7 @@ boss_twins_spaz.gd::GDScript::1406189908339544803::1786785326::0::1::::<>Boss<><
 boss_twins_spaz.tscn::PackedScene::-1::1786785348::0::1::::<><><>0<>0<><>::res://Combat/boss_twins_spaz.gd<>res://Art/Terraria/images/NPC_125.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn<>uid://bk808gkmam4m3::::res://Bag/items/materials/金币.tres<>uid://ctclqn1b5k8oy::::res://Bag/items/materials/煤矿.tres
 boss_wall.gd::GDScript::381576375516032703::1786782190::0::1::::<>Boss<><>0<>0<><>::
 boss_wall.tscn::PackedScene::-1::1786782190::0::1::::<><><>0<>0<><>::res://Combat/boss_wall.gd<>res://Art/Terraria/images/NPC_113.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn<>uid://bk808gkmam4m3::::res://Bag/items/materials/金币.tres<>uid://brtmcjmivmaii::::res://Bag/items/materials/金锭.tres
+crab.tscn::PackedScene::-1::1786788116::0::1::::<><><>0<>0<><>::res://Combat/enemy.tscn<>res://Art/Terraria/images/NPC_65.png<>uid://dl3c8fq60m761::::res://Bag/items/materials/铜币.tres<>uid://cb4k2p2sikh4c::::res://Bag/items/materials/凝胶.tres
 demon_eye.tscn::PackedScene::-1::1786779730::0::1::::<><><>0<>0<><>::res://Combat/enemy.tscn<>res://Art/Terraria/images/NPC_7.png<>uid://dl3c8fq60m761::::res://Bag/items/materials/铜币.tres
 destroyer_head.gd::GDScript::2005254298415532416::1786785728::0::1::::<>Boss<><>0<>0<><>::
 destroyer_head.tscn::PackedScene::-1::1786785728::0::1::::<><><>0<>0<><>::res://Combat/destroyer_head.gd<>res://Art/Terraria/images/NPC_134.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn<>uid://bk808gkmam4m3::::res://Bag/items/materials/金币.tres<>uid://d1qu5fr0q7iyy::::res://Bag/items/materials/铁锭.tres
@@ -13923,12 +13925,12 @@ tile_set_outdoor.tres::TileSet/TileSet::2644538147074038457::1756520422::0::1:::
 ::res://Map/Bathhouse/::1786787905
 bathhouse.gd::GDScript::1735599689061742256::1786787905::0::1::::Bathhouse<>Node2D<><>0<>0<><>::
 bathhouse.tscn::PackedScene::2426082147574122008::1786787755::0::1::::<><><>0<>0<><>::res://Map/Bathhouse/bathhouse.gd<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn<>res://NPC/bath_merchant.tscn
-::res://Map/Beach/::1786784394
+::res://Map/Beach/::1786788132
 beach.gd::GDScript::2220648340030744602::1786784358::0::1::::Beach<>Node2D<><>0<>0<><>::
-beach.tscn::PackedScene::7678237420824135432::1786784358::0::1::::<><><>0<>0<><>::res://Map/Beach/beach.gd<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn
-::res://Map/Desert/::1786784464
+beach.tscn::PackedScene::7678237420824135432::1786788132::0::1::::<><><>0<>0<><>::res://Map/Beach/beach.gd<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn<>res://Combat/enemy_spawner.tscn<>res://Combat/crab.tscn<>res://Combat/giant_bat.tscn
+::res://Map/Desert/::1786788123
 desert.gd::GDScript::2290508974634681666::1786782532::0::1::::Desert<>Node2D<><>0<>0<><>::
-desert.tscn::PackedScene::-1::1786784464::0::1::::<><><>0<>0<><>::res://Map/Desert/desert.gd<>res://Map/change_scene_area.tscn<>res://Combat/enemy_spawner.tscn<>res://Combat/skeleton.tscn<>res://Combat/demon_eye.tscn<>res://Combat/spider.tscn<>res://Combat/mummy.tscn<>res://NPC/desert_merchant.tscn
+desert.tscn::PackedScene::-1::1786788123::0::1::::<><><>0<>0<><>::res://Map/Desert/desert.gd<>res://Map/change_scene_area.tscn<>res://Combat/enemy_spawner.tscn<>res://Combat/skeleton.tscn<>res://Combat/demon_eye.tscn<>res://Combat/spider.tscn<>res://Combat/mummy.tscn<>res://Combat/antlion.tscn<>res://NPC/desert_merchant.tscn
 ::res://Map/Farm/::1786781000
 farm.gd::GDScript::3126117599948059833::1786780961::0::1::::Farm<>Node2D<><>0<>0<><>::
 farm.tscn::PackedScene/PackedScene::4022287795534418095::1786781000::0::1::::<><><>0<>0<><>::uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>uid://bkskx2mj2y2nd::::res://Map/Farm/farm.gd<>uid://d3xs4io3bcdr6::::res://Map/tile_block.tres<>uid://d1nxclm67rbhh::::res://AudioSystem/Scott Lloyd Shelly - Terraria Soundtrack - 01 Overworld Day.mp3<>uid://bl5tehfc1sf80::::res://SaveSystem/save_component.tscn<>uid://cvjfk83xlmkjo::::res://Component/tilemap_component.tscn<>uid://cw17rk561nrot::::res://NPC/emily.tscn<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://0f820g6vrxhg::::res://Bag/scene/box.tscn<>uid://dr7ehqq10k2wk::::res://Placeables/Crops/crops_component.tscn<>uid://4emof1mv6qby::::res://Bag/scene/inventory_system.gd<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn<>uid://bpjotrdl0f7gx::::res://Bag/items/weapon/喵刀.tres<>uid://cd3o8erabt37a::::res://Bag/items/objects/book1.tres<>uid://ecsiuwf14r7f::::res://NPC/pig.tscn

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://Map/Desert/desert.gd" id="1_desert"]
 [ext_resource type="PackedScene" path="res://Map/change_scene_area.tscn" id="2_change"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://Combat/demon_eye.tscn" id="5_deye"]
 [ext_resource type="PackedScene" path="res://Combat/spider.tscn" id="6_spider"]
 [ext_resource type="PackedScene" path="res://Combat/mummy.tscn" id="7_mummy"]
+[ext_resource type="PackedScene" path="res://Combat/antlion.tscn" id="9_antlion"]
 [ext_resource type="PackedScene" path="res://NPC/desert_merchant.tscn" id="8_merchant"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
@@ -44,4 +45,4 @@ position = Vector2(500, 300)
 night_only = false
 spawn_interval = 6.0
 max_enemies = 6
-enemy_scenes = Array[PackedScene]([ExtResource("4_skel"), ExtResource("7_mummy"), ExtResource("5_deye"), ExtResource("6_spider")])
+enemy_scenes = Array[PackedScene]([ExtResource("4_skel"), ExtResource("7_mummy"), ExtResource("5_deye"), ExtResource("6_spider"), ExtResource("9_antlion"), ExtResource("9_antlion")])

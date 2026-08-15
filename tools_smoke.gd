@@ -2362,6 +2362,26 @@ func _run() -> void:
 		await get_tree().process_frame
 		level = SceneManager.get_current_level()
 		player = get_tree().get_first_node_in_group("Player")
+	# ---- 花卉作物测试 ----
+	var tulip_seed: Item = load("res://Bag/items/seeds/郁金香种子.tres")
+	var bluejazz_seed: Item = load("res://Bag/items/seeds/蓝爵种子.tres")
+	print("SMOKE: tulip data=", tulip_seed.crop_data != null, " days=", tulip_seed.crop_data.growth_days if tulip_seed.crop_data else -1, " seas=", tulip_seed.crop_data.allowed_seasons if tulip_seed.crop_data else [])
+	print("SMOKE: bluejazz seas=", bluejazz_seed.crop_data.allowed_seasons if bluejazz_seed.crop_data else [])
+	# 花送礼好感翻倍（郁金香80金 → 基础7 → 翻倍14），用好感0的刘易斯验证
+	SceneManager.change_level("Town", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var lewis3 := (SceneManager.get_current_level() as Town).get_node_or_null("Lewis") as NPC
+	var lewis_hearts_before: float = FriendshipSystem.get_hearts("刘易斯")
+	player.current_item = load("res://Bag/items/crops/郁金香.tres").duplicate()
+	player.bag_system.add_item(player.current_item)
+	lewis3._give_gift(player)
+	print("SMOKE: flower gift hearts=", FriendshipSystem.get_hearts("刘易斯") - lewis_hearts_before)
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	player = get_tree().get_first_node_in_group("Player")
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

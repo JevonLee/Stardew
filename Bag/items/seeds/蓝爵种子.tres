@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://lanjue_seed01"]
+
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
+[ext_resource type="Texture2D" uid="uid://dxf5y3rpsuxa8" path="res://Art/maps/springobjects.es-ES.png" id="2_tex"]
+[ext_resource type="Resource" uid="uid://lanjue_data01" path="res://Bag/items/crops/蓝爵_data.tres" id="3_cd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_item"]
+atlas = ExtResource("2_tex")
+region = Rect2(240, 160, 16, 16)
+
+[resource]
+script = ExtResource("1_item")
+name = "蓝爵种子"
+type = 9
+description = "7天开花，夏天独有，送人好感翻倍"
+quantity = 1
+max_quantity = 999
+countable = true
+texture = SubResource("AtlasTexture_item")
+price = 40
+placeable_scene_path = "res://Placeables/Crops/crop.tscn"
+crop_data = ExtResource("3_cd")

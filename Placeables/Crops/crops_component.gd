@@ -20,6 +20,7 @@ var player:Player
 var can_crop:bool ##是否可以种植，检测是否有其他障碍物
 var in_soil:bool ##是否在泥土
 var layer_masks:Array = [2,8] #与种植作物碰撞的层
+var fertilized:Dictionary = {} ## 已施肥的格子（cell -> true）
 #这个是位掩码转换的值和2的次方有关，每一层具体的值，可以通过将光标放在那一层上可以看到
 
 func _ready() -> void:
@@ -73,6 +74,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		if player.current_item_type == Item.ItemType.Crops and can_crop and in_soil:
 			get_cell_under_mouse()
 			add_crop()
+		elif player.current_item != null and player.current_item.name == "肥料" and can_crop and in_soil:
+			get_cell_under_mouse()
+			fertilized[cell_position] = true
+			player.bag_system.remove_num_item(player.item_index, 1)
+			Global.show_message("已施肥！作物每天多长一阶段")
 
 #能否种植的区域碰撞检测
 func on_area_entered(area:Area2D) -> void:
@@ -118,6 +124,12 @@ func remove_crop() -> void:
 				queue_free()
 
 func on_watering(local_cell_position) -> void:
-	get_cell_under_mouse()
-	if cell_source_id != -1 and in_soil:
-		water_soil.set_cells_terrain_connect([cell_position],terrain_set,terrain,true)
+	# 按水壶半径浇灌目标位置附近的已耕土壤（使用传入位置而非鼠标）
+	var r: int = player.water_radius
+	var center: Vector2i = ground.local_to_map(local_cell_position)
+	for dy in range(-r + 1, r):
+		for dx in range(-r + 1, r):
+			var c: Vector2i = center + Vector2i(dx, dy)
+			var td := tilled_soil.get_cell_tile_data(c)
+			if td != null and td.get_custom_data("IsSoil"):
+				water_soil.set_cells_terrain_connect([c], terrain_set, terrain, true)

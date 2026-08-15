@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=6 format=3 uid="uid://tieshuihu_r01"]
+
+[ext_resource type="Script" path="res://Crafting/recipe.gd" id="1_rc"]
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="5_item"]
+[ext_resource type="Resource" uid="uid://tieshuihu0001" path="res://Bag/items/tools/铁水壶.tres" id="2_res"]
+[ext_resource type="Resource" uid="uid://tongshuihu001" path="res://Bag/items/tools/铜水壶.tres" id="3_i1"]
+[ext_resource type="Resource" uid="uid://tieding000001" path="res://Bag/items/materials/铁锭.tres" id="4_i2"]
+
+[resource]
+script = ExtResource("1_rc")
+recipe_name = "铁水壶"
+result = ExtResource("2_res")
+result_count = 1
+ingredients = Array[ExtResource("5_item")]([ExtResource("3_i1"), ExtResource("4_i2")])
+ingredient_counts = Array[int]([1, 2])

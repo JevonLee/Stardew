@@ -38,6 +38,11 @@ const RECIPES = [
 	preload("res://Crafting/recipes/铜斧.tres"),
 	preload("res://Crafting/recipes/铁斧.tres"),
 	preload("res://Crafting/recipes/金斧.tres"),
+	preload("res://Crafting/recipes/铜水壶.tres"),
+	preload("res://Crafting/recipes/铁水壶.tres"),
+	preload("res://Crafting/recipes/金水壶.tres"),
+	preload("res://Crafting/recipes/肥料.tres"),
+	preload("res://Crafting/recipes/向导娃娃.tres"),
 ]
 
 var panel: Control

@@ -40,6 +40,7 @@ const SWING_STAMINA_COST:int = 5 ## 挥剑的体力消耗
 ## 受击无敌时间（泰拉瑞亚式）
 const INVINCIBLE_TIME:float = 0.6
 var invincible_time:float = 0.0
+var water_radius:int = 1 ## 当前水壶浇水半径
 
 ## ---------- 等级与经验 ----------
 signal level_changed(level:int)
@@ -241,6 +242,11 @@ func handle_selected_item(item:Item) -> void:
 		coll.shape.extents = Vector2(8,8)
 	#设置伤害（工具保持至少1点）
 	hit_component.damage = maxi(item.damage, 1)
+	#水壶浇水半径
+	if item.type == Item.ItemType.Water:
+		water_radius = maxi(item.water_radius, 1)
+	else:
+		water_radius = 1
 	#选中物品时做出的相应效果
 	match item.type:
 		Item.ItemType.Weapon:

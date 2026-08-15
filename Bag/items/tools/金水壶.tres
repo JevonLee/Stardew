@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://jinshuihu001"]
+
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
+[ext_resource type="Texture2D" uid="uid://cojbbbgtx1dey" path="res://Art/tile_sheets/tools.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_item"]
+atlas = ExtResource("2_tex")
+region = Rect2(16, 144, 16, 32)
+
+[resource]
+script = ExtResource("1_item")
+name = "金水壶"
+type = 5
+description = "升级的水壶，浇水范围更大"
+quantity = 1
+max_quantity = 1
+countable = false
+texture = SubResource("AtlasTexture_item")
+price = 2000
+collision_size = Vector2(0, 0)
+damage = 0
+projectile = ""
+water_radius = 4

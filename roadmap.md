@@ -6,7 +6,7 @@
 
 ```powershell
 # 深度冒烟测试（加载主场景 + 存档读档往返）
-& 'D:\GoDot\Godot_v4.6.3-stable_win64.exe' --headless --path 'D:\GoDot\Program\4\Stardew' 'res://tools_smoke.tscn' --quit-after 1500
+& 'D:\GoDot\Godot_v4.6.3-stable_win64.exe' --headless --path 'D:\GoDot\Program\4\Stardew' 'res://tools_smoke.tscn' --quit-after 1800
 ```
 
 ## 里程碑

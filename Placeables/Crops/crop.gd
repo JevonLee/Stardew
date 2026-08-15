@@ -54,6 +54,10 @@ func _on_day_change(day:int) -> void:
 	if not _is_watered():
 		return
 	growth_stage += 1 # 不受帧数上限限制（成熟判定用growth_days），精灵帧由update_sprite钳制
+	# 肥料加成：每天额外长一阶段
+	var cc := farm.get_node_or_null("CropsComponent") as CropsComponent if farm != null else null
+	if cc != null and cc.fertilized.has(cell):
+		growth_stage += 1
 	update_sprite()
 
 ## 浇水检查：格子所在 WaterSoil 有水 或 当天下雨/雪

@@ -686,4 +686,63 @@ func _run() -> void:
 			has_axe = true
 			axe_dmg = it.damage
 	print("SMOKE: crafted copper axe=", has_axe, " dmg=", axe_dmg)
+	# ---- 水壶范围浇水测试 ----
+	var cc := level.get_node("CropsComponent") as CropsComponent
+	var ws3 := level.get_node("WaterSoil") as TileMapLayer
+	ws3.clear()
+	var center_cell: Vector2i = Vector2i(40, 40)
+	# 预铺3x3耕地（terrain 3 = 锄头翻土）
+	for dy in range(-1, 2):
+		for dx in range(-1, 2):
+			cc.tilled_soil.set_cells_terrain_connect([center_cell + Vector2i(dx, dy)], cc.terrain_set, 3, true)
+	player.water_radius = 2
+	var center_pos: Vector2 = (level.get_node("Ground") as TileMapLayer).map_to_local(center_cell)
+	cc.on_watering(center_pos)
+	var watered_count: int = 0
+	for dy in range(-2, 3):
+		for dx in range(-2, 3):
+			if ws3.get_cell_source_id(center_cell + Vector2i(dx, dy)) != -1:
+				watered_count += 1
+	print("SMOKE: radius watering cells=", watered_count)
+	# ---- 肥料测试 ----
+	TimeSystem.set_time(5, 6, 0) # 拉回春天（树测试把日期推进到了夏天）
+	await get_tree().process_frame
+	var cc2 := level.get_node("CropsComponent") as CropsComponent
+	cc2.fertilized[Vector2i(45, 45)] = true
+	var fert_crop := crop_scene.instantiate() as Crop
+	fert_crop.crop_data = load("res://Bag/items/seeds/萝卜种子.tres").crop_data
+	fert_crop.cell = Vector2i(45, 45)
+	fert_crop.global_position = (level.get_node("Ground") as TileMapLayer).map_to_local(fert_crop.cell)
+	level.find_child("Crops").add_child(fert_crop)
+	WeatherSystem.weather = "rain"
+	TimeSystem.set_time(TimeSystem.current_day + 1, 6, 0)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	print("SMOKE: fertilized crop stage=", fert_crop.growth_stage, " (expect 2)")
+	fert_crop._on_day_change(9999) # 直接调用验证信号之外逻辑
+	print("SMOKE: fertilized direct call stage=", fert_crop.growth_stage)
+	# ---- 血肉墙Boss测试 ----
+	for i in 20:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/蛛网.tres").duplicate())
+	var doll_recipe: Recipe = load("res://Crafting/recipes/向导娃娃.tres")
+	crafting.panel._on_craft_pressed(doll_recipe)
+	var doll: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "向导娃娃":
+			doll = it
+			break
+	print("SMOKE: crafted doll=", doll != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	player.current_item = doll
+	player.use_summon()
+	await get_tree().process_frame
+	var wall := level.get_node_or_null("BossWall") as Boss
+	print("SMOKE: wall spawned=", wall != null)
+	if wall:
+		wall.hurt.take_damage(1200, player.global_position)
+		await get_tree().create_timer(1.2).timeout
+		print("SMOKE: wall dead=", not is_instance_valid(wall), " drops=", drops_node.get_child_count())
 	print("SMOKE_OK")

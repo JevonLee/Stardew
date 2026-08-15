@@ -55,6 +55,7 @@ enum DamageType{
 @export var projectile:String
 @export var mana_cost:int = 0 ## 远程/魔法武器每发消耗的魔力
 @export var boss_scene_path:String = "" ## 召唤物对应的Boss场景
+@export var water_radius:int = 1 ## 水壶的浇水半径（1=单格 2=3x3 3=5x5）
 #放置类物品的属性
 @export_category("放置类物品属性")
 @export var placeable_scene_path:String

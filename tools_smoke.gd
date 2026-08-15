@@ -1051,6 +1051,42 @@ func _run() -> void:
 			ret.hurt.take_damage(1000, player.global_position)
 			await get_tree().create_timer(1.2).timeout
 			print("SMOKE: ret dead=", not is_instance_valid(ret), " drops=", drops_node.get_child_count())
+	# ---- 骷髅王Boss测试 ----
+	for i in 25:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/蛛网.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	var skel_recipe: Recipe = load("res://Crafting/recipes/服装商巫毒娃娃.tres")
+	crafting.panel._on_craft_pressed(skel_recipe)
+	var skel_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "服装商巫毒娃娃":
+			skel_item = it
+			break
+	print("SMOKE: crafted voodoo=", skel_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if skel_item:
+		player.current_item = skel_item
+		player.use_summon()
+	await get_tree().process_frame
+	var skel_boss := level.get_node_or_null("BossSkeletron") as Boss
+	print("SMOKE: skeletron=", skel_boss != null)
+	if skel_boss:
+		var hand_count := 0
+		for child in level.get_children():
+			if child is SkeletronHand:
+				hand_count += 1
+		print("SMOKE: skeletron hands=", hand_count)
+		skel_boss.hurt.take_damage(1600, player.global_position)
+		await get_tree().create_timer(1.2).timeout
+		var hands_gone := true
+		for child in level.get_children():
+			if child is SkeletronHand:
+				hands_gone = false
+		print("SMOKE: skeletron dead=", not is_instance_valid(skel_boss), " hands_gone=", hands_gone, " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

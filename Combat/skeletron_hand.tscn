@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Combat/skeletron_hand.gd" id="1_hand"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_36.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(34, 46)
+
+[node name="SkeletronHand" type="Area2D"]
+script = ExtResource("1_hand")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")

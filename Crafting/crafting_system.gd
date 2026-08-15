@@ -50,6 +50,7 @@ const RECIPES = [
 	preload("res://Crafting/recipes/苹果派.tres"),
 	preload("res://Crafting/recipes/烤玉米.tres"),
 	preload("res://Crafting/recipes/机械魔眼.tres"),
+	preload("res://Crafting/recipes/服装商巫毒娃娃.tres"),
 ]
 
 var panel: Control

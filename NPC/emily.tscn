@@ -203,6 +203,7 @@ collision_mask = 59
 script = ExtResource("1_bvw72")
 click_area = NodePath("ClickAreaComponent")
 dialogue = ExtResource("2_dq7di")
+npc_display_name = "艾米丽"
 
 [node name="Shadow" type="Sprite2D" parent="."]
 y_sort_enabled = true

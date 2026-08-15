@@ -224,4 +224,27 @@ func _run() -> void:
 		if it != null and it.name == "木头":
 			wood_left += it.quantity
 	print("SMOKE: crafted sword=", has_sword, " wood_left=", wood_left)
+	# ---- M7 好感度与送礼测试 ----
+	var emily := level.get_node_or_null("NPC/Emily") as NPC
+	if emily:
+		# 先对话（不送）
+		var hearts_before: float = FriendshipSystem.get_hearts("艾米丽")
+		# 送礼：手持树莓
+		var berry: Item = load("res://Bag/items/forage/树莓.tres")
+		player.bag_system.add_item(berry.duplicate())
+		player.current_item = berry.duplicate()
+		player.current_item.quantity = 1
+		player.bag_system.items[player.item_index] = player.current_item
+		emily._give_gift(player)
+		var hearts_after: float = FriendshipSystem.get_hearts("艾米丽")
+		# 当天再送 → 被拒
+		emily._give_gift(player)
+		var hearts_final: float = FriendshipSystem.get_hearts("艾米丽")
+		print("SMOKE: hearts=", hearts_before, "->", hearts_after, " blocked_second=", hearts_after == hearts_final, " gifted_today=", FriendshipSystem.friendships["艾米丽"]["gifted_today"])
+		# 好感存档
+		SaveManager._save()
+		SaveManager._load()
+		print("SMOKE: hearts after load=", FriendshipSystem.get_hearts("艾米丽"))
+	else:
+		print("SMOKE: emily not found")
 	print("SMOKE_OK")

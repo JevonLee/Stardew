@@ -34,6 +34,7 @@ func _save() -> void:
 	save_data.gold = Global.gold
 	save_data.day = TimeSystem.current_day
 	save_data.weather = WeatherSystem.weather
+	save_data.friendships = FriendshipSystem.friendships
 	ResourceSaver.save(save_data, SAVE_PATH)
 	print("存档完成")
 
@@ -69,4 +70,6 @@ func _load() -> void:
 	TimeSystem.set_time(maxi(save_data.day, 1), 6, 0)
 	if WeatherSystem:
 		WeatherSystem.weather = save_data.weather
+	if save_data.friendships.size() > 0:
+		FriendshipSystem.friendships = save_data.friendships
 	print("读档完成")

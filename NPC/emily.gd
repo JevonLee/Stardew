@@ -1,19 +1,13 @@
-extends CharacterBody2D
-
-const DIALOGUE_UI = preload("res://NPC/dialogue/dialogue_ui.tscn")
+extends NPC
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
-@export var click_area:ClickAreaComponent
-@export var dialogue:Dialogue
 
 var speed:int = 30 
 var direction:Vector2
 var initial_pos 
-var is_dialogue:bool
 
 func _ready() -> void:
-	click_area.mouse_right_click.connect(on_mouse_right_click)
+	super()
 	initial_pos = global_position
 	is_dialogue = false
 
@@ -57,12 +51,3 @@ func update_anim():
 		animated_sprite_2d.play("move_right")
 	if direction == Vector2.RIGHT:
 		animated_sprite_2d.play("move_right")
-
-func on_mouse_right_click() ->void:
-	var player := get_tree().get_first_node_in_group("Player")
-	if global_position.distance_to(player.global_position) < 20:
-		is_dialogue = true
-		var dialogue_ui = DIALOGUE_UI.instantiate()
-		dialogue_ui.dialogue = dialogue
-		var pop_up = get_node(Global.root_scene["pop_up"])
-		pop_up.add_child(dialogue_ui)

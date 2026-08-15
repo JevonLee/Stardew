@@ -89,3 +89,13 @@ offset_bottom = -143.0
 theme_override_font_sizes/font_size = 24
 text = "Emily"
 horizontal_alignment = 1
+
+[node name="Hearts" type="Label" parent="."]
+modulate = Color(1, 0.2, 0.2, 1)
+layout_mode = 0
+offset_left = -522.0
+offset_top = -320.0
+offset_right = 251.0
+offset_bottom = -296.0
+theme_override_font_sizes/font_size = 22
+text = "♡♡♡♡♡♡♡♡♡♡"

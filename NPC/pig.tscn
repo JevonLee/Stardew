@@ -152,6 +152,7 @@ collision_mask = 59
 script = ExtResource("1_atf0f")
 click_area = NodePath("ClickAreaComponent")
 dialogue = ExtResource("2_d14oi")
+npc_display_name = "猪"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)

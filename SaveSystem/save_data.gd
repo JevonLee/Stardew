@@ -8,4 +8,5 @@ class_name SaveData
 @export var player_stats:Dictionary = {} # health/stamina/mana
 @export var day:int = 1
 @export var weather:String = "sunny"
+@export var friendships:Dictionary = {} # npc好感度
 #还有tilemap类存档

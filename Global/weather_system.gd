@@ -7,23 +7,41 @@ const RAIN_CHANCE_BY_SEASON:Array[float] = [0.45, 0.25, 0.35, 0.0] # 春/夏/秋
 const SNOW_CHANCE_WINTER:float = 0.55
 const STORM_CHANCE_SUMMER:float = 0.3 ## 夏天降雨升级为雷暴的概率
 const THUNDER = preload("res://AudioSystem/thunder.wav") ## 程序生成雷声音效
+const RAIN = preload("res://AudioSystem/rain.wav") ## 程序生成雨声音效
 
 var weather:String = "sunny": ## sunny / rain / snow / storm
 	set(val):
 		weather = val
 		weather_changed.emit(weather)
+		_update_rain()
 
 var thunder_timer: float = 0.0 ## 距下次雷声的秒数
+var rain_player: AudioStreamPlayer = null
 
 func _ready() -> void:
+	# 雨声循环播放器
+	rain_player = AudioStreamPlayer.new()
+	rain_player.stream = RAIN
+	rain_player.volume_db = -12.0
+	add_child(rain_player)
 	TimeSystem.time_tick_day.connect(_on_new_day)
 	_roll_weather()
+	_update_rain()
 
 func _process(delta: float) -> void:
 	if weather != "storm": return
 	thunder_timer -= delta
 	if thunder_timer <= 0.0:
 		_play_thunder()
+
+## 雨/雪/雷暴时循环播放雨声
+func _update_rain() -> void:
+	if rain_player == null: return
+	var raining := weather == "rain" or weather == "storm" or weather == "snow"
+	if raining and not rain_player.playing:
+		rain_player.play()
+	elif not raining and rain_player.playing:
+		rain_player.stop()
 
 ## 播放一声雷鸣并安排下一次
 func _play_thunder() -> void:

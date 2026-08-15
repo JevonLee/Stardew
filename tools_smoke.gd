@@ -2319,6 +2319,13 @@ func _run() -> void:
 	TimeSystem.set_time(7, 6, 0)
 	await get_tree().process_frame
 	print("SMOKE: weekly mail=", MailSystem.pending_mail.get("text", "") != "")
+	# ---- 雨声测试 ----
+	WeatherSystem.weather = "rain"
+	await get_tree().process_frame
+	print("SMOKE: rain playing=", WeatherSystem.rain_player.playing)
+	WeatherSystem.weather = "sunny"
+	await get_tree().process_frame
+	print("SMOKE: rain stopped=", not WeatherSystem.rain_player.playing)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

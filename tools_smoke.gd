@@ -922,6 +922,41 @@ func _run() -> void:
 		plantera.hurt.take_damage(1500, player.global_position)
 		await get_tree().create_timer(1.2).timeout
 		print("SMOKE: plantera dead=", not is_instance_valid(plantera), " drops=", drops_node.get_child_count())
+	# ---- 蜂后Boss测试 ----
+	for i in 20:
+		player.bag_system.add_item(load("res://Bag/items/materials/凝胶.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/树液.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	var hive_recipe: Recipe = load("res://Crafting/recipes/蜂巢.tres")
+	crafting.panel._on_craft_pressed(hive_recipe)
+	var hive_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "蜂巢":
+			hive_item = it
+			break
+	print("SMOKE: crafted hive=", hive_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if hive_item:
+		player.current_item = hive_item
+		player.use_summon()
+	await get_tree().process_frame
+	var queen := level.get_node_or_null("BossQueenBee") as Boss
+	print("SMOKE: queen spawned=", queen != null)
+	if queen:
+		# 加速召唤，验证蜜蜂仆从
+		queen.summon_timer = 0.1
+		await get_tree().create_timer(0.8).timeout
+		var bee_count := 0
+		for e in get_tree().get_nodes_in_group("Enemies"):
+			if e != null and e.get("enemy_name") == "蜜蜂":
+				bee_count += 1
+		print("SMOKE: queen bees=", bee_count)
+		queen.hurt.take_damage(1400, player.global_position)
+		await get_tree().create_timer(1.2).timeout
+		print("SMOKE: queen dead=", not is_instance_valid(queen), " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

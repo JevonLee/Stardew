@@ -1813,6 +1813,43 @@ func _run() -> void:
 	player._apply_accessory(0.0)
 	print("SMOKE: boots multiplier=", player.move_speed_multiplier)
 	player.current_item = null
+	# ---- 云朵瓶/钴蓝盾测试 ----
+	for i in 8:
+		player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/树液.tres").duplicate())
+	for i in 3:
+		player.bag_system.add_item(load("res://Bag/items/animal/羊毛.tres").duplicate())
+	var cloud_recipe: Recipe = load("res://Crafting/recipes/云朵瓶.tres")
+	crafting.panel._on_craft_pressed(cloud_recipe)
+	for i in 12:
+		player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	for i in 6:
+		player.bag_system.add_item(load("res://Bag/items/materials/银锭.tres").duplicate())
+	for i in 20:
+		player.bag_system.add_item(load("res://Bag/items/materials/stone.tres").duplicate())
+	var shield_recipe: Recipe = load("res://Crafting/recipes/钴蓝盾.tres")
+	crafting.panel._on_craft_pressed(shield_recipe)
+	var found_cloud: Item = null
+	var found_shield: Item = null
+	for it in player.bag_system.items:
+		if it != null:
+			if it.name == "云朵瓶":
+				found_cloud = it
+			if it.name == "钴蓝盾":
+				found_shield = it
+	print("SMOKE: cloud=", found_cloud != null, " shield=", found_shield != null)
+	# 云朵瓶：体力消耗20%折扣
+	player.current_item = found_cloud
+	player.stamina = 100
+	player.try_use_stamina(20)
+	print("SMOKE: cloud stamina cost=", 100 - player.stamina)
+	# 钴蓝盾：击退减半
+	player.current_item = found_shield
+	player.velocity = Vector2.ZERO
+	player.knockback_player(Vector2.RIGHT)
+	print("SMOKE: shield knockback=", player.velocity.x)
+	player.current_item = null
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

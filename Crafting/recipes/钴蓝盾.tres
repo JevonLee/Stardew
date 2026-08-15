@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3 uid="uid://gulantun_r0001"]
+
+[ext_resource type="Script" path="res://Crafting/recipe.gd" id="1_rc"]
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="5_item"]
+[ext_resource type="Resource" uid="uid://gulantun0001" path="res://Bag/items/accessories/钴蓝盾.tres" id="2_res"]
+[ext_resource type="Resource" uid="uid://d1qu5fr0q7iyy" path="res://Bag/items/materials/铁锭.tres" id="3_i1"]
+[ext_resource type="Resource" uid="uid://bb64ybximsrhg" path="res://Bag/items/materials/银锭.tres" id="4_i2"]
+[ext_resource type="Resource" uid="uid://23itudc1viui" path="res://Bag/items/materials/stone.tres" id="5_i3"]
+
+[resource]
+script = ExtResource("1_rc")
+recipe_name = "钴蓝盾"
+result = ExtResource("2_res")
+result_count = 1
+ingredients = Array[ExtResource("5_item")]([ExtResource("3_i1"), ExtResource("4_i2"), ExtResource("5_i3")])
+ingredient_counts = Array[int]([12, 6, 20])

@@ -72,6 +72,8 @@ const RECIPES = [
 	preload("res://Crafting/recipes/赫尔墨斯之靴.tres"),
 	preload("res://Crafting/recipes/再生手环.tres"),
 	preload("res://Crafting/recipes/魔力花.tres"),
+	preload("res://Crafting/recipes/云朵瓶.tres"),
+	preload("res://Crafting/recipes/钴蓝盾.tres"),
 ]
 
 var panel: Control

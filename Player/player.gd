@@ -123,10 +123,14 @@ func sync_inventory() -> void:
 
 ## 消耗体力，不足时返回false并提示
 func try_use_stamina(cost:int) -> bool:
-	if stamina < cost:
+	var final_cost := cost
+	# 云朵瓶：体力消耗减少20%
+	if current_item != null and current_item.type == Item.ItemType.Accessories and current_item.name == "云朵瓶":
+		final_cost = int(cost * 0.8)
+	if stamina < final_cost:
 		Global.show_message("体力不足！")
 		return false
-	stamina -= cost
+	stamina -= final_cost
 	stats_changed.emit(health, max_health, stamina, max_stamina, mana, max_mana)
 	return true
 
@@ -193,9 +197,12 @@ func take_damage(amount:int) -> void:
 	if health <= 0:
 		die()
 
-## 被敌人击退一小段（泰拉瑞亚手感）
+## 被敌人击退一小段（泰拉瑞亚手感，钴蓝盾减半）
 func knockback_player(dir:Vector2) -> void:
-	velocity = dir * 160.0
+	var strength := 160.0
+	if current_item != null and current_item.type == Item.ItemType.Accessories and current_item.name == "钴蓝盾":
+		strength *= 0.5
+	velocity = dir * strength
 
 ## 远程/魔法武器射击
 func shoot_projectile() -> void:

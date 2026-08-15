@@ -21,6 +21,7 @@ var level_scenes:Dictionary = {
 	"Jungle" : "res://Map/Jungle/jungle.tscn",
 	"Tundra" : "res://Map/Tundra/tundra.tscn",
 	"Dungeon" : "res://Map/Dungeon/dungeon.tscn",
+	"Quarry" : "res://Map/Quarry/quarry.tscn",
 } 
 var player : Player
 

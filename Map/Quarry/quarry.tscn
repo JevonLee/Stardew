@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://quarry0000001"]
+
+[ext_resource type="Script" path="res://Map/Quarry/quarry.gd" id="1_quarry"]
+[ext_resource type="TileSet" uid="uid://bdxbflnhc4ell" path="res://Map/tile_set_outdoor.tres" id="2_ts"]
+[ext_resource type="PackedScene" uid="uid://dfg8gg0uu4d2a" path="res://Map/change_scene_area.tscn" id="3_change"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
+size = Vector2(38, 47)
+
+[node name="Quarry" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_quarry")
+
+[node name="Ground" type="TileMapLayer" parent="." groups=["TileMap"]]
+tile_set = ExtResource("2_ts")
+
+[node name="Ores" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPos" type="Node2D" parent="."]
+
+[node name="Quarry" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(100, 400)
+
+[node name="Farm" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(48, 400)
+
+[node name="ChangeAreas" type="Node2D" parent="."]
+
+[node name="ToFarm" parent="ChangeAreas" instance=ExtResource("3_change")]
+position = Vector2(24, 400)
+target_scene = "Farm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeAreas/ToFarm"]
+shape = SubResource("RectangleShape2D_gate")
+
+[node name="MapSize" type="Marker2D" parent="."]
+position = Vector2(640, 480)

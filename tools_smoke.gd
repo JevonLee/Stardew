@@ -2347,6 +2347,21 @@ func _run() -> void:
 	Global.skills["mining"] = 10
 	AchievementSystem.check()
 	print("SMOKE: ach boss10=", AchievementSystem.is_unlocked("boss_10"), " skillmaster=", AchievementSystem.is_unlocked("skill_master"))
+	# ---- 采石场地图测试 ----
+	SceneManager.change_level("Quarry", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var quarry := SceneManager.get_current_level() as Quarry
+	print("SMOKE: quarry=", quarry != null)
+	if quarry:
+		var qg: int = quarry.get_node("Ground").get_used_cells().size()
+		var qo: int = quarry.get_node("Ores").get_child_count()
+		print("SMOKE: quarry ground=", qg, " ores=", qo)
+		SceneManager.change_level("Farm", "SpawnPosition")
+		await get_tree().process_frame
+		await get_tree().process_frame
+		level = SceneManager.get_current_level()
+		player = get_tree().get_first_node_in_group("Player")
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

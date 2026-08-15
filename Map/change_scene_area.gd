@@ -1,6 +1,6 @@
 extends Area2D
 
-@export_enum("Farm","MyHouse","Town","Store","Mine","Forest","Desert","Beach","Bathhouse","Jungle","Tundra","Dungeon") var target_scene:String = "Farm"
+@export_enum("Farm","MyHouse","Town","Store","Mine","Forest","Desert","Beach","Bathhouse","Jungle","Tundra","Dungeon","Quarry") var target_scene:String = "Farm"
 ## 如果有多个生成点，则生成节点名、枚举类型名、目标场景根节点名相同
 
 func _ready() -> void:

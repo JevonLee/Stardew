@@ -16,6 +16,7 @@ const BAT = preload("res://Combat/bat.tscn")
 const SKELETON = preload("res://Combat/skeleton.tscn")
 const DEMON_EYE = preload("res://Combat/demon_eye.tscn")
 const LADDER = preload("res://Map/Mine/ladder.tscn")
+const ELEVATOR = preload("res://Map/Mine/elevator.tscn")
 const GEMS = [
 	preload("res://Bag/items/materials/紫水晶.tres"),
 	preload("res://Bag/items/materials/绿宝石.tres"),
@@ -129,6 +130,10 @@ func _setup_ladders() -> void:
 	down.direction = 1
 	down.position = ground.map_to_local(Vector2i(map_size.x / 2, map_size.y - 2))
 	add_child(down)
+	# 电梯（每层都有，可直达5/10/15/20/25/30层）
+	var elevator := ELEVATOR.instantiate()
+	elevator.position = ground.map_to_local(Vector2i(map_size.x / 2 + 3, 2))
+	add_child(elevator)
 	if floor_index > 1:
 		var up := LADDER.instantiate() as Ladder
 		up.direction = -1

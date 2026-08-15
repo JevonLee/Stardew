@@ -1,12 +1,13 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1786782776
+::res://::1786783149
 default_bus_layout.tres::AudioBusLayout/AudioBusLayout::2184131187234203786::1756520422::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile/TextFile::-1::1756520422::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::1804056525694353723::1756520422::1756522334::1::::<><><>0<>0<>163b15f42155cdb97f8ac97df934d6cb<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-import_full.log::TextFile::-1::1786782776::0::1::::<><><>0<>0<><>::
+import_full2.log::TextFile::-1::1786783149::0::1::::<><><>0<>0<><>::
+import_full.log::TextFile::-1::1786783121::0::1::::<><><>0<>0<><>::
 README.md::TextFile/TextFile::-1::1756520422::0::1::::<><><>0<>0<><>::
 roadmap.md::TextFile::-1::1786782457::0::1::::<><><>0<>0<><>::
-tools_smoke.gd::GDScript::7937880759161548330::1786782766::0::1::::<>Node2D<><>0<>0<><>::
+tools_smoke.gd::GDScript::7937880759161548330::1786783111::0::1::::<>Node2D<><>0<>0<><>::
 tools_smoke.tscn::PackedScene::-1::1786776087::0::1::::<><><>0<>0<><>::res://tools_smoke.gd
 ::res://Animals/::1786782542
 animal.gd::GDScript::1281943264472628730::1786779485::0::1::::Animal<>CharacterBody2D<><>0<>0<><>::
@@ -13608,7 +13609,7 @@ Scott Lloyd Shelly - Terraria Soundtrack Volume 2 - 04 Alternate Day.mp3::AudioS
 树莓.tres::Resource/Item::2883685222271264776::1786778227::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 蘑菇.tres::Resource/Item::2185961040768426760::1786778227::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 野葱.tres::Resource/Item::1680169179506860040::1786778227::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
-::res://Bag/items/materials/::1786782190
+::res://Bag/items/materials/::1786783077
 stone.tres::Resource/Item::1953422076594739864::1756520422::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 wood.tres::Resource/Item::6529636953851790416::1756520422::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://bft03am2gfd42::::res://Art/myself/wood.png
 凝胶.tres::Resource/Item::4903553382643966664::1786776847::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_23.png
@@ -13623,6 +13624,7 @@ wood.tres::Resource/Item::6529636953851790416::1756520422::0::1::::<><><>0<>0<><
 绿宝石.tres::Resource/Item::56567461959030248::1786780290::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_179.png
 肥料.tres::Resource/Item::770162719593039496::1786782170::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 花束.tres::Resource/Item::6991602847679578632::1786781438::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
+花苞.tres::Resource/Item::6956072692147767816::1786783077::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png
 蓝宝石.tres::Resource/Item::7830781838173236088::1786780290::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_184.png
 蛛网.tres::Resource/Item::8246522533683395464::1786781186::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_153.png
 血腥脊椎.tres::Resource/Item::5000122036527385346::1786779905::0::1::::<><><>0<>0<><>::uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>res://Art/Terraria/images/Item_1329.png
@@ -13704,7 +13706,7 @@ slot.tscn::PackedScene/PackedScene::3380208235692054796::1756520422::0::1::::<><
 tool_bar.gd::GDScript/GDScript::6169331853872786617::1756520422::0::1::::<>Control<><>0<>0<><>::
 tool_bar.tscn::PackedScene/PackedScene::2021907188855370012::1756520422::0::1::::<><><>0<>0<><>::uid://bofnshmt1vb4g::::res://Bag/scene/slot.tscn<>uid://ct5p82njwo7td::::res://Bag/scene/tool_bar.gd<>uid://ckodt4w002mr6::::res://Art/loose_sprite/MobileAtlas_manually_made.de-DE.png
 ui_manager.gd::GDScript/GDScript::3322505534350422836::1756520422::0::1::::<>Control<><>0<>0<><>::
-::res://Combat/::1786782694
+::res://Combat/::1786783139
 arrow_projectile.gd::GDScript::2672643583183625304::1786777683::0::1::::<>Projectile<><>0<>0<><>::
 arrow_projectile.tscn::PackedScene::-1::1786777095::0::1::::<><><>0<>0<><>::res://Combat/arrow_projectile.gd<>res://Art/Terraria/images/Projectile_1.png
 bat.tscn::PackedScene::-1::1786778770::0::1::::<><><>0<>0<><>::res://Combat/enemy.tscn<>res://Art/Terraria/images/NPC_49.png<>uid://dl3c8fq60m761::::res://Bag/items/materials/铜币.tres
@@ -13712,6 +13714,8 @@ boss.gd::GDScript::4581179440252048457::1786780836::0::1::::Boss<>Enemy<><>0<>0<
 boss_brain.gd::GDScript::1237324829636577628::1786779895::0::1::::<>Boss<><>0<>0<><>::
 boss_brain.tscn::PackedScene::-1::1786779895::0::1::::<><><>0<>0<><>::res://Combat/boss_brain.gd<>res://Art/Terraria/images/NPC_266.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn<>uid://bk808gkmam4m3::::res://Bag/items/materials/金币.tres<>uid://bljdh20mam4m3::::res://Bag/items/materials/金矿石.tres
 boss_eye.tscn::PackedScene::-1::1786779121::0::1::::<><><>0<>0<><>::res://Combat/boss.gd<>res://Art/Terraria/images/NPC_4.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn<>uid://bk808gkmam4m3::::res://Bag/items/materials/金币.tres<>uid://bljdh20mam4m3::::res://Bag/items/materials/金矿石.tres
+boss_plantera.gd::GDScript::3774282596819686648::1786783077::0::1::::<>Boss<><>0<>0<><>::
+boss_plantera.tscn::PackedScene::-1::1786783077::0::1::::<><><>0<>0<><>::res://Combat/boss_plantera.gd<>res://Art/Terraria/images/NPC_262.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn<>uid://bk808gkmam4m3::::res://Bag/items/materials/金币.tres<>uid://brtmcjmivmaii::::res://Bag/items/materials/金锭.tres
 boss_slime_king.gd::GDScript::5042895657236751431::1786780808::0::1::::<>Boss<><>0<>0<><>::
 boss_slime_king.tscn::PackedScene::-1::1786780744::0::1::::<><><>0<>0<><>::res://Combat/boss_slime_king.gd<>res://Art/Terraria/images/NPC_50.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn<>uid://bk808gkmam4m3::::res://Bag/items/materials/金币.tres<>uid://cb4k2p2sikh4c::::res://Bag/items/materials/凝胶.tres
 boss_wall.gd::GDScript::381576375516032703::1786782190::0::1::::<>Boss<><>0<>0<><>::
@@ -13741,13 +13745,13 @@ hurt_component.gd::GDScript::3237644195777220432::1786777524::0::1::::HurtCompon
 hurt_component.tscn::PackedScene/PackedScene::8993146685967354813::1756520422::0::1::::<><><>0<>0<><>::uid://bmelr6co806q3::::res://Component/hurt_component.gd
 tilemap_component.gd::GDScript/GDScript::3206518272620725928::1756520422::0::1::::HoeComponent<>Node<><>0<>0<><>::
 tilemap_component.tscn::PackedScene/PackedScene::6265709704059577816::1756520422::0::1::::<><><>0<>0<><>::uid://blxi5f6gvgn8s::::res://Component/tilemap_component.gd
-::res://Crafting/::1786782213
+::res://Crafting/::1786783097
 crafting_panel.gd::GDScript::3708037227703206768::1786778888::0::1::::CraftingPanel<>Control<><>0<>0<><>::
 crafting_panel.tscn::PackedScene::-1::1786778731::0::1::::<><><>0<>0<><>::res://Crafting/crafting_panel.gd
-crafting_system.gd::GDScript::2178156703114724351::1786782213::0::1::::CraftingSystem<>Node2D<><>0<>0<><>::
+crafting_system.gd::GDScript::2178156703114724351::1786783097::0::1::::CraftingSystem<>Node2D<><>0<>0<><>::
 crafting_system.tscn::PackedScene::-1::1786778731::0::1::::<><><>0<>0<><>::res://Crafting/crafting_system.gd
 recipe.gd::GDScript::3216182076100961169::1786778693::0::1::::Recipe<>Resource<><>0<>0<><>::
-::res://Crafting/recipes/::1786782232
+::res://Crafting/recipes/::1786783077
 可疑眼球.tres::Resource/Recipe::-1::1786779134::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://keyiyanqiu01::::res://Bag/items/materials/可疑眼球.tres<>uid://cb4k2p2sikh4c::::res://Bag/items/materials/凝胶.tres
 史莱姆王冠.tres::Resource/Recipe::-1::1786780744::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://4b04lslwbyro::::res://Bag/items/materials/史莱姆王冠.tres<>uid://cb4k2p2sikh4c::::res://Bag/items/materials/凝胶.tres
 向导娃娃.tres::Resource/Recipe::-1::1786782190::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://btfv0q6i2fgf1::::res://Bag/items/materials/向导娃娃.tres<>uid://n1esqpfaa82o::::res://Bag/items/materials/骨头.tres<>uid://dpqxayvc7clj1::::res://Bag/items/materials/蛛网.tres
@@ -13764,6 +13768,7 @@ recipe.gd::GDScript::3216182076100961169::1786778693::0::1::::Recipe<>Resource<>
 紫水晶法杖.tres::Resource/Recipe::-1::1786781020::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://rwnju723ec8a::::res://Bag/items/weapon/紫水晶法杖.tres<>uid://ccdab50y88rhg::::res://Bag/items/materials/紫水晶.tres<>uid://c0bafwvsoblfs::::res://Bag/items/materials/wood.tres
 肥料.tres::Resource/Recipe::-1::1786782232::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://k8cp5nolwmwm::::res://Bag/items/materials/肥料.tres<>res://Bag/items/materials/纤维.tres<>uid://bho5myxpnnyro::::res://Bag/items/materials/树液.tres
 花束.tres::Resource/Recipe::-1::1786781438::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://c6u1xbdeqn80k::::res://Bag/items/materials/花束.tres<>uid://x65e15ma5hdw::::res://Bag/items/forage/野葱.tres<>res://Bag/items/materials/纤维.tres
+花苞.tres::Resource/Recipe::-1::1786783077::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://c6dtrbdeqn80k::::res://Bag/items/materials/花苞.tres<>uid://c6u1xbdeqn80k::::res://Bag/items/materials/花束.tres<>uid://ccdab50y88rhg::::res://Bag/items/materials/紫水晶.tres
 蔬菜沙拉.tres::Resource/Recipe::-1::1786779485::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://vb1myxpnnyro::::res://Bag/items/food/蔬菜沙拉.tres<>uid://go3uaacfeqp1::::res://Bag/items/crops/萝卜.tres<>uid://x65e15ma5hdw::::res://Bag/items/forage/野葱.tres
 蔬菜浓汤.tres::Resource/Recipe::1279067754174463724::1786781689::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://bg104mmc3g8e3::::res://Bag/items/food/蔬菜浓汤.tres<>uid://go3uaacfeqp1::::res://Bag/items/crops/萝卜.tres<>uid://bli6kbwou8hoi::::res://Bag/items/crops/土豆.tres<>uid://x65e15ma5hdw::::res://Bag/items/forage/野葱.tres
 蛋糕.tres::Resource/Recipe::-1::1786781488::0::1::::<><><>0<>0<><>::res://Crafting/recipe.gd<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://b5tndj4hcrab5::::res://Bag/items/food/蛋糕.tres<>uid://ba758gkmam4m3::::res://Bag/items/animal/鸡蛋.tres<>uid://cjcb3hesikh4c::::res://Bag/items/animal/牛奶.tres<>uid://iu02d5faa82o::::res://Bag/items/food/果酱.tres
@@ -13792,10 +13797,10 @@ fall_object_component.gd::GDScript::2991658488482689164::1786780474::0::1::::Fal
 fall_object_component.tscn::PackedScene/PackedScene::587756467157465932::1756520422::0::1::::<><><>0<>0<><>::uid://bivggcax3xh53::::res://FallObjects/fall_object_component.gd<>uid://csngssslesssq::::res://Art/loose_sprite/shadow.png
 loot_table.gd::GDScript/GDScript::1028861800643545928::1756520422::0::1::::LootTable<>Node2D<><>0<>0<><>::
 loot_table.tscn::PackedScene/PackedScene::2349489368118797738::1756520422::0::1::::<><><>0<>0<><>::uid://owng6j4fy7rw::::res://FallObjects/loot_table.gd
-::res://Fishing/::1786781730
+::res://Fishing/::1786782948
 bobber.gd::GDScript::3761209186232434751::1786778352::0::1::::Bobber<>Node2D<><>0<>0<><>::
 bobber.tscn::PackedScene::-1::1786778352::0::1::::<><><>0<>0<><>::res://Fishing/bobber.gd<>res://Art/myself/bobber.png
-fishing_system.gd::GDScript::1618134844700925493::1786781730::0::1::::FishingSystem<>Node2D<><>0<>0<><>::
+fishing_system.gd::GDScript::1618134844700925493::1786782948::0::1::::FishingSystem<>Node2D<><>0<>0<><>::
 fishing_system.tscn::PackedScene::-1::1786778378::0::1::::<><><>0<>0<><>::res://Fishing/fishing_system.gd
 fishing_ui.gd::GDScript::588186050775911578::1786778369::0::1::::<>Control<><>0<>0<><>::
 fishing_ui.tscn::PackedScene::-1::1786778369::0::1::::<><><>0<>0<><>::res://Fishing/fishing_ui.gd
@@ -13810,7 +13815,7 @@ fish_data.gd::GDScript::3448057668737088729::1786778352::0::1::::FishData<>Resou
 章鱼_data.tres::Resource/FishData::6824550907022081088::1786780692::0::1::::<><><>0<>0<><>::res://Fishing/fish_data.gd<>uid://catfwndimsrhg::::res://Bag/items/fish/章鱼.tres
 鲤鱼_data.tres::Resource/FishData::224872474628029640::1786778352::0::1::::<><><>0<>0<><>::res://Fishing/fish_data.gd<>uid://dhumf0230d0c::::res://Bag/items/fish/鲤鱼.tres
 鲶鱼_data.tres::Resource/FishData::4006481379683087480::1786780692::0::1::::<><><>0<>0<><>::res://Fishing/fish_data.gd<>uid://bxc1ghesikh4c::::res://Bag/items/fish/鲶鱼.tres
-::res://Global/::1786782713
+::res://Global/::1786782948
 achievement_system.gd::GDScript::2599945038512231930::1786780730::0::1::::<>Node<><>0<>0<><>::
 audio_manager.gd::GDScript/GDScript::4601291018123980988::1756520422::0::1::::<>Node<><>0<>0<><>::
 collection_system.gd::GDScript::7927783015013310831::1786780474::0::1::::<>Node<><>0<>0<><>::
@@ -13823,7 +13828,7 @@ mouse_cursor.tscn::PackedScene/PackedScene::6532346808608827371::1756520422::0::
 mouse_item.gd::GDScript/GDScript::7214762305405399680::1756520422::0::1::::<>Control<><>0<>0<><>::
 mouse_item.tscn::PackedScene/PackedScene::6641871370877006625::1756520422::0::1::::<><><>0<>0<><>::uid://da15c0y1hadf1::::res://Global/mouse_item.gd
 museum_system.gd::GDScript::1545414805080604199::1786782713::0::1::::<>Node<><>0<>0<><>::
-quest_system.gd::GDScript::8917174451484295168::1786779522::0::1::::<>Node<><>0<>0<><>::
+quest_system.gd::GDScript::8917174451484295168::1786782948::0::1::::<>Node<><>0<>0<><>::
 save_manager.gd::GDScript::9148267245187861399::1786782713::0::1::::<>Node<><>0<>0<><>::
 scene_manager.gd::GDScript::2228369294178515825::1786782532::0::1::::<>Node<><>0<>0<><>::
 scene_manager.tscn::PackedScene/PackedScene::3445967232325774420::1756520422::0::1::::<><><>0<>0<><>::uid://60o6fyhvbyn6::::res://Global/scene_manager.gd
@@ -13856,10 +13861,12 @@ house.tscn::PackedScene/PackedScene::4025771160879213869::1756520422::0::1::::<>
 ::res://Map/Forest/::1786782694
 forest.gd::GDScript::4369046406423583829::1786780983::0::1::::Forest<>Node2D<><>0<>0<><>::
 forest.tscn::PackedScene::-1::1786782694::0::1::::<><><>0<>0<><>::res://Map/Forest/forest.gd<>uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>res://Map/change_scene_area.tscn<>res://Combat/enemy_spawner.tscn<>res://Combat/slime.tscn<>res://Combat/bat.tscn<>res://Combat/demon_eye.tscn<>res://Combat/spider.tscn<>res://Combat/jungle_slime.tscn<>res://Combat/giant_bat.tscn
-::res://Map/Mine/::1786780290
+::res://Map/Mine/::1786783139
+elevator.gd::GDScript::1002418202213616422::1786783097::0::1::::MineElevator<>Area2D<><>0<>0<><>::
+elevator.tscn::PackedScene::-1::1786783097::0::1::::<><><>0<>0<><>::res://Map/Mine/elevator.gd<>res://Art/myself/ladder.png
 ladder.gd::GDScript::7816340315619108353::1786780035::0::1::::Ladder<>Area2D<><>0<>0<><>::
 ladder.tscn::PackedScene::-1::1786779920::0::1::::<><><>0<>0<><>::res://Map/Mine/ladder.gd<>res://Art/myself/ladder.png
-mine.gd::GDScript::9207593122965063862::1786780290::0::1::::Mine<>Node2D<><>0<>0<><>::
+mine.gd::GDScript::9207593122965063862::1786783097::0::1::::Mine<>Node2D<><>0<>0<><>::
 mine.tscn::PackedScene::-1::1786779744::0::1::::<><><>0<>0<><>::res://Map/Mine/mine.gd<>uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>res://Map/change_scene_area.tscn<>res://Combat/enemy_spawner.tscn<>res://Combat/bat.tscn<>res://Combat/slime.tscn<>res://Combat/skeleton.tscn
 ::res://Map/MyHouse/::1786775990
 bed.gd::GDScript::6459542337599738561::1786775990::0::1::::<>Area2D<><>0<>0<><>::
@@ -13871,14 +13878,14 @@ store.gd::GDScript/GDScript::4321573896607567856::1756520422::0::1::::<>Node2D<>
 store.tscn::PackedScene/PackedScene::8525337464382355410::1756520422::0::1::::<><><>0<>0<><>::uid://b2tnxqo1jl5y7::::res://Map/Store/store.gd<>uid://cpxb1j10s1gdg::::res://Map/tile_set_indoor.tres<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn<>uid://uat2v7uyvg0y::::res://Component/click_area_component.tscn
 store_panel.gd::GDScript::4972135060129368222::1786775990::0::1::::StorePanel<>Control<><>0<>0<><>::
 store_panel.tscn::PackedScene::830815144694067118::1786780003::0::1::::<><><>0<>0<><>::uid://cxbecxir8p1ss::::res://Art/loose_sprite/Cursors.zh-CN.png<>uid://cc3slqy3wer4a::::res://Map/Store/store_panel.gd<>uid://dgyflq7e8pxu7::::res://Art/portraits/Pierre_Beach.png<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://0b28kg4yvc15::::res://Bag/items/seeds/甜瓜种子.tres<>uid://go3mmmofeqp1::::res://Bag/items/seeds/萝卜种子.tres<>uid://bli6coa1u8hoi::::res://Bag/items/seeds/土豆种子.tres<>uid://cd0naijt74vmu::::res://Bag/items/seeds/蓝莓种子.tres<>uid://cyiyiqu7h7ihk::::res://Bag/items/seeds/南瓜种子.tres<>uid://demjrswbvrqnw::::res://Bag/items/weapon/木剑.tres<>uid://b7mayujweo0k7::::res://Bag/items/weapon/木弓.tres<>uid://4shyh5s3ymfo::::res://Bag/items/weapon/魔法飞弹.tres<>uid://bl5olthl1cycu::::res://Bag/items/tools/鱼竿.tres<>uid://lr7gbxbiwioe::::res://Bag/items/seeds/番茄种子.tres<>uid://bsesx6te1cycu::::res://Bag/items/seeds/玉米种子.tres<>uid://ogd2711orqqq::::res://Bag/items/seeds/蔓越莓种子.tres<>uid://3if1vaoappws::::res://Map/Store/commodity.tscn
-::res://Map/Town/::1786782713
+::res://Map/Town/::1786782796
 lantern.png::CompressedTexture2D/CompressedTexture2D::5541714204026473272::1756520422::1756522334::1::::<><><>0<>0<>67b5183d15187e9e387684294cce1c77<>res://.godot/imported/lantern.png-14276b71a06dbd6f466a6cd5891d550c.ctex::
 light.tres::GradientTexture2D/GradientTexture2D::8293179270183687477::1756520422::0::1::::<><><>0<>0<><>::
 museum_box.gd::GDScript::7342866691290549747::1786782713::0::1::::MuseumBox<>Area2D<><>0<>0<><>::
 museum_box.tscn::PackedScene::-1::1786782713::0::1::::<><><>0<>0<><>::res://Map/Town/museum_box.gd<>res://Art/loose_sprite/Cursors.zh-CN.png
 town.gd::GDScript::2647914920390359378::1786781672::0::1::::Town<>Node2D<><>0<>0<><>::
 town.tscn::PackedScene::2973897707447994239::1786782746::0::1::::<><><>0<>0<><>::uid://bdyw1ijyrdi7k::::res://Map/Town/town.gd<>uid://bdxbflnhc4ell::::res://Map/tile_set_outdoor.tres<>uid://b6inx015nddef::::res://AudioSystem/Scott Lloyd Shelly - Terraria Soundtrack - 07 Jungle.mp3<>uid://dfg8gg0uu4d2a::::res://Map/change_scene_area.tscn<>uid://dqfjpljnxpqbl::::res://Map/Town/light.tres<>uid://ikpod1of2y4b::::res://AudioSystem/Scott Lloyd Shelly - Terraria Soundtrack - 03 Overworld Night.mp3<>res://NPC/pierre.tscn<>res://NPC/abigail.tscn<>res://NPC/lewis.tscn<>res://Map/Town/museum_box.tscn
-::res://NPC/::1786782737
+::res://NPC/::1786782948
 abigail.gd::GDScript::3144278853524896746::1786781456::0::1::::<>NPC<><>0<>0<><>::
 abigail.tscn::PackedScene::-1::1786781456::0::1::::<><><>0<>0<><>::res://NPC/abigail.gd<>res://Art/StardewValley/characters/Abigail.png<>uid://uat2v7uyvg0y::::res://Component/click_area_component.tscn<>res://NPC/dialogue/abigail.tres
 desert_merchant.gd::GDScript::6603398667317858917::1786782737::0::1::::<>NPC<><>0<>0<><>::
@@ -13887,7 +13894,7 @@ emily.gd::GDScript::1650147392350742126::1786780301::0::1::::<>NPC<><>0<>0<><>::
 emily.tscn::PackedScene::6372643624314786715::1786779001::0::1::::<><><>0<>0<><>::uid://xrlxlsyrgciw::::res://NPC/emily.gd<>uid://cxjwq5gdmtciu::::res://Art/character/Emily_Beach.png<>uid://ch0vf427g6cyv::::res://NPC/dialogue/emily.tres<>uid://uat2v7uyvg0y::::res://Component/click_area_component.tscn<>uid://cxbecxir8p1ss::::res://Art/loose_sprite/Cursors.zh-CN.png<>uid://csngssslesssq::::res://Art/loose_sprite/shadow.png
 lewis.gd::GDScript::4373650674303044711::1786781456::0::1::::<>NPC<><>0<>0<><>::
 lewis.tscn::PackedScene::-1::1786781456::0::1::::<><><>0<>0<><>::res://NPC/lewis.gd<>res://Art/StardewValley/characters/Lewis.png<>uid://uat2v7uyvg0y::::res://Component/click_area_component.tscn<>res://NPC/dialogue/lewis.tres
-npc.gd::GDScript::4428700624882871361::1786781438::0::1::::NPC<>CharacterBody2D<><>0<>0<><>::
+npc.gd::GDScript::4428700624882871361::1786782948::0::1::::NPC<>CharacterBody2D<><>0<>0<><>::
 pierre.gd::GDScript::7113240296411782957::1786780301::0::1::::<>NPC<><>0<>0<><>::
 pierre.tscn::PackedScene::-1::1786779949::0::1::::<><><>0<>0<><>::res://NPC/pierre.gd<>res://Art/StardewValley/characters/Pierre.png<>uid://uat2v7uyvg0y::::res://Component/click_area_component.tscn<>uid://h35csciwdqhk::::res://NPC/dialogue/pierre.tres
 pig.gd::GDScript::4475995976449979424::1786779001::0::1::::<>NPC<><>0<>0<><>::
@@ -13957,8 +13964,8 @@ grass2.tscn::PackedScene/PackedScene::8514940338084062536::1756520422::0::1::::<
 grass3.tscn::PackedScene/PackedScene::3649374389093553627::1756520422::0::1::::<><><>0<>0<><>::uid://csjs1cydmsgje::::res://Terrain/Grass/grass.tscn<>uid://dfdqhvcj3vibh::::res://Shader/grass_shake.gdshader
 grass.gd::GDScript::5721714187445215526::1786778254::0::1::::<>Area2D<><>0<>0<><>::
 grass.tscn::PackedScene/PackedScene::6055959431443709950::1756520422::0::1::::<><><>0<>0<><>::uid://cnrv2daca3w6q::::res://Terrain/Grass/grass.gd<>uid://cpninxdvdke3t::::res://Art/terrain/grass.png<>uid://dfdqhvcj3vibh::::res://Shader/grass_shake.gdshader<>uid://cw5mwkqapte2e::::res://Bag/scene/item.gd<>uid://dxf5y3rpsuxa8::::res://Art/maps/springobjects.es-ES.png<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn
-::res://Terrain/Ores/::1786780290
-ore_node.gd::GDScript::8607411274008026797::1786780290::0::1::::OreNode<>StaticBody2D<><>0<>0<><>::
+::res://Terrain/Ores/::1786782948
+ore_node.gd::GDScript::8607411274008026797::1786782948::0::1::::OreNode<>StaticBody2D<><>0<>0<><>::
 ore_node.tscn::PackedScene::-1::1786778267::0::1::::<><><>0<>0<><>::res://Terrain/Ores/ore_node.gd<>uid://d1el2uw7pk51r::::res://Component/hurt_component.tscn
 ::res://Terrain/Rocks/::1786778254
 rock.gd::GDScript::3249901809431594495::1786778254::0::1::::Rock<>StaticBody2D<><>0<>0<><>::
@@ -13972,7 +13979,7 @@ time_color.tscn::PackedScene/PackedScene::7174886813045883925::1756520422::0::1:
 time_system.gd::GDScript::4204564769159701835::1786777524::0::1::::<>Node<><>0<>0<><>::
 time_system_ui.gd::GDScript/GDScript::4813203920609166923::1756520422::0::1::::<>Control<><>0<>0<><>::
 time_system_ui.tscn::PackedScene/PackedScene::8334331997077840526::1756520422::0::1::::<><><>0<>0<><>::uid://cats1a0q3ajmp::::res://TimeSystem/time_system_ui.gd<>uid://cxbecxir8p1ss::::res://Art/loose_sprite/Cursors.zh-CN.png
-::res://UI/::1786782757
+::res://UI/::1786782834
 collection_panel.gd::GDScript::1952061329177330810::1786782756::0::1::::CollectionPanel<>Control<><>0<>0<><>::
 collection_panel.tscn::PackedScene::-1::1786782757::0::1::::<><><>0<>0<><>::res://UI/collection_panel.gd
 collection_system.gd::GDScript::8951386226503382797::1786780489::0::1::::CollectionSystemUI<>Node2D<><>0<>0<><>::
@@ -13985,7 +13992,7 @@ mail_panel.gd::GDScript::3516051605166096088::1786781240::0::1::::MailPanel<>Con
 mail_panel.tscn::PackedScene::-1::1786781240::0::1::::<><><>0<>0<><>::res://UI/mail_panel.gd
 mail_system.gd::GDScript::3643730567660412543::1786781240::0::1::::MailSystemUI<>Node2D<><>0<>0<><>::
 mail_system.tscn::PackedScene::-1::1786781240::0::1::::<><><>0<>0<><>::res://UI/mail_system.gd
-mini_shop.gd::GDScript::8826294598304080744::1786782737::0::1::::MiniShop<>Control<><>0<>0<><>::
+mini_shop.gd::GDScript::8826294598304080744::1786782834::0::1::::MiniShop<>Control<><>0<>0<><>::
 mini_shop.tscn::PackedScene::-1::1786782737::0::1::::<><><>0<>0<><>::res://UI/mini_shop.gd
 rain_overlay.gd::GDScript::2208104648440623796::1786781488::0::1::::<>CPUParticles2D<><>0<>0<><>::
 rain_overlay.tscn::PackedScene::-1::1786776118::0::1::::<><><>0<>0<><>::res://UI/rain_overlay.gd<>res://Art/myself/rain_drop.png

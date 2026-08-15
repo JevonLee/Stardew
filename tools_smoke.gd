@@ -842,4 +842,46 @@ func _run() -> void:
 	QuestSystem.quest = {"type": "gift", "target": 3, "progress": 0, "reward": 150, "name": "送礼物给村民", "done": false}
 	QuestSystem.report("gift")
 	print("SMOKE: gift quest progress=", QuestSystem.quest["progress"])
+	# ---- 电梯测试 ----
+	Global.mine_floor = 1
+	SceneManager.change_level("Mine", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var mine_e := SceneManager.get_current_level() as Mine
+	var elevator := mine_e.get_node_or_null("Elevator") as MineElevator
+	print("SMOKE: elevator=", elevator != null)
+	if elevator:
+		elevator._travel_to(15)
+		await get_tree().process_frame
+		await get_tree().process_frame
+		var mine15 := SceneManager.get_current_level() as Mine
+		print("SMOKE: elevator floor=", mine15.floor_index if mine15 else -1)
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	player = get_tree().get_first_node_in_group("Player")
+	# ---- 世纪之花Boss测试 ----
+	player.bag_system.add_item(load("res://Bag/items/materials/花束.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/紫水晶.tres").duplicate())
+	var bulb_recipe: Recipe = load("res://Crafting/recipes/花苞.tres")
+	crafting.panel._on_craft_pressed(bulb_recipe)
+	var bulb: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "花苞":
+			bulb = it
+			break
+	print("SMOKE: crafted bulb=", bulb != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	player.current_item = bulb
+	player.use_summon()
+	await get_tree().process_frame
+	var plantera := level.get_node_or_null("BossPlantera") as Boss
+	print("SMOKE: plantera spawned=", plantera != null)
+	if plantera:
+		plantera.hurt.take_damage(1500, player.global_position)
+		await get_tree().create_timer(1.2).timeout
+		print("SMOKE: plantera dead=", not is_instance_valid(plantera), " drops=", drops_node.get_child_count())
 	print("SMOKE_OK")

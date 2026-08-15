@@ -8,14 +8,14 @@ func _ready() -> void:
 	
 
 func get_save_data() -> Array[PackedScene]:
-	var save_data = SaveData.new()
+	var result:Array[PackedScene] = []
 	var parent = get_parent()
 	for child in parent.get_children():
 		var pack_scene = PackedScene.new()
 		pack_scene.pack(child)
 		if child.name != "SaveComponent":
-			save_data.nodes.append(pack_scene)
-	return save_data.nodes
+			result.append(pack_scene)
+	return result
 	
 func set_save_data(nodes:Array[PackedScene]) -> void:
 	var parent = get_parent()

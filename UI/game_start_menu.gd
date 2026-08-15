@@ -21,11 +21,18 @@ func _ready() -> void:
 	AudioManager.play_music(bg_music1)
 
 func _on_create_pressed() -> void:
-	pass # Replace with function body.
+	# 新游戏：清除旧存档并重置全局状态
+	DirAccess.remove_absolute("user://abc.tres")
+	Global.gold = 500
+	TimeSystem.set_time(1, 6, 0)
+	SceneManager.load_main_scene()
+	queue_free()
 
 
 func _on_load_pressed() -> void:
 	SceneManager.load_main_scene()
+	await get_tree().process_frame
+	SaveManager._load()
 	queue_free()
 
 func _on_coop_pressed() -> void:

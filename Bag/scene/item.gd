@@ -54,6 +54,11 @@ enum DamageType{
 #放置类物品的属性
 @export_category("放置类物品属性")
 @export var placeable_scene_path:String
+#消耗品属性（食物/药水：右键食用恢复）
+@export_category("消耗品属性")
+@export var health_restore:int = 0
+@export var stamina_restore:int = 0
+@export var mana_restore:int = 0
 
 func is_max_quantity() -> bool:
 	return quantity>=max_quantity

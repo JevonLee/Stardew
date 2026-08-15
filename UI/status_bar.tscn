@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://UI/status_bar.gd" id="1_status"]
+
+[node name="StatusBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 160.0
+mouse_filter = 2
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 26.0
+show_percentage = false
+self_modulate = Color(1, 0.35, 0.35, 1)
+
+[node name="StaminaBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_top = 28.0
+offset_right = 210.0
+offset_bottom = 44.0
+show_percentage = false
+self_modulate = Color(0.4, 1, 0.4, 1)
+
+[node name="ManaBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_top = 46.0
+offset_right = 210.0
+offset_bottom = 62.0
+show_percentage = false
+self_modulate = Color(0.4, 0.6, 1, 1)
+
+[node name="GoldLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_top = 66.0
+offset_right = 210.0
+offset_bottom = 86.0
+
+[node name="TimeLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_top = 88.0
+offset_right = 300.0
+offset_bottom = 108.0
+
+[node name="SeasonLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_top = 110.0
+offset_right = 300.0
+offset_bottom = 130.0
+
+[node name="WeatherLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_top = 132.0
+offset_right = 300.0
+offset_bottom = 152.0

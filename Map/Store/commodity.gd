@@ -28,6 +28,14 @@ func _gui_input(event: InputEvent) -> void:
 	var ui_manager = get_node(Global.root_scene["ui_manager"])
 	var mouse_item = ui_manager.find_child("MouseItem") as MouseItem
 	if event.is_action_pressed("mouse_left"):
+		if Global.gold < item.price:
+			price.modulate = Color(1, 0.3, 0.3)
+			price.text = "金币不足"
+			await get_tree().create_timer(0.6).timeout
+			price.modulate = Color.WHITE
+			price.text = str(item.price)
+			return
+		Global.gold -= item.price
 		if MouseItem.mouse_item == null:
 			MouseItem.mouse_item = item.duplicate()
 			mouse_item.set_item(MouseItem.mouse_item)
@@ -35,7 +43,3 @@ func _gui_input(event: InputEvent) -> void:
 			MouseItem.mouse_item.quantity += 1
 			mouse_item.set_item(MouseItem.mouse_item)
 			#和player之前item的接触就会有问题,
-	#elif event.is_action_released("mouse_left"):
-		#if MouseItem.mouse_item != null :
-			#MouseItem.mouse_item.quantity += 1
-			#mouse_item.set_item(MouseItem.mouse_item)

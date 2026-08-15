@@ -1,7 +1,11 @@
 extends Resource
 class_name SaveData
 
-@export var nodes:Array[PackedScene] #Placeable，Crops类作为子节点添加的物品存档
+@export var components:Array = [] #每个元素是对应SaveComponent保存的 Array[PackedScene]
 @export var player_inventory:InventorySystem
 @export var box_inventory:InventorySystem #箱子应该有一个唯一标识
+@export var gold:int = 500
+@export var player_stats:Dictionary = {} # health/stamina/mana
+@export var day:int = 1
+@export var weather:String = "sunny"
 #还有tilemap类存档

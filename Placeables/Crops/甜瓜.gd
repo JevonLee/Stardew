@@ -34,7 +34,7 @@ func add_fall_objects(num:int,item:Item) -> void: #bug原因：吸附的优先�
 	if sprite_2d.frame == 6:
 		for i in range(num):
 			var fall_ins = Global.FALL_OBJECT_COMPONENT.instantiate()
-			var drops = get_tree().root.get_node_or_null("Drops") as Node2D
+			var drops = get_node_or_null(Global.root_scene["drops"]) as Node2D
 			if !drops:
 				drops = get_parent()
 			fall_ins.is_bezier = true

@@ -93,3 +93,12 @@ offset_bottom = 417.0
 
 [node name="Commodity" parent="VBoxContainer" instance=ExtResource("6_h70i1")]
 layout_mode = 2
+
+[node name="SellButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 407.0
+offset_top = 430.0
+offset_right = 527.0
+offset_bottom = 466.0
+text = "出售鼠标物品(半价)"

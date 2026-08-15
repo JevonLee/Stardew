@@ -24,7 +24,18 @@ class_name Player
 		
 signal watering
 signal get_item ##拾取物品发送的信号
+signal stats_changed(health:int, max_health:int, stamina:int, max_stamina:int, mana:int, max_mana:int)
 
+## ---------- 生命 / 体力 / 魔力 ----------
+@export var max_health:int = 100
+@export var max_stamina:int = 270
+@export var max_mana:int = 100
+var health:int = 100
+var stamina:int = 270
+var mana:int = 100
+
+const TOOL_STAMINA_COST:int = 4 ## 锄头/斧头/稿子/水壶的体力消耗
+const SWING_STAMINA_COST:int = 5 ## 挥剑的体力消耗
 
 var items = null
 var item_index:int = 0: ##current_item对应的下标
@@ -60,11 +71,81 @@ func _ready() -> void:
 	#只有部分代码需要在场景转换时重新赋值
 	initial()
 	SceneManager.level_changed.connect(initial)
+	health = max_health
+	stamina = max_stamina
+	mana = max_mana
+	stats_changed.emit(health, max_health, stamina, max_stamina, mana, max_mana)
 
 func initial() -> void:
 	ground = get_tree().get_first_node_in_group("TileMap")
 	
-	
+## 读档后同步背包引用
+func sync_inventory() -> void:
+	items = bag_system.items
+	if item_index >= items.size():
+		item_index = 0
+	current_item = items[item_index]
+
+## 消耗体力，不足时返回false并提示
+func try_use_stamina(cost:int) -> bool:
+	if stamina < cost:
+		Global.show_message("体力不足！")
+		return false
+	stamina -= cost
+	stats_changed.emit(health, max_health, stamina, max_stamina, mana, max_mana)
+	return true
+
+## 消耗魔力（泰拉瑞亚式魔法武器用）
+func try_use_mana(cost:int) -> bool:
+	if mana < cost:
+		Global.show_message("魔力不足！")
+		return false
+	mana -= cost
+	stats_changed.emit(health, max_health, stamina, max_stamina, mana, max_mana)
+	return true
+
+## 恢复（吃食物等）
+func heal(h:int, s:int, m:int) -> void:
+	health = clampi(health + h, 0, max_health)
+	stamina = clampi(stamina + s, 0, max_stamina)
+	mana = clampi(mana + m, 0, max_mana)
+	stats_changed.emit(health, max_health, stamina, max_stamina, mana, max_mana)
+
+## 右键食用当前选中的消耗品
+func eat_current_item() -> bool:
+	if current_item == null or current_item.type != Item.ItemType.Consume:
+		return false
+	var h:int = current_item.health_restore
+	var s:int = current_item.stamina_restore
+	var m:int = current_item.mana_restore
+	if h <= 0 and s <= 0 and m <= 0:
+		return false
+	heal(h, s, m)
+	bag_system.remove_num_item(item_index, 1)
+	Global.show_message("吃了 %s" % current_item.name)
+	return true
+
+## 受伤（敌人攻击、掉落伤害等）
+func take_damage(amount:int) -> void:
+	if health <= 0: return
+	health = maxi(health - amount, 0)
+	stats_changed.emit(health, max_health, stamina, max_stamina, mana, max_mana)
+	if health <= 0:
+		die()
+
+## 晕倒：回家、恢复部分体力、损失10%金币
+func die() -> void:
+	can_move = false
+	health = max_health
+	stamina = int(max_stamina * 0.5)
+	mana = max_mana
+	stats_changed.emit(health, max_health, stamina, max_stamina, mana, max_mana)
+	var lost:int = int(Global.gold * 0.1)
+	Global.gold -= lost
+	Global.show_message("你晕倒了……损失了 %d 金币" % lost)
+	SceneManager.change_level("MyHouse", "SpawnPosition")
+	can_move = true
+
 func _process(delta: float) -> void:
 	if !effects.is_playing():
 		effects.hide()
@@ -112,29 +193,37 @@ func get_cell_under_mouse() -> void:
 	local_cell_position = ground.map_to_local(cell_position) #返回位于坐标 coords 的单元格的图块源 ID。如果单元格不存在则返回 -1。
 	distance = self.global_position.distance_to(local_cell_position) #玩家到单元格中心的距离
 func _unhandled_input(event: InputEvent) -> void: #这个函数可以忽略UI的事件操作
-	#可以使用信号转换，也可以使用函数转换
+	#右键食用消耗品
+	if event.is_action_pressed("mouse_right"):
+		eat_current_item()
+		return
 	if current_item == null : return
 	if event.is_action_pressed("mouse_left"):
 		match self.current_item_type:
 			Item.ItemType.Axe:
-				state_machine.transition_state("Axe")
+				if try_use_stamina(TOOL_STAMINA_COST):
+					state_machine.transition_state("Axe")
 			Item.ItemType.Draft:
-				state_machine.transition_state("Draft")
+				if try_use_stamina(TOOL_STAMINA_COST):
+					state_machine.transition_state("Draft")
 			Item.ItemType.Hoe:
-				state_machine.transition_state("Hoe")
+				if try_use_stamina(TOOL_STAMINA_COST):
+					state_machine.transition_state("Hoe")
 			Item.ItemType.Water:
-				state_machine.transition_state("Water")
+				if try_use_stamina(TOOL_STAMINA_COST):
+					state_machine.transition_state("Water")
 			Item.ItemType.Weapon:
-				state_machine.transition_state("Swing")
-				AudioManager.play_sfx(swing_sfx)
-				if current_item.name == "喵刀":
-					var rain_bow_cat = load("res://Bag/projectiles/rainbow_cat.tscn").instantiate() as Node2D
-					get_tree().root.add_child(rain_bow_cat)
-					rain_bow_cat.global_position = global_position
-				if current_item.name == "暗影焰刀":
-					var rain_bow_cat = load("res://Bag/projectiles/暗影焰刀.tscn").instantiate() as Node2D
-					get_tree().root.add_child(rain_bow_cat)
-					rain_bow_cat.global_position = global_position
+				if try_use_stamina(SWING_STAMINA_COST):
+					state_machine.transition_state("Swing")
+					AudioManager.play_sfx(swing_sfx)
+					if current_item.name == "喵刀":
+						var rain_bow_cat = load("res://Bag/projectiles/rainbow_cat.tscn").instantiate() as Node2D
+						get_tree().root.add_child(rain_bow_cat)
+						rain_bow_cat.global_position = global_position
+					if current_item.name == "暗影焰刀":
+						var rain_bow_cat = load("res://Bag/projectiles/暗影焰刀.tscn").instantiate() as Node2D
+						get_tree().root.add_child(rain_bow_cat)
+						rain_bow_cat.global_position = global_position
 			Item.ItemType.None:
 				print("没有物品")
 			_:

@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cebn8gdce1lys" path="res://UI/ui_manager.tscn" id="2_b5tta"]
 [ext_resource type="PackedScene" uid="uid://c2lmyuwdhija3" path="res://Player/player.tscn" id="2_mg2r4"]
 [ext_resource type="PackedScene" uid="uid://dra6nxj18tsen" path="res://Player/player_camera.tscn" id="3_5y2uu"]
+[ext_resource type="PackedScene" path="res://UI/status_bar.tscn" id="4_statusbar"]
+[ext_resource type="PackedScene" path="res://UI/rain_overlay.tscn" id="5_rain"]
 
 [node name="MainScene" type="Node2D"]
 y_sort_enabled = true
@@ -27,6 +29,10 @@ metadata/_edit_group_ = true
 [node name="MainCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UIManager" parent="MainCanvasLayer" instance=ExtResource("2_b5tta")]
+
+[node name="StatusBar" parent="MainCanvasLayer" instance=ExtResource("4_statusbar")]
+
+[node name="RainOverlay" parent="MainCanvasLayer" instance=ExtResource("5_rain")]
 
 [node name="PopUp" type="Control" parent="MainCanvasLayer"]
 layout_mode = 3

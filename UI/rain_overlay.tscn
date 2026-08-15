@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://UI/rain_overlay.gd" id="1_rain"]
+[ext_resource type="Texture2D" path="res://Art/myself/rain_drop.png" id="2_drop"]
+
+[node name="RainOverlay" type="CPUParticles2D"]
+position = Vector2(640, 360)
+emitting = false
+amount = 250
+lifetime = 1.0
+preprocess = 1.0
+texture = ExtResource("2_drop")
+emission_shape = 3
+emission_rect_extents = Vector2(720, 420)
+gravity = Vector2(0, 900)
+initial_velocity_min = 700.0
+initial_velocity_max = 900.0
+scale_amount_min = 1.0
+scale_amount_max = 1.5
+color = Color(1, 1, 1, 0.6)

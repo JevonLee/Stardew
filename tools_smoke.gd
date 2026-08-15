@@ -1682,6 +1682,73 @@ func _run() -> void:
 		if d.get("item") != null and d.get("item").name == "果酒":
 			wine_dropped = true
 	print("SMOKE: keg wine=", wine_dropped, " brewing_after=", (keg_ins as Keg).is_brewing)
+	# ---- 罐头瓶测试 ----
+	for i in 20:
+		player.bag_system.add_item(load("res://Bag/items/materials/wood.tres").duplicate())
+	for i in 2:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 15:
+		player.bag_system.add_item(load("res://Bag/items/materials/stone.tres").duplicate())
+	var jar_recipe: Recipe = load("res://Crafting/recipes/罐头瓶.tres")
+	crafting.panel._on_craft_pressed(jar_recipe)
+	var jar_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "罐头瓶":
+			jar_item = it
+			break
+	print("SMOKE: jar item=", jar_item != null)
+	var jar_ins: Placeable = (load("res://Placeables/preserves_jar.tscn") as PackedScene).instantiate() as Placeable
+	level.find_child("Crops").add_child(jar_ins)
+	jar_ins.global_position = Vector2(680, 680)
+	player.current_item = load("res://Bag/items/crops/玉米.tres").duplicate()
+	player.bag_system.add_item(player.current_item)
+	var jar_inserted: bool = (jar_ins as PreservesJar).try_insert(player)
+	var jar_day: int = TimeSystem.current_day
+	TimeSystem.set_time(jar_day + 3, 6, 0)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var canned_dropped := false
+	for d in drops_node.get_children():
+		if d.get("item") != null and d.get("item").name == "罐头":
+			canned_dropped = true
+	print("SMOKE: jar insert=", jar_inserted, " canned=", canned_dropped)
+	# ---- 双足飞龙Boss测试 ----
+	for i in 8:
+		player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	for i in 20:
+		player.bag_system.add_item(load("res://Bag/items/materials/骨头.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/煤矿.tres").duplicate())
+	var feather_recipe: Recipe = load("res://Crafting/recipes/神龙之羽.tres")
+	crafting.panel._on_craft_pressed(feather_recipe)
+	var feather_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "神龙之羽":
+			feather_item = it
+			break
+	print("SMOKE: crafted feather=", feather_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if feather_item:
+		player.current_item = feather_item
+		player.use_summon()
+	await get_tree().process_frame
+	var wyvern := level.get_node_or_null("BossWyvern") as Boss
+	print("SMOKE: wyvern=", wyvern != null)
+	if wyvern:
+		var seg_count := 0
+		for child in level.get_children():
+			if child is WyvernSegment:
+				seg_count += 1
+		print("SMOKE: wyvern segments=", seg_count)
+		wyvern.hurt.take_damage(1600, player.global_position)
+		await get_tree().create_timer(1.2).timeout
+		var segs_gone := true
+		for child in level.get_children():
+			if child is WyvernSegment:
+				segs_gone = false
+		print("SMOKE: wyvern dead=", not is_instance_valid(wyvern), " segs_gone=", segs_gone, " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

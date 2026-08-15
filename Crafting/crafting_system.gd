@@ -66,6 +66,7 @@ const RECIPES = [
 	preload("res://Crafting/recipes/铁鱼竿.tres"),
 	preload("res://Crafting/recipes/金鱼竿.tres"),
 	preload("res://Crafting/recipes/虾松露.tres"),
+	preload("res://Crafting/recipes/酿酒桶.tres"),
 ]
 
 var panel: Control

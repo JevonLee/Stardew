@@ -1647,6 +1647,41 @@ func _run() -> void:
 			sfx_busy = true
 	print("SMOKE: thunder sfx=", sfx_busy, " timer=", WeatherSystem.thunder_timer > 0.0)
 	WeatherSystem.weather = "sunny"
+	# ---- 酿酒测试 ----
+	for i in 30:
+		player.bag_system.add_item(load("res://Bag/items/materials/wood.tres").duplicate())
+	for i in 3:
+		player.bag_system.add_item(load("res://Bag/items/materials/铁锭.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/树液.tres").duplicate())
+	var keg_recipe: Recipe = load("res://Crafting/recipes/酿酒桶.tres")
+	crafting.panel._on_craft_pressed(keg_recipe)
+	var keg_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "酿酒桶":
+			keg_item = it
+			break
+	print("SMOKE: keg item=", keg_item != null)
+	var keg_ins: Placeable = (load("res://Placeables/keg.tscn") as PackedScene).instantiate() as Placeable
+	level.find_child("Crops").add_child(keg_ins)
+	keg_ins.global_position = Vector2(640, 640)
+	# 放入水果（南瓜）
+	player.current_item = load("res://Bag/items/crops/南瓜.tres").duplicate()
+	player.bag_system.add_item(player.current_item)
+	var inserted: bool = (keg_ins as Keg).try_insert(player)
+	var brewing: bool = (keg_ins as Keg).is_brewing
+	print("SMOKE: keg insert=", inserted, " brewing=", brewing)
+	# 7天后产酒
+	var keg_day: int = TimeSystem.current_day
+	TimeSystem.set_time(keg_day + 7, 6, 0)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var wine_dropped := false
+	for d in drops_node.get_children():
+		if d.get("item") != null and d.get("item").name == "果酒":
+			wine_dropped = true
+	print("SMOKE: keg wine=", wine_dropped, " brewing_after=", (keg_ins as Keg).is_brewing)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

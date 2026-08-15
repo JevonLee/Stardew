@@ -16,6 +16,8 @@
 [ext_resource type="Resource" uid="uid://cd3o8erabt37a" path="res://Bag/items/objects/book1.tres" id="7_nmihx"]
 [ext_resource type="PackedScene" uid="uid://ecsiuwf14r7f" path="res://NPC/pig.tscn" id="13_3mexb"]
 [ext_resource type="PackedScene" path="res://Combat/enemy_spawner.tscn" id="14_spawner"]
+[ext_resource type="PackedScene" path="res://Animals/chicken.tscn" id="15_chicken"]
+[ext_resource type="PackedScene" path="res://Animals/cow.tscn" id="16_cow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_140im"]
 size = Vector2(21, 12)
@@ -161,3 +163,12 @@ position = Vector2(2269, 253)
 position = Vector2(1788, 326)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("14_spawner")]
+
+[node name="Animals" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Chicken" parent="Animals" instance=ExtResource("15_chicken")]
+position = Vector2(2150, 420)
+
+[node name="Cow" parent="Animals" instance=ExtResource("16_cow")]
+position = Vector2(2250, 460)

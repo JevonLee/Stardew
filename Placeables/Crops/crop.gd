@@ -74,6 +74,7 @@ func _harvest() -> void:
 	if crop_data == null or crop_data.harvest_item == null: return
 	for i in crop_data.drops_count:
 		_drop_item(crop_data.harvest_item)
+	QuestSystem.report("harvest")
 	if crop_data.regrow_days > 0:
 		growth_stage = maxi(crop_data.growth_days - crop_data.regrow_days, 0)
 		update_sprite()

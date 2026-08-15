@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://shala_rec0001"]
+
+[ext_resource type="Script" path="res://Crafting/recipe.gd" id="1_rc"]
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="5_item"]
+[ext_resource type="Resource" uid="uid://shala000000001" path="res://Bag/items/food/蔬菜沙拉.tres" id="2_res"]
+[ext_resource type="Resource" uid="uid://luobu000000001" path="res://Bag/items/crops/萝卜.tres" id="3_i"]
+[ext_resource type="Resource" uid="uid://yecong00000001" path="res://Bag/items/forage/野葱.tres" id="4_i"]
+[resource]
+script = ExtResource("1_rc")
+recipe_name = "蔬菜沙拉"
+result = ExtResource("2_res")
+result_count = 1
+ingredients = Array[ExtResource("5_item")]([ExtResource("3_i"), ExtResource("4_i")])
+ingredient_counts = Array[int]([1, 1])

@@ -9,6 +9,7 @@ extends Control
 @onready var season_label: Label = %SeasonLabel
 @onready var weather_label: Label = %WeatherLabel
 @onready var level_label: Label = %LevelLabel
+@onready var quest_label: Label = %QuestLabel
 
 var player: Player
 
@@ -18,10 +19,19 @@ func _ready() -> void:
 	TimeSystem.season_changed.connect(_on_season_changed)
 	WeatherSystem.weather_changed.connect(_on_weather_changed)
 	SceneManager.level_changed.connect(_find_player)
+	QuestSystem.quest_updated.connect(_on_quest_updated)
 	_find_player()
 	_on_gold_changed(Global.gold)
 	_on_season_changed(TimeSystem.get_season())
 	_on_weather_changed(WeatherSystem.weather)
+	_on_quest_updated(QuestSystem.quest)
+
+func _on_quest_updated(quest:Dictionary) -> void:
+	if quest.is_empty():
+		quest_label.text = ""
+		return
+	var done: String = "✓" if quest.get("done", false) else "%d/%d" % [quest["progress"], quest["target"]]
+	quest_label.text = "任务：%s %s（%d金）" % [quest["name"], done, quest["reward"]]
 
 func _find_player() -> void:
 	player = get_tree().get_first_node_in_group("Player")

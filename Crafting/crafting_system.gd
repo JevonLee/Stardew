@@ -12,6 +12,12 @@ const RECIPES = [
 	preload("res://Crafting/recipes/金剑.tres"),
 	preload("res://Crafting/recipes/金币.tres"),
 	preload("res://Crafting/recipes/可疑眼球.tres"),
+	preload("res://Crafting/recipes/铜镐.tres"),
+	preload("res://Crafting/recipes/铁镐.tres"),
+	preload("res://Crafting/recipes/金镐.tres"),
+	preload("res://Crafting/recipes/煎蛋.tres"),
+	preload("res://Crafting/recipes/烤鱼.tres"),
+	preload("res://Crafting/recipes/蔬菜沙拉.tres"),
 ]
 
 var panel: Control

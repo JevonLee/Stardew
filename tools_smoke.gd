@@ -148,6 +148,7 @@ func _run() -> void:
 	TimeSystem.set_time(TimeSystem.current_day, 12, 0)
 	await get_tree().create_timer(0.8).timeout
 	print("SMOKE: spawner day enemies=", get_tree().get_nodes_in_group("Enemies").size())
+	spawner.enabled = false # 后续测试不再刷怪
 	# ---- M3 采集与资源测试 ----
 	var farm_water := level.get_node("Water") as TileMapLayer
 	print("SMOKE: farm water cells=", farm_water.get_used_cells().size())
@@ -270,4 +271,63 @@ func _run() -> void:
 		boss.hurt.take_damage(400, player.global_position)
 		await get_tree().create_timer(1.2).timeout
 		print("SMOKE: boss dead=", not is_instance_valid(boss), " drops=", drops_node.get_child_count())
+	# ---- 动物/烹饪/镐升级/任务/节日测试 ----
+	player.heal(999, 999, 999) # 防止被残留敌人打晕换图
+	var egg_before: int = drops_node.get_child_count()
+	var chicken := level.get_node_or_null("Animals/Chicken") as Animal
+	if chicken:
+		chicken.produced_today = false
+		chicken.pet()
+		chicken.pet() # 当天第二次应被拒绝
+		await get_tree().process_frame
+		print("SMOKE: chicken egg drop=", drops_node.get_child_count() > egg_before)
+	# 烹饪：煎蛋
+	player.bag_system.add_item(load("res://Bag/items/animal/鸡蛋.tres").duplicate())
+	var egg_recipe: Recipe = load("res://Crafting/recipes/煎蛋.tres")
+	crafting.panel._on_craft_pressed(egg_recipe)
+	var has_food: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "煎蛋":
+			has_food = true
+	print("SMOKE: cooked egg=", has_food)
+	# 镐头升级：铜镐 2 下挖碎矿石
+	player.bag_system.add_item(load("res://Bag/items/tools/稿子.tres").duplicate())
+	for i in 5:
+		player.bag_system.add_item(load("res://Bag/items/materials/铜矿石.tres").duplicate())
+	var copper_pick_recipe: Recipe = load("res://Crafting/recipes/铜镐.tres")
+	crafting.panel._on_craft_pressed(copper_pick_recipe)
+	var has_pick: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "铜镐":
+			has_pick = true
+			break
+	print("SMOKE: crafted copper pick=", has_pick)
+	if has_pick:
+		var ore2 := ore_scene.instantiate() as OreNode
+		ore2.ore_item = load("res://Bag/items/materials/铁矿石.tres")
+		ore2.global_position = player.global_position + Vector2(90, 0)
+		level.add_child(ore2)
+		ore2.hurt.take_damage(2, player.global_position)
+		ore2.hurt.take_damage(2, player.global_position)
+		await get_tree().create_timer(0.5).timeout
+		print("SMOKE: ore2 broken in 2 hits=", not is_instance_valid(ore2))
+	# 任务：击杀任务
+	QuestSystem.quest = {"type": "kill", "target": 5, "progress": 0, "reward": 150, "name": "击败敌人", "done": false}
+	QuestSystem.day_rolled = TimeSystem.current_day
+	var gold_before: int = Global.gold
+	for i in 5:
+		QuestSystem.report("kill")
+	QuestSystem.report("forage") # 无关类型不应计数
+	print("SMOKE: quest done=", QuestSystem.quest["done"], " gold_gain=", Global.gold - gold_before)
+	# 节日：跳到春天13日（蛋节）——set_time触发day change自动检查
+	forage_container = level.get_node("Forage") # 矿洞往返后农场已重建，需重新获取
+	print("SMOKE: pre-festival level alive=", is_instance_valid(level), " hp=", player.health)
+	TimeSystem.set_time(13, 6, 0)
+	await get_tree().process_frame
+	print("SMOKE: post-festival level alive=", is_instance_valid(level), " current=", SceneManager.get_current_level().name if SceneManager.get_current_level() else "none")
+	var has_festival_gift: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "煎蛋":
+			has_festival_gift = true
+	print("SMOKE: festival day=", TimeSystem.get_day_of_season(), " gift=", has_festival_gift, " forage=", forage_container.get_child_count())
 	print("SMOKE_OK")

@@ -30,6 +30,7 @@ MouseItem="*res://Global/mouse_item.gd"
 TimeSystem="*res://TimeSystem/time_system.gd"
 WeatherSystem="*res://Global/weather_system.gd"
 FriendshipSystem="*res://Global/friendship_system.gd"
+QuestSystem="*res://Global/quest_system.gd"
 SaveManager="*res://Global/save_manager.gd"
 
 [display]

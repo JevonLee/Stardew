@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://Animals/animal.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://Art/StardewValley/animals/White Chicken.png" id="2_tex"]
+[ext_resource type="Resource" uid="uid://jidan000000001" path="res://Bag/items/animal/鸡蛋.tres" id="3_product"]
+
+[node name="Chicken" instance=ExtResource("1_base")]
+animal_name = "鸡"
+product = ExtResource("3_product")
+sprite_texture = ExtResource("2_tex")

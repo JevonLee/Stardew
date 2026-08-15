@@ -145,6 +145,8 @@ func _on_death() -> void:
 	# 击杀经验
 	if player and xp_reward > 0:
 		player.gain_xp(xp_reward)
+	# 任务进度
+	QuestSystem.report("kill")
 	# 掉落
 	for i in coin_count:
 		if coin_drop:

@@ -35,6 +35,8 @@ func _save() -> void:
 	save_data.day = TimeSystem.current_day
 	save_data.weather = WeatherSystem.weather
 	save_data.friendships = FriendshipSystem.friendships
+	save_data.quest = QuestSystem.quest
+	save_data.quest_day = QuestSystem.day_rolled
 	ResourceSaver.save(save_data, SAVE_PATH)
 	print("存档完成")
 
@@ -72,4 +74,7 @@ func _load() -> void:
 		WeatherSystem.weather = save_data.weather
 	if save_data.friendships.size() > 0:
 		FriendshipSystem.friendships = save_data.friendships
+	if save_data.quest.size() > 0:
+		QuestSystem.quest = save_data.quest
+		QuestSystem.day_rolled = save_data.quest_day
 	print("读档完成")

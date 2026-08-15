@@ -33,6 +33,7 @@ func _pick() -> void:
 	picked = true
 	player.bag_system.add_item(item)
 	player.get_item.emit(item)
+	QuestSystem.report("forage")
 	Global.show_message("拾取了 %s" % item.name)
 	var tween := create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.3)

@@ -9,4 +9,6 @@ class_name SaveData
 @export var day:int = 1
 @export var weather:String = "sunny"
 @export var friendships:Dictionary = {} # npc好感度
+@export var quest:Dictionary = {} # 当前任务
+@export var quest_day:int = -1
 #还有tilemap类存档

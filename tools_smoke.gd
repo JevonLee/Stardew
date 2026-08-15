@@ -2326,6 +2326,16 @@ func _run() -> void:
 	WeatherSystem.weather = "sunny"
 	await get_tree().process_frame
 	print("SMOKE: rain stopped=", not WeatherSystem.rain_player.playing)
+	# ---- 沙漠商人扩展测试 ----
+	var merchant_items: Array = (load("res://NPC/desert_merchant.gd") as GDScript).new().SHOP_ITEMS
+	var has_excalibur := false
+	var has_topaz := false
+	for it in merchant_items:
+		if it != null and it.name == "圣剑":
+			has_excalibur = true
+		if it != null and it.name == "黄玉":
+			has_topaz = true
+	print("SMOKE: merchant excalibur=", has_excalibur, " topaz=", has_topaz, " total=", merchant_items.size())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

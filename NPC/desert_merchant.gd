@@ -5,9 +5,12 @@ const SHOP = preload("res://UI/mini_shop.tscn")
 const SHOP_ITEMS = [
 	preload("res://Bag/items/weapon/紫水晶法杖.tres"),
 	preload("res://Bag/items/weapon/金剑.tres"),
+	preload("res://Bag/items/weapon/圣剑.tres"),
+	preload("res://Bag/items/weapon/水刃书.tres"),
 	preload("res://Bag/items/materials/金锭.tres"),
 	preload("res://Bag/items/materials/银锭.tres"),
 	preload("res://Bag/items/materials/蓝宝石.tres"),
+	preload("res://Bag/items/materials/黄玉.tres"),
 ]
 
 var shop: Control

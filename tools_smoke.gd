@@ -2107,6 +2107,14 @@ func _run() -> void:
 		santa.hurt.take_damage(2800, player.global_position)
 		await get_tree().create_timer(1.3).timeout
 		print("SMOKE: santa dead=", not is_instance_valid(santa), " drops=", drops_node.get_child_count())
+	# ---- 新成就测试（钓鱼大师/收藏大师/屠Boss猎手） ----
+	CollectionSystem.record_fish("太阳鱼")
+	CollectionSystem.record_fish("鲷鱼")
+	CollectionSystem.record_fish("鲶鱼")
+	for i in 40:
+		CollectionSystem.record_item("测试物品%d" % i)
+	AchievementSystem.check()
+	print("SMOKE: ach fish6=", AchievementSystem.is_unlocked("fish_6"), " collect40=", AchievementSystem.is_unlocked("collect_40"), " boss5=", AchievementSystem.is_unlocked("boss_5"))
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

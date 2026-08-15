@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://beach000000001"]
+
+[ext_resource type="Script" path="res://Map/Beach/beach.gd" id="1_beach"]
+[ext_resource type="PackedScene" uid="uid://dfg8gg0uu4d2a" path="res://Map/change_scene_area.tscn" id="2_change"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
+size = Vector2(38, 47)
+
+[node name="Beach" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_beach")
+
+[node name="Ground" type="TileMapLayer" parent="." groups=["TileMap"]]
+
+[node name="Ocean" type="TileMapLayer" parent="." groups=["Water"]]
+
+[node name="Decor" type="TileMapLayer" parent="."]
+
+[node name="Palms" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPos" type="Node2D" parent="."]
+
+[node name="Beach" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(160, 400)
+
+[node name="Farm" type="Marker2D" parent="SpawnPos" groups=["SpawnPosition"]]
+position = Vector2(64, 400)
+
+[node name="ChangeAreas" type="Node2D" parent="."]
+
+[node name="ToFarm" parent="ChangeAreas" instance=ExtResource("2_change")]
+position = Vector2(32, 400)
+target_scene = "Farm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeAreas/ToFarm"]
+shape = SubResource("RectangleShape2D_gate")
+
+[node name="MapSize" type="Marker2D" parent="."]
+position = Vector2(1152, 768)

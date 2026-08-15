@@ -37,6 +37,8 @@ func _current_fish_table() -> Array:
 			return OCEAN_FISH
 		"Desert":
 			return DESERT_FISH
+		"Beach":
+			return OCEAN_FISH
 	return FISH_TABLE
 
 ## 按季节与权重随机选鱼（15%概率钓到垃圾）

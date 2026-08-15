@@ -136,7 +136,9 @@
 - [x] 可放置光源：火把改为放置类物品（placeable_scene_path），放置后挂入Crops容器随存档保存，带PointLight2D夜间照明
 - [x] 放置系统修复：Placeable.set_collision_enabled 未ready时容错（预览实例化即调用）；SaveComponent读档先remove_child再queue_free（防止同名节点instantiate自动改名）
 - [x] 村民日程扩展：艾米丽中午（10-16点）走向北门赶集、夜晚回家跳舞
-- [ ] 待办：更多Boss、海滩地图、更多食谱、温室内作物、闪电音效、更多村民跨地图日程
+- [x] 海滩地图：程序生成沙滩+大海（海水鱼钓鱼）+4棵椰子树+草丛，旅行面板直达，海滩↔农场传送
+- [x] 修复沙漠传送区：Desert ToFarm 缺少CollisionShape2D无法触发
+- [ ] 待办：更多Boss、更多食谱、闪电音效、更多村民跨地图日程
 
 ## 已发现并修复的历史问题
 

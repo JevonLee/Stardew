@@ -555,7 +555,8 @@ func _run() -> void:
 	print("SMOKE: crafted jam=", has_jam)
 	# ---- 传送面板 ----
 	var travel_sys := get_node_or_null("/root/MainScene/TravelSystem") as TravelSystem
-	print("SMOKE: travel panel=", travel_sys != null and travel_sys.panel != null)
+	var travel_panel_ins := travel_sys.panel as TravelPanel if travel_sys else null
+	print("SMOKE: travel panel=", travel_panel_ins != null, " dests=", travel_panel_ins.DESTINATIONS.size() if travel_panel_ins else -1)
 	# ---- 信件系统 ----
 	MailSystem.pending_mail = {"text": "测试信件", "gift": "res://Bag/items/forage/蘑菇.tres", "gift_count": 2}
 	var bag_before_mail: int = 0
@@ -842,6 +843,26 @@ func _run() -> void:
 	QuestSystem.quest = {"type": "gift", "target": 3, "progress": 0, "reward": 150, "name": "送礼物给村民", "done": false}
 	QuestSystem.report("gift")
 	print("SMOKE: gift quest progress=", QuestSystem.quest["progress"])
+	# ---- 海滩地图测试 ----
+	SceneManager.change_level("Beach", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var beach := SceneManager.get_current_level() as Beach
+	print("SMOKE: beach=", beach != null)
+	if beach:
+		var beach_ground: int = beach.get_node("Ground").get_used_cells().size()
+		var beach_ocean: int = beach.get_node("Ocean").get_used_cells().size()
+		var palm_count: int = beach.get_node("Palms").get_child_count()
+		var beach_gate: Node = beach.get_node_or_null("ChangeAreas/ToFarm")
+		var beach_barrier: Node = beach.get_node_or_null("OceanBarrier")
+		print("SMOKE: beach ground=", beach_ground, " ocean=", beach_ocean, " palms=", palm_count, " gate=", beach_gate != null, " barrier=", beach_barrier != null)
+		var fishing5 := get_node_or_null("/root/MainScene/FishingSystem") as FishingSystem
+		print("SMOKE: beach fish table=", fishing5._current_fish_table().size())
+		SceneManager.change_level("Farm", "SpawnPosition")
+		await get_tree().process_frame
+		await get_tree().process_frame
+		level = SceneManager.get_current_level()
+		player = get_tree().get_first_node_in_group("Player")
 	# ---- 电梯测试 ----
 	Global.mine_floor = 1
 	SceneManager.change_level("Mine", "SpawnPosition")

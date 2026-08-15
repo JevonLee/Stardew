@@ -17,7 +17,32 @@ const JUNK_TABLE = [ ## 垃圾（低难度占位鱼）
 	preload("res://Fishing/fish_data/垃圾_data.tres"),
 	preload("res://Fishing/fish_data/垃圾2_data.tres"),
 ]
+const OCEAN_FISH = [ ## 海水鱼（小镇海边）
+	preload("res://Fishing/fish_data/沙丁鱼_data.tres"),
+	preload("res://Fishing/fish_data/河豚_data.tres"),
+	preload("res://Fishing/fish_data/章鱼_data.tres"),
+]
 const JUNK_CHANCE: float = 0.15
+
+## 当前水域鱼表（按所在场景区分海水/淡水）
+func _current_fish_table() -> Array:
+	var level := SceneManager.get_current_level()
+	if level != null and level.name == "Town":
+		return OCEAN_FISH
+	return FISH_TABLE
+
+## 按季节与权重随机选鱼（15%概率钓到垃圾）
+func _pick_fish() -> FishData:
+	if randf() < JUNK_CHANCE:
+		return JUNK_TABLE.pick_random()
+	var season := TimeSystem.get_season()
+	var candidates: Array[FishData] = []
+	for fish in _current_fish_table():
+		if fish.seasons.has(season):
+			candidates.append(fish)
+	if candidates.is_empty():
+		candidates = _current_fish_table().duplicate()
+	return candidates.pick_random()
 
 var player: Player
 var bobber: Bobber
@@ -93,16 +118,3 @@ func _on_fishing_result(success: bool) -> void:
 			bobber = null
 		else:
 			bobber.reset_after_escape()
-
-## 按季节与权重随机选鱼（15%概率钓到垃圾）
-func _pick_fish() -> FishData:
-	if randf() < JUNK_CHANCE:
-		return JUNK_TABLE.pick_random()
-	var season := TimeSystem.get_season()
-	var candidates: Array[FishData] = []
-	for fish in FISH_TABLE:
-		if fish.seasons.has(season):
-			candidates.append(fish)
-	if candidates.is_empty():
-		candidates = FISH_TABLE.duplicate()
-	return candidates.pick_random()

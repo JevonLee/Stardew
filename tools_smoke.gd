@@ -605,4 +605,30 @@ func _run() -> void:
 	print("SMOKE: crafted cake=", has_cake)
 	WeatherSystem.weather = "storm"
 	print("SMOKE: storm raining=", WeatherSystem.is_raining())
+	# ---- 小镇海边钓鱼测试 ----
+	SceneManager.change_level("Town", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var town3 := SceneManager.get_current_level() as Town
+	var town_water := town3.get_node("Water") as TileMapLayer
+	print("SMOKE: town ocean cells=", town_water.get_used_cells().size())
+	var fishing3 := get_node_or_null("/root/MainScene/FishingSystem") as FishingSystem
+	var ocean_fish: Array = fishing3._current_fish_table()
+	print("SMOKE: ocean table=", ocean_fish.size(), " (town level)")
+	# 回农场
+	SceneManager.change_level("Farm", "SpawnPosition")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = SceneManager.get_current_level()
+	player = get_tree().get_first_node_in_group("Player")
+	# ---- 鱼汤测试 ----
+	player.bag_system.add_item(load("res://Bag/items/food/烤鱼.tres").duplicate())
+	player.bag_system.add_item(load("res://Bag/items/animal/牛奶.tres").duplicate())
+	var soup_recipe: Recipe = load("res://Crafting/recipes/鱼汤.tres")
+	crafting.panel._on_craft_pressed(soup_recipe)
+	var has_soup: bool = false
+	for it in player.bag_system.items:
+		if it != null and it.name == "鱼汤":
+			has_soup = true
+	print("SMOKE: crafted soup=", has_soup)
 	print("SMOKE_OK")

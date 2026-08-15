@@ -64,6 +64,9 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAeAGcAAAAAAAAAAQALAGsAAAAAAAAAAQAJAHAAAAAAAAAAAQALAHMAAAAAAAAAAQAOAHYAAAAAAAAAAQAdAHEAAAAAAAAAAQA6AF0AAAAAAAAAAQBNAFYAAAAAAAAAAQANAHwAAAAAAAAAAQAcAHwAAAAAAAAAAQArAH4AAAAAAAAAAQA=")
 tile_set = ExtResource("1_iystl")
 
+[node name="Water" type="TileMapLayer" parent="." groups=["Water"]]
+tile_set = ExtResource("1_iystl")
+
 [node name="Stream" type="TileMapLayer" parent="."]
 tile_set = ExtResource("1_iystl")
 

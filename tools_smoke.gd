@@ -290,10 +290,13 @@ func _run() -> void:
 		if it != null and it.name == "煎蛋":
 			has_food = true
 	print("SMOKE: cooked egg=", has_food)
-	# 镐头升级：铜镐 2 下挖碎矿石
+	# 镐头升级：先熔炼铜锭，再合成铜镐（2 下挖碎矿石）
 	player.bag_system.add_item(load("res://Bag/items/tools/稿子.tres").duplicate())
-	for i in 5:
+	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/铜矿石.tres").duplicate())
+	var copper_bar_recipe: Recipe = load("res://Crafting/recipes/铜锭.tres")
+	crafting.panel._on_craft_pressed(copper_bar_recipe)
+	crafting.panel._on_craft_pressed(copper_bar_recipe) # 10矿石 → 2铜锭
 	var copper_pick_recipe: Recipe = load("res://Crafting/recipes/铜镐.tres")
 	crafting.panel._on_craft_pressed(copper_pick_recipe)
 	var has_pick: bool = false
@@ -436,4 +439,14 @@ func _run() -> void:
 	if emily2 and emily2.get_node("AnimatedSprite2D"):
 		emily_anim = (emily2.get_node("AnimatedSprite2D") as AnimatedSprite2D).animation
 	print("SMOKE: emily night anim=", emily_anim)
+	# ---- 图鉴与动物测试 ----
+	CollectionSystem.record_fish("沙丁鱼")
+	CollectionSystem.record_kill("史莱姆")
+	CollectionSystem.record_item("木头")
+	SaveManager._save()
+	SaveManager._load()
+	print("SMOKE: collection fish=", CollectionSystem.fish_caught.has("沙丁鱼"), " kills=", CollectionSystem.enemies_killed.get("史莱姆", 0), " items=", CollectionSystem.items_collected.size())
+	var sheep := level.get_node_or_null("Animals/Sheep") as Animal
+	var duck := level.get_node_or_null("Animals/Duck") as Animal
+	print("SMOKE: sheep=", sheep != null, " duck=", duck != null, " coop=", level.get_node_or_null("Animals/Coop") != null)
 	print("SMOKE_OK")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://Animals/animal.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://Art/StardewValley/animals/Sheep.png" id="2_tex"]
+[ext_resource type="Resource" uid="uid://yangmao0000001" path="res://Bag/items/animal/羊毛.tres" id="3_product"]
+
+[node name="Sheep" instance=ExtResource("1_base")]
+animal_name = "羊"
+product = ExtResource("3_product")
+sprite_texture = ExtResource("2_tex")
+sprite_scale = Vector2(0.85, 0.85)

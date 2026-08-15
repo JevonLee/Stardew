@@ -37,6 +37,11 @@ func _save() -> void:
 	save_data.friendships = FriendshipSystem.friendships
 	save_data.quest = QuestSystem.quest
 	save_data.quest_day = QuestSystem.day_rolled
+	save_data.collection = {
+		"fish": CollectionSystem.fish_caught,
+		"kills": CollectionSystem.enemies_killed,
+		"items": CollectionSystem.items_collected,
+	}
 	ResourceSaver.save(save_data, SAVE_PATH)
 	print("存档完成")
 
@@ -77,4 +82,8 @@ func _load() -> void:
 	if save_data.quest.size() > 0:
 		QuestSystem.quest = save_data.quest
 		QuestSystem.day_rolled = save_data.quest_day
+	if save_data.collection.size() > 0:
+		CollectionSystem.fish_caught = save_data.collection.get("fish", [])
+		CollectionSystem.enemies_killed = save_data.collection.get("kills", {})
+		CollectionSystem.items_collected = save_data.collection.get("items", {})
 	print("读档完成")

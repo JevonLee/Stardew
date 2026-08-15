@@ -20,6 +20,9 @@
 [ext_resource type="PackedScene" path="res://Animals/cow.tscn" id="16_cow"]
 [ext_resource type="PackedScene" path="res://Combat/skeleton.tscn" id="17_skel"]
 [ext_resource type="PackedScene" path="res://Combat/demon_eye.tscn" id="18_deye"]
+[ext_resource type="PackedScene" path="res://Animals/sheep.tscn" id="19_sheep"]
+[ext_resource type="PackedScene" path="res://Animals/duck.tscn" id="20_duck"]
+[ext_resource type="Texture2D" path="res://Art/StardewValley/buildings/Coop.png" id="21_coop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_140im"]
 size = Vector2(21, 12)
@@ -170,8 +173,18 @@ enemy_scenes = Array[PackedScene]([ExtResource("17_skel"), ExtResource("18_deye"
 [node name="Animals" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="Coop" type="Sprite2D" parent="Animals"]
+position = Vector2(2080, 320)
+texture = ExtResource("21_coop")
+
 [node name="Chicken" parent="Animals" instance=ExtResource("15_chicken")]
 position = Vector2(2150, 420)
 
 [node name="Cow" parent="Animals" instance=ExtResource("16_cow")]
 position = Vector2(2250, 460)
+
+[node name="Sheep" parent="Animals" instance=ExtResource("19_sheep")]
+position = Vector2(2350, 430)
+
+[node name="Duck" parent="Animals" instance=ExtResource("20_duck")]
+position = Vector2(2420, 400)

@@ -11,4 +11,5 @@ class_name SaveData
 @export var friendships:Dictionary = {} # npc好感度
 @export var quest:Dictionary = {} # 当前任务
 @export var quest_day:int = -1
+@export var collection:Dictionary = {} # 图鉴数据
 #还有tilemap类存档

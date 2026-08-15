@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://UI/collection_panel.gd" id="1_cp"]
+
+[node name="CollectionPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("1_cp")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 100.0
+offset_right = 940.0
+offset_bottom = 620.0
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 12.0
+offset_right = 400.0
+offset_bottom = 40.0
+text = "图鉴（按G关闭）"
+
+[node name="FishTitle" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 280.0
+offset_bottom = 74.0
+text = "鱼类图鉴"
+
+[node name="FishScroll" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 78.0
+offset_right = 300.0
+offset_bottom = 460.0
+
+[node name="FishList" type="VBoxContainer" parent="Panel/FishScroll"]
+layout_mode = 2
+
+[node name="EnemyTitle" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 50.0
+offset_right = 580.0
+offset_bottom = 74.0
+text = "敌人图鉴"
+
+[node name="EnemyScroll" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 78.0
+offset_right = 580.0
+offset_bottom = 460.0
+
+[node name="EnemyList" type="VBoxContainer" parent="Panel/EnemyScroll"]
+layout_mode = 2
+
+[node name="ItemCount" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 470.0
+offset_right = 400.0
+offset_bottom = 500.0

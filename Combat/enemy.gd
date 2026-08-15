@@ -147,6 +147,8 @@ func _on_death() -> void:
 		player.gain_xp(xp_reward)
 	# 任务进度
 	QuestSystem.report("kill")
+	# 图鉴
+	CollectionSystem.record_kill(enemy_name)
 	# 掉落
 	for i in coin_count:
 		if coin_drop:

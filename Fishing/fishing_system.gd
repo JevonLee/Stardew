@@ -69,6 +69,7 @@ func _on_fishing_result(success: bool) -> void:
 	if success and fishing_ui and fishing_ui.fish:
 		player.bag_system.add_item(fishing_ui.fish.item.duplicate())
 		QuestSystem.report("fish")
+		CollectionSystem.record_fish(fishing_ui.fish.fish_name)
 		Global.show_message("钓到了 %s！" % fishing_ui.fish.fish_name)
 	else:
 		Global.show_message("鱼跑掉了……")

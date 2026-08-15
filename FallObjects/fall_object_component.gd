@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
 			tween.tween_property(self,"global_position",player.global_position,0.5)
 			queue_free()
 			player.bag_system.add_item(item)
+			CollectionSystem.record_item(item.name)
 			player.get_item.emit(item)
 	
 func on_body_entered(body:Node2D) -> void: #移向玩家

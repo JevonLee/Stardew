@@ -1133,6 +1133,32 @@ func _run() -> void:
 			if child is DestroyerSegment:
 				segs_gone = false
 		print("SMOKE: worm dead=", not is_instance_valid(worm), " segs_gone=", segs_gone, " drops=", drops_node.get_child_count())
+	# ---- 栅栏测试 ----
+	for i in 4:
+		player.bag_system.add_item(load("res://Bag/items/materials/wood.tres").duplicate())
+	var fence_recipe: Recipe = load("res://Crafting/recipes/木栅栏.tres")
+	crafting.panel._on_craft_pressed(fence_recipe)
+	var fence_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "木栅栏":
+			fence_item = it
+			break
+	print("SMOKE: fence item=", fence_item != null, " type=", fence_item.type if fence_item else -1)
+	var fence_ins: Placeable = (load("res://Placeables/fence.tscn") as PackedScene).instantiate() as Placeable
+	var has_sprite: bool = fence_ins.get_node_or_null("Sprite2D") != null
+	level.find_child("Crops").add_child(fence_ins)
+	fence_ins.global_position = Vector2(500, 500)
+	SaveManager._save()
+	SaveManager._load()
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var fence_found: bool = false
+	for child in level.find_child("Crops").get_children():
+		if child is Placeable:
+			fence_found = true
+			break
+	var animal_mask: int = (load("res://Animals/animal.tscn") as PackedScene).instantiate().collision_mask
+	print("SMOKE: fence sprite=", has_sprite, " saved=", fence_found, " animal_mask=", animal_mask)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

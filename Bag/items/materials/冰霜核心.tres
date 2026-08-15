@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bingshuanghx01"]
+
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/Item_1789.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1_item")
+name = "冰霜核心"
+type = 14
+description = "在夜晚使用，召唤冰雪女王"
+quantity = 1
+max_quantity = 99
+countable = true
+texture = ExtResource("2_tex")
+price = 1600
+boss_scene_path = "res://Combat/boss_ice_queen.tscn"

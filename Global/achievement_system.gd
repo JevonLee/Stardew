@@ -13,6 +13,7 @@ const ACHIEVEMENTS := [
 	{"id": "gold_5000", "name": "小富翁", "desc": "拥有5000金币", "reward": 1000},
 	{"id": "bath_regular", "name": "温泉常客", "desc": "第一次泡温泉", "reward": 100},
 	{"id": "deep_fisher", "name": "深海猎人", "desc": "钓到冬季限定的鱿鱼", "reward": 300},
+	{"id": "polar_hunter", "name": "极地猎人", "desc": "累计击杀5只爱斯基摩僵尸", "reward": 400},
 ]
 
 var unlocked:Dictionary = {}
@@ -36,6 +37,7 @@ func check() -> void:
 		"collect_20": CollectionSystem.items_collected.size() >= 20,
 		"gold_5000": Global.gold >= 5000,
 		"deep_fisher": CollectionSystem.fish_caught.has("鱿鱼"),
+		"polar_hunter": CollectionSystem.enemies_killed.get("爱斯基摩僵尸", 0) >= 5,
 	}
 	for id in conditions:
 		if conditions[id]:

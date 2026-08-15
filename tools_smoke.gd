@@ -1951,6 +1951,26 @@ func _run() -> void:
 		await get_tree().process_frame
 		level = SceneManager.get_current_level()
 		player = get_tree().get_first_node_in_group("Player")
+	# ---- 雪原僵尸测试 ----
+	var eskimo_scene: PackedScene = load("res://Combat/zombie_eskimo.tscn")
+	var eskimo_ins: Enemy = eskimo_scene.instantiate() as Enemy
+	level.add_child(eskimo_ins)
+	eskimo_ins.global_position = player.global_position + Vector2(100, 0)
+	print("SMOKE: eskimo=", eskimo_ins.enemy_name, " hp=", eskimo_ins.max_health, " vf=", eskimo_ins.sprite_vframes)
+	eskimo_ins.hurt.take_damage(35, player.global_position)
+	await get_tree().create_timer(0.6).timeout
+	print("SMOKE: eskimo dead=", not is_instance_valid(eskimo_ins))
+	# 极地猎人成就：击杀5只
+	for i in 4:
+		CollectionSystem.record_kill("爱斯基摩僵尸")
+	AchievementSystem.check()
+	print("SMOKE: polar ach=", AchievementSystem.is_unlocked("polar_hunter"))
+	var tundra_cfg: Array = (load("res://Map/Tundra/tundra.tscn") as PackedScene).instantiate().get_node("EnemySpawner").enemy_scenes
+	var has_eskimo := false
+	for es in tundra_cfg:
+		if es != null and es.resource_path.contains("eskimo"):
+			has_eskimo = true
+	print("SMOKE: tundra eskimo=", has_eskimo)
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

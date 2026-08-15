@@ -59,7 +59,14 @@ func _find_player() -> void:
 		_on_level_changed(player.level)
 
 func _on_level_changed(level:int) -> void:
-	level_label.text = "等级: %d" % level
+	level_label.text = "等级: %d | 技能: 钓%d 矿%d 农%d 采%d 战%d" % [
+		level,
+		Global.skills.get("fishing", 0),
+		Global.skills.get("mining", 0),
+		Global.skills.get("farming", 0),
+		Global.skills.get("foraging", 0),
+		Global.skills.get("combat", 0),
+	]
 
 func _on_stats_changed(health:int, max_health:int, stamina:int, max_stamina:int, mana:int, max_mana:int) -> void:
 	health_bar.max_value = max_health

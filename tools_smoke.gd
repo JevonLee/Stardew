@@ -2168,6 +2168,40 @@ func _run() -> void:
 	print("SMOKE: crit damage=", crit_target.hurt.current_health - target_hp)
 	player.hit_component.crit = 0.0
 	crit_target.queue_free()
+	# ---- 光之女王Boss测试 ----
+	for i in 15:
+		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/紫水晶.tres").duplicate())
+	for i in 10:
+		player.bag_system.add_item(load("res://Bag/items/materials/蓝宝石.tres").duplicate())
+	var empress_recipe: Recipe = load("res://Crafting/recipes/光棱晶.tres")
+	crafting.panel._on_craft_pressed(empress_recipe)
+	var empress_item: Item = null
+	for it in player.bag_system.items:
+		if it != null and it.name == "光棱晶":
+			empress_item = it
+			break
+	print("SMOKE: crafted prism=", empress_item != null)
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	if empress_item:
+		player.current_item = empress_item
+		player.use_summon()
+	await get_tree().process_frame
+	var empress := level.get_node_or_null("BossEmpress") as Boss
+	print("SMOKE: empress=", empress != null)
+	if empress:
+		empress.shoot_timer = 0.1
+		await get_tree().create_timer(0.5).timeout
+		var emp_bolt := 0
+		for n in level.get_children():
+			if n is Projectile and n.name == "EnemyBolt":
+				emp_bolt += 1
+		print("SMOKE: empress bolt=", emp_bolt > 0)
+		empress.hurt.take_damage(3000, player.global_position)
+		await get_tree().create_timer(1.3).timeout
+		print("SMOKE: empress dead=", not is_instance_valid(empress), " drops=", drops_node.get_child_count())
 	# ---- 石巨人Boss测试 ----
 	for i in 10:
 		player.bag_system.add_item(load("res://Bag/items/materials/金锭.tres").duplicate())

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Combat/arrow_projectile.gd" id="1_arrow"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/Projectile_1.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_detect"]
+size = Vector2(8, 8)
+
+[node name="ArrowProjectile" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 64
+contact_monitor = true
+max_contacts_reported = 4
+gravity_scale = 0.0
+script = ExtResource("1_arrow")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+
+[node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="DetectCollision" type="CollisionShape2D" parent="DetectArea"]
+shape = SubResource("RectangleShape2D_detect")

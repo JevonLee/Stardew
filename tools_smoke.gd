@@ -28,7 +28,9 @@ func _run() -> void:
 	if player:
 		print("SMOKE: loaded health=", player.health, " stamina=", player.stamina)
 	print("SMOKE: season=", TimeSystem.get_season_name(), " day_of_season=", TimeSystem.get_day_of_season())
-	# ---- 作物系统测试 ----
+	# ---- 作物系统测试（天气改手动控制，避免随机干扰）----
+	if TimeSystem.time_tick_day.is_connected(WeatherSystem._on_new_day):
+		TimeSystem.time_tick_day.disconnect(WeatherSystem._on_new_day)
 	var level: Node2D = SceneManager.get_current_level()
 	var crops_container: Node2D = level.find_child("Crops") as Node2D
 	var crop_scene: PackedScene = load("res://Placeables/Crops/crop.tscn")
@@ -45,7 +47,8 @@ func _run() -> void:
 	TimeSystem.set_time(TimeSystem.current_day + 1, 6, 0)
 	await get_tree().process_frame
 	print("SMOKE: crop after watered day stage=", crop.growth_stage)
-	# 不浇水再过一天 → 不长
+	# 不浇水再过一天 → 不长（强制晴天）
+	WeatherSystem.weather = "sunny"
 	TimeSystem.set_time(TimeSystem.current_day + 1, 6, 0)
 	await get_tree().process_frame
 	print("SMOKE: crop after dry day stage=", crop.growth_stage)
@@ -77,4 +80,72 @@ func _run() -> void:
 			if restored_crop == null:
 				restored_crop = child
 	print("SMOKE: crops after load count=", crop_count, " stage=", restored_crop.growth_stage if restored_crop else -1)
+	# ---- 战斗系统测试（夜晚进行，避免刷怪器白天驱散干扰）----
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().process_frame
+	var spawner := level.get_node("EnemySpawner") as EnemySpawner
+	spawner.enabled = false # 战斗单元测试期间关闭刷怪器
+	var drops_node := get_node_or_null(Global.root_scene["drops"]) as Node2D
+	var slime_scene: PackedScene = load("res://Combat/slime.tscn")
+	var slime := slime_scene.instantiate() as Enemy
+	slime.global_position = player.global_position + Vector2(60, 0)
+	slime.aggro_range = 0.0 # 测试时保持静止，避免接触干扰
+	slime.add_to_group("Enemies")
+	level.add_child(slime)
+	await get_tree().process_frame
+	print("SMOKE: slime spawned, chasing=", slime.chasing, " hp=", slime.hurt.current_health)
+	# 近战命中（模拟武器挥砍）
+	slime.hurt.take_damage(15, player.global_position)
+	print("SMOKE: slime after hit hp=", slime.hurt.current_health, " knockback=", slime.knockback_velocity.length())
+	# 玩家无敌帧：连打两次只掉一次血
+	player.invincible_time = 0.0
+	var hp_before: int = player.health
+	player.take_damage(10)
+	player.take_damage(10)
+	print("SMOKE: player iframes hp=", player.health, " (before=", hp_before, ")")
+	# 击杀 → 掉落
+	print("SMOKE: body_droped connections=", slime.hurt.body_droped.get_connections().size())
+	slime.hurt.take_damage(15, player.global_position)
+	print("SMOKE: after kill call dead=", slime.dead, " hp=", slime.hurt.current_health, " maxhp=", slime.hurt.max_health)
+	print("SMOKE: coin_drop=", slime.coin_drop)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var farm_fall_objects: int = 0
+	for child in level.get_children():
+		if child is FallObjectComponent:
+			farm_fall_objects += 1
+	print("SMOKE: slime dead=", slime.dead, " drops=", drops_node.get_child_count(), " farm_fall=", farm_fall_objects)
+	# 箭矢命中敌人（等待死亡淡出结束，避免打到尸体）
+	await get_tree().create_timer(0.5).timeout
+	for child in drops_node.get_children():
+		child.queue_free()
+	var arrow_scene: PackedScene = load("res://Combat/arrow_projectile.tscn")
+	var slime2 := slime_scene.instantiate() as Enemy
+	slime2.global_position = player.global_position + Vector2(150, 0)
+	slime2.aggro_range = 0.0
+	level.add_child(slime2)
+	await get_tree().process_frame
+	var arrow = arrow_scene.instantiate()
+	level.add_child(arrow)
+	arrow.global_position = player.global_position + Vector2(30, 0)
+	if arrow.has_method("setup"):
+		arrow.setup(Vector2.RIGHT, 8)
+	await get_tree().create_timer(0.6).timeout
+	if is_instance_valid(arrow):
+		print("SMOKE: arrow alive pos=", arrow.global_position)
+	else:
+		print("SMOKE: arrow hit target and freed")
+	print("SMOKE: slime2 after arrow hp=", slime2.hurt.current_health)
+	# 刷怪器：夜晚生成、白天驱散
+	spawner.enabled = true
+	spawner.enemy_scenes = [slime_scene]
+	spawner.spawn_interval = 0.1
+	spawner.timer = 0.0
+	spawner.night_only = true
+	TimeSystem.set_time(TimeSystem.current_day, 22, 0)
+	await get_tree().create_timer(0.8).timeout
+	print("SMOKE: spawner night enemies=", get_tree().get_nodes_in_group("Enemies").size())
+	TimeSystem.set_time(TimeSystem.current_day, 12, 0)
+	await get_tree().create_timer(0.8).timeout
+	print("SMOKE: spawner day enemies=", get_tree().get_nodes_in_group("Enemies").size())
 	print("SMOKE_OK")

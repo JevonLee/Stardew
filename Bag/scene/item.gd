@@ -51,6 +51,7 @@ enum DamageType{
 @export var use_type:UseType
 @export var damage_type:DamageType
 @export var projectile:String
+@export var mana_cost:int = 0 ## 远程/魔法武器每发消耗的魔力
 #放置类物品的属性
 @export_category("放置类物品属性")
 @export var placeable_scene_path:String

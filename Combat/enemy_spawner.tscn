@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Combat/enemy_spawner.gd" id="1_spawner"]
+[ext_resource type="PackedScene" path="res://Combat/slime.tscn" id="2_slime"]
+[ext_resource type="PackedScene" path="res://Combat/zombie.tscn" id="3_zombie"]
+[ext_resource type="PackedScene" path="res://Combat/bat.tscn" id="4_bat"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_spawner")
+enemy_scenes = Array[PackedScene]([ExtResource("2_slime"), ExtResource("2_slime"), ExtResource("3_zombie"), ExtResource("4_bat")])

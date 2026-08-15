@@ -37,6 +37,10 @@ var mana:int = 100
 const TOOL_STAMINA_COST:int = 4 ## 锄头/斧头/稿子/水壶的体力消耗
 const SWING_STAMINA_COST:int = 5 ## 挥剑的体力消耗
 
+## 受击无敌时间（泰拉瑞亚式）
+const INVINCIBLE_TIME:float = 0.6
+var invincible_time:float = 0.0
+
 var items = null
 var item_index:int = 0: ##current_item对应的下标
 	set(val):
@@ -125,13 +129,35 @@ func eat_current_item() -> bool:
 	Global.show_message("吃了 %s" % current_item.name)
 	return true
 
-## 受伤（敌人攻击、掉落伤害等）
+## 受伤（敌人攻击、掉落伤害等），带无敌帧
 func take_damage(amount:int) -> void:
-	if health <= 0: return
+	if health <= 0 or invincible_time > 0.0: return
 	health = maxi(health - amount, 0)
+	invincible_time = INVINCIBLE_TIME
 	stats_changed.emit(health, max_health, stamina, max_stamina, mana, max_mana)
+	# 受击闪红
+	modulate = Color(3.0, 0.4, 0.4)
+	var tween := create_tween()
+	tween.tween_property(self, "modulate", Color.WHITE, 0.5)
 	if health <= 0:
 		die()
+
+## 被敌人击退一小段（泰拉瑞亚手感）
+func knockback_player(dir:Vector2) -> void:
+	velocity = dir * 160.0
+
+## 远程/魔法武器射击
+func shoot_projectile() -> void:
+	if current_item == null or current_item.projectile == "": return
+	if current_item.mana_cost > 0 and not try_use_mana(current_item.mana_cost):
+		return
+	var proj_scene = load(current_item.projectile)
+	var proj = proj_scene.instantiate()
+	var dir := global_position.direction_to(get_global_mouse_position())
+	get_tree().root.add_child(proj)
+	proj.global_position = global_position + dir * 18.0
+	if proj.has_method("setup"):
+		proj.setup(dir, current_item.damage)
 
 ## 晕倒：回家、恢复部分体力、损失10%金币
 func die() -> void:
@@ -153,6 +179,8 @@ func _process(delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if can_move:
 		direction = Input.get_vector("move_left","move_right","move_up","move_down")
+	if invincible_time > 0.0:
+		invincible_time -= _delta
 	#tool_direction = global_position.direction_to(get_global_mouse_position())
 
 func handle_selected_item(item:Item) -> void:
@@ -165,6 +193,8 @@ func handle_selected_item(item:Item) -> void:
 	elif item.collision_size == Vector2.ZERO:
 		var coll = hit_component.get_child(0) as CollisionShape2D
 		coll.shape.extents = Vector2(8,8)
+	#设置伤害（工具保持至少1点）
+	hit_component.damage = maxi(item.damage, 1)
 	#选中物品时做出的相应效果
 	match item.type:
 		Item.ItemType.Weapon:
@@ -213,6 +243,10 @@ func _unhandled_input(event: InputEvent) -> void: #这个函数可以忽略UI的
 				if try_use_stamina(TOOL_STAMINA_COST):
 					state_machine.transition_state("Water")
 			Item.ItemType.Weapon:
+				# 远程/魔法武器：左键发射投射物（泰拉瑞亚式），近战武器挥砍
+				if current_item.projectile != "":
+					shoot_projectile()
+					return
 				if try_use_stamina(SWING_STAMINA_COST):
 					state_machine.transition_state("Swing")
 					AudioManager.play_sfx(swing_sfx)

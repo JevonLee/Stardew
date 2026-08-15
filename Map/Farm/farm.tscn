@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://bpjotrdl0f7gx" path="res://Bag/items/weapon/喵刀.tres" id="6_rb1dh"]
 [ext_resource type="Resource" uid="uid://cd3o8erabt37a" path="res://Bag/items/objects/book1.tres" id="7_nmihx"]
 [ext_resource type="PackedScene" uid="uid://ecsiuwf14r7f" path="res://NPC/pig.tscn" id="13_3mexb"]
+[ext_resource type="PackedScene" path="res://Combat/enemy_spawner.tscn" id="14_spawner"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_140im"]
 size = Vector2(21, 12)
@@ -145,3 +146,5 @@ position = Vector2(2269, 253)
 
 [node name="Pig" parent="NPC" instance=ExtResource("13_3mexb")]
 position = Vector2(1788, 326)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("14_spawner")]

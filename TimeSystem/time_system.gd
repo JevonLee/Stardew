@@ -26,6 +26,7 @@ var inital_week = weeks[0]
 var time:float = 0.0 #跟踪当前累计的游戏时间
 var current_minute:int = -1
 var current_day:int = 0
+var current_hour:int = 6
 var current_season:int = Season.SPRING
 
 signal game_time(time:float)
@@ -81,6 +82,7 @@ func recalculate_time() -> void: #这个函数的目的是从当前的 time 值�
 	if current_minute != minute:
 		current_minute = minute
 		time_tick.emit(day,hour,minute,week) #将这些时间变量通过信号发送出去
+	current_hour = hour # 始终更新小时（set_time设置整点时分钟可能不变）
 		
 	if current_day != day:
 		current_day = day

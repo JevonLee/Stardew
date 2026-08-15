@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://Combat/enemy.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/NPC_6.png" id="2_tex"]
+[ext_resource type="Resource" uid="uid://tongbi00000001" path="res://Bag/items/materials/铜币.tres" id="3_coin"]
+
+[node name="Zombie" instance=ExtResource("1_base")]
+enemy_name = "僵尸"
+ai = 1
+max_health = 45
+contact_damage = 10
+speed = 36.0
+knockback_resist = 0.15
+aggro_range = 240.0
+coin_drop = ExtResource("3_coin")
+coin_count = 3
+sprite_texture = ExtResource("2_tex")
+sprite_vframes = 4
+sprite_scale = Vector2(0.4, 0.4)

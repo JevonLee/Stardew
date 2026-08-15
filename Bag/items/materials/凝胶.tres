@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ningjiao000001"]
+
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/Item_23.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1_item")
+name = "凝胶"
+type = 10
+description = "史莱姆的粘液，可以合成火把等物品"
+quantity = 1
+max_quantity = 999
+countable = true
+texture = ExtResource("2_tex")
+price = 5

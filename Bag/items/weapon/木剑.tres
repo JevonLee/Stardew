@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://mujian00000001"]
+
+[ext_resource type="Script" uid="uid://cw5mwkqapte2e" path="res://Bag/scene/item.gd" id="1_item"]
+[ext_resource type="Texture2D" path="res://Art/Terraria/images/Item_39.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1_item")
+name = "木剑"
+type = 6
+description = "泰拉瑞亚的木剑，比喵刀靠谱"
+quantity = 1
+max_quantity = 1
+countable = false
+texture = ExtResource("2_tex")
+price = 30
+collision_size = Vector2(8, 8)
+damage = 8
+crit = 0.05
+knockback = 1.0
+open_trail = false
+open_texture = true
+use_type = 0
+damage_type = 1
+projectile = ""
